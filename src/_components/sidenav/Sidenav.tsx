@@ -2,6 +2,7 @@ import { Fragment } from "react";
 import { Link } from "@tanstack/react-router";
 import { useSidenav } from "@/_components/sidenav/SidenavProvider";
 import { navLinks } from "@/_components/sidenav/nav-links";
+import { SidenavTrigger } from "./SidenavTrigger";
 
 export function Sidenav() {
   const { isOpen } = useSidenav();
@@ -9,7 +10,10 @@ export function Sidenav() {
   return (
     <nav id="sidenav" inert={!isOpen}>
       <div id="sidenav-inner">
-        <div id="sidenav-header">Nav Header</div>
+        <div id="sidenav-header">
+          LOGO
+          <SidenavTrigger />
+        </div>
         <div id="sidenav-content">
           {navLinks.map((group) => (
             <Fragment key={group.label}>
