@@ -1,4 +1,5 @@
-import { createContext, useState, useContext, useEffect, type Dispatch, type SetStateAction } from "react";
+import { createContext, useContext, useEffect, useState, type Dispatch, type SetStateAction } from "react";
+import { useIsMobile } from "@/_hooks/useIsMobile";
 
 interface SidenavTypes {
   isOpen: boolean;
@@ -8,7 +9,12 @@ interface SidenavTypes {
 const SidenavContext = createContext<SidenavTypes | undefined>(undefined);
 
 export function SidenavContextProvider({ children }: { children: React.ReactNode }) {
-  const [isOpen, setIsOpen] = useState<boolean>(true);
+  const isMobile = useIsMobile();
+  const [isOpen, setIsOpen] = useState<boolean>(!isMobile);
+
+  useEffect(() => {
+    setIsOpen(!isMobile);
+  }, [isMobile]);
 
   return <SidenavContext.Provider value={{ isOpen, setIsOpen }}>{children}</SidenavContext.Provider>;
 }
