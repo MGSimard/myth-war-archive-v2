@@ -42,6 +42,12 @@ ul {
 }
 /**/
 /* SIDENAV */
+.trigger-fixed {
+  position: fixed;
+  top: var(--sitePadding);
+  left: var(--sitePadding);
+  z-index: 99;
+}
 #sidenav {
   position: fixed;
   top: 0;

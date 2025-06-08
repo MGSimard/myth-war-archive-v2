@@ -1,6 +1,6 @@
 import { useSidenav } from "@/_components/sidenav/SidenavProvider";
 
-export function SidenavTrigger() {
+export function SidenavTrigger({ fixed }: { fixed?: boolean }) {
   const { isOpen, setIsOpen } = useSidenav();
 
   const handleToggle = () => {
@@ -8,7 +8,7 @@ export function SidenavTrigger() {
   };
 
   return (
-    <button type="button" onClick={handleToggle}>
+    <button type="button" onClick={handleToggle} className={fixed ? "trigger-fixed" : undefined}>
       {isOpen ? "Close" : "Open"}
     </button>
   );
