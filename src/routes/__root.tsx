@@ -1,6 +1,6 @@
 import { Outlet, createRootRoute } from "@tanstack/react-router";
 import { SidenavContextProvider } from "@/_components/sidenav/SidenavProvider";
-import { FixedTrigger } from "@/_components/sidenav/FixedTrigger";
+import { FixedTrigger } from "@/_components/sidenav/SidenavTriggerFixed";
 import { Sidenav } from "@/_components/sidenav/Sidenav";
 
 export const Route = createRootRoute({

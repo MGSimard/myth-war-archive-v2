@@ -40,6 +40,10 @@ svg {
 ul {
   list-style: none;
 }
+button svg {
+  width: 1em;
+  height: 1em;
+}
 /**/
 /* SIDENAV */
 .trigger-fixed {
