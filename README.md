@@ -1,5 +1,9 @@
 # Myth War Archive (v2)
 
+## Notes
+
+DisplayFont (Headings, Labels): 汉仪方隶简 Regular
+
 ## Task List
 
 - [x] Init

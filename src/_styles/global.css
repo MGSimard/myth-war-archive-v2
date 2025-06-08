@@ -4,6 +4,9 @@
   --sitePadding: 1rem;
   --sidenavWidth: 24rem;
 
+  --contentFont: "";
+  --displayFont: "";
+
   /* MYTH WAR COLORS*/
   --clrSiteText: oklch(1 0 0);
   --clrSiteBg: #000;
@@ -27,8 +30,8 @@
   /* outline: 1px solid red; */
 }
 html {
-  color: var(--clrSiteText);
   font-size: 62.5%;
+  color: var(--clrSiteText);
   background: var(--clrSiteBg);
 }
 body {
@@ -59,6 +62,10 @@ ul {
 button svg {
   width: 1em;
   height: 1em;
+}
+a {
+  color: inherit;
+  text-decoration: none;
 }
 /**/
 /* SIDENAV */
