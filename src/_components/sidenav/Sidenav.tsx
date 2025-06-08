@@ -3,7 +3,6 @@ import { Link } from "@tanstack/react-router";
 import { useSidenav } from "@/_components/sidenav/SidenavProvider";
 import { navLinks } from "@/_components/sidenav/nav-links";
 import { SidenavTrigger } from "./SidenavTrigger";
-import { ArrowLeftFromLine } from "lucide-react";
 
 export function Sidenav() {
   const { isOpen } = useSidenav();
@@ -12,7 +11,9 @@ export function Sidenav() {
     <nav id="sidenav" inert={!isOpen}>
       <div id="sidenav-inner">
         <div id="sidenav-header">
-          LOGO
+          <div id="snh-left">
+            <span>Myth War Archive</span>
+          </div>
           <SidenavTrigger />
         </div>
         <div id="sidenav-content">
