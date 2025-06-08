@@ -1,6 +1,8 @@
-/* CORE */
 :root {
   /* SITE CONFIG */
+  --maxContentWidth: 1440px;
+  --sitePadding: 2rem;
+  --sidenavWidth: 24rem;
 
   /* MYTH WAR COLORS*/
 }
@@ -8,6 +10,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  outline: 1px solid red;
 }
 html {
   font-size: 62.5%;
@@ -15,6 +18,50 @@ html {
 body {
   font-size: 1.6rem;
 }
+#app {
+  min-height: 100dvh;
+}
+#sidenav-inset {
+  padding-left: var(--sidenavWidth);
+  transition: padding 0.3s ease-in-out;
+}
+main {
+  padding: calc(var(--sitePadding) * 2) var(--sitePadding);
+}
 /**/
 /* NORMALIZE */
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+ul {
+  list-style: none;
+}
 /**/
+/* SIDENAV */
+#sidenav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 24rem;
+  height: 100dvh;
+  padding: var(--sitePadding);
+  color: #fff;
+  background-color: #000;
+  z-index: 100;
+  transition: transform 0.3s ease-in-out;
+  &[inert] {
+    transform: translateX(-100%);
+    ~ #sidenav-inset {
+      padding-left: 0;
+    }
+  }
+}
+/**/
+/* MEDIA QUERIES */
+@media only screen and (max-width: 768px) {
+  body {
+    background: cyan;
+  }
+}
