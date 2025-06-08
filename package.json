@@ -1,38 +1,46 @@
 {
-  "name": ".",
+  "name": "Myth War Archive",
+  "version": "0.1.0",
   "private": true,
+  "author": "MGSimard <mgsimard.dev@gmail.com> (https://mgsimard.dev)",
+  "description": "A resource aiming to preserve the history of the Myth War series, and act as a hub for ease of research and development.",
+  "license": "MIT",
   "type": "module",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MGSimard/myth-war-archive-v2.git"
+  },
+  "bugs": {
+    "url": "https://github.com/MGSimard/myth-war-archive-v2/issues"
+  },
+  "homepage": "https://github.com/MGSimard/myth-war-archive-v2#readme",
   "scripts": {
     "dev": "vite --port 3000",
-    "start": "vite --port 3000",
-    "build": "vite build && tsc",
-    "serve": "vite preview",
-    "test": "vitest run",
-    "lint": "eslint",
-    "format": "prettier",
-    "check": "prettier --write . && eslint --fix"
+    "build": "tsc -b && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview"
   },
   "dependencies": {
-    "@tailwindcss/vite": "^4.0.6",
-    "@tanstack/react-router": "^1.114.3",
-    "@tanstack/react-router-devtools": "^1.114.3",
-    "@tanstack/router-plugin": "^1.114.3",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "tailwindcss": "^4.0.6"
+    "@tanstack/react-router": "^1.120.18",
+    "@tanstack/router-plugin": "^1.120.18",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0"
   },
   "devDependencies": {
-    "@tanstack/eslint-config": "^0.1.0",
-    "@testing-library/dom": "^10.4.0",
-    "@testing-library/react": "^16.2.0",
-    "@types/react": "^19.0.8",
-    "@types/react-dom": "^19.0.3",
-    "@vitejs/plugin-react": "^4.3.4",
-    "jsdom": "^26.0.0",
-    "prettier": "^3.5.3",
-    "typescript": "^5.7.2",
-    "vite": "^6.1.0",
-    "vitest": "^3.0.5",
-    "web-vitals": "^4.2.4"
+    "@types/node": "^22.15.30",
+    "@types/react": "^19.1.6",
+    "@types/react-dom": "^19.1.6",
+    "@typescript-eslint/eslint-plugin": "^8.33.1",
+    "@typescript-eslint/parser": "^8.33.1",
+    "@vitejs/plugin-react": "^4.5.1",
+    "babel-plugin-react-compiler": "19.1.0-rc.2",
+    "eslint-plugin-react-hooks": "6.0.0-rc.1",
+    "typescript": "^5.8.3",
+    "typescript-eslint": "^8.33.1",
+    "vite": "^6.3.5"
+  },
+  "packageManager": "pnpm@10.11.1",
+  "engines": {
+    "node": ">=21.2.0"
   }
 }
