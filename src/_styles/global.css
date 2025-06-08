@@ -44,7 +44,7 @@ ul {
   position: fixed;
   top: 0;
   left: 0;
-  width: 24rem;
+  width: min(24rem, 100dvw);
   height: 100dvh;
   padding: var(--sitePadding);
   color: #fff;
