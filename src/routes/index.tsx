@@ -12,7 +12,7 @@ function App() {
         <h1>
           Myth War <span>Archive</span>
         </h1>
-        <h2 className="heading">Your go-to resource for everything Myth War Online</h2>
+        <h2 className="heading">Your go-to resource for everything Myth War</h2>
       </header>
       <Section title="What you'll find">
         <ul>
