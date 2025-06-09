@@ -32,13 +32,13 @@ export const navLinks: NavLinkGroup[] = [
         icon: House,
       },
       {
-        title: "About Myth War",
-        url: "/about-myth-war",
+        title: "Game History",
+        url: "/game-history",
         icon: Scroll,
       },
       {
-        title: "World of Myth War",
-        url: "/world-of-myth-war",
+        title: "World & Lore",
+        url: "/world-and-lore",
         icon: BookText,
       },
     ],

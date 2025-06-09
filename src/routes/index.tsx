@@ -8,9 +8,10 @@ export const Route = createFileRoute("/")({
 function App() {
   return (
     <header id="hero">
-      <h1>Myth War</h1>
-      <span>Archive</span>
-      <h2 className="heading">Your go-to resource for everything Myth War</h2>
+      <h1>
+        <span data-text="MYTH WAR">MYTH WAR</span> Archive
+      </h1>
+      <h2 className="heading">Preserving the Myth</h2>
     </header>
   );
 }

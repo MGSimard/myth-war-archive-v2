@@ -4,7 +4,7 @@
   --sitePadding: 1rem;
   --sidenavWidth: 32rem;
 
-  --displayFont: "Eagle Lake";
+  --displayFont: "Zieruk", "Palatino Linotype", "Book Antiqua", "Georgia", serif;
   --contentFont: "";
   --headingFont: "Hanyi Fanglijian";
 
@@ -46,6 +46,28 @@ html {
 body {
   position: relative;
   font-size: 1.6rem;
+}
+body::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: url("/assets/bg-2k.webp");
+  background-size: auto 100dvh;
+  background-position: center;
+  background-repeat: no-repeat;
+  mask-image: linear-gradient(to bottom, transparent 10%, #000, transparent 90%);
+  -webkit-mask-image: linear-gradient(to bottom, transparent 10%, #000, transparent 90%);
+  filter: blur(1rem);
+  opacity: 0.2;
+  z-index: -1;
+}
+@media (min-aspect-ratio: 16/9) {
+  /* BG Image 100dvh tall, however if leads to image not filling viewport width (ie ultrawide), make width the commanding dimension */
+  /* This avoids bg image growing too tall if content is taller than 100dvh*/
+  /* TLDR: Clamp 100dvh height unless image needs to grow in width to fill viewport*/
+  body::before {
+    background-size: 100vw auto;
+  }
 }
 #app {
   min-height: 100dvh;
@@ -112,7 +134,6 @@ a {
   font-family: var(--headingFont);
   font-size: 2rem;
   font-weight: 400;
-  text-transform: capitalize;
   color: transparent;
   text-align: center;
   white-space: nowrap;
@@ -272,45 +293,36 @@ a {
 }
 /**/
 /* HOME */
-body:has(#hero)::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: url("/assets/bg-2k.webp") no-repeat center center;
-  background-size: cover;
-  mask-image: linear-gradient(to bottom, transparent 10%, #000, transparent 90%);
-  -webkit-mask-image: linear-gradient(to bottom, transparent 10%, #000, transparent 90%);
-  filter: blur(1rem);
-  opacity: 0.2;
-  z-index: -1;
-}
 main:has(#hero) {
   justify-content: center;
 }
 #hero {
+  position: relative;
   text-align: center;
   text-wrap: balance;
 }
-#hero h1 {
+#hero h1 span {
+  position: relative;
+  display: block;
   font-family: var(--displayFont);
-  text-transform: uppercase;
-  font-size: 8rem;
-  text-align: center;
+  font-size: clamp(4rem, 10vw, 8rem);
+  -webkit-text-stroke: 1rem oklch(0.49 0.1838 259.24);
+  line-height: 1;
+  z-index: 1;
+}
+#hero h1 span::after {
+  content: attr(data-text);
+  position: absolute;
+  inset: 0;
   color: transparent;
-  white-space: nowrap;
   -webkit-text-fill-color: transparent;
   -webkit-text-stroke: 0.1rem oklch(1 0 0);
-  background: linear-gradient(to bottom, oklch(0.4529 0.2885 264.54), oklch(0 0 1));
+  background: linear-gradient(to bottom, oklch(0 0 1), oklch(0.4019 0.234 264.84), oklch(0 0 1));
   background-clip: text;
   -webkit-background-clip: text;
-  filter: drop-shadow(0 0 1rem rgb(0, 89, 255));
-  line-height: 1;
-}
-#hero span {
-  display: block;
-  font-size: 2.4rem;
-  font-family: var(--displayFont);
-  margin-bottom: 1.6rem;
+  filter: drop-shadow(0 0 0.2rem oklch(0.5 0.2801 267.62));
+  z-index: 1;
+  pointer-events: none;
 }
 #home h2 {
   font-family: inherit;
