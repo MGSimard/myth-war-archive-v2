@@ -10,7 +10,7 @@ export function SidenavTrigger({ fixed }: { fixed?: boolean }) {
 
   return (
     <button type="button" onClick={handleToggle} className={fixed ? "trigger-fixed" : undefined}>
-      {isOpen ? <ArrowLeftFromLine /> : <ArrowRightFromLine />}
+      {isOpen ? <img src="/assets/x.svg" alt="Close" /> : <ArrowRightFromLine />}
     </button>
   );
 }
