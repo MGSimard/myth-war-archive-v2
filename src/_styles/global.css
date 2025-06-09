@@ -8,6 +8,8 @@
   --displayFont: "Hanyi Fanglijian";
   --logoFont: "Caliph";
 
+  --clrDecorlinePad: 0.2rem 0.4rem;
+
   /* MYTH WAR COLORS*/
   --clrSiteText: oklch(1 0 0);
   --clrSiteBg: #000;
@@ -35,7 +37,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  /* outline: 1px solid red; */
 }
 html {
   font-size: 62.5%;
@@ -166,20 +167,19 @@ a {
 }
 #snh-left {
   flex-grow: 1;
-  --padding: 0.2rem 0.4rem;
   display: flex;
   align-items: center;
   justify-content: center;
   position: relative;
   min-width: 0;
-  padding: var(--padding);
+  padding: var(--clrDecorlinePad);
   overflow: hidden;
   border-right: 0.2rem ridge var(--clrGoldOuterLeftFrameHighlight);
 }
 #snh-left::before {
   content: "";
   position: absolute;
-  inset: var(--padding);
+  inset: var(--clrDecorlinePad);
   border-radius: 0.2rem;
   border: 0.1rem solid transparent;
   background: linear-gradient(to right, var(--clrGoldHeadingInnerLineDark), var(--clrGoldHeadingInnerLineLight))
@@ -195,6 +195,8 @@ a {
 }
 #sidenav-content {
   flex-grow: 1;
+  --padding: 1rem;
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 2.4rem;
@@ -202,6 +204,23 @@ a {
   overflow-y: auto;
   scrollbar-width: thin;
   scrollbar-color: var(--clrGoldInnerLineLight) transparent;
+}
+#sidenav-content::before {
+  content: "";
+  position: absolute;
+  inset: var(--clrDecorlinePad);
+  border-radius: 0.8rem;
+  border: 0.1rem solid transparent;
+  background: linear-gradient(
+      to right,
+      var(--clrGoldInnerLineDark),
+      var(--clrGoldInnerLineLight),
+      var(--clrGoldInnerLineDark)
+    )
+    border-box;
+  mask: linear-gradient(#000 0 0) padding-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
 }
 #sidenav-content h2 {
   font-size: 2rem;
@@ -247,6 +266,61 @@ a {
   height: 1.6rem;
 }
 /**/
+/* CONTENT SECTION */
+main section {
+  border: 0.2rem ridge var(--clrGoldOuterLeftFrameHighlight);
+  border-radius: 0.4rem;
+  background: var(--clrOverlayBg);
+}
+.section-header {
+  --padding: 0.2rem 0.4rem;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--padding);
+  font-family: var(--displayFont);
+  background: var(--gradientHeader);
+  border-bottom: 0.2rem ridge var(--clrGoldOuterLeftFrameHighlight);
+  overflow: hidden;
+}
+.section-header::before {
+  content: "";
+  position: absolute;
+  inset: var(--padding);
+  border-radius: 0.2rem;
+  border: 0.1rem solid transparent;
+  background: linear-gradient(to right, var(--clrGoldHeadingInnerLineDark), var(--clrGoldHeadingInnerLineLight))
+    border-box;
+  mask: linear-gradient(#000 0 0) padding-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+}
+.section-header .heading {
+  font-size: 3.2rem;
+}
+.section-content {
+  position: relative;
+  padding: var(--sitePadding);
+}
+.section-content::before {
+  content: "";
+  position: absolute;
+  inset: var(--clrDecorlinePad);
+  border-radius: 0.8rem;
+  border: 0.1rem solid transparent;
+  background: linear-gradient(
+      to right,
+      var(--clrGoldInnerLineDark),
+      var(--clrGoldInnerLineLight),
+      var(--clrGoldInnerLineDark)
+    )
+    border-box;
+  mask: linear-gradient(#000 0 0) padding-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
 /* MEDIA QUERIES */
 @media only screen and (max-width: 768px) {
   #sidenav-inset {
