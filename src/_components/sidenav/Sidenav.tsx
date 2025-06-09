@@ -18,19 +18,21 @@ export function Sidenav() {
         </div>
         <div id="sidenav-content">
           {navLinks.map((group) => (
-            <Fragment key={group.label}>
-              <label>{group.label}</label>
+            <section key={group.label}>
+              <h2>{group.label}</h2>
               <ul key={group.label}>
                 {group.items.map((item) => (
                   <li key={item.title}>
-                    <Link to={item.url}>{item.title}</Link>
+                    <Link to={item.url}>
+                      <item.icon />
+                      <span>{item.title}</span>
+                    </Link>
                   </li>
                 ))}
               </ul>
-            </Fragment>
+            </section>
           ))}
         </div>
-        <div id="sidenav-footer">Nav Footer</div>
       </div>
     </nav>
   );
