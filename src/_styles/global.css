@@ -88,7 +88,7 @@ button:focus-visible {
   box-shadow: inset 0 0 0.3rem 0.2rem var(--clrInputLabel);
 }
 button:active {
-  box-shadow: inset 0 0 0 0.1rem oklch(from var(--clrBrown) 0 c h);
+  box-shadow: inset 0 0 0.1rem 0.1rem oklch(from var(--clrBrown) 0 c h);
 }
 button svg {
   width: 1em;
@@ -114,7 +114,7 @@ a {
   background: var(--gradientHeading);
   background-clip: text;
   -webkit-background-clip: text;
-  filter: drop-shadow(0.1rem 0.1rem 0 black);
+  filter: drop-shadow(0.1rem 0.1rem black);
 }
 /**/
 /* SIDENAV */
