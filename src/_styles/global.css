@@ -6,13 +6,12 @@
 
   --contentFont: "";
   --displayFont: "Hanyi Fanglijian";
-  --logoFont: "Caliph";
 
   --clrDecorlinePad: 0.2rem 0.4rem;
 
   /* MYTH WAR COLORS*/
   --clrSiteText: oklch(1 0 0);
-  --clrSiteBg: #000;
+  --clrSiteBg: oklch(0.19 0.0608 278.71);
 
   --clrGoldOuterTopFrameHighlight: oklch(0.894 0.098 95.14);
   --clrGoldOuterRightFrameHighlight: oklch(0.894 0.098 95.14);
@@ -54,7 +53,11 @@ body {
   transition: padding 0.3s ease-in-out;
 }
 main {
+  display: flex;
+  flex-direction: column;
+  gap: 1.6rem;
   max-width: var(--maxContentWidth);
+  min-height: 100dvh;
   margin: 0 auto;
   padding: calc(var(--sitePadding) * 2) var(--sitePadding);
 }
@@ -266,6 +269,23 @@ a {
   height: 1.6rem;
 }
 /**/
+/* HOME */
+main:has(#hero) {
+  justify-content: center;
+}
+#hero {
+  text-align: center;
+  text-wrap: balance;
+}
+#hero h1 {
+  font-family: inherit;
+  font-size: 4rem;
+  text-align: center;
+  text-transform: uppercase;
+}
+#home h2 {
+  font-family: inherit;
+}
 /* CONTENT SECTION */
 main section {
   border: 0.2rem ridge var(--clrGoldOuterLeftFrameHighlight);
@@ -301,7 +321,7 @@ main section {
 }
 .section-content {
   position: relative;
-  padding: var(--sitePadding);
+  padding: 1.6rem;
 }
 .section-content::before {
   content: "";
