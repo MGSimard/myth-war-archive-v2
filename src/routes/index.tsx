@@ -1,5 +1,4 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { SidenavTrigger } from "@/_components/sidenav/SidenavTrigger";
 import { Section } from "@/_components/Section";
 
 export const Route = createFileRoute("/")({
@@ -10,8 +9,10 @@ function App() {
   return (
     <>
       <header id="hero">
-        <h1>Myth War Archive</h1>
-        <h2>Your go-to resource for everything Myth War Online</h2>
+        <h1>
+          Myth War <span>Archive</span>
+        </h1>
+        <h2 className="heading">Your go-to resource for everything Myth War Online</h2>
       </header>
       <Section title="What you'll find">
         <ul>

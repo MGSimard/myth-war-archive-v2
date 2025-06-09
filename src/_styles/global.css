@@ -278,10 +278,15 @@ main:has(#hero) {
   text-wrap: balance;
 }
 #hero h1 {
+  text-transform: uppercase;
   font-family: inherit;
   font-size: 4rem;
   text-align: center;
-  text-transform: uppercase;
+}
+#hero h1 span {
+  display: block;
+  font-size: 2rem;
+  text-transform: capitalize;
 }
 #home h2 {
   font-family: inherit;
