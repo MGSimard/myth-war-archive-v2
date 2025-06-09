@@ -22,7 +22,11 @@
 
   --clrOverlayBg: oklch(0.1101 0.0763 264.05 / 90.59%);
   --clrInputLabel: oklch(0.7262 0.1483 70.77);
+
+  --clrBrown: oklch(0.2604 0.0717 35.18);
+
   --gradientHeader: linear-gradient(to bottom, oklch(0.1768 0.1103 264.2), oklch(0.3484 0.1382 259.47));
+  --gradientHeading: linear-gradient(to bottom, oklch(0.9737 0.154 109.34), oklch(0.7104 0.1355 72.07));
 }
 * {
   margin: 0;
@@ -76,6 +80,21 @@ button svg {
 a {
   color: inherit;
   text-decoration: none;
+}
+/**/
+/* HELPERS */
+.heading {
+  font-family: var(--displayFont);
+  font-size: 2rem;
+  font-weight: 400;
+  text-transform: capitalize;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 0.05rem var(--clrBrown);
+  background: var(--gradientHeading);
+  background-clip: text;
+  -webkit-background-clip: text;
+  filter: drop-shadow(0.1rem 0.1rem 0 black);
 }
 /**/
 /* SIDENAV */

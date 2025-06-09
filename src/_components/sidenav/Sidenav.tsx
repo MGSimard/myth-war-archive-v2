@@ -12,7 +12,9 @@ export function Sidenav() {
       <div id="sidenav-inner">
         <div id="sidenav-header">
           <div id="snh-left">
-            <span>Myth War Archive</span>
+            <span className="heading" data-text="Myth War Archive">
+              Myth War Archive
+            </span>
           </div>
           <SidenavTrigger />
         </div>
