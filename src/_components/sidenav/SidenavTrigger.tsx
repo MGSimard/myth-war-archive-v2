@@ -1,5 +1,4 @@
 import { useSidenav } from "@/_components/sidenav/SidenavProvider";
-import { ArrowLeftFromLine, ArrowRightFromLine } from "lucide-react";
 
 export function SidenavTrigger({ fixed }: { fixed?: boolean }) {
   const { isOpen, setIsOpen } = useSidenav();
@@ -10,7 +9,7 @@ export function SidenavTrigger({ fixed }: { fixed?: boolean }) {
 
   return (
     <button type="button" onClick={handleToggle} className={fixed ? "trigger-fixed" : undefined}>
-      {isOpen ? <img src="/assets/x.svg" alt="Close" /> : <ArrowRightFromLine />}
+      {isOpen ? <img src="/assets/x.svg" alt="Close sidebar" /> : <img src="/assets/sidebar.svg" alt="Open sidebar" />}
     </button>
   );
 }
