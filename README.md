@@ -11,9 +11,10 @@ DisplayFont (Headings, Labels): 汉仪方隶简
 - [x] Set configs
 - [ ] ...
 - [ ] Core Layout
-  - [ ] Color palette
-  - [ ] Layout identity
-  - [ ] Sidenav
+  - [x] Color palette
+  - [x] Layout identity
+  - [x] Sidenav
+    - [ ] Nav item font
     - [ ] Inert rest of the app when open on mobile?
   - [ ] ...
   - [ ] ...
