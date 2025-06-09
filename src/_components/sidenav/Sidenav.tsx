@@ -3,9 +3,11 @@ import { Link } from "@tanstack/react-router";
 import { useSidenav } from "@/_components/sidenav/SidenavProvider";
 import { navLinks } from "@/_components/sidenav/nav-links";
 import { SidenavTrigger } from "./SidenavTrigger";
+import { useIsMobile } from "@/_hooks/useIsMobile";
 
 export function Sidenav() {
   const { isOpen, setIsOpen } = useSidenav();
+  const isMobile = useIsMobile();
 
   return (
     <nav id="sidenav" inert={!isOpen}>
@@ -23,7 +25,7 @@ export function Sidenav() {
               <ul key={group.label}>
                 {group.items.map((item) => (
                   <li key={item.title}>
-                    <Link to={item.url} onClick={() => setIsOpen(false)}>
+                    <Link to={item.url} onClick={() => isMobile && setIsOpen(false)}>
                       <item.icon />
                       <span>{item.title}</span>
                     </Link>
