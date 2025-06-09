@@ -2,7 +2,7 @@
   /* SITE CONFIG */
   --maxContentWidth: 1440px;
   --sitePadding: 1rem;
-  --sidenavWidth: 24rem;
+  --sidenavWidth: 32rem;
 
   --contentFont: "";
   --displayFont: "Hanyi Fanglijian";
@@ -19,6 +19,9 @@
 
   --clrGoldInnerLineLight: oklch(0.7404 0.1316 85.76);
   --clrGoldInnerLineDark: oklch(0.3724 0.0947 43.1);
+
+  --clrGoldHeadingInnerLineLight: oklch(0.6764 0.1011 89.29);
+  --clrGoldHeadingInnerLineDark: oklch(0.4564 0.0922 68.53);
 
   --clrOverlayBg: oklch(0.1101 0.0763 264.05 / 90.59%);
   --clrInputLabel: oklch(0.7262 0.1483 70.77);
@@ -73,6 +76,11 @@ svg {
 ul {
   list-style: none;
 }
+button {
+  background: var(--clrBrown);
+  border: none;
+  cursor: pointer;
+}
 button svg {
   width: 1em;
   height: 1em;
@@ -84,11 +92,14 @@ a {
 /**/
 /* HELPERS */
 .heading {
+  display: block;
   font-family: var(--displayFont);
   font-size: 2rem;
   font-weight: 400;
   text-transform: capitalize;
   color: transparent;
+  text-align: center;
+  white-space: nowrap;
   -webkit-text-fill-color: transparent;
   -webkit-text-stroke: 0.05rem var(--clrBrown);
   background: var(--gradientHeading);
@@ -108,7 +119,7 @@ a {
   position: fixed;
   top: 0;
   left: 0;
-  width: min(24rem, 100dvw);
+  width: min(var(--sidenavWidth), 100dvw);
   height: 100dvh;
   padding: var(--sitePadding);
   color: #fff;
@@ -126,21 +137,40 @@ a {
   flex-direction: column;
   height: 100%;
   background: var(--clrOverlayBg);
-  border: 0.2rem ridge yellow;
+  border: 0.2rem ridge var(--clrGoldOuterLeftFrameHighlight);
+  overflow: hidden;
 }
 #sidenav-header {
   flex-shrink: 0;
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: stretch;
   font-family: var(--displayFont);
   background: var(--gradientHeader);
+  border-bottom: 0.2rem ridge var(--clrGoldOuterLeftFrameHighlight);
 }
 #snh-left {
-  padding: 0.2rem 0.4rem;
+  flex-grow: 1;
+  --padding: 0.2rem 0.4rem;
+  position: relative;
+  padding: var(--padding);
 }
-#snh-left span {
-  padding: 0.4rem 0;
+#snh-left::before {
+  content: "";
+  position: absolute;
+  inset: var(--padding);
+  border-radius: 0.2rem;
+  border: 0.1rem solid transparent;
+  background: linear-gradient(to right, var(--clrGoldHeadingInnerLineDark), var(--clrGoldHeadingInnerLineLight))
+    border-box;
+  mask: linear-gradient(#000 0 0) padding-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+}
+#sidenav-header button {
+  flex-shrink: 0;
+  aspect-ratio: 1/1;
+  height: 100%;
 }
 #sidenav-content {
   flex-grow: 1;
