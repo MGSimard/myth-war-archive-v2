@@ -5,7 +5,7 @@ import { navLinks } from "@/_components/sidenav/nav-links";
 import { SidenavTrigger } from "./SidenavTrigger";
 
 export function Sidenav() {
-  const { isOpen } = useSidenav();
+  const { isOpen, setIsOpen } = useSidenav();
 
   return (
     <nav id="sidenav" inert={!isOpen}>
@@ -23,7 +23,7 @@ export function Sidenav() {
               <ul key={group.label}>
                 {group.items.map((item) => (
                   <li key={item.title}>
-                    <Link to={item.url}>
+                    <Link to={item.url} onClick={() => setIsOpen(false)}>
                       <item.icon />
                       <span>{item.title}</span>
                     </Link>
