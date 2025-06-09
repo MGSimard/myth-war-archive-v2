@@ -2,7 +2,7 @@
 
 ## Notes
 
-DisplayFont (Headings, Labels): 汉仪方隶简 Regular
+DisplayFont (Headings, Labels): 汉仪方隶简
 
 ## Task List
 

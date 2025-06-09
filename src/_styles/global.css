@@ -5,7 +5,8 @@
   --sidenavWidth: 24rem;
 
   --contentFont: "";
-  --displayFont: "";
+  --displayFont: "Hanyi Fanglijian";
+  --logoFont: "Caliph";
 
   /* MYTH WAR COLORS*/
   --clrSiteText: oklch(1 0 0);
@@ -51,6 +52,15 @@ main {
 }
 /**/
 /* NORMALIZE */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--displayFont);
+  font-weight: 400;
+}
 img,
 svg {
   display: block;
@@ -104,6 +114,7 @@ a {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  font-family: var(--displayFont);
   background: var(--gradientHeader);
 }
 #snh-left {
@@ -121,9 +132,6 @@ a {
 /**/
 /* MEDIA QUERIES */
 @media only screen and (max-width: 768px) {
-  body {
-    background: cyan;
-  }
   #sidenav-inset {
     padding-left: 0;
   }
