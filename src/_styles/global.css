@@ -5,8 +5,8 @@
   --sidenavWidth: 32rem;
 
   --displayFont: "Zieruk", "Palatino Linotype", "Book Antiqua", "Georgia", serif;
-  --contentFont: "";
-  --headingFont: "Hanyi Fanglijian";
+  --contentFont: "system-ui", "sans-serif";
+  --headingFont: "Hanyi Fanglijian", "Brush Script MT", "cursive", serif;
 
   --clrDecorlinePad: 0.2rem 0.4rem;
 
@@ -39,6 +39,7 @@
   box-sizing: border-box;
 }
 html {
+  font-family: var(--contentFont);
   font-size: 62.5%;
   color: var(--clrSiteText);
   background: var(--clrSiteBg);
