@@ -192,7 +192,7 @@ a {
   flex-direction: column;
   gap: 2.4rem;
   padding: var(--sitePadding);
-  overflow-y: scroll;
+  overflow-y: auto;
   scrollbar-width: thin;
   scrollbar-color: var(--clrGoldInnerLineLight) transparent;
 }
