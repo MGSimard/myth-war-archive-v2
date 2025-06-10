@@ -15,19 +15,19 @@ function PageWorld() {
         <Figure
           caption="Rarus Continent, Myth War Online"
           figureSrc="/assets/game/worldmap_mw1.jpg"
-          fullSrc="/assets/game/worldmap_mw1.jpg"
-          papyrus={false}>
+          fullSrc="/assets/game/worldmap_mw1.jpg">
           Modal Content
         </Figure>
         <Figure
           caption="Rarus Continent, Myth War II"
           figureSrc="/assets/game/worldmap_mw2.jpg"
-          fullSrc="/assets/game/worldmap_mw2.jpg"
-          papyrus={true}>
+          fullSrc="/assets/game/worldmap_mw2.jpg">
           Modal Content
         </Figure>
       </Section>
-      <Section title="Regions">Content</Section>
+      <Section title="Regions" id="regions">
+        Content
+      </Section>
     </>
   );
 }

@@ -5,10 +5,10 @@ interface FigureProps {
   figureSrc: string;
   fullSrc: string;
   caption: string;
-  papyrus: boolean;
+
   children: React.ReactNode;
 }
-export function Figure({ caption, figureSrc, fullSrc, papyrus, children }: FigureProps) {
+export function Figure({ caption, figureSrc, fullSrc, children }: FigureProps) {
   const [open, setOpen] = useState(false);
 
   const handleOpen = () => setOpen(true);
@@ -22,7 +22,7 @@ export function Figure({ caption, figureSrc, fullSrc, papyrus, children }: Figur
       </figure>
       {open && (
         <Modal title={caption} isOpen={open} onClose={handleClose}>
-          {papyrus ? <div className="papyrus">{children}</div> : children}
+          <div className="papyrus">{children}</div>
         </Modal>
       )}
     </>
