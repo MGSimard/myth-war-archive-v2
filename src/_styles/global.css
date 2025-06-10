@@ -177,8 +177,9 @@ hr {
   margin-bottom: 0.8rem;
 }
 .label {
+  font-family: var(--headingFont);
+  word-spacing: -0.2em;
   font-size: 2rem;
-  margin-bottom: 1.2rem;
   color: var(--clrInputLabel);
   -webkit-text-stroke: 0.05rem oklch(0 0 1);
 }
@@ -236,7 +237,7 @@ hr {
   justify-content: center;
   position: relative;
   min-width: 0;
-  padding: var(--clrDecorlinePad);
+  padding: 0.2rem 1rem;
   overflow: hidden;
   border-right: 0.2rem ridge var(--clrGoldOuterLeftFrameHighlight);
 }
@@ -256,6 +257,7 @@ hr {
   flex-shrink: 0;
   width: 3rem;
   height: 3rem;
+  border-radius: 0;
 }
 #sidenav-content {
   flex-grow: 1;
@@ -518,10 +520,105 @@ main section {
 .timeline:not(:last-child) {
   margin-bottom: 3.2rem;
 }
+/* WORLD */
+#rarus-continent .section-content {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1.6rem;
+}
+#rarus-continent figure img {
+  margin-bottom: 0.4rem;
+}
+#rarus-continent figcaption {
+  font-size: 1.6rem;
+  text-align: center;
+  text-wrap: balance;
+}
 
 /* MEDIA QUERIES */
 @media only screen and (max-width: 768px) {
   #sidenav-inset {
     padding-left: 0;
   }
+}
+dialog {
+  display: flex;
+  flex-direction: column;
+  margin: auto; /* For some reason this centers both ways */
+  color: inherit;
+  border: 2px ridge var(--clrGoldOuterLeftFrameHighlight);
+  border-radius: 0.4rem;
+  background: var(--clrOverlayBg);
+  height: 100dvh;
+  width: 100%;
+}
+.dialog-header {
+  flex-shrink: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
+  font-family: var(--headingFont);
+  background: var(--gradientHeader);
+  border-bottom: 0.2rem ridge var(--clrGoldOuterLeftFrameHighlight);
+}
+.dh-left {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  min-width: 0;
+  padding: 0.2rem 1rem;
+  overflow: hidden;
+  border-right: 0.2rem ridge var(--clrGoldOuterLeftFrameHighlight);
+}
+.dh-left::before {
+  content: "";
+  position: absolute;
+  inset: var(--clrDecorlinePad);
+  border-radius: 0.2rem;
+  border: 0.1rem solid transparent;
+  background: linear-gradient(to right, var(--clrGoldHeadingInnerLineDark), var(--clrGoldHeadingInnerLineLight))
+    border-box;
+  mask: linear-gradient(#000 0 0) padding-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+}
+.dialog-header button {
+  flex-shrink: 0;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 0;
+}
+dialog::backdrop {
+  backdrop-filter: blur(0.2rem);
+}
+.dialog-content {
+  flex-grow: 1;
+  --padding: 1rem;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+  padding: var(--sitePadding);
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: var(--clrGoldInnerLineLight) transparent;
+}
+.dialog-content::before {
+  content: "";
+  position: absolute;
+  inset: var(--clrDecorlinePad);
+  border-radius: 0.8rem;
+  border: 0.1rem solid transparent;
+  background: linear-gradient(
+      to right,
+      var(--clrGoldInnerLineDark),
+      var(--clrGoldInnerLineLight),
+      var(--clrGoldInnerLineDark)
+    )
+    border-box;
+  mask: linear-gradient(#000 0 0) padding-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
 }
