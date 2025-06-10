@@ -1,6 +1,7 @@
+import { createFileRoute } from "@tanstack/react-router";
 import { Header } from "@/_components/Header";
 import { Section } from "@/_components/Section";
-import { createFileRoute } from "@tanstack/react-router";
+import { Timeline } from "@/_components/Timeline";
 
 export const Route = createFileRoute("/game-history/")({
   component: PageGameHistory,
@@ -89,7 +90,246 @@ function PageGameHistory() {
           </div>
         </div>
       </Section>
-      <Section title="Timeline">a</Section>
+      <Section title="Timeline">
+        <h3>Pre</h3>
+        <Timeline
+          items={[
+            {
+              id: 1,
+              md: "??? ??",
+              year: "1999",
+              title: "Founding of Xinruishi",
+              description:
+                "Zhuang Jinlong(庄锦隆) founds & leads Xiamen Xinruishi Multimedia Co., Ltd.(厦门新瑞狮多媒体有限公司). It quickly became a prominent game studio in China, known for its innovative game development and strong leadership. Renowned for training a strong generation of game developers.",
+            },
+            {
+              id: 2,
+              md: "??? ?? ????",
+              year: "1999",
+              title: "Xinruishi Acquires Core Investor",
+              description: "Main Taiwanese investor named Cai Chengrui(蔡呈瑞) joins in.",
+            },
+            {
+              id: 3,
+              md: "??? ??",
+              year: "2003",
+              title: "Malicious Fund Withdrawal by Core Investor",
+              description:
+                "Cai Chengrui(蔡呈瑞) withdraws most of his funds without the knowledge of the company's employees, which paralyzed the company's development plan and eventually led to their collapse.",
+            },
+            {
+              id: 4,
+              md: "Dec 14",
+              year: "2003",
+              title: "Xinruishi Shuts Down",
+              description: (
+                <>
+                  Without funding and late wages, the company is unable to continue operating. Assets are sold, office
+                  vacated.{" "}
+                  <a
+                    href="https://web.archive.org/web/20241124183150/https://forum.gamer.com.tw/C.php?bsn=3987&snA=25"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    alt="Article about the collapse of Xinruishi">
+                    Full collapse of Xinruishi.
+                  </a>
+                </>
+              ),
+            },
+            {
+              id: 5,
+              md: "??? ??",
+              year: "2004",
+              title: "Zhuang Jinlong Cemented as the Godfather of the Chinese Game Industry",
+              description:
+                'Zhuang Jinlong(庄锦隆) elected as "Top Ten Chinese IT Person of the Year" & "Top Ten Leaders of the Year".',
+            },
+            {
+              id: 6,
+              md: "??? ??",
+              year: "2006",
+              title: "Zhuang Jinlong Joins Unigium",
+              description: (
+                <>
+                  Zhuang Jinlong(庄锦隆) joins Unigium(联竣信息科技（上海）有限公司) and becomes the Director & General
+                  Manager of the "God World/Myth War"(神界) project. A large portion of the employees, development
+                  tooling and assets come directly from Xinruishi.{" "}
+                  <a
+                    href="https://web.archive.org/web/20241124210600/https://news.17173.com/content/2006-11-22/20061122121131838,1.shtml"
+                    target="_blank"
+                    rel="noopener noreferrer">
+                    More information about the core team behind Myth War Online's development.
+                  </a>
+                </>
+              ),
+            },
+          ]}
+        />
+        <hr />
+        <h3>Myth War Online</h3>
+        <Timeline
+          items={[
+            {
+              id: 1,
+              md: "May 20",
+              year: "2005",
+              title: "Chinese Closed Beta",
+              description: `China server for Closed Beta is opened. Hosted on mythol.com and proxied to mainland China through mythonline.com.cn.`,
+            },
+            {
+              id: 2,
+              md: "Jul 15",
+              year: "2005",
+              title: "Taiwanese Release",
+              description: `While the China Open Beta release got stuck in limbo, the Taiwan server launches, which most Chinese players migrated to during the wait.`,
+            },
+            {
+              id: 3,
+              md: "Jan 18",
+              year: "2006",
+              title: "Japanese Open Beta",
+              description: `Japanese Open Beta launches, published under DIGIWORLD.`,
+            },
+            {
+              id: 4,
+              md: "??? ??",
+              year: "2006",
+              title: "Chinese Domain Migration",
+              description: `Release of the China server migrates to sj.gyyx.cn, mythonline.com.cn was adjusted to point to this new version.`,
+            },
+            {
+              id: 5,
+              md: "??? ??",
+              year: "2006",
+              title: "Chinese Release",
+              description: `Myth War Online officially releases in China.`,
+            },
+            {
+              id: 6,
+              md: "Jul 7",
+              year: "2006",
+              title: "North American Release",
+              description: `Myth War Online is released in North America, published by IGG.`,
+            },
+            {
+              id: 7,
+              md: "May ??",
+              year: "2009",
+              title: "Transition to Myth War II",
+              description: `Myth War Online servers are shut down in order to make way for Myth War II's release.`,
+            },
+          ]}
+        />
+        <hr />
+        <h3>Myth War II</h3>
+        <Timeline
+          items={[
+            {
+              id: 1,
+              md: "Mar 29",
+              year: "2007",
+              title: "Chinese Beta",
+              description: (
+                <>
+                  Myth War II Beta{" "}
+                  <a
+                    href="https://web.archive.org/web/20241125145821/http://www.edmontonchina.ca/archiver/?tid-84638.html"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    alt="Article about the China Beta of Myth War II">
+                    begins in China.
+                  </a>
+                </>
+              ),
+            },
+            {
+              id: 2,
+              md: "Jun 13",
+              year: "2008",
+              title: "North American Closed Beta",
+              description: `Myth War II Closed Beta launches in North America.`,
+            },
+            {
+              id: 3,
+              md: "Jun 26",
+              year: "2008",
+              title: "North American Open Beta",
+              description: `Myth War II Open Beta launches in North America.`,
+            },
+            {
+              id: 4,
+              md: "May 20",
+              year: "2009",
+              title: "North America Release",
+              description: `Myth War II is officially released in North America.`,
+            },
+            {
+              id: 5,
+              md: "Jan 15",
+              year: "2015",
+              title: "North America Shutdown",
+              description: `An announcement regarding Myth War II's closure is made.`,
+            },
+            {
+              id: 6,
+              md: "Feb 16",
+              year: "2015",
+              title: "North America Shutdown",
+              description: `Myth War II servers are shut down permanently.`,
+            },
+          ]}
+        />
+        <hr />
+        <h3>Myth War III: Legends of the Dark</h3>
+        <Timeline
+          items={[
+            {
+              id: 1,
+              md: "Jan 15",
+              year: "2009",
+              title: "Development Announcement",
+              description: (
+                <>
+                  <a
+                    href="https://web.archive.org/web/20090122002318/http://mw2.igg.com/news/news.php?aid=477"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    alt="Article about the development announcement of Myth War III: Legends of the Dark">
+                    Development is publicly announced
+                  </a>
+                  . Planned release date during Christmas 2009.
+                </>
+              ),
+            },
+            {
+              id: 2,
+              md: "Jun 28",
+              year: "2009",
+              title: "Trademark Filing",
+              description: (
+                <>
+                  Trademark for Myth War 3 Legends of the Dark's logo is{" "}
+                  <a
+                    href="https://trademarks.justia.com/777/69/myth-war-legends-of-the-dark-77769734.html"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    alt="Trademark filing for Myth War 3 Legends of the Dark">
+                    filed
+                  </a>
+                  .
+                </>
+              ),
+            },
+            {
+              id: 3,
+              md: "Present",
+              year: "Present",
+              title: "Development Status",
+              description: `No further information is available. Development was never completed.`,
+            },
+          ]}
+        />
+      </Section>
     </>
   );
 }

@@ -30,6 +30,8 @@
 
   --clrBrown: oklch(0.2604 0.0717 35.18);
 
+  --clrPurpleOverlay: oklch(0.14 0.0721 302.72 / 0.91);
+
   --gradientHeader: linear-gradient(to bottom, oklch(0.1768 0.1103 264.2), oklch(0.3484 0.1382 259.47));
   --gradientHeading: linear-gradient(to bottom, oklch(0.9737 0.154 109.34), oklch(0.7104 0.1355 72.07));
 }
@@ -170,10 +172,14 @@ hr {
   background: url("/assets/papyrus.webp");
   box-shadow: inset 0 0 2rem oklch(0.2832 0.0538 84.31);
 }
-.papyrus-section {
-  display: flex;
-  flex-direction: column;
-  gap: 0.8rem;
+.papyrus-section > *:not(:last-child) {
+  margin-bottom: 0.8rem;
+}
+.label {
+  font-size: 2rem;
+  margin-bottom: 1.2rem;
+  color: var(--clrInputLabel);
+  -webkit-text-stroke: 0.05rem oklch(0 0 1);
 }
 /**/
 /* SIDENAV */
@@ -294,7 +300,7 @@ hr {
 #sidenav-content li {
   --padding: 1rem;
   position: relative;
-  background: oklch(0.14 0.0721 302.72 / 0.91);
+  background: var(--clrPurpleOverlay);
   border-radius: 999rem 0 0 999rem;
   overflow: hidden;
 }
@@ -437,6 +443,41 @@ main section {
   mask: linear-gradient(#000 0 0) padding-box, linear-gradient(#000 0 0);
   mask-composite: exclude;
   pointer-events: none;
+}
+.section-content h3 {
+  font-size: 2.4rem;
+  margin-bottom: 0.8rem;
+}
+/* TIMELINE */
+* {
+  outline: 1px solid red;
+}
+.timeline ol {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 3.2rem;
+}
+.timeline li {
+  display: grid;
+  grid-template-columns: minmax(0, 10rem) 1fr;
+  gap: 1.6rem;
+}
+.timeline .date {
+  font-family: var(--headingFont);
+  font-size: 1.6rem;
+  color: var(--clrInputLabel);
+  -webkit-text-stroke: 0.05rem oklch(0 0 1);
+  text-align: right;
+}
+.date-year {
+  display: block;
+}
+.timeline h4 {
+  font-size: 1.6rem;
+}
+.timeline:not(:last-child) {
+  margin-bottom: 3.2rem;
 }
 
 /* MEDIA QUERIES */
