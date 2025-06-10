@@ -12,18 +12,18 @@ function PageWorld() {
     <>
       <Header title="World" subtitle="Explore the Lands and Regions of Myth War" />
       <Section title="Rarus Continent" id="rarus-continent">
-        <figure>
-          <img src="/assets/game/worldmap_mw1.jpg" alt="Map of Rarus Continent - Myth War Online" />
-          <figcaption className="label">Rarus Continent, Myth War Online</figcaption>
-        </figure>
-        <figure>
-          <img src="/assets/game/worldmap_mw2.jpg" alt="Map of Rarus Continent - Myth War II" />
-          <figcaption className="label">Rarus Continent, Myth War II</figcaption>
-        </figure>
+        <Figure
+          caption="Rarus Continent, Myth War Online"
+          figureSrc="/assets/game/worldmap_mw1.jpg"
+          fullSrc="/assets/game/worldmap_mw1.jpg"
+        />
+        <Figure
+          caption="Rarus Continent, Myth War II"
+          figureSrc="/assets/game/worldmap_mw2.jpg"
+          fullSrc="/assets/game/worldmap_mw2.jpg"
+        />
       </Section>
-      <Section title="Regions">
-        <Figure>a</Figure>
-      </Section>
+      <Section title="Regions"></Section>
     </>
   );
 }

@@ -587,7 +587,7 @@ dialog {
 .dialog-header button {
   flex-shrink: 0;
   width: 3rem;
-  height: 3rem;
+  height: minmax(3rem, 100%);
   border-radius: 0;
 }
 dialog::backdrop {
@@ -604,6 +604,10 @@ dialog::backdrop {
   overflow-y: auto;
   scrollbar-width: thin;
   scrollbar-color: var(--clrGoldInnerLineLight) transparent;
+}
+.dialog-content .papyrus {
+  width: 100%;
+  height: 100%;
 }
 .dialog-content::before {
   content: "";

@@ -1,7 +1,12 @@
 import { useState } from "react";
 import { Modal } from "@/_components/Modal";
 
-export function Figure({ children }: { children: React.ReactNode }) {
+interface FigureProps {
+  figureSrc: string;
+  fullSrc: string;
+  caption: string;
+}
+export function Figure({ caption, figureSrc, fullSrc }: FigureProps) {
   const [open, setOpen] = useState(false);
 
   const handleOpen = () => setOpen(true);
@@ -10,12 +15,12 @@ export function Figure({ children }: { children: React.ReactNode }) {
   return (
     <>
       <figure onClick={handleOpen}>
-        {children}
-        <figcaption>Caption</figcaption>
+        <img src={figureSrc} />
+        <figcaption>{caption}</figcaption>
       </figure>
       {open && (
-        <Modal title="Modal Dialog" isOpen={open} onClose={handleClose}>
-          <p>Modal Content</p>
+        <Modal title={caption} isOpen={open} onClose={handleClose}>
+          <div className="papyrus">Modal content</div>
         </Modal>
       )}
     </>
