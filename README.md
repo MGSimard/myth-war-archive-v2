@@ -24,4 +24,5 @@ Site URL: mwarchive.pages.dev
 - [ ] ...
 - [ ] Metadata
 - [ ] Deploy
-- [ ] If this is ever taken seriously, get a custom domain and set up R2 subdomain + caching
+
+- [ ] If this is ever taken seriously, ditch Uploadthing and move assets to an R2 storage subdomain
