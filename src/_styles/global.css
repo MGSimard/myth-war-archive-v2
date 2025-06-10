@@ -116,6 +116,7 @@ svg {
 button {
   padding: 0.4rem;
   border: none;
+  border-radius: 0.4rem;
   background: var(--clrBrown);
   box-shadow: inset 0.1rem 0.1rem oklch(from var(--clrBrown) calc(l * 1.8) c h),
     inset -0.1rem -0.1rem oklch(from var(--clrBrown) 0 c h);
@@ -449,32 +450,64 @@ main section {
   margin-bottom: 0.8rem;
 }
 /* TIMELINE */
-* {
-  outline: 1px solid red;
-}
-.timeline ol {
+.timeline {
   list-style: none;
-  display: flex;
-  flex-direction: column;
-  gap: 3.2rem;
 }
 .timeline li {
+  --timelineGap: 4.8rem;
   display: grid;
-  grid-template-columns: minmax(0, 10rem) 1fr;
-  gap: 1.6rem;
+  grid-template-columns: minmax(0, 6.4rem) minmax(0, 1fr);
+  gap: var(--timelineGap);
 }
-.timeline .date {
+.timeline time {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
   font-family: var(--headingFont);
   font-size: 1.6rem;
   color: var(--clrInputLabel);
   -webkit-text-stroke: 0.05rem oklch(0 0 1);
   text-align: right;
+  word-spacing: -0.2em;
 }
 .date-year {
   display: block;
 }
-.timeline h4 {
-  font-size: 1.6rem;
+.timeline-item-content {
+  position: relative;
+}
+.timeline li:not(:last-child) .timeline-item-content {
+  padding-bottom: 3.2rem;
+}
+.timeline li:not(:last-child) .timeline-item-content::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: calc(var(--timelineGap) / 2 * -1);
+  height: 100%;
+  border-left: 0.2rem solid var(--clrGoldInnerLineDark);
+  transform: translateX(-50%);
+}
+.timeline-item-content::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: calc(var(--timelineGap) / 2 * -1);
+  width: 1.2rem;
+  height: 1.2rem;
+  background: var(--clrGoldOuterLeftFrameHighlight);
+  border: 0.2rem ridge var(--clrGoldOuterLeftFrameHighlight);
+  border-radius: 0.4rem;
+  transform: translateX(-50%) rotate(45deg);
+}
+.timeline-item-content h4 {
+  font-size: 1.8rem;
+  color: var(--clrInputLabel);
+  -webkit-text-stroke: 0.05rem oklch(0 0 1);
+}
+.timeline-item-content p {
+  word-break: break-word;
+  opacity: 0.8;
 }
 .timeline:not(:last-child) {
   margin-bottom: 3.2rem;

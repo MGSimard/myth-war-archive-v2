@@ -104,7 +104,7 @@ function PageGameHistory() {
             },
             {
               id: 2,
-              md: "??? ?? ????",
+              md: "??? ??",
               year: "1999",
               title: "Xinruishi Acquires Core Investor",
               description: "Main Taiwanese investor named Cai Chengrui(蔡呈瑞) joins in.",
@@ -322,7 +322,6 @@ function PageGameHistory() {
             },
             {
               id: 3,
-              md: "Present",
               year: "Present",
               title: "Development Status",
               description: `No further information is available. Development was never completed.`,

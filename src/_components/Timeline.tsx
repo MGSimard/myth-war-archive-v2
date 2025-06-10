@@ -1,6 +1,6 @@
 interface TimelineItem {
   id: number;
-  md: string;
+  md?: string;
   year: string;
   title: string;
   description: string | React.ReactNode;
@@ -8,21 +8,19 @@ interface TimelineItem {
 
 export function Timeline({ items }: { items: TimelineItem[] }) {
   return (
-    <div className="timeline">
-      <ol>
-        {items.map((item) => (
-          <li key={item.id}>
-            <div className="date">
-              {item.md}
-              <span className="date-year">{item.year}</span>
-            </div>
-            <div>
-              <h4>{item.title}</h4>
-              <p>{item.description}</p>
-            </div>
-          </li>
-        ))}
-      </ol>
-    </div>
+    <ol className="timeline">
+      {items.map((item) => (
+        <li key={item.id}>
+          <time>
+            {item.md}
+            <span className="date-year">{item.year}</span>
+          </time>
+          <div className="timeline-item-content">
+            <h4>{item.title}</h4>
+            <p>{item.description}</p>
+          </div>
+        </li>
+      ))}
+    </ol>
   );
 }
