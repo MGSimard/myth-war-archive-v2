@@ -2,7 +2,7 @@
 
 ## Notes
 
-DisplayFont (Headings, Labels): 汉仪方隶简
+Site URL: mwarchive.pages.dev
 
 ## Task List
 
@@ -24,3 +24,4 @@ DisplayFont (Headings, Labels): 汉仪方隶简
 - [ ] ...
 - [ ] Metadata
 - [ ] Deploy
+- [ ] If this is ever taken seriously, get a custom domain and set up R2 subdomain + caching
