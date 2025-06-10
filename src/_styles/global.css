@@ -137,7 +137,6 @@ a {
   font-weight: 400;
   color: transparent;
   text-align: center;
-  white-space: nowrap;
   -webkit-text-fill-color: transparent;
   -webkit-text-stroke: 0.05rem var(--clrBrown);
   background: var(--gradientHeading);
@@ -298,11 +297,15 @@ main:has(#hero) {
   justify-content: center;
 }
 #hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.6rem;
   position: relative;
   text-align: center;
   text-wrap: balance;
 }
-#hero h1 span {
+#hero h1 span:first-child {
   position: relative;
   display: block;
   font-family: var(--displayFont);
@@ -311,7 +314,7 @@ main:has(#hero) {
   line-height: 1;
   z-index: 1;
 }
-#hero h1 span::after {
+#hero h1 span:first-child::after {
   content: attr(data-text);
   position: absolute;
   inset: 0;
@@ -324,6 +327,11 @@ main:has(#hero) {
   filter: drop-shadow(0 0 0.2rem oklch(0.5 0.2801 267.62));
   z-index: 1;
   pointer-events: none;
+}
+#hero h1 span:last-child {
+  font-family: "Tangerine";
+  font-size: 3rem;
+  text-shadow: 0 0 0.1rem oklch(0 0 1), 0 0 0.1rem oklch(0 0 1), 0 0 0.1rem oklch(0 0 1);
 }
 #home h2 {
   font-family: inherit;
