@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Modal } from "@/_components/Modal";
-import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
+import { Rzpp } from "@/_components/RZPP";
 
 interface FigureProps {
   figureSrc: string;
@@ -9,6 +9,7 @@ interface FigureProps {
 }
 export function Figure({ caption, figureSrc, fullSrc }: FigureProps) {
   const [open, setOpen] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -22,11 +23,15 @@ export function Figure({ caption, figureSrc, fullSrc }: FigureProps) {
       {open && (
         <Modal title={caption} isOpen={open} onClose={handleClose}>
           <div className="papyrus">
-            <TransformWrapper>
-              <TransformComponent>
-                <img src={fullSrc} alt={`Fullscreen view of ${caption}`} />
-              </TransformComponent>
-            </TransformWrapper>
+            {isLoading && <div className="soulstone-loader" />}
+            <Rzpp>
+              <img
+                src={fullSrc}
+                draggable={false}
+                alt={`Fullscreen view of ${caption}`}
+                onLoad={() => setIsLoading(false)}
+              />
+            </Rzpp>
           </div>
         </Modal>
       )}
