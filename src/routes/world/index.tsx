@@ -22,7 +22,6 @@ function PageWorld() {
           figureSrc="/assets/game/worldmap_mw2.jpg"
           fullSrc="/assets/game/worldmap_mw2.jpg"
         />
-        <Figure caption="Rarus Continent, Myth War II" figureSrc="/assets/test4k.jpg" fullSrc="/assets/test4k.jpg" />
       </Section>
       <Section title="Regions" id="regions">
         Content

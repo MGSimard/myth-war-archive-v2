@@ -18,7 +18,7 @@ export function Figure({ caption, figureSrc, fullSrc }: FigureProps) {
     <>
       <figure onClick={handleOpen} tabIndex={0} role="button" aria-label={"Expand image"}>
         <img src={figureSrc} />
-        <figcaption>{caption}</figcaption>
+        <figcaption className="label">{caption}</figcaption>
       </figure>
       {open && (
         <Modal title={caption} isOpen={open} onClose={handleClose}>

@@ -527,22 +527,61 @@ main section {
   margin-bottom: 3.2rem;
 }
 /* WORLD */
-#rarus-continent figure,
-#regions figure {
-  cursor: pointer;
-}
 #rarus-continent .section-content {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  /* Responsive: create as many columns as will fit, each at least 20rem wide */
+  grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
   gap: 1.6rem;
 }
-#rarus-continent figure img {
-  margin-bottom: 0.4rem;
+figure {
+  position: relative;
+  cursor: pointer;
+  border: 0.2rem ridge var(--clrGoldOuterLeftFrameHighlight);
+  border-radius: 0.4rem;
+  background: var(--clrPurpleOverlay);
 }
-#rarus-continent figcaption {
-  font-size: 1.6rem;
-  text-align: center;
+figure img {
+}
+figcaption {
+  position: absolute;
+  bottom: -1rem;
+  left: -1rem;
   text-wrap: balance;
+  padding: 1rem;
+  /* TODD: More side padding if I add ornament corner later */
+  background: var(--clrPurpleOverlay);
+  border-radius: 0 999rem 999rem 0;
+  z-index: 1;
+  width: 70%;
+}
+figcaption.label {
+  font-size: clamp(1.4rem, 1.2vw, 1.8rem);
+}
+figure:hover figcaption,
+figure:focus-visible figcaption {
+  background: linear-gradient(
+    to right,
+    oklch(0.2775 0.1431 288.57),
+    var(--clrPurpleOverlay),
+    oklch(0.2775 0.1431 288.57)
+  );
+}
+figcaption::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 0 999rem 999rem 0;
+  border: 0.2rem solid transparent;
+  background: linear-gradient(
+      to right,
+      var(--clrGoldHeadingInnerLineLight),
+      var(--clrGoldHeadingInnerLineDark),
+      var(--clrGoldOuterLeftFrameHighlight)
+    )
+    border-box;
+  mask: linear-gradient(#000 0 0) padding-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
 }
 
 /* MEDIA QUERIES */
