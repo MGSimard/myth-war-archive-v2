@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Modal } from "@/_components/Modal";
-import { Rzpp } from "@/_components/RZPP";
+import { Rzpp } from "@/_components/Rzpp";
 
 interface FigureProps {
   figureSrc: string;

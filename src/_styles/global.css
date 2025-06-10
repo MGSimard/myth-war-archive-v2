@@ -618,6 +618,10 @@ dialog::backdrop {
 .dialog-content .papyrus {
   width: 100%;
   height: 100%;
+  /* 
+  TODO: Maybe
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("/assets/papyrus.webp");
+  background-blend-mode: multiply; */
 }
 .dialog-content::before {
   content: "";
