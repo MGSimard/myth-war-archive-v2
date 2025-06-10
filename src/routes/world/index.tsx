@@ -24,7 +24,43 @@ function PageWorld() {
         />
       </Section>
       <Section title="Regions" id="regions">
-        Content
+        <h3>Sky Passage</h3>
+        <div className="regions-grid">
+          <Figure
+            caption="Sky Passage, Myth War Online"
+            figureSrc="/assets/game/worldmap_mw1.jpg"
+            fullSrc="/assets/game/worldmap_mw1.jpg"
+          />
+        </div>
+        <hr />
+        <h3>Woodlingor</h3>
+        <div className="regions-grid">
+          <Figure
+            caption="Woodlingor, Myth War Online"
+            figureSrc="/assets/game/worldmap_mw1.jpg"
+            fullSrc="/assets/game/worldmap_mw1.jpg"
+          />
+        </div>
+        <hr />
+        <h3>Blython</h3>
+        <div className="regions-grid">
+          <Figure
+            caption="Blython, Myth War Online"
+            figureSrc="/assets/game/worldmap_mw1.jpg"
+            fullSrc="/assets/game/worldmap_mw1.jpg"
+          />
+        </div>
+        <hr />
+        <h3>Desert City</h3>
+        <div className="regions-grid">
+          <Figure
+            caption="Desert City, Myth War Online"
+            figureSrc="/assets/game/worldmap_mw1.jpg"
+            fullSrc="/assets/game/worldmap_mw1.jpg"
+          />
+        </div>
+        <hr />
+        <h3>Demon Square</h3>
       </Section>
     </>
   );
