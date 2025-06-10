@@ -171,7 +171,7 @@ function PageGameHistory() {
           items={[
             {
               id: 1,
-              md: "May 20",
+              md: "May 10",
               year: "2005",
               title: "Chinese Closed Beta",
               description: `China server for Closed Beta is opened. Hosted on mythol.com and proxied to mainland China through mythonline.com.cn.`,
