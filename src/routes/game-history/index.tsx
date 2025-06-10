@@ -130,7 +130,7 @@ function PageGameHistory() {
                     href="https://web.archive.org/web/20241124183150/https://forum.gamer.com.tw/C.php?bsn=3987&snA=25"
                     target="_blank"
                     rel="noopener noreferrer"
-                    alt="Article about the collapse of Xinruishi">
+                    aria-label="Article about the collapse of Xinruishi">
                     Full collapse of Xinruishi.
                   </a>
                 </>
@@ -236,7 +236,7 @@ function PageGameHistory() {
                     href="https://web.archive.org/web/20241125145821/http://www.edmontonchina.ca/archiver/?tid-84638.html"
                     target="_blank"
                     rel="noopener noreferrer"
-                    alt="Article about the China Beta of Myth War II">
+                    aria-label="Article about the China Beta of Myth War II">
                     begins in China.
                   </a>
                 </>
@@ -294,7 +294,7 @@ function PageGameHistory() {
                     href="https://web.archive.org/web/20090122002318/http://mw2.igg.com/news/news.php?aid=477"
                     target="_blank"
                     rel="noopener noreferrer"
-                    alt="Article about the development announcement of Myth War III: Legends of the Dark">
+                    aria-label="Article about the development announcement of Myth War III: Legends of the Dark">
                     Development is publicly announced
                   </a>
                   . Planned release date during Christmas 2009.
@@ -313,7 +313,7 @@ function PageGameHistory() {
                     href="https://trademarks.justia.com/777/69/myth-war-legends-of-the-dark-77769734.html"
                     target="_blank"
                     rel="noopener noreferrer"
-                    alt="Trademark filing for Myth War 3 Legends of the Dark">
+                    aria-label="Trademark filing for Myth War 3 Legends of the Dark">
                     filed
                   </a>
                   .
