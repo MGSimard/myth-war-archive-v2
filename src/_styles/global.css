@@ -450,6 +450,12 @@ main section {
   margin-bottom: 0.8rem;
 }
 /* TIMELINE */
+#timeline-section h3 {
+  margin-bottom: 2.4rem;
+}
+#timeline-section hr {
+  margin-block: 2.4rem;
+}
 .timeline {
   list-style: none;
 }

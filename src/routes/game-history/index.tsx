@@ -90,7 +90,7 @@ function PageGameHistory() {
           </div>
         </div>
       </Section>
-      <Section title="Timeline">
+      <Section title="Timeline" id="timeline-section">
         <h3>Pre</h3>
         <Timeline
           items={[
