@@ -1,8 +1,16 @@
-export function Section({ title, children }: { title: string; children: React.ReactNode }) {
+import React from "react";
+
+interface SectionProps {
+  title: string;
+  children: React.ReactNode;
+  as?: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+}
+
+export function Section({ title, children, as: Heading = "h2" }: SectionProps) {
   return (
     <section>
       <div className="section-header">
-        <h2 className="heading">{title}</h2>
+        <Heading className="heading">{title}</Heading>
       </div>
       <div className="section-content">{children}</div>
     </section>
