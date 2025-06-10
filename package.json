@@ -25,7 +25,8 @@
     "@tanstack/router-plugin": "^1.120.20",
     "lucide-react": "^0.513.0",
     "react": "^19.1.0",
-    "react-dom": "^19.1.0"
+    "react-dom": "^19.1.0",
+    "react-zoom-pan-pinch": "^3.7.0"
   },
   "devDependencies": {
     "@types/node": "^24.0.0",

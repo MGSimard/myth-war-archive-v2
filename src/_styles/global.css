@@ -630,3 +630,7 @@ dialog::backdrop {
   mask-composite: exclude;
   pointer-events: none;
 }
+dialog .react-transform-wrapper {
+  height: 100%;
+  width: 100%;
+}
