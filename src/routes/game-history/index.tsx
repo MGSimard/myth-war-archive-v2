@@ -23,6 +23,7 @@ function PageGameHistory() {
               also featured a robust pet system allowing pets to fight alongside their masters.
             </p>
           </div>
+          <hr />
           <div className="papyrus-section">
             <h3>Unique Game Design</h3>
             <p>The game distinguished itself with features such as:</p>
@@ -37,6 +38,7 @@ function PageGameHistory() {
               it a standout in its genre.
             </p>
           </div>
+          <hr />
           <div className="papyrus-section">
             <h3>A Story of Resilience in Development</h3>
             <p>
@@ -55,6 +57,7 @@ function PageGameHistory() {
               supported with some outsourcing with developers and artists from Japan and the United States.
             </p>
           </div>
+          <hr />
           <div className="papyrus-section">
             <h3>The Transition to Myth War II</h3>
             <p>
@@ -65,6 +68,7 @@ function PageGameHistory() {
               ultimately shut down in 2015.
             </p>
           </div>
+          <hr />
           <div className="papyrus-section">
             <h3>Myth War's Legacy</h3>
             <p>
@@ -74,6 +78,7 @@ function PageGameHistory() {
               planned reopenings in 2019 and 2021 failed to materialize.
             </p>
           </div>
+          <hr />
           <div className="papyrus-section">
             <h3>Preserving the Myth</h3>
             <p>
