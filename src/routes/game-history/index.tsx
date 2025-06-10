@@ -1,3 +1,4 @@
+import { Header } from "@/_components/Header";
 import { Section } from "@/_components/Section";
 import { createFileRoute } from "@tanstack/react-router";
 
@@ -8,11 +9,7 @@ export const Route = createFileRoute("/game-history/")({
 function PageGameHistory() {
   return (
     <>
-      <header>
-        <Section title="Game History" as="h1">
-          <p>A brief history of Myth War Online</p>
-        </Section>
-      </header>
+      <Header title="Game History" subtitle="A brief history of Myth War Online" />
       <Section title="Introduction">
         <div className="papyrus">
           <div className="papyrus-section">
@@ -87,7 +84,7 @@ function PageGameHistory() {
           </div>
         </div>
       </Section>
-      <Section title="Timeline"></Section>
+      <Section title="Timeline">a</Section>
     </>
   );
 }

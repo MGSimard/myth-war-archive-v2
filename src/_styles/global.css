@@ -80,7 +80,7 @@ body::before {
 main {
   display: flex;
   flex-direction: column;
-  gap: 1.6rem;
+  gap: 3.2rem;
   max-width: var(--maxContentWidth);
   min-height: 100dvh;
   margin: 0 auto;
@@ -353,23 +353,35 @@ main:has(#hero) {
   font-family: inherit;
 }
 /* CONTENT SECTION */
+main .header,
 main section {
   border: 0.2rem ridge var(--clrGoldOuterLeftFrameHighlight);
   border-radius: 0.4rem;
   background: var(--clrOverlayBg);
 }
+.header-header,
 .section-header {
   --padding: 0.2rem 0.4rem;
   position: relative;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
+  text-align: center;
   padding: var(--padding);
   font-family: var(--headingFont);
   background: var(--gradientHeader);
   border-bottom: 0.2rem ridge var(--clrGoldOuterLeftFrameHighlight);
   overflow: hidden;
 }
+.header-header {
+  padding: 0.8rem;
+}
+.header-header h1 {
+  line-height: 0.8;
+  margin-bottom: 0.4rem;
+}
+.header-header::before,
 .section-header::before {
   content: "";
   position: absolute;
@@ -382,6 +394,7 @@ main section {
   mask-composite: exclude;
   pointer-events: none;
 }
+.header-header .heading,
 .section-header .heading {
   font-size: 3.2rem;
 }
