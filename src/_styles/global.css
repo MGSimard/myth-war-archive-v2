@@ -49,29 +49,29 @@ html {
 body {
   position: relative;
   font-size: 1.6rem;
+  background: linear-gradient(to bottom, var(--clrSiteBg) 10%, transparent, var(--clrSiteBg) 90%),
+    url("/assets/bg-2k-blurred.webp");
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 body::before {
   content: "";
   position: fixed;
   inset: 0;
-  height: 100dvh;
-  background: url("/assets/bg-2k.webp");
-  background-size: auto 100dvh;
-  background-position: center top;
-  background-repeat: no-repeat;
-  mask-image: linear-gradient(to bottom, transparent 10%, #000, transparent 90%);
-  -webkit-mask-image: linear-gradient(to bottom, transparent 10%, #000, transparent 90%);
-  filter: blur(1rem);
+  background: url("/assets/bg-2k-blurred.webp") center / cover no-repeat;
   opacity: 0.2;
-  z-index: -1;
+  will-change: transform;
+  z-index: -2;
 }
-@media (min-aspect-ratio: 16/9) {
-  /* BG Image 100dvh tall, however if leads to image not filling viewport width (ie ultrawide), make width the commanding dimension */
-  /* This avoids bg image growing too tall if content is taller than 100dvh*/
-  /* TLDR: Clamp 100dvh height unless image needs to grow in width to fill viewport*/
-  body::before {
-    background-size: 100vw auto;
-  }
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(to bottom, var(--clrSiteBg) 10%, transparent, var(--clrSiteBg) 90%);
+  z-index: -1;
 }
 #app {
   min-height: 100dvh;
