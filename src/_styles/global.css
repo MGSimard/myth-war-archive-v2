@@ -529,25 +529,29 @@ main section {
 /* WORLD */
 #rarus-continent .section-content {
   display: grid;
-  /* Responsive: create as many columns as will fit, each at least 20rem wide */
   grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
   gap: 1.6rem;
 }
 figure {
   position: relative;
-  cursor: pointer;
+  aspect-ratio: 16/9;
   border: 0.2rem ridge var(--clrGoldOuterLeftFrameHighlight);
   border-radius: 0.4rem;
   background: var(--clrPurpleOverlay);
+  cursor: pointer;
 }
 figure img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top;
 }
 figcaption {
   position: absolute;
   bottom: -1rem;
   left: -1rem;
-  text-wrap: balance;
   padding: 1rem;
+  text-wrap: balance;
   /* TODD: More side padding if I add ornament corner later */
   background: var(--clrPurpleOverlay);
   border-radius: 0 999rem 999rem 0;
@@ -583,7 +587,6 @@ figcaption::before {
   mask-composite: exclude;
   pointer-events: none;
 }
-
 #regions hr {
   margin-block: 2.4rem;
 }
@@ -594,6 +597,11 @@ figcaption::before {
 }
 
 /* MEDIA QUERIES */
+@media only screen and (max-width: 1200px) {
+  .regions-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
 @media only screen and (max-width: 768px) {
   #sidenav-inset {
     padding-left: 0;
