@@ -41,7 +41,7 @@ function PageAssetsMaps() {
                         ))}
                       </ul>
                     </span>
-                    <img src={map.preview} alt={`Preview of ${map.file}`} loading={i > 19 ? "lazy" : "eager"} />
+                    <img src={map.preview} alt={`Preview of ${map.file}`} loading="lazy" />
                   </div>
                 </td>
               </tr>

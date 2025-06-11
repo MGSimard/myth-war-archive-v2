@@ -17,7 +17,7 @@ export function Figure({ caption, figureSrc, fullSrc }: FigureProps) {
   return (
     <>
       <figure onClick={handleOpen} tabIndex={0} role="button" aria-label={"Expand image"}>
-        <img src={figureSrc} />
+        <img src={figureSrc} loading="lazy" />
         <figcaption className="label">{caption}</figcaption>
       </figure>
       {open && (
