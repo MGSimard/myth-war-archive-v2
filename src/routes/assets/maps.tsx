@@ -21,7 +21,7 @@ function PageAssetsMaps() {
             </tr>
           </thead>
           <tbody>
-            {maps.map((map) => (
+            {maps.map((map, i) => (
               <tr key={map.file}>
                 <td>{map.file}</td>
                 <td>
@@ -41,8 +41,7 @@ function PageAssetsMaps() {
                         ))}
                       </ul>
                     </span>
-                    {/* TODO: Maybe lazy >19i */}
-                    <img src={map.preview} alt={`Preview of ${map.file}`} />
+                    <img src={map.preview} alt={`Preview of ${map.file}`} loading={i > 19 ? "lazy" : "eager"} />
                   </div>
                 </td>
               </tr>
