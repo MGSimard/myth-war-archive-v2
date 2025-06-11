@@ -765,6 +765,9 @@ dialog .rzpp-controls button {
   font-weight: 400;
   padding: 0.4rem 1rem;
 }
+#maps th:not(:last-child) {
+  text-align: left;
+}
 #maps tbody {
   position: relative;
   vertical-align: top;
