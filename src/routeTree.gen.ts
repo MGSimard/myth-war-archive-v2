@@ -15,6 +15,7 @@ import { Route as IndexImport } from './routes/index'
 import { Route as WorldIndexImport } from './routes/world/index'
 import { Route as LoreIndexImport } from './routes/lore/index'
 import { Route as GameHistoryIndexImport } from './routes/game-history/index'
+import { Route as AssetsMapsImport } from './routes/assets/maps'
 
 // Create/Update Routes
 
@@ -42,6 +43,12 @@ const GameHistoryIndexRoute = GameHistoryIndexImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
+const AssetsMapsRoute = AssetsMapsImport.update({
+  id: '/assets/maps',
+  path: '/assets/maps',
+  getParentRoute: () => rootRoute,
+} as any)
+
 // Populate the FileRoutesByPath interface
 
 declare module '@tanstack/react-router' {
@@ -51,6 +58,13 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexImport
+      parentRoute: typeof rootRoute
+    }
+    '/assets/maps': {
+      id: '/assets/maps'
+      path: '/assets/maps'
+      fullPath: '/assets/maps'
+      preLoaderRoute: typeof AssetsMapsImport
       parentRoute: typeof rootRoute
     }
     '/game-history/': {
@@ -81,6 +95,7 @@ declare module '@tanstack/react-router' {
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/assets/maps': typeof AssetsMapsRoute
   '/game-history': typeof GameHistoryIndexRoute
   '/lore': typeof LoreIndexRoute
   '/world': typeof WorldIndexRoute
@@ -88,6 +103,7 @@ export interface FileRoutesByFullPath {
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/assets/maps': typeof AssetsMapsRoute
   '/game-history': typeof GameHistoryIndexRoute
   '/lore': typeof LoreIndexRoute
   '/world': typeof WorldIndexRoute
@@ -96,6 +112,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
+  '/assets/maps': typeof AssetsMapsRoute
   '/game-history/': typeof GameHistoryIndexRoute
   '/lore/': typeof LoreIndexRoute
   '/world/': typeof WorldIndexRoute
@@ -103,15 +120,22 @@ export interface FileRoutesById {
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/game-history' | '/lore' | '/world'
+  fullPaths: '/' | '/assets/maps' | '/game-history' | '/lore' | '/world'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/game-history' | '/lore' | '/world'
-  id: '__root__' | '/' | '/game-history/' | '/lore/' | '/world/'
+  to: '/' | '/assets/maps' | '/game-history' | '/lore' | '/world'
+  id:
+    | '__root__'
+    | '/'
+    | '/assets/maps'
+    | '/game-history/'
+    | '/lore/'
+    | '/world/'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AssetsMapsRoute: typeof AssetsMapsRoute
   GameHistoryIndexRoute: typeof GameHistoryIndexRoute
   LoreIndexRoute: typeof LoreIndexRoute
   WorldIndexRoute: typeof WorldIndexRoute
@@ -119,6 +143,7 @@ export interface RootRouteChildren {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AssetsMapsRoute: AssetsMapsRoute,
   GameHistoryIndexRoute: GameHistoryIndexRoute,
   LoreIndexRoute: LoreIndexRoute,
   WorldIndexRoute: WorldIndexRoute,
@@ -135,6 +160,7 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/",
+        "/assets/maps",
         "/game-history/",
         "/lore/",
         "/world/"
@@ -142,6 +168,9 @@ export const routeTree = rootRoute
     },
     "/": {
       "filePath": "index.tsx"
+    },
+    "/assets/maps": {
+      "filePath": "assets/maps.tsx"
     },
     "/game-history/": {
       "filePath": "game-history/index.tsx"

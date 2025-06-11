@@ -1,0 +1,860 @@
+[
+  {
+    "file": "Map001",
+    "zones": ["Sky Passage (MW1)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map002",
+    "zones": ["Blython (MW1)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map003",
+    "zones": ["Woodlingor (MW1)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map004",
+    "zones": ["Desert City (MW1)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map005",
+    "zones": ["Demon Square (MW1)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map006",
+    "zones": ["Outcast City (MW1)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map007",
+    "zones": ["Badlands (MW1)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map008",
+    "zones": ["Bone Desert (MW1)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map009",
+    "zones": ["Sunset Plain (MW1)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map010",
+    "zones": ["Cursed Abyss (MW1)", "Flame Ruins (MW2)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map011",
+    "zones": ["Flame Ruins (MW1)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map012",
+    "zones": ["Flamingor (MW1)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map013",
+    "zones": ["Devil's Gate (MW1)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map014",
+    "zones": ["Burial 1 (MW1)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map015",
+    "zones": ["Burial Ruins (MW1)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map016",
+    "zones": ["Burial 2 (MW1)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map017",
+    "zones": ["Burial 3 (MW1)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map018",
+    "zones": ["Burial 4 (MW1)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map019",
+    "zones": ["Wasteland (MW1)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map020",
+    "zones": ["Wasteland 1 (MW1)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map021",
+    "zones": ["Wasteland 2 (MW1)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map022",
+    "zones": ["Wasteland 3 (MW1)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map023",
+    "zones": ["Demon Lair 1 (MW1)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map024",
+    "zones": ["Demon Lair 2 (MW1)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map025",
+    "zones": ["Demon Lair 3 (MW1)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map026",
+    "zones": ["Demon Lair 4 (MW1)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map027",
+    "zones": ["Sewer 1 (MW1)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map028",
+    "zones": ["Sewer 2 (MW1)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map029",
+    "zones": ["Sewer 3 (MW1)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map030",
+    "zones": ["Ashes Pit 1 (MW1)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map031",
+    "zones": ["Ashes Pit 2 (MW1)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map032",
+    "zones": ["Ashes Pit 3 (MW1)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map033",
+    "zones": ["Ashes Pit 4 (MW1)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map034",
+    "zones": ["Narrow Mine (MW1)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map035",
+    "zones": ["Narrow Mine (MW1)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map036",
+    "zones": ["Narrow Mine (MW1)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map037",
+    "zones": ["Vast Mine (MW1)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map038",
+    "zones": ["City Hall (Blython, MW1)", "Lansquenet League (Blython, MW2)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map039",
+    "zones": ["Bar (Blython, MW1)", "Bar (Blython, MW2)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map040",
+    "zones": ["Herbal Shop (Blython, MW1)", "Herbal Shop (Blython, MW2)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map041",
+    "zones": ["Grocery (Blython, MW1)", "Grocery (Blython, MW2)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map042",
+    "zones": ["Weaponry (Blython, MW1)", "Weaponry (Blython, MW2)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map043",
+    "zones": ["Stuff Shop (Blython, MW1)", "Stuff Shop (Blython, MW2)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map044",
+    "zones": ["MW Bank (Blython, MW1)", "Workshop (Woodlingor, MW2)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map046",
+    "zones": ["Trading Zone (Blython, MW1)", "Trading Zone (Blython, MW2)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map048",
+    "zones": ["Church (Blython, MW1)", "Cathedral (Blython, MW2)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map049",
+    "zones": ["Skill Center (Blython, MW1)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map050",
+    "zones": ["?"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map051",
+    "zones": ["City Hall 1 (Desert City, MW1)", "City Hall 1 (Desert City, MW2)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map052",
+    "zones": ["City Hall 2 (Desert City, MW1)", "City Hall 2 (Desert City, MW2)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map053",
+    "zones": ["?"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map054",
+    "zones": ["?"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map055",
+    "zones": ["Elders Zone (Woodlingor, MW1)", "Elders Zone (Woodlingor, MW2)", "Luna's Palace (Woodlingor, MW2)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map056",
+    "zones": ["Bar (Woodlingor, MW1)", "Bar (Woodlingor, MW2)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map057",
+    "zones": ["Grocery (Woodlingor, MW1)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map058",
+    "zones": ["Herbal Shop (Woodlingor, MW1)", "Pet Market (Woodlingor, MW2)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map059",
+    "zones": ["Weaponry (Woodlingor, MW1)", "Weaponry (Woodlingor, MW2)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map060",
+    "zones": ["Stuff Shop (Woodlingor, MW1)", "Lapidarist Shop (Woodlingor, MW2)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map061",
+    "zones": ["MW Bank (Woodlingor, MW1)", "National Bank (Woodlingor, MW2)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map062",
+    "zones": ["Trading Zone (Woodlingor, MW1)", "Trading Zone (Woodlingor, MW2)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map064",
+    "zones": ["Skill Center (Woodlingor, MW1)", "Class Zone (Woodlingor, MW2)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map065",
+    "zones": ["Armory (Woodlingor, MW1)", "Armory (Woodlingor, MW2)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map066",
+    "zones": ["City Hall 1 (Demon Square, MW1)", "City Hall 1 (Demon Square, MW2)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map067",
+    "zones": ["City Hall 2 (Demon Square, MW1)", "City Hall 2 (Demon Square, MW2)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map068",
+    "zones": ["Prison (Demon Square, MW1)", "Prison (Demon Square, MW2)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map070",
+    "zones": ["Evil Lair 1 (MW1)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map071",
+    "zones": ["Evil Lair 2 (MW1)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map072",
+    "zones": ["Evil Lair 3 (MW1)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map073",
+    "zones": ["Evil Lair 4 (MW1)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map074",
+    "zones": ["Prison (Desert City, MW1)", "Prison (Desert City, MW2)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map075",
+    "zones": ["Revive Arena (MW1)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map076",
+    "zones": ["Tree of Life (MW1)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map077",
+    "zones": ["Life Tree 2 (MW1)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map078",
+    "zones": ["Life Tree 3 (MW1)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map079",
+    "zones": ["Life Tree 4 (MW1)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map080",
+    "zones": ["Life Tree 5 (MW1)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map081",
+    "zones": ["Life Tree 6 (MW1)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map082",
+    "zones": ["Life Tree 7 (MW1)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map083",
+    "zones": ["Armory (Blython, MW1)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map084",
+    "zones": ["Weaponry (Blython, MW1)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map085",
+    "zones": ["Herbal Shop (Blython, MW1)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map086",
+    "zones": ["?"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map087",
+    "zones": ["?"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map088",
+    "zones": ["?"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map089",
+    "zones": ["?"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map090",
+    "zones": ["?"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map091",
+    "zones": ["?"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map092",
+    "zones": ["?"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map093",
+    "zones": ["Narrow Mine (MW1)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map094",
+    "zones": ["Narrow Mine (MW1)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map095",
+    "zones": ["Vast Mine (MW1)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map096",
+    "zones": ["Narrow Mine (MW1)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map097",
+    "zones": ["Vast Mine (MW1)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map098",
+    "zones": ["?"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map099",
+    "zones": ["?"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map100",
+    "zones": ["?"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map101",
+    "zones": ["?"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map102",
+    "zones": ["Blython Winter (MW1)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map103",
+    "zones": ["Woodlingor Winter (MW1)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map104",
+    "zones": ["?"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map108",
+    "zones": ["?"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map109",
+    "zones": ["Sky Garden (MW2)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map111",
+    "zones": ["?"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map112",
+    "zones": ["Revive Arena (MW2)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map113",
+    "zones": ["Snow Ridge (MW2)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map114",
+    "zones": ["Sunset Plain (MW2)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map115",
+    "zones": ["Dragon Cave (MW2)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map116",
+    "zones": ["Sky Passage (MW2)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map118",
+    "zones": ["Blython (MW2)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map119",
+    "zones": ["Woodlingor (MW2)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map120",
+    "zones": ["Desert City (MW2)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map121",
+    "zones": ["Demon Square (MW2)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map122",
+    "zones": ["Bone Desert (MW2)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map123",
+    "zones": ["Badlands (MW2)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map125",
+    "zones": ["Flamingor (MW2)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map126",
+    "zones": ["Southern Rivage (MW2)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map127",
+    "zones": ["Cursed Abyss (MW2)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map128",
+    "zones": ["Fog Jungle (MW2)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map129",
+    "zones": ["Tumulus 1 (MW2)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map130",
+    "zones": ["Tumulus 3 (MW2)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map131",
+    "zones": ["Tumulus 2 (MW2)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map132",
+    "zones": ["Tumulus 4 (MW2)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map133",
+    "zones": ["Tumulus 5 (MW2)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map134",
+    "zones": ["?"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map135",
+    "zones": ["Evil Lair 1 (MW2)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map136",
+    "zones": ["Evil Lair 2 (MW2)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map137",
+    "zones": ["Evil Lair 3 (MW2)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map138",
+    "zones": ["Evil Lair 4 (MW2)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map139",
+    "zones": ["Ashes Pit 1 (MW2)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map140",
+    "zones": ["Ashes Pit 2 (MW2)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map141",
+    "zones": ["Ashes Pit 3 (M2)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map142",
+    "zones": ["Ashes Pit 4 (MW2)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map143",
+    "zones": ["?"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map144",
+    "zones": ["Withered Forest (MW2)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map145",
+    "zones": ["?"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map200",
+    "zones": ["Guild HQ 1 (MW2)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map210",
+    "zones": ["Guild HQ 2 (MW2)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map220",
+    "zones": ["Guild HQ 3 (MW2)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map230",
+    "zones": ["Guild HQ 4 (MW2)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map240",
+    "zones": ["Guild HQ 5 (MW2)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map250",
+    "zones": ["Battleground (MW2)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map251",
+    "zones": ["Warm Hut (MW2)"],
+    "link": "",
+    "preview": ""
+  },
+  {
+    "file": "Map252",
+    "zones": ["Noble House (MW2)"],
+    "link": "",
+    "preview": ""
+  }
+]
