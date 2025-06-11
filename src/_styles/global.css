@@ -255,8 +255,8 @@ table {
   border: 0.1rem solid transparent;
   background: linear-gradient(to right, var(--clrGoldHeadingInnerLineDark), var(--clrGoldHeadingInnerLineLight))
     border-box;
-  mask: linear-gradient(#000 0 0) padding-box, linear-gradient(#000 0 0);
-  mask-composite: exclude;
+  /* mask: linear-gradient(#000 0 0) padding-box, linear-gradient(#000 0 0);
+  mask-composite: exclude; */
   pointer-events: none;
 }
 #sidenav-header button {
@@ -290,8 +290,8 @@ table {
       var(--clrGoldInnerLineDark)
     )
     border-box;
-  mask: linear-gradient(#000 0 0) padding-box, linear-gradient(#000 0 0);
-  mask-composite: exclude;
+  /* mask: linear-gradient(#000 0 0) padding-box, linear-gradient(#000 0 0);
+  mask-composite: exclude; */
   pointer-events: none;
 }
 #sidenav-content h2 {
@@ -324,8 +324,8 @@ table {
   border: 0.2rem solid transparent;
   background: linear-gradient(to right, var(--clrGoldHeadingInnerLineDark), var(--clrGoldHeadingInnerLineLight))
     border-box;
-  mask: linear-gradient(#000 0 0) padding-box, linear-gradient(#000 0 0);
-  mask-composite: exclude;
+  /* mask: linear-gradient(#000 0 0) padding-box, linear-gradient(#000 0 0);
+  mask-composite: exclude; */
   pointer-events: none;
 }
 #sidenav-content a {
@@ -424,8 +424,8 @@ main section {
   border: 0.1rem solid transparent;
   background: linear-gradient(to right, var(--clrGoldHeadingInnerLineDark), var(--clrGoldHeadingInnerLineLight))
     border-box;
-  mask: linear-gradient(#000 0 0) padding-box, linear-gradient(#000 0 0);
-  mask-composite: exclude;
+  /* mask: linear-gradient(#000 0 0) padding-box, linear-gradient(#000 0 0);
+  mask-composite: exclude; */
   pointer-events: none;
 }
 .header-header .heading,
@@ -449,8 +449,8 @@ main section {
       var(--clrGoldInnerLineDark)
     )
     border-box;
-  mask: linear-gradient(#000 0 0) padding-box, linear-gradient(#000 0 0);
-  mask-composite: exclude;
+  /* mask: linear-gradient(#000 0 0) padding-box, linear-gradient(#000 0 0);
+  mask-composite: exclude; */
   pointer-events: none;
 }
 .section-content h3 {
@@ -583,8 +583,8 @@ figcaption::before {
       var(--clrGoldOuterLeftFrameHighlight)
     )
     border-box;
-  mask: linear-gradient(#000 0 0) padding-box, linear-gradient(#000 0 0);
-  mask-composite: exclude;
+  /* mask: linear-gradient(#000 0 0) padding-box, linear-gradient(#000 0 0);
+  mask-composite: exclude; */
   pointer-events: none;
 }
 #regions hr {
@@ -635,8 +635,8 @@ dialog {
   border: 0.1rem solid transparent;
   background: linear-gradient(to right, var(--clrGoldHeadingInnerLineDark), var(--clrGoldHeadingInnerLineLight))
     border-box;
-  mask: linear-gradient(#000 0 0) padding-box, linear-gradient(#000 0 0);
-  mask-composite: exclude;
+  /* mask: linear-gradient(#000 0 0) padding-box, linear-gradient(#000 0 0);
+  mask-composite: exclude; */
   pointer-events: none;
 }
 .dialog-header button {
@@ -681,8 +681,8 @@ dialog::backdrop {
       var(--clrGoldInnerLineDark)
     )
     border-box;
-  mask: linear-gradient(#000 0 0) padding-box, linear-gradient(#000 0 0);
-  mask-composite: exclude;
+  /* mask: linear-gradient(#000 0 0) padding-box, linear-gradient(#000 0 0);
+  mask-composite: exclude; */
   pointer-events: none;
 }
 dialog .papyrus {
@@ -691,7 +691,7 @@ dialog .papyrus {
 dialog .react-transform-wrapper {
   height: 100%;
   width: 100%;
-  mask-image: linear-gradient(to bottom, transparent, black 2%, black 98%, transparent),
+  /* mask-image: linear-gradient(to bottom, transparent, black 2%, black 98%, transparent),
     linear-gradient(to right, transparent, black 2%, black 98%, transparent);
   -webkit-mask-image: linear-gradient(to bottom, transparent, black 2%, black 98%, transparent),
     linear-gradient(to right, transparent, black 2%, black 98%, transparent);
@@ -699,7 +699,7 @@ dialog .react-transform-wrapper {
   mask-composite: intersect;
   mask-size: 100% 100%;
   mask-repeat: no-repeat;
-  mask-position: center;
+  mask-position: center; */
   z-index: 1;
 }
 dialog .rzpp-controls {
@@ -800,8 +800,8 @@ dialog .rzpp-controls button {
   height: 100%;
   object-fit: cover;
   object-position: center;
-  mask-image: linear-gradient(to right, transparent, black 20%);
-  -webkit-mask-image: linear-gradient(to right, transparent, black 20%);
+  /* mask-image: linear-gradient(to right, transparent, black 20%);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 20%); */
   overflow: hidden;
 }
 #maps .map-preview span {
@@ -829,8 +829,8 @@ dialog .rzpp-controls button {
   border: 0.2rem ridge var(--clrGoldOuterLeftFrameHighlight);
   border-radius: 0.4rem;
   /* box-shadow: 0 0 1rem 0.2rem oklch(0 0 1 / 0.5); */
-  mask-image: unset;
-  -webkit-mask-image: unset;
+  /* mask-image: unset;
+  -webkit-mask-image: unset; */
   pointer-events: none;
   z-index: 999;
   &::after {
