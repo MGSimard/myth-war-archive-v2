@@ -635,7 +635,7 @@ dialog {
   border-radius: 0;
 }
 dialog::backdrop {
-  /* backdrop-filter: blur(0.2rem); */
+  backdrop-filter: blur(0.2rem);
 }
 .dialog-content {
   flex-grow: 1;
