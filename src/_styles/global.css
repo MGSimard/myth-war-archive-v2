@@ -58,6 +58,7 @@ body::before {
   opacity: 0.2;
   will-change: transform;
   z-index: -2;
+  pointer-events: none;
 }
 body::after {
   content: "";
@@ -66,6 +67,7 @@ body::after {
   pointer-events: none;
   background: linear-gradient(to bottom, var(--clrSiteBg) 10%, transparent, var(--clrSiteBg) 90%);
   z-index: -1;
+  pointer-events: none;
 }
 #app {
   min-height: 100dvh;
