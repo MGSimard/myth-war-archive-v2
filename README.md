@@ -2,7 +2,11 @@
 
 ## Notes
 
-Site URL: mwarchive.pages.dev
+- Site URL: mwarchive.pages.dev
+- No way to do gradient borders for this app (Except for static elems like sidenav)
+  - Border-image disables ability to use border-radius
+  - Can't gradient BG + pad 1px + nested BG because I need transparency
+  - Can't use masking because it kills perf on mobile and causes checkerboarding on scroll
 
 ## Task List
 

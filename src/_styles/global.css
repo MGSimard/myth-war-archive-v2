@@ -402,7 +402,6 @@ main section {
   padding: var(--padding);
   font-family: var(--headingFont);
   background: var(--gradientHeader);
-  border-bottom: 0.2rem ridge var(--clrGoldOuterLeftFrameHighlight);
   overflow: hidden;
 }
 .header-header {
@@ -427,6 +426,9 @@ main section {
 .header-header .heading,
 .section-header .heading {
   font-size: 3.2rem;
+}
+.section-header {
+  border-bottom: 0.2rem ridge var(--clrGoldOuterLeftFrameHighlight);
 }
 .section-content {
   position: relative;
