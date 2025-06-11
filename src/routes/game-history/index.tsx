@@ -10,7 +10,7 @@ export const Route = createFileRoute("/game-history/")({
 function PageGameHistory() {
   return (
     <>
-      <Header title="Game History" subtitle="A brief history of Myth War Online" />
+      <Header title="Game History" subtitle="A Brief History of Myth War Online" />
       <Section title="Introduction">
         <div className="papyrus">
           <div className="papyrus-section">
