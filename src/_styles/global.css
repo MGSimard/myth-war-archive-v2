@@ -421,11 +421,7 @@ main section {
   position: absolute;
   inset: var(--padding);
   border-radius: 0.2rem;
-  border: 0.1rem solid transparent;
-  background: linear-gradient(to right, var(--clrGoldHeadingInnerLineDark), var(--clrGoldHeadingInnerLineLight))
-    border-box;
-  mask: linear-gradient(#000 0 0) padding-box, linear-gradient(#000 0 0);
-  mask-composite: exclude;
+  border: 0.1rem solid var(--clrGoldHeadingInnerLineLight);
   pointer-events: none;
 }
 .header-header .heading,
@@ -441,16 +437,7 @@ main section {
   position: absolute;
   inset: var(--clrDecorlinePad);
   border-radius: 0.8rem;
-  border: 0.1rem solid transparent;
-  background: linear-gradient(
-      to right,
-      var(--clrGoldInnerLineDark),
-      var(--clrGoldInnerLineLight),
-      var(--clrGoldInnerLineDark)
-    )
-    border-box;
-  mask: linear-gradient(#000 0 0) padding-box, linear-gradient(#000 0 0);
-  mask-composite: exclude;
+  border: 0.1rem solid var(--clrGoldInnerLineDark);
   pointer-events: none;
 }
 .section-content h3 {
