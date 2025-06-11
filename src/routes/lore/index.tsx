@@ -42,9 +42,9 @@ function PageLore() {
             <p>
               When the Great One grew weary of thinking and dreaming, he split his body and spirit to spawn six main
               gods: the God of Power, the God of Justice, the God of Fire, the God of Evil, the God of Intelligence, and
-              the God of Darkness. With the former ruler's reign ended, these gods inherited his spirit and took charge
-              of the systems and resources of the new dimension. The laws of this world limited each god's power to
-              preserve balance.
+              the God of Darkness. With the former ruler&apos;s reign ended, these gods inherited his spirit and took
+              charge of the systems and resources of the new dimension. The laws of this world limited each god&apos;s
+              power to preserve balance.
             </p>
             <p>
               The Gods created another beautiful and peaceful land for their people. It stood independently in the upper
@@ -62,12 +62,12 @@ function PageLore() {
               soil, burning lava, and bizarre weather shrouded the land in chaos. The God of Hell, ruling this distant
               realm far from the World of Gods, enjoyed greater freedom to wield his power and therefore created five
               magical beasts. To living creatures, their world seemed complicated yet orderly. However, the ostensibly
-              peaceful World of Gods was rife with crisis. The God of Evil, born of the Great One's darker will, could
-              not endure the restraints of balanced power distribution and resolved to challenge the highest-ranking
-              gods. Believing that selfishness was sometimes necessary for an independent evil will, he sought an
-              alliance with the God of Hell. Unaware that desire, once awakened, cannot be controlled, the God of Hell
-              accepted his proposal, yet soon broke their pact of mutual benefit. He and his magical beasts were the
-              first to launch the Ranking War.
+              peaceful World of Gods was rife with crisis. The God of Evil, born of the Great One&apos;s darker will,
+              could not endure the restraints of balanced power distribution and resolved to challenge the
+              highest-ranking gods. Believing that selfishness was sometimes necessary for an independent evil will, he
+              sought an alliance with the God of Hell. Unaware that desire, once awakened, cannot be controlled, the God
+              of Hell accepted his proposal, yet soon broke their pact of mutual benefit. He and his magical beasts were
+              the first to launch the Ranking War.
             </p>
             <p>
               The entire dimension trembled during this strange war. Living creatures sensed impending natural
@@ -83,13 +83,14 @@ function PageLore() {
               suspected that these stones, each bearing a special duty, concealed an even greater power.
             </p>
             <p>
-              The Gods' power sprang from the soul, and desire rendered the Evil God silent no longer. He coveted the
-              Spiritual Stones. While attempting to unseal them before the holy altar, the Guarding Prime Gods
+              The Gods&apos; power sprang from the soul, and desire rendered the Evil God silent no longer. He coveted
+              the Spiritual Stones. While attempting to unseal them before the holy altar, the Guarding Prime Gods
               discovered him. Another terrible war followed—a conflict of blood and fire, of evil versus justice. The
               Evil God was defeated and lay in a pool of his own blood. As his blood seeped into the Spiritual Stones,
               he uttered a sinister curse with his final breath. None had imagined that divine blood was the key to
-              releasing the Stones' power, nor that the Stones could grant wishes in exchange for life. The curse proved
-              true. As the Gods died one by one and became spirits, the Sky Passage crashed into the middle world.
+              releasing the Stones&apos; power, nor that the Stones could grant wishes in exchange for life. The curse
+              proved true. As the Gods died one by one and became spirits, the Sky Passage crashed into the middle
+              world.
             </p>
             <p>
               The violent impact drove the civilizations of the middle world backward, pushing the balanced living world
