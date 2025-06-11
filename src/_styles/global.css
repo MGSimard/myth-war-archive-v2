@@ -595,18 +595,7 @@ figcaption::before {
   grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1.6rem;
 }
-
-/* MEDIA QUERIES */
-@media only screen and (max-width: 1200px) {
-  .regions-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-@media only screen and (max-width: 768px) {
-  #sidenav-inset {
-    padding-left: 0;
-  }
-}
+/* DIALOG */
 dialog {
   display: flex;
   flex-direction: column;
@@ -745,5 +734,22 @@ dialog .rzpp-controls button {
   }
   to {
     background-position: -1500px;
+  }
+}
+
+/* MEDIA QUERIES */
+@media only screen and (max-width: 1200px) {
+  .regions-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+@media only screen and (max-width: 768px) {
+  #sidenav-inset {
+    padding-left: 0;
+  }
+}
+@media only screen and (max-width: 578px) {
+  .regions-grid {
+    grid-template-columns: minmax(0, 1fr);
   }
 }

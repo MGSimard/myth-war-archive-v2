@@ -24,10 +24,10 @@ function PageLore() {
               their own benefit.
             </p>
             <p>
-              During this epic age lived Arthunzala, a human prince plagued by recurring dreams of the moment his
-              parents were murdered before his eyes when he was still a child. Yet he became a wandering prince, a brave
-              warrior, and ultimately a king who bore great responsibility. The hardships of his youth nurtured his
-              kindness and refined his character; his trying experiences made him all the more noble.
+              During this epic age lived Arthunzala, a human prince plagued by recurring dreams of the moment when his
+              parents were murdered before his eyes while he was still a child. Yet he became a wandering prince, a
+              brave warrior, and ultimately a king who bore great responsibility. The hardships of his youth nurtured
+              his kindness and refined his character; his trying experiences made him all the more noble.
             </p>
             <p>
               In the early days of the surreal dimension, an unforgettable war of rank erupted. It ignited fury among
