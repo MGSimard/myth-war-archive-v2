@@ -749,7 +749,7 @@ dialog .rzpp-controls button {
   width: 100%;
   border: 0.2rem ridge var(--clrGoldInnerLineLight);
   border-radius: 0.4rem;
-  background: var(--clrPurpleOverlay);
+  background: oklch(0.21 0.0835 277.35 / 0.67);
 }
 #maps thead tr {
   font-family: var(--headingFont);
@@ -781,7 +781,7 @@ dialog .rzpp-controls button {
   z-index: 1;
 }
 #maps tbody tr:nth-child(odd) {
-  background: oklch(0.21 0.0835 277.35);
+  background: oklch(0.21 0.0835 277.35 / 0.67);
 }
 #maps tbody tr:hover {
   background: linear-gradient(to right, oklch(0.2775 0.1431 288.57), transparent);
