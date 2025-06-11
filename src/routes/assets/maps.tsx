@@ -32,7 +32,10 @@ function PageAssetsMaps() {
                   </ul>
                 </td>
                 <td>
-                  <img src={map.preview} alt={`Preview of ${map.file}`} />
+                  <div className="map-preview">
+                    <span className="heading">{map.file}</span>
+                    <img src={map.preview} alt={`Preview of ${map.file}`} />
+                  </div>
                 </td>
               </tr>
             ))}

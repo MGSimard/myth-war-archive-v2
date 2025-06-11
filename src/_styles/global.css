@@ -765,16 +765,31 @@ dialog .rzpp-controls button {
   font-weight: 400;
   padding: 0.4rem 1rem;
 }
+#maps tbody {
+  position: relative;
+  vertical-align: top;
+}
+#maps tbody::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  box-shadow: inset 0 0 0.2rem 0.2rem oklch(0 0 1 / 0.5);
+  pointer-events: none;
+  z-index: 1;
+}
 #maps tbody tr:nth-child(odd) {
   background: oklch(0.21 0.0835 277.35);
 }
+#maps tbody tr:hover {
+  background: linear-gradient(to right, oklch(0.2775 0.1431 288.57), transparent);
+}
 #maps tbody td:not(:last-child) {
-  padding: 0.4rem 1rem;
+  padding: 0.8rem 1rem;
 }
 #maps tbody td:last-child {
   position: relative;
 }
-#maps img {
+#maps .map-preview {
   position: absolute;
   top: 0;
   right: 0;
@@ -782,23 +797,50 @@ dialog .rzpp-controls button {
   height: 100%;
   object-fit: cover;
   object-position: center;
-  mask-image: linear-gradient(to right, transparent, black);
-  -webkit-mask-image: linear-gradient(to right, transparent, black);
-  height: 100%;
+  mask-image: linear-gradient(to right, transparent, black 20%);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 20%);
+  overflow: hidden;
 }
-#maps tbody td:last-child:hover img {
+#maps .map-preview span {
+  display: none;
+  position: absolute;
+  top: 0.4rem;
+  left: 0.8rem;
+}
+#maps img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+#maps tbody td:last-child:hover .map-preview {
   position: fixed;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  max-width: min(50dvw, 80rem);
+  max-width: min(50dvw, 50rem);
   max-height: 60dvh;
   height: auto;
   object-fit: contain;
+  border: 0.2rem ridge var(--clrGoldOuterLeftFrameHighlight);
+  border-radius: 0.4rem;
+  box-shadow: 0 0 1rem 0.2rem oklch(0 0 1 / 0.5);
   mask-image: unset;
   -webkit-mask-image: unset;
   pointer-events: none;
   z-index: 999;
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    box-shadow: inset 0 0 0.2rem 0.2rem oklch(0 0 1 / 0.5);
+    z-index: 1;
+  }
+}
+#maps tbody td:last-child:hover .map-preview span {
+  display: block;
+  font-size: 2rem;
+  filter: drop-shadow(0.1rem 0.1rem black) drop-shadow(0 0 0.5rem black);
 }
 
 /* MEDIA QUERIES */
