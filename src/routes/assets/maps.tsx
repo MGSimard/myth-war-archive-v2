@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Header } from "@/_components/Header";
 import { Section } from "@/_components/Section";
+import maps from "./maps.json";
 
 export const Route = createFileRoute("/assets/maps")({
   component: PageAssetsMaps,
@@ -10,7 +11,7 @@ function PageAssetsMaps() {
   return (
     <>
       <Header title="Map Assets" subtitle="An Archive of Map Assets from Myth War Online & Myth War II" />
-      <Section title="Maps">
+      <Section title="Maps" id="maps">
         <table>
           <thead>
             <tr>
@@ -20,13 +21,21 @@ function PageAssetsMaps() {
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>Map001</td>
-              <td>Sky Passage (MW1)</td>
-              <td>
-                <img alt="Map1" />
-              </td>
-            </tr>
+            {maps.map((map) => (
+              <tr>
+                <td>{map.file}</td>
+                <td>
+                  <ul>
+                    {map.zones.map((zone) => (
+                      <li>{zone}</li>
+                    ))}
+                  </ul>
+                </td>
+                <td>
+                  <img src={map.preview} alt={`Preview of ${map.file}`} />
+                </td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </Section>
