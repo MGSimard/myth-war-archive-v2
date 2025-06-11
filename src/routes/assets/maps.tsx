@@ -41,6 +41,7 @@ function PageAssetsMaps() {
                         ))}
                       </ul>
                     </span>
+                    {/* TODO: Maybe lazy >19i */}
                     <img src={map.preview} alt={`Preview of ${map.file}`} />
                   </div>
                 </td>

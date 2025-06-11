@@ -680,15 +680,6 @@ dialog .papyrus {
 dialog .react-transform-wrapper {
   height: 100%;
   width: 100%;
-  mask-image: linear-gradient(to bottom, transparent, black 2%, black 98%, transparent),
-    linear-gradient(to right, transparent, black 2%, black 98%, transparent);
-  -webkit-mask-image: linear-gradient(to bottom, transparent, black 2%, black 98%, transparent),
-    linear-gradient(to right, transparent, black 2%, black 98%, transparent);
-  -webkit-mask-composite: intersect;
-  mask-composite: intersect;
-  mask-size: 100% 100%;
-  mask-repeat: no-repeat;
-  mask-position: center;
   z-index: 1;
 }
 dialog .rzpp-controls {
