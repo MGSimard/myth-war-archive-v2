@@ -13,112 +13,102 @@ function PageLore() {
       <Section title="Storyline">
         <div className="papyrus">
           <div className="papyrus-section">
-            <p>The war among the Gods had become a pivotal episode in history and left the living world in chaos.</p>
+            <p>The war among the Gods had become a pivotal episode in history, leaving the living world in chaos.</p>
             <p>
-              The mystical dimension created by the Great One had granted the Gods infinite powers. Be that as it may,
-              Gods were still restricted severely by the rules of balance of the mystic dimension, and none of them
-              could escape the final stages of life. Fueled by their desires to create an ending, they ignored the
-              promises they made to the Dominator, abandoning rules which they established, and eventually created a war
-              among Gods which broke all restrictions between themselves. This was insulting to the pride and honor of
-              the Great One; The chaos taking place in this balanced living world, was an ironic joke to the Gods
-              themselves, since they themselves established all those rules for their own good.
+              The mystical dimension created by the Great One granted the Gods infinite power. Nevertheless, the Gods
+              were still severely restricted by the laws of balance, and none of them could escape the final stages of
+              life. Driven by their desire to bring about an ending, they broke the promises they had made to the
+              Dominator, abandoned the rules they themselves had established, and eventually waged a war that shattered
+              every limitation between them. This insulted the pride and honor of the Great One. The chaos engulfing
+              this once-balanced world was an ironic joke to the Gods, for it was they who had crafted those rules for
+              their own benefit.
             </p>
             <p>
-              In this epic period of history lived Arthunzala. Arthunzala was a human prince who had dreams which scenes
-              kept repeating on and on forever. His dreams were of the moment when his parents were murdered right in
-              front of him, while he was still a child. Nevertheless he was a wandering prince, a brave warrior, and
-              ultimately the king who bears great responsibility. The hardship of growing up cultivated his kindness and
-              refined his character; His frustrating experiences made him more noble.
+              During this epic age lived Arthunzala, a human prince plagued by recurring dreams of the moment his
+              parents were murdered before his eyes when he was still a child. Yet he became a wandering prince, a brave
+              warrior, and ultimately a king who bore great responsibility. The hardships of his youth nurtured his
+              kindness and refined his character; his trying experiences made him all the more noble.
             </p>
             <p>
-              At the ancient time of the surreal dimension, there was an unforgettable war of the ranks. It ignited fury
-              between one and another, causing the Gods to ignore the dimension rules stated by the Dominator. At the
-              very early stage, the surreal dimension was empty and extremely chaotic. Spirits and evil creatures
-              wandered around. As time flew by, realized the potential of combined power and they joined forces. The
-              need to be independent made them mature in time, and the Great One was spawned. The Great One lost his way
-              in the chaos world, so he decided to reconstruct the world according to his own ideologies. In his dream,
-              he dreamt of a brand new dimension, a peaceful world, a kingdom with order. The world created by the Great
-              One consisted of three dimensions: the outermost dimension; the middle dimension; and the innermost
-              dimension.
+              In the early days of the surreal dimension, an unforgettable war of rank erupted. It ignited fury among
+              the Gods, causing them to neglect the dimensional laws laid down by the Dominator. At first, the surreal
+              dimension was empty and extremely chaotic—spirits and evil creatures wandered aimlessly. As time passed,
+              they realized the potential of united strength and joined forces. Their desire for independence spurred
+              their maturity, and thus the Great One came into being. Having lost his way in the chaotic world, he
+              resolved to reconstruct it according to his own ideals. In his dream he envisioned a brand-new dimension—a
+              peaceful realm, a kingdom of order. The world he created consisted of three layers: the outermost
+              dimension, the middle dimension, and the innermost dimension.
             </p>
             <p>
-              When Great One was tired of thinking and dreaming, he let his body as well as his spirits split up to
-              spawn six main gods: the God of Power, the God of Justice, the God of Fire, the God of Evil, the God of
-              Intelligence, and the God of Darkness. As the previous ruler's reign had ended, these gods inherited his
-              spirit and would rule the system and resources of the new dimension. The rules of the new dimension
-              restricted the different gods' powers to ensure balance.
+              When the Great One grew weary of thinking and dreaming, he split his body and spirit to spawn six main
+              gods: the God of Power, the God of Justice, the God of Fire, the God of Evil, the God of Intelligence, and
+              the God of Darkness. With the former ruler's reign ended, these gods inherited his spirit and took charge
+              of the systems and resources of the new dimension. The laws of this world limited each god's power to
+              preserve balance.
             </p>
             <p>
-              Gods had created another beautiful and peaceful land for their people. It was built independently in the
-              upper dimension in-between the World of Gods and the Balanced living world. Hence four dimensions were
-              blocked out from one to another. The only way to travel through them was to use the high-tech shuttle
-              machines which connected all four dimensions. The crystal-blue skies, the beautiful waterfalls, the
-              supernatural double moon, the wide plains, the mystical ancient forests, swamps covered by black toxic
-              gas, the inhabited desert, the polar region with extreme temperatures. All these were features of the
-              world which existed in harmony and fascinated everyone. This was where Great One put in two sorts of
-              intelligent creatures—mankind and centaurs. They were neutral and independent, free from the controls of
-              any gods, and had created their unique civilizations. In the innermost dimension, lay the place of
-              reincarnation.
+              The Gods created another beautiful and peaceful land for their people. It stood independently in the upper
+              dimension between the World of Gods and the balanced living world. Thus the four dimensions were isolated
+              from one another. The only way to travel between them was through high-tech shuttle machines that linked
+              all four realms. Crystal-blue skies, magnificent waterfalls, a supernatural double moon, vast plains,
+              mystical ancient forests, swamps shrouded in toxic black gas, uninhabited deserts, and polar regions of
+              extreme temperature—all these features co-existed in harmony and fascinated every onlooker. Here the Great
+              One placed two kinds of intelligent beings—humans and centaurs. Neutral and independent, they were free
+              from the control of any god and developed unique civilizations of their own. Deep within the innermost
+              dimension lay the place of reincarnation.
             </p>
             <p>
-              The presence of devils, monsters and fiendish creatures made this dimension evil and frightening. The
-              black soil, the burning lava and the weird weather covered this place with chaos and evil. The God of
-              Hell, as the one who ruled this place is far away from the World of Gods, had more freedom to use his
-              power. As a result, he had created five magical beasts. In the eyes of the living creatures, their world
-              seems to be complicated but yet in order. However, the World of Gods as peaceful as one may think it
-              should be is full of crisis. The God of evil who was spawned by the Great One's evil wills, could not bear
-              the restrictions of the balanced power distribution, he was willing to challenge the highest-ranking
-              gods... But he knew, to a God, selfishness is sometimes needed to be the foundation of an independent evil
-              will. Thus, he chose to work together with The God of Hell. He did not know that desire to Gods, once
-              spawned, there is no way to control it. So The God of Hell accepted his invitation, but departed the
-              agreement of mutual benefit. The God of Hell was the first one who along with his magical beast started
-              the ranking war.
+              The presence of devils, monsters, and fiendish creatures made this dimension evil and frightening. Black
+              soil, burning lava, and bizarre weather shrouded the land in chaos. The God of Hell, ruling this distant
+              realm far from the World of Gods, enjoyed greater freedom to wield his power and therefore created five
+              magical beasts. To living creatures, their world seemed complicated yet orderly. However, the ostensibly
+              peaceful World of Gods was rife with crisis. The God of Evil, born of the Great One's darker will, could
+              not endure the restraints of balanced power distribution and resolved to challenge the highest-ranking
+              gods. Believing that selfishness was sometimes necessary for an independent evil will, he sought an
+              alliance with the God of Hell. Unaware that desire, once awakened, cannot be controlled, the God of Hell
+              accepted his proposal, yet soon broke their pact of mutual benefit. He and his magical beasts were the
+              first to launch the Ranking War.
             </p>
             <p>
-              The whole dimension trembled during this strange war. All the living creatures sensed forebodings of
-              frightening natural disasters: tsunamis, earthquakes, tornadoes, hurricanes. They prayed, confessed and
-              asked the Gods: What had we done wrong? No replies, all that they had were endless catastrophes and
-              deaths. The God of Hell underestimated the power generated by the union of the other gods. After many
-              defeats, he retreated deep into the inner dimension, there he hid inside the Tree of Life. Tree of Life
-              was an amazing tree, planted by the Great One. The entire dimension, resources, the power which the Gods
-              possessed came entirely from this tree. It was also the only place which is free from ruling of the six
-              Gods. The Tree of Life would not protect any rebels. So The God of Hell had to face the most cruel
-              punishment—tortured both physically and spiritually, endlessly bound by chains of ice and fire. Meanwhile,
-              those five beasts were sealed individually from one another within five spiritual stones, waiting for time
-              to melt them all. None could have thought that these five spiritual stones which were carrying special
-              responsibilities, enhanced a stronger power.
+              The entire dimension trembled during this strange war. Living creatures sensed impending natural
+              disasters—tsunamis, earthquakes, tornadoes, hurricanes. They prayed, confessed, and implored the Gods,
+              "What have we done wrong?" Their pleas went unanswered; all they received were endless catastrophes and
+              death. The God of Hell underestimated the combined might of the other gods. After many defeats he
+              retreated deep into the inner dimension and hid within the Tree of Life. The Tree of Life, planted by the
+              Great One, was a wondrous entity: the whole dimension, its resources, and even the powers the Gods
+              possessed all stemmed from it. It was also the only place beyond the rule of the six Gods. The Tree of
+              Life would not shelter rebels, so the God of Hell faced the cruellest punishment—tortured both physically
+              and spiritually, bound endlessly by chains of ice and fire. Meanwhile, the five beasts were sealed apart
+              from one another within five Spiritual Stones, waiting for time itself to erode their bonds. No one
+              suspected that these stones, each bearing a special duty, concealed an even greater power.
             </p>
             <p>
-              The power of Gods came from the soul, desire made The Evil God quiet no more, he wanted to steal the
-              Spiritual Stones... When he was trying to unseal the Spiritual Stones right in front of the holy table,
-              Guarding Prime Gods found him. Another horrible war took place, a war filled with blood and fire, a war
-              between evil and justice. The Evil God was defeated and laid down in a pool of his own blood. His blood
-              seeped through the Spiritual Stones and he made a felonious curse right before his last breath. No one
-              could have thought that the blood of God was the key to unseal the power of the spiritual stones, and the
-              stones were to achieve wishes in exchange for life. Thus, the curse came true. As the Gods died one by
-              one, becoming spirits, the Sky Passage fell to the middle world.
+              The Gods' power sprang from the soul, and desire rendered the Evil God silent no longer. He coveted the
+              Spiritual Stones. While attempting to unseal them before the holy altar, the Guarding Prime Gods
+              discovered him. Another terrible war followed—a conflict of blood and fire, of evil versus justice. The
+              Evil God was defeated and lay in a pool of his own blood. As his blood seeped into the Spiritual Stones,
+              he uttered a sinister curse with his final breath. None had imagined that divine blood was the key to
+              releasing the Stones' power, nor that the Stones could grant wishes in exchange for life. The curse proved
+              true. As the Gods died one by one and became spirits, the Sky Passage crashed into the middle world.
             </p>
             <p>
-              The violent collision had made the civilizations of the middle world fall backward. It pushed the balanced
-              living world to the edge of ending, twisting the dimension. These Gods after becoming spirits were merely
-              wandering around the outer dimension. They had no body, no power, all that they had were delicate powers
-              which merely enabled them to maintain their existence. Everything had returned to the starting point. To
-              prevent themselves from falling, the only thing to do was to scramble for the wills and beliefs from those
-              creatures in the middle dimension. In spite of that, Gods still presented themselves with noble attitudes.
-              Gods helped those races in middle dimension to develop technology, to establish laws, and even teach them
-              how to cast spells. In return, all races have to establish a sanctuary to preserve the dignity of Gods as
-              well as to acquire more believers. What the Gods needed was to form an army with the believers. In the
-              dimensions, nothing could ever escape the universal law of returning. But Gods who adapted the circle
-              logic thinking system tempted by the desire to live on, started the biggest war ever—the War of Gods.
-              After becoming mad, they no longer had consciousness of the rules of the dimensions... Vengeance led to
-              their extermination.
+              The violent impact drove the civilizations of the middle world backward, pushing the balanced living world
+              to the brink of destruction and distorting the dimensions. Having become disembodied spirits, the Gods
+              wandered the outer dimension with only the slightest power to sustain their existence. Everything had
+              returned to the beginning. To avoid fading away, they strove to win the faith and will of creatures in the
+              middle dimension. Even so, the Gods maintained their noble demeanor. They helped the races of the middle
+              realm develop technology, establish laws, and even learn to cast spells. In return, each race was required
+              to build a sanctuary to honour the Gods and gather more believers. What the Gods needed most was an army
+              of devotees. In every dimension, nothing could escape the universal law of returning. Yet the
+              Gods—clinging to circular logic and driven by the desire to survive—ignited the greatest conflict of all:
+              the War of Gods. Maddened, they no longer acknowledged the rules of the dimensions. Vengeance led to their
+              annihilation.
             </p>
             <p>
-              Wars, cruelties, killings, contests, desire and magic... All these describe this dimension, and provide a
-              story with a history filled with surprises, adventures and romances.
+              Wars, cruelty, murder, contests, desire, and magic—all these define this dimension and fill its history
+              with surprises, adventures, and romance.
             </p>
           </div>
-          <hr />
         </div>
       </Section>
       <Section title="Races">Races stuff here</Section>
