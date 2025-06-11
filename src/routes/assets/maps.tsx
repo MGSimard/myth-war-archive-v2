@@ -21,7 +21,7 @@ function PageAssetsMaps() {
             </tr>
           </thead>
           <tbody>
-            {maps.map((map, i) => (
+            {maps.map((map) => (
               <tr key={map.file}>
                 <td>{map.file}</td>
                 <td>
