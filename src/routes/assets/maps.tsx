@@ -22,12 +22,12 @@ function PageAssetsMaps() {
           </thead>
           <tbody>
             {maps.map((map) => (
-              <tr>
+              <tr key={map.file}>
                 <td>{map.file}</td>
                 <td>
                   <ul>
                     {map.zones.map((zone) => (
-                      <li>{zone}</li>
+                      <li key={zone}>{zone}</li>
                     ))}
                   </ul>
                 </td>
@@ -37,7 +37,7 @@ function PageAssetsMaps() {
                       {map.file}
                       <ul>
                         {map.zones.map((zone) => (
-                          <li>{zone}</li>
+                          <li key={zone}>{zone}</li>
                         ))}
                       </ul>
                     </span>
