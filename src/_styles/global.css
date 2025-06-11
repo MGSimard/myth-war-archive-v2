@@ -786,6 +786,9 @@ dialog .rzpp-controls button {
 #maps tbody tr:hover {
   background: linear-gradient(to right, oklch(0.2775 0.1431 288.57), transparent);
 }
+#maps tbody td {
+  text-wrap: balance;
+}
 #maps tbody td:not(:last-child) {
   padding: 0.8rem 1rem;
 }
@@ -809,6 +812,7 @@ dialog .rzpp-controls button {
   position: absolute;
   top: 0.4rem;
   left: 0.8rem;
+  text-align: left;
 }
 #maps img {
   width: 100%;
@@ -821,7 +825,7 @@ dialog .rzpp-controls button {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  max-width: min(50dvw, 50rem);
+  max-width: min(70dvw, 50rem);
   max-height: 60dvh;
   height: auto;
   object-fit: contain;
@@ -842,7 +846,7 @@ dialog .rzpp-controls button {
 }
 #maps tbody td:last-child:hover .map-preview span {
   display: block;
-  font-size: 2rem;
+  font-size: clamp(1.4rem, 1.2vw, 2rem);
   filter: drop-shadow(0.1rem 0.1rem black) drop-shadow(0 0 0.5rem black);
 }
 
@@ -860,5 +864,21 @@ dialog .rzpp-controls button {
 @media only screen and (max-width: 578px) {
   .regions-grid {
     grid-template-columns: minmax(0, 1fr);
+  }
+  #maps thead {
+    display: none;
+  }
+  #maps tbody tr {
+    display: flex;
+    flex-direction: column;
+  }
+  #maps tbody tr:not(:last-child) {
+    border-bottom: 0.2rem ridge var(--clrGoldInnerLineLight);
+  }
+  #maps tbody td:first-child {
+    font-weight: 700;
+  }
+  #maps tbody td:last-child {
+    height: 4rem;
   }
 }

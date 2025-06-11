@@ -33,7 +33,14 @@ function PageAssetsMaps() {
                 </td>
                 <td>
                   <div className="map-preview">
-                    <span className="heading">{map.file}</span>
+                    <span className="heading">
+                      {map.file}
+                      <ul>
+                        {map.zones.map((zone) => (
+                          <li>{zone}</li>
+                        ))}
+                      </ul>
+                    </span>
                     <img src={map.preview} alt={`Preview of ${map.file}`} />
                   </div>
                 </td>
