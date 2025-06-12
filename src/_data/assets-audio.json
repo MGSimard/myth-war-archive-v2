@@ -1,388 +1,393 @@
 {
-  "music": [
+  "Music": [
     {
       "file": "Menu01.mp3",
       "description": "Main menu music, plays after the intro animation.",
-      "link": "https://utfs.io/f/e0BHXYWYpV1NtwC3wB8S8wNOfl5XRFMU4KgqmZjYvLQBAIop"
+      "link": "https://gnz8w62jmm.ufs.sh/f/6TomNTIXQ2ID73dLa9xJxKZtfogVTydurvsCOIYp861FB7eP"
     },
     {
       "file": "Menu02.mp3",
       "description": "Character select screen.",
-      "link": "https://utfs.io/f/e0BHXYWYpV1Nz6KbrYRFQiEB3JMNWaAZtubXjgTY9rePlV28"
+      "link": "https://gnz8w62jmm.ufs.sh/f/6TomNTIXQ2IDovcz8fa2aYkJvQtxq8Sdlm6XsEWMzLDPc10r"
     },
     {
       "file": "Mus002.mp3",
       "description": "Blython music.",
-      "link": "https://utfs.io/f/e0BHXYWYpV1Nrijj7w5jLdKugA7JVYOcxl8wTPoX0bBkUGH1"
+      "link": "https://gnz8w62jmm.ufs.sh/f/6TomNTIXQ2IDVmvuKkSlCrZ2cDqHkew0RKPJyOGgXmMt8UTF"
     },
     {
       "file": "Mus003.mp3",
       "description": "Woodlingor Music.",
-      "link": "https://utfs.io/f/e0BHXYWYpV1NJ0LctMXw5pfSNvYFIuKtAGyW9604HZOz3PUo"
+      "link": "https://gnz8w62jmm.ufs.sh/f/6TomNTIXQ2IDSf9KwepzDZbySPC1UkmI5GWtAHuo69l2RTfp"
     },
     {
       "file": "Mus006.mp3",
       "description": "Music for desert themed maps.",
-      "link": "https://utfs.io/f/e0BHXYWYpV1NCGceaXQ2L54wM9JEedqtZCKgUIHXibQ7RNoh"
+      "link": "https://gnz8w62jmm.ufs.sh/f/6TomNTIXQ2IDlVRrLOBthxrqeEFSMGNT0Q14DfAWBdbzZuoP"
     },
     {
       "file": "Mus007.mp3",
       "description": "Music for Demon Square and some combative areas.",
-      "link": "https://utfs.io/f/e0BHXYWYpV1N5xp7k6O8LrpiDMFEkI274nlVdz9mHN5gvG3u"
+      "link": "https://gnz8w62jmm.ufs.sh/f/6TomNTIXQ2ID4kCwgRKcrwVZDsukISP3qghLp8bQOazGK4Fi"
     },
     {
       "file": "Mus011.mp3",
       "description": "",
-      "link": "https://utfs.io/f/e0BHXYWYpV1N6VKTKQh4ymgjrv7sFtEowNVO9hGUdulx3R2W"
+      "link": "https://gnz8w62jmm.ufs.sh/f/6TomNTIXQ2IDZ8WR1omOTc3PzmeJdgr8CjMvVOwFXQISN90G"
     },
     {
       "file": "Mus012.mp3",
       "description": "",
-      "link": "https://utfs.io/f/e0BHXYWYpV1NbiBFLzYI0JuDQy2xWVFhaREwmLPvOsoY8Gji"
+      "link": "https://gnz8w62jmm.ufs.sh/f/6TomNTIXQ2IDs1XErFoM5OrRmoBznhv9ajiTlJgkwCAP2cDe"
     },
     {
       "file": "Mus013.mp3",
       "description": "",
-      "link": "https://utfs.io/f/e0BHXYWYpV1NQ7zRcmlUPTEvZkRtpG9nd3D8wgr4iWqh7Cf1"
+      "link": "https://gnz8w62jmm.ufs.sh/f/6TomNTIXQ2IDkCwNYS4YIQeJ4kL9wSTOsi26yqZp5oAtBVR1"
     },
     {
       "file": "Mus014.mp3",
       "description": "",
-      "link": "https://utfs.io/f/e0BHXYWYpV1NZmHssYVEouXyx6NQm9hBrdOTZW50cUYw3ePa"
+      "link": "https://gnz8w62jmm.ufs.sh/f/6TomNTIXQ2IDT2ijy3glIKxiHo0NPVG3AyLfEkezwB1UpQMD"
     },
     {
       "file": "Mus015.mp3",
       "description": "",
-      "link": "https://utfs.io/f/e0BHXYWYpV1NKVHkp7wAgsuMeFrYVICRDO3wf10HiqBSp2ZJ"
+      "link": "https://gnz8w62jmm.ufs.sh/f/6TomNTIXQ2IDMuEMRYnb3uSsWXI26wpKemYEJknqdoAcyfGx"
     },
     {
       "file": "Mus016.mp3",
       "description": "",
-      "link": "https://utfs.io/f/e0BHXYWYpV1NJ8cGGFXw5pfSNvYFIuKtAGyW9604HZOz3PUo"
+      "link": "https://gnz8w62jmm.ufs.sh/f/6TomNTIXQ2IDYFPxUUT4ySH0FN6v9uabPiRkq1XzJLBVfcso"
     },
     {
       "file": "Mus017.mp3",
       "description": "",
-      "link": "https://utfs.io/f/e0BHXYWYpV1NZUgBPsVEouXyx6NQm9hBrdOTZW50cUYw3ePa"
+      "link": "https://gnz8w62jmm.ufs.sh/f/6TomNTIXQ2IDcDSgNvZyuUsaZkXdIKeMob6WL0VCvE7nQzpR"
     },
     {
       "file": "Mus018.mp3",
       "description": "Guild HQ music.",
-      "link": "https://utfs.io/f/e0BHXYWYpV1NL6V3z8NaMvPpbQkw6NRiolr3gGhIseOJ0Y5S"
+      "link": "https://gnz8w62jmm.ufs.sh/f/6TomNTIXQ2IDPgtplBDARbvwOekm5MKW6GYS8T7oXV0cd3ry"
     },
     {
       "file": "Mus019.mp3",
       "description": "Fight music.",
-      "link": "https://utfs.io/f/e0BHXYWYpV1NG9vu5CPtVMSeU9APjy0dhz15CJim4gnBvalT"
+      "link": "https://gnz8w62jmm.ufs.sh/f/6TomNTIXQ2IDdiW2EIyGt4PBA5R1Gny2ZwlDKFa7qQpeH6Lo"
     },
     {
       "file": "Mus020.mp3",
       "description": "Fight music.",
-      "link": "https://utfs.io/f/e0BHXYWYpV1NKYudSOwAgsuMeFrYVICRDO3wf10HiqBSp2ZJ"
+      "link": "https://gnz8w62jmm.ufs.sh/f/6TomNTIXQ2IDPRN6K0DARbvwOekm5MKW6GYS8T7oXV0cd3ry"
     },
     {
       "file": "Mus021.mp3",
       "description": "Fight music.",
-      "link": "https://utfs.io/f/e0BHXYWYpV1NzHlNq3RFQiEB3JMNWaAZtubXjgTY9rePlV28"
+      "link": "https://gnz8w62jmm.ufs.sh/f/6TomNTIXQ2IDP8GMjDARbvwOekm5MKW6GYS8T7oXV0cd3ryE"
     },
     {
       "file": "Mus022.mp3",
       "description": "Fight music.",
-      "link": "https://utfs.io/f/e0BHXYWYpV1Nr2aNJT5jLdKugA7JVYOcxl8wTPoX0bBkUGH1"
+      "link": "https://gnz8w62jmm.ufs.sh/f/6TomNTIXQ2IDXgsA5sgYEhD7gVa4SO5WJMveLuKP3oCqykt9"
     },
     {
       "file": "Mus023.mp3",
       "description": "Fight music.",
-      "link": "https://utfs.io/f/e0BHXYWYpV1N9bLrrjAeLJKf8YNVx0pdBSilFb2grkye1hR5"
+      "link": "https://gnz8w62jmm.ufs.sh/f/6TomNTIXQ2IDPZNPnSLDARbvwOekm5MKW6GYS8T7oXV0cd3r"
     },
     {
       "file": "Mus024.mp3",
       "description": "Fight music.",
-      "link": "https://utfs.io/f/e0BHXYWYpV1N6CStlvmh4ymgjrv7sFtEowNVO9hGUdulx3R2"
+      "link": "https://gnz8w62jmm.ufs.sh/f/6TomNTIXQ2ID8nAhJ7yqnOCb4mMoWGKFI3pT9X6aZQBLJgNY"
     },
     {
       "file": "Mus025.mp3",
       "description": "",
-      "link": "https://utfs.io/f/e0BHXYWYpV1N1zY1XioaSu6v4jFat7iy8OXsLVpgdqoRBb0Z"
+      "link": "https://gnz8w62jmm.ufs.sh/f/6TomNTIXQ2IDItdGoxL6tVia42cLE0pDZsWqQuYNTGOhelfC"
     }
   ],
-  "ambient": [
+  "Ambient": [
     {
       "file": "Back001.wav",
       "description": "",
-      "link": "https://utfs.io/f/e0BHXYWYpV1N3ffcVrMlUFwZMA5WCQsqkR9GvNYm6JoTBXOy"
+      "link": ""
     },
     {
       "file": "Back002.wav",
       "description": "",
-      "link": "https://utfs.io/f/e0BHXYWYpV1NR0JWAuG6kNEGIpMvogr3hwUHCyK1xqZuejWX"
+      "link": ""
     },
     {
       "file": "Back003.wav",
       "description": "",
-      "link": "https://utfs.io/f/e0BHXYWYpV1NCreRl7Q2L54wM9JEedqtZCKgUIHXibQ7RNoh"
+      "link": ""
     },
     {
       "file": "Back004.wav",
       "description": "",
-      "link": "https://utfs.io/f/e0BHXYWYpV1NaNriATdIbSFE0wqshLjmQ8PlTVea1BCzfA5v"
+      "link": ""
     },
     {
       "file": "Back005.wav",
       "description": "",
-      "link": "https://utfs.io/f/e0BHXYWYpV1Nfl8Vhh7pwrQ4LcYKyOzxFSbUkVe0gBtJZ3CA"
+      "link": ""
     },
     {
       "file": "Back006.wav",
       "description": "",
-      "link": "https://utfs.io/f/e0BHXYWYpV1NjlIB1InWneVuDksJxqZKEiz0RdYtMNbmgQL7"
+      "link": ""
     },
     {
       "file": "Back007.wav",
       "description": "",
-      "link": "https://utfs.io/f/e0BHXYWYpV1NsgvPgEJn6c2Wz1XBGNFj7iPyYgV4kx8uwHMr"
+      "link": ""
     },
     {
       "file": "Back008.wav",
       "description": "",
-      "link": "https://utfs.io/f/e0BHXYWYpV1NGaR0HOtVMSeU9APjy0dhz15CJim4gnBvalTI"
+      "link": ""
     },
     {
       "file": "Back009.wav",
       "description": "",
-      "link": "https://utfs.io/f/e0BHXYWYpV1N8M7DJe9oewsIDHVUhQKjSNmG0tLCflBW61FO"
+      "link": ""
     },
     {
       "file": "Back010.wav",
       "description": "",
-      "link": "https://utfs.io/f/e0BHXYWYpV1NdxnWdHzJHT9ox4VtUMZX7Bazbr538mg2SCwl"
+      "link": ""
     },
     {
       "file": "Back011.wav",
       "description": "",
-      "link": "https://utfs.io/f/e0BHXYWYpV1N0kDzhDJc4Nr1SRmCcBkKZOGVf8bzMYFp0Eq7"
+      "link": ""
     },
     {
       "file": "Back012.wav",
       "description": "",
-      "link": "https://utfs.io/f/e0BHXYWYpV1N3o8aIPMlUFwZMA5WCQsqkR9GvNYm6JoTBXOy"
+      "link": ""
     },
     {
       "file": "Back013.wav",
       "description": "",
-      "link": "https://utfs.io/f/e0BHXYWYpV1NnxdFjYDkbvZEfp5DhPAH9sajM0N2tYQw3roJ"
+      "link": ""
     },
     {
       "file": "Back014.wav",
       "description": "",
-      "link": "https://utfs.io/f/e0BHXYWYpV1N9uGKVHeLJKf8YNVx0pdBSilFb2grkye1hR5Z"
+      "link": ""
     },
     {
       "file": "Back015.wav",
       "description": "",
-      "link": "https://utfs.io/f/e0BHXYWYpV1NgQJCWAxGMfIyqoH5R2PXCVwv1SWmBx3tnlF0"
+      "link": ""
     },
     {
       "file": "Back016.wav",
       "description": "",
-      "link": "https://utfs.io/f/e0BHXYWYpV1NXwgJ3EjmqjSac4VHkzMpGNl8JyY3F6nLWQDX"
+      "link": ""
     },
     {
       "file": "Back017.wav",
       "description": "",
-      "link": "https://utfs.io/f/e0BHXYWYpV1NcKM3cGm4P0hJ2ERyDWqe9dvOoN5SbMzHniAp"
+      "link": ""
     },
     {
       "file": "Back018.wav",
       "description": "",
-      "link": "https://utfs.io/f/e0BHXYWYpV1Nv4pJXvKwjQM0IfTDPJYum2ihyFXEaCKqn7xN"
+      "link": ""
     },
     {
       "file": "Back019.wav",
       "description": "",
-      "link": "https://utfs.io/f/e0BHXYWYpV1NsjuMqNrJn6c2Wz1XBGNFj7iPyYgV4kx8uwHM"
+      "link": ""
     },
     {
       "file": "Back020.wav",
       "description": "",
-      "link": "https://utfs.io/f/e0BHXYWYpV1NbvKH6qnYI0JuDQy2xWVFhaREwmLPvOsoY8Gj"
+      "link": ""
     },
     {
       "file": "Back021.wav",
       "description": "",
-      "link": "https://utfs.io/f/e0BHXYWYpV1NtCpnSL8S8wNOfl5XRFMU4KgqmZjYvLQBAIop"
+      "link": ""
     },
     {
       "file": "Back022.wav",
       "description": "",
-      "link": "https://utfs.io/f/e0BHXYWYpV1NGg66iItVMSeU9APjy0dhz15CJim4gnBvalTI"
+      "link": ""
     },
     {
       "file": "Back023.wav",
       "description": "",
-      "link": "https://utfs.io/f/e0BHXYWYpV1N8WMwUvd9oewsIDHVUhQKjSNmG0tLCflBW61F"
+      "link": ""
     },
     {
       "file": "Back024.wav",
       "description": "",
-      "link": "https://utfs.io/f/e0BHXYWYpV1NvhDOcIKwjQM0IfTDPJYum2ihyFXEaCKqn7xN"
+      "link": ""
     },
     {
       "file": "Back025.wav",
       "description": "",
-      "link": "https://utfs.io/f/e0BHXYWYpV1NK905IGwAgsuMeFrYVICRDO3wf10HiqBSp2ZJ"
+      "link": ""
     },
     {
       "file": "Back026.wav",
       "description": "",
-      "link": "https://utfs.io/f/e0BHXYWYpV1NMdpLngw2kWGjKqlcBspz7bvam5yXnFZ8Nthi"
+      "link": ""
     },
     {
       "file": "Back027.wav",
       "description": "",
-      "link": "https://utfs.io/f/e0BHXYWYpV1NLeUtrBNaMvPpbQkw6NRiolr3gGhIseOJ0Y5S"
+      "link": ""
     },
     {
       "file": "Back028.wav",
       "description": "",
-      "link": "https://utfs.io/f/e0BHXYWYpV1NtqyFsK8S8wNOfl5XRFMU4KgqmZjYvLQBAIop"
+      "link": ""
     },
     {
       "file": "Back029.wav",
       "description": "",
-      "link": "https://utfs.io/f/e0BHXYWYpV1NzxSGqHRFQiEB3JMNWaAZtubXjgTY9rePlV28"
+      "link": ""
     },
     {
       "file": "Back030.wav",
       "description": "",
-      "link": "https://utfs.io/f/e0BHXYWYpV1NR89WPcRG6kNEGIpMvogr3hwUHCyK1xqZuejW"
+      "link": ""
     },
     {
       "file": "Back031.wav",
       "description": "",
-      "link": "https://utfs.io/f/e0BHXYWYpV1NVkPzzG6IfmlZ8B4N0c61EwixdejnKLrvDQUT"
+      "link": ""
     },
     {
       "file": "Back032.wav",
       "description": "",
-      "link": "https://utfs.io/f/e0BHXYWYpV1NkkYk6SPqMBg5XUDSJtsO7HKZNbFp8vYiaczu"
+      "link": ""
     },
     {
       "file": "Back033.wav",
       "description": "",
-      "link": "https://utfs.io/f/e0BHXYWYpV1NnVS97oYDkbvZEfp5DhPAH9sajM0N2tYQw3ro"
+      "link": ""
     },
     {
       "file": "Back034.wav",
       "description": "",
-      "link": "https://utfs.io/f/e0BHXYWYpV1NnvJ9W6DkbvZEfp5DhPAH9sajM0N2tYQw3roJ"
+      "link": ""
     },
     {
       "file": "Back035.wav",
       "description": "",
-      "link": "https://utfs.io/f/e0BHXYWYpV1Nsj6HcoHJn6c2Wz1XBGNFj7iPyYgV4kx8uwHM"
+      "link": ""
     },
     {
       "file": "Back036.wav",
       "description": "",
-      "link": "https://utfs.io/f/e0BHXYWYpV1NvvqqrTKwjQM0IfTDPJYum2ihyFXEaCKqn7xN"
+      "link": ""
     },
     {
       "file": "Back037.wav",
       "description": "",
-      "link": "https://utfs.io/f/e0BHXYWYpV1NUuGc0NMfBhVC1bNduT6OStolse3kI7QiMEPK"
+      "link": ""
     },
     {
       "file": "Back038.wav",
       "description": "",
-      "link": "https://utfs.io/f/e0BHXYWYpV1NcqgCcLm4P0hJ2ERyDWqe9dvOoN5SbMzHniAp"
+      "link": ""
     },
     {
       "file": "Back039.wav",
       "description": "",
-      "link": "https://utfs.io/f/e0BHXYWYpV1NGeG3jxtVMSeU9APjy0dhz15CJim4gnBvalTI"
+      "link": ""
     },
     {
       "file": "Back040.wav",
       "description": "",
-      "link": "https://utfs.io/f/e0BHXYWYpV1NdoFcNfzJHT9ox4VtUMZX7Bazbr538mg2SCwl"
+      "link": ""
     },
     {
       "file": "Back041.wav",
       "description": "",
-      "link": "https://utfs.io/f/e0BHXYWYpV1N8WLJV8T9oewsIDHVUhQKjSNmG0tLCflBW61F"
+      "link": ""
     },
     {
       "file": "Back042.wav",
       "description": "",
-      "link": "https://utfs.io/f/e0BHXYWYpV1N1cGrzgaSu6v4jFat7iy8OXsLVpgdqoRBb0ZE"
+      "link": ""
     },
     {
       "file": "Back043.wav",
       "description": "",
-      "link": "https://utfs.io/f/e0BHXYWYpV1NGOhkTQtVMSeU9APjy0dhz15CJim4gnBvalTI"
+      "link": ""
     },
     {
       "file": "Back044.wav",
       "description": "",
-      "link": "https://utfs.io/f/e0BHXYWYpV1Naiw7aZdIbSFE0wqshLjmQ8PlTVea1BCzfA5v"
+      "link": ""
     },
     {
       "file": "Back045.wav",
       "description": "",
-      "link": "https://utfs.io/f/e0BHXYWYpV1NR8b7pL1G6kNEGIpMvogr3hwUHCyK1xqZuejW"
+      "link": ""
     },
     {
       "file": "Back047.wav",
       "description": "",
-      "link": "https://utfs.io/f/e0BHXYWYpV1N2UB2287CCIxXwNcF1QZpJgVWKvo9ERUGAetr"
+      "link": ""
     },
     {
       "file": "Back048.wav",
       "description": "",
-      "link": "https://utfs.io/f/e0BHXYWYpV1NWE8riCbWAFCPxQiv7YOXs6Tug2VtZyIdnwH1"
+      "link": ""
     },
     {
       "file": "Back049.wav",
       "description": "",
-      "link": "https://utfs.io/f/e0BHXYWYpV1N0D6m1Uc4Nr1SRmCcBkKZOGVf8bzMYFp0Eq7s"
+      "link": ""
     },
     {
       "file": "Back050.wav",
       "description": "",
-      "link": "https://utfs.io/f/e0BHXYWYpV1NaHqLwedIbSFE0wqshLjmQ8PlTVea1BCzfA5v"
+      "link": ""
     }
   ],
-  "effects": [
+  "Sound Effects": [
     {
       "file": "Button01.wav",
       "description": "",
-      "link": "https://utfs.io/f/e0BHXYWYpV1NJKTcbuXw5pfSNvYFIuKtAGyW9604HZOz3PUo"
+      "link": "https://gnz8w62jmm.ufs.sh/f/6TomNTIXQ2IDW1CZDdd8Bfw9LNZ4rUvj5JH8gmuxFYyDa7Vc"
     },
     {
       "file": "Button02.wav",
       "description": "",
-      "link": "https://utfs.io/f/e0BHXYWYpV1NXDDNcXgjmqjSac4VHkzMpGNl8JyY3F6nLWQD"
+      "link": "https://gnz8w62jmm.ufs.sh/f/6TomNTIXQ2IDCe1tNkwwrBxW8TcSdPmlMNqVERg0I5UbtkKX"
     },
     {
       "file": "Button03.wav",
       "description": "",
-      "link": "https://utfs.io/f/e0BHXYWYpV1NjBgj41nWneVuDksJxqZKEiz0RdYtMNbmgQL7"
+      "link": "https://gnz8w62jmm.ufs.sh/f/6TomNTIXQ2ID8r1IMwyqnOCb4mMoWGKFI3pT9X6aZQBLJgNY"
     },
     {
       "file": "call.wav",
       "description": "",
-      "link": "https://utfs.io/f/e0BHXYWYpV1NPAzRHTqbGOEhSDu0vrVRQKYyIdxLNzqWo169"
+      "link": "https://gnz8w62jmm.ufs.sh/f/6TomNTIXQ2IDsaWQIGCoM5OrRmoBznhv9ajiTlJgkwCAP2cD"
     },
     {
       "file": "thunder.WAV",
-      "description": "Loud",
-      "link": "https://utfs.io/f/e0BHXYWYpV1NdGKbbGOzJHT9ox4VtUMZX7Bazbr538mg2SCw"
+      "description": "",
+      "link": "https://gnz8w62jmm.ufs.sh/f/6TomNTIXQ2IDLVpLMe7Z1Hubd7nVafzFwxCsMQc0JrklqY4W"
+    },
+    {
+      "file": "money.wav",
+      "description": "",
+      "link": "https://gnz8w62jmm.ufs.sh/f/6TomNTIXQ2IDPZyt3jZDARbvwOekm5MKW6GYS8T7oXV0cd3r"
     },
     {
       "file": "victory.WAV",
       "description": "",
-      "link": "https://utfs.io/f/e0BHXYWYpV1N0k2YADrc4Nr1SRmCcBkKZOGVf8bzMYFp0Eq7"
+      "link": "https://gnz8w62jmm.ufs.sh/f/6TomNTIXQ2IDqgwEQT52Pnp5TUElO7eirQkVBXG9SLbjoHtg"
     }
   ]
 }
