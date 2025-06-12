@@ -10,6 +10,8 @@ export interface TrackTypes {
   length: number;
 }
 
+const allTracks = Object.values(tracks).flat();
+
 export function AudioPlayer() {
   const [selectedTrack, setSelectedTrack] = useState<TrackTypes | null>(null);
 
@@ -60,7 +62,7 @@ export function AudioPlayer() {
             <textarea id="audio-details" value={selectedTrack?.description || ""} readOnly rows={5} />
           </label>
         </div>
-        <AudioControls selectedTrack={selectedTrack} />
+        <AudioControls selectedTrack={selectedTrack} tracks={allTracks} onTrackChange={setSelectedTrack} />
       </div>
     </>
   );

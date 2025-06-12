@@ -1,13 +1,23 @@
+import { useEffect, useRef, useState } from "react";
 import { TrackTypes } from "@/_components/AudioPlayer";
 
-export default function AudioControls({ selectedTrack }: { selectedTrack: TrackTypes | null }) {
+const toLogarithmicVolume = (value: number) => {
+  const logarithmicVolume = (Math.pow(10, value / 100) - 1) / 9;
+  return Math.min(Math.max(logarithmicVolume, 0), 1);
+};
+
+interface AudioControlsProps {
+  selectedTrack: TrackTypes | null;
+  tracks: TrackTypes[];
+  onTrackChange: (track: TrackTypes) => void;
+}
+
+export default function AudioControls({ selectedTrack, tracks, onTrackChange }: AudioControlsProps) {
+  const audioPlayerRef = useRef<HTMLAudioElement>(null);
+
   return (
-    <div id="audio-controls">
-      {selectedTrack ? (
-        <audio key={selectedTrack.link} src={selectedTrack.link} controls autoPlay />
-      ) : (
-        <div className="audio-placeholder">No track selected</div>
-      )}
+    <div>
+      <audio ref={audioPlayerRef} controls src={selectedTrack?.link || undefined} />
     </div>
   );
 }
