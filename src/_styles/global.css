@@ -39,7 +39,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  outline: 0.1rem solid red;
+  /* outline: 0.1rem solid red; */
 }
 html {
   font-family: var(--contentFont);
@@ -231,7 +231,7 @@ table {
   content: "";
   position: absolute;
   inset: var(--decorlinePad);
-  border: 0.1rem solid var(--clrGoldInnerLineDark);
+  border: 0.1rem solid var(--clrGoldInnerLineLight);
   border-radius: 0.8rem;
   pointer-events: none;
 }
@@ -695,6 +695,8 @@ dialog .rzpp-controls button {
 #maps table {
   width: 100%;
   border: 0.2rem ridge var(--clrGoldInnerLineLight);
+  border-collapse: separate;
+  border-spacing: 0;
   border-radius: 0.4rem;
   background: oklch(0.21 0.0835 277.35 / 0.67);
 }
@@ -813,22 +815,46 @@ dialog .rzpp-controls button {
   display: block;
 }
 /* AUDIO */
+main:has(#audio) {
+  height: 100dvh;
+}
 #audio {
-  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  min-height: 0;
 }
 #audio .section-content {
   display: grid;
-  grid-template-columns: minmax(0, 40rem) minmax(0, auto);
+  grid-template-columns: minmax(0, 20rem) minmax(0, auto);
   gap: 1.6rem;
+  flex: 1 1 auto;
+  min-height: 0;
+}
+#audio .section-content {
+  height: 100%;
+}
+#audio-list,
+#audio-right {
+  height: 100%;
+}
+#audio-list {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+#audio-list-header {
+  flex-shrink: 0;
 }
 #audio-list-content {
+  flex-grow: 1;
   white-space: nowrap;
-  overflow-y: scroll;
+  overflow-y: auto;
   scrollbar-width: thin;
   scrollbar-color: var(--clrGoldInnerLineLight) transparent;
 }
-#audio-controls {
-  grid-column: span 2;
+#audio-list-content ul {
+  list-style: none;
 }
 
 /* MEDIA QUERIES */
