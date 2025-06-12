@@ -2,6 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Header } from "@/_components/Header";
 import { Section } from "@/_components/Section";
 import maps from "./maps.json";
+import { ArrowBigDownDash } from "lucide-react";
 
 export const Route = createFileRoute("/assets/maps")({
   component: PageAssetsMaps,
@@ -23,7 +24,19 @@ function PageAssetsMaps() {
           <tbody>
             {maps.map((map) => (
               <tr key={map.file}>
-                <td>{map.file}</td>
+                <td>
+                  <a
+                    className="btn-download"
+                    href={map.link}
+                    download={map.file}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={`Download ${map.file}`}
+                    title={`Download ${map.file}`}>
+                    {map.file}
+                    <ArrowBigDownDash />
+                  </a>
+                </td>
                 <td>
                   <ul>
                     {map.zones.map((zone) => (

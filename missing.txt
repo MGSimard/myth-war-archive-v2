@@ -1,0 +1,16 @@
+Map037 - Vast Mine (MW1)
+Map038 - City Hall (Blython, MW1), Lansquenet League (Blython, MW2)
+Map039 - Bar (Blython, MW1), Bar (Blython, MW2)
+Map041 - Grocery (Blython, MW1), Grocery (Blython, MW2)
+Map079 - Life Tree 4 (MW1)
+Map088 - ?
+Map114 - Sunset Plain (MW2)
+Map115 - Dragon Cave (MW2)
+Map116 - Sky Passage (MW2)
+Map118 - Blython (MW2)
+Map119 - Woodlingor (MW2)
+Map120 - Desert City (MW2)
+Map121 - Demon Square (MW2)
+Map139 - Ashes Pit 1 (MW2)
+Map140 - Ashes Pit 2 (MW2)
+Map143 - ?
