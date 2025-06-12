@@ -18,7 +18,8 @@
     "dev": "vite --port 3000",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "update:audio-lengths": "node scripts/update_audio_lengths.mjs"
   },
   "dependencies": {
     "@tanstack/react-router": "^1.120.20",

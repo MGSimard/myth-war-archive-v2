@@ -1,15 +1,17 @@
 import { Fragment, useState } from "react";
+import AudioControls from "@/_components/AudioControls";
 import tracks from "@/_data/assets-audio.json";
-import AudioControls from "./AudioControls";
+import { formatMmSs } from "@/_utils/helpers";
 
-interface TrackTypes {
+export interface TrackTypes {
   file: string;
   description: string;
   link: string;
+  length: number;
 }
 
 export function AudioPlayer() {
-  const [selectedAudio, setSelectedAudio] = useState<TrackTypes | null>(null);
+  const [selectedTrack, setSelectedTrack] = useState<TrackTypes | null>(null);
 
   return (
     <>
@@ -27,8 +29,8 @@ export function AudioPlayer() {
                     <button
                       type="button"
                       aria-label={`Select ${track.file}`}
-                      onClick={() => setSelectedAudio(track)}
-                      className={selectedAudio?.file === track.file ? "selected" : ""}>
+                      onClick={() => setSelectedTrack(track)}
+                      className={selectedTrack?.file === track.file ? "selected" : ""}>
                       {track.file}
                     </button>
                   </li>
@@ -41,19 +43,24 @@ export function AudioPlayer() {
       <div id="audio-right">
         <div id="audio-info" aria-atomic="true" aria-live="polite" aria-label="Current Track Information">
           <label htmlFor="audio-file-name">
-            <span className="label">File Name:</span>{" "}
-            <input id="audio-file-name" type="text" value={selectedAudio?.file} readOnly />
+            <span className="label">File Name:</span>
+            <input id="audio-file-name" type="text" value={selectedTrack?.file || ""} readOnly />
           </label>
           <label htmlFor="audio-length">
             <span className="label">File Length:</span>
-            <input id="audio-length" type="text" value={selectedAudio?.length} readOnly />
+            <input
+              id="audio-length"
+              type="text"
+              value={selectedTrack?.length ? formatMmSs(selectedTrack.length) : ""}
+              readOnly
+            />
           </label>
           <label htmlFor="audio-details">
             <span className="label">Details:</span>
-            <textarea id="audio-details" value={selectedAudio?.description} readOnly rows={5} />
+            <textarea id="audio-details" value={selectedTrack?.description || ""} readOnly rows={5} />
           </label>
         </div>
-        <AudioControls />
+        <AudioControls selectedTrack={selectedTrack} />
       </div>
     </>
   );
