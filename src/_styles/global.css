@@ -195,10 +195,12 @@ table {
 #sidenav-content,
 .header-header,
 .section-header,
-.section-content {
+.section-content,
+.dh-left {
   position: relative;
 }
-#snh-left::before {
+#snh-left::before,
+.dh-left::before {
   content: "";
   position: absolute;
   inset: var(--decorlinePad);
@@ -210,6 +212,7 @@ table {
   mask-composite: exclude;
   pointer-events: none;
 }
+
 #sidenav-content::before {
   content: "";
   position: absolute;
@@ -232,6 +235,7 @@ table {
   position: absolute;
   inset: var(--decorlinePad);
   border: 0.1rem solid var(--clrGoldInnerLineDark);
+  border-radius: 0.8rem;
   pointer-events: none;
 }
 .header-header::before,
