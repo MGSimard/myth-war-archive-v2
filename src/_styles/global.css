@@ -938,7 +938,37 @@ textarea[readonly] {
   max-width: 100%;
   resize: none;
 }
-
+/* AUDIO CONTROLS */
+#seek-track {
+  --trackHeight: 1rem;
+  position: relative;
+  width: 100%;
+  height: 1rem;
+  background: linear-gradient(to bottom, oklch(0.3677 0 0), oklch(0.8047 0 0), oklch(0.4748 0 0), oklch(0.6268 0 0));
+}
+#seek-progress {
+  position: absolute;
+  height: 100%;
+  background: linear-gradient(to bottom, #427367, #48a4a5, #81c7c7);
+}
+#seek-progress::after {
+  --thumbSize: calc(var(--trackHeight) * 1.4);
+  content: "";
+  position: absolute;
+  transform: translateY(-50%);
+  top: 50%;
+  right: calc(var(--thumbSize) / -2);
+  width: var(--thumbSize);
+  height: var(--thumbSize);
+  border: 0.1rem solid oklch(0.4335 0.2324 270.38);
+  background: linear-gradient(
+    to bottom,
+    oklch(0.9909 0.0029 264.54),
+    oklch(0.6358 0.1057 255.4),
+    oklch(0.6358 0.1057 255.4),
+    oklch(0.805 0.085 222.41)
+  );
+}
 /* MEDIA QUERIES */
 @media only screen and (max-width: 1200px) {
   .regions-grid {

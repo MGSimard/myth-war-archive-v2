@@ -13,7 +13,7 @@ export interface TrackTypes {
 const flatTracks = Object.values(tracks).flat();
 
 export function AudioPlayer() {
-  const [selectedTrack, setSelectedTrack] = useState<TrackTypes | null>(null);
+  const [currentTrack, setCurrentTrack] = useState<TrackTypes | null>(null);
 
   return (
     <>
@@ -31,8 +31,8 @@ export function AudioPlayer() {
                     <button
                       type="button"
                       aria-label={`Select ${track.file}`}
-                      onClick={() => setSelectedTrack(track)}
-                      className={selectedTrack?.file === track.file ? "selected" : ""}>
+                      onClick={() => setCurrentTrack(track)}
+                      className={currentTrack?.file === track.file ? "selected" : ""}>
                       {track.file}
                     </button>
                   </li>
@@ -46,23 +46,23 @@ export function AudioPlayer() {
         <div id="audio-info" aria-atomic="true" aria-live="polite" aria-label="Current Track Information">
           <label htmlFor="audio-file-name">
             <span className="label">File Name:</span>
-            <input id="audio-file-name" type="text" value={selectedTrack?.file || ""} readOnly />
+            <input id="audio-file-name" type="text" value={currentTrack?.file || ""} readOnly />
           </label>
           <label htmlFor="audio-length">
             <span className="label">File Length:</span>
             <input
               id="audio-length"
               type="text"
-              value={selectedTrack?.length ? formatMmSs(selectedTrack.length) : ""}
+              value={currentTrack?.length ? formatMmSs(currentTrack.length) : ""}
               readOnly
             />
           </label>
           <label htmlFor="audio-details">
             <span className="label">Details:</span>
-            <textarea id="audio-details" value={selectedTrack?.description || ""} readOnly rows={5} />
+            <textarea id="audio-details" value={currentTrack?.description || ""} readOnly rows={5} />
           </label>
         </div>
-        <AudioControls selectedTrack={selectedTrack} tracks={flatTracks} onTrackChange={setSelectedTrack} />
+        <AudioControls currentTrack={currentTrack} tracks={flatTracks} changeTrack={setCurrentTrack} />
       </div>
     </>
   );
