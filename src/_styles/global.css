@@ -8,7 +8,7 @@
   --contentFont: "system-ui", "sans-serif";
   --headingFont: "Hanyi Fanglijian", "Brush Script MT", "cursive", serif;
 
-  --clrDecorlinePad: 0.2rem 0.4rem;
+  --decorlinePad: 0.2rem 0.4rem;
 
   /* MYTH WAR COLORS*/
   --clrSiteText: oklch(1 0 0);
@@ -190,6 +190,59 @@ table {
   -webkit-text-stroke: 0.05rem oklch(0 0 1);
 }
 /**/
+/* DECOR LINE HELPER*/
+#snh-left,
+#sidenav-content,
+.header-header,
+.section-header,
+.section-content {
+  position: relative;
+}
+#snh-left::before {
+  content: "";
+  position: absolute;
+  inset: var(--decorlinePad);
+  border-radius: 0.2rem;
+  border: 0.1rem solid transparent;
+  background: linear-gradient(to right, var(--clrGoldHeadingInnerLineDark), var(--clrGoldHeadingInnerLineLight))
+    border-box;
+  mask: linear-gradient(#000 0 0) padding-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+}
+#sidenav-content::before {
+  content: "";
+  position: absolute;
+  inset: var(--decorlinePad);
+  border-radius: 0.8rem;
+  border: 0.1rem solid transparent;
+  background: linear-gradient(
+      to right,
+      var(--clrGoldInnerLineDark),
+      var(--clrGoldInnerLineLight),
+      var(--clrGoldInnerLineDark)
+    )
+    border-box;
+  mask: linear-gradient(#000 0 0) padding-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
+}
+.section-content::before {
+  content: "";
+  position: absolute;
+  inset: var(--decorlinePad);
+  border: 0.1rem solid var(--clrGoldInnerLineDark);
+  pointer-events: none;
+}
+.header-header::before,
+.section-header::before {
+  content: "";
+  position: absolute;
+  inset: var(--decorlinePad);
+  border-radius: 0.2rem;
+  border: 0.1rem solid var(--clrGoldHeadingInnerLineLight);
+  pointer-events: none;
+}
 /* SIDENAV */
 .trigger-fixed {
   position: fixed;
@@ -241,23 +294,10 @@ table {
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative;
   min-width: 0;
   padding: 0.2rem 1rem;
   overflow: hidden;
   border-right: 0.2rem ridge var(--clrGoldOuterLeftFrameHighlight);
-}
-#snh-left::before {
-  content: "";
-  position: absolute;
-  inset: var(--clrDecorlinePad);
-  border-radius: 0.2rem;
-  border: 0.1rem solid transparent;
-  background: linear-gradient(to right, var(--clrGoldHeadingInnerLineDark), var(--clrGoldHeadingInnerLineLight))
-    border-box;
-  mask: linear-gradient(#000 0 0) padding-box, linear-gradient(#000 0 0);
-  mask-composite: exclude;
-  pointer-events: none;
 }
 #sidenav-header button {
   flex-shrink: 0;
@@ -267,32 +307,14 @@ table {
 }
 #sidenav-content {
   flex-grow: 1;
-  --padding: 1rem;
   position: relative;
   display: flex;
   flex-direction: column;
   gap: 2.4rem;
-  padding: var(--sitePadding);
+  padding: 1rem;
   overflow-y: auto;
   scrollbar-width: thin;
   scrollbar-color: var(--clrGoldInnerLineLight) transparent;
-}
-#sidenav-content::before {
-  content: "";
-  position: absolute;
-  inset: var(--clrDecorlinePad);
-  border-radius: 0.8rem;
-  border: 0.1rem solid transparent;
-  background: linear-gradient(
-      to right,
-      var(--clrGoldInnerLineDark),
-      var(--clrGoldInnerLineLight),
-      var(--clrGoldInnerLineDark)
-    )
-    border-box;
-  mask: linear-gradient(#000 0 0) padding-box, linear-gradient(#000 0 0);
-  mask-composite: exclude;
-  pointer-events: none;
 }
 #sidenav-content h2 {
   font-size: 2rem;
@@ -392,14 +414,12 @@ main section {
 }
 .header-header,
 .section-header {
-  --padding: 0.2rem 0.4rem;
-  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: var(--padding);
+  padding: var(--decorlinePad);
   font-family: var(--headingFont);
   background: var(--gradientHeader);
   overflow: hidden;
@@ -417,15 +437,6 @@ main section {
 .header-header p {
   word-spacing: -0.2em;
 }
-.header-header::before,
-.section-header::before {
-  content: "";
-  position: absolute;
-  inset: var(--padding);
-  border-radius: 0.2rem;
-  border: 0.1rem solid var(--clrGoldHeadingInnerLineLight);
-  pointer-events: none;
-}
 .header-header .heading,
 .section-header .heading {
   font-size: 3.2rem;
@@ -434,16 +445,7 @@ main section {
   border-bottom: 0.2rem ridge var(--clrGoldOuterLeftFrameHighlight);
 }
 .section-content {
-  position: relative;
   padding: 1.6rem;
-}
-.section-content::before {
-  content: "";
-  position: absolute;
-  inset: var(--clrDecorlinePad);
-  border-radius: 0.8rem;
-  border: 0.1rem solid var(--clrGoldInnerLineDark);
-  pointer-events: none;
 }
 .section-content h3 {
   font-size: 2.4rem;
@@ -619,18 +621,6 @@ dialog {
   overflow: hidden;
   border-right: 0.2rem ridge var(--clrGoldOuterLeftFrameHighlight);
 }
-.dh-left::before {
-  content: "";
-  position: absolute;
-  inset: var(--clrDecorlinePad);
-  border-radius: 0.2rem;
-  border: 0.1rem solid transparent;
-  background: linear-gradient(to right, var(--clrGoldHeadingInnerLineDark), var(--clrGoldHeadingInnerLineLight))
-    border-box;
-  mask: linear-gradient(#000 0 0) padding-box, linear-gradient(#000 0 0);
-  mask-composite: exclude;
-  pointer-events: none;
-}
 .dialog-header button {
   flex-shrink: 0;
   width: 3rem;
@@ -643,11 +633,10 @@ dialog::backdrop {
 .dialog-content {
   flex-grow: 1;
   --padding: 1rem;
-  position: relative;
   display: flex;
   flex-direction: column;
   gap: 2.4rem;
-  padding: var(--sitePadding);
+  padding: 1rem;
   overflow-y: auto;
   scrollbar-width: thin;
   scrollbar-color: var(--clrGoldInnerLineLight) transparent;
@@ -655,27 +644,6 @@ dialog::backdrop {
 .dialog-content .papyrus {
   width: 100%;
   height: 100%;
-  /* 
-  TODO: Maybe
-  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url("/assets/papyrus.webp");
-  background-blend-mode: multiply; */
-}
-.dialog-content::before {
-  content: "";
-  position: absolute;
-  inset: var(--clrDecorlinePad);
-  border-radius: 0.8rem;
-  border: 0.1rem solid transparent;
-  background: linear-gradient(
-      to right,
-      var(--clrGoldInnerLineDark),
-      var(--clrGoldInnerLineLight),
-      var(--clrGoldInnerLineDark)
-    )
-    border-box;
-  mask: linear-gradient(#000 0 0) padding-box, linear-gradient(#000 0 0);
-  mask-composite: exclude;
-  pointer-events: none;
 }
 dialog .papyrus {
   position: relative;
@@ -846,10 +814,8 @@ dialog .rzpp-controls button {
   display: block;
 }
 /* AUDIO */
-* {
-  outline: 0.1rem solid red;
-}
 #audio {
+  flex-grow: 1;
 }
 #audio .section-content {
   display: grid;
