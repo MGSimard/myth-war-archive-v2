@@ -11,7 +11,7 @@ export const Route = createFileRoute("/assets/maps")({
 function PageAssetsMaps() {
   return (
     <>
-      <Header title="Map Assets" subtitle="An Archive of Map Assets from Myth War Online & Myth War II" />
+      <Header title="Map Assets" />
       <Section title="Maps" id="maps">
         <table>
           <thead>
