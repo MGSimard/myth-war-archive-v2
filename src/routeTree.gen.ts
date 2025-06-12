@@ -16,6 +16,8 @@ import { Route as WorldIndexImport } from './routes/world/index'
 import { Route as LoreIndexImport } from './routes/lore/index'
 import { Route as GameHistoryIndexImport } from './routes/game-history/index'
 import { Route as AssetsMapsImport } from './routes/assets/maps'
+import { Route as AssetsImagesImport } from './routes/assets/images'
+import { Route as AssetsAudioImport } from './routes/assets/audio'
 
 // Create/Update Routes
 
@@ -49,6 +51,18 @@ const AssetsMapsRoute = AssetsMapsImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
+const AssetsImagesRoute = AssetsImagesImport.update({
+  id: '/assets/images',
+  path: '/assets/images',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const AssetsAudioRoute = AssetsAudioImport.update({
+  id: '/assets/audio',
+  path: '/assets/audio',
+  getParentRoute: () => rootRoute,
+} as any)
+
 // Populate the FileRoutesByPath interface
 
 declare module '@tanstack/react-router' {
@@ -58,6 +72,20 @@ declare module '@tanstack/react-router' {
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexImport
+      parentRoute: typeof rootRoute
+    }
+    '/assets/audio': {
+      id: '/assets/audio'
+      path: '/assets/audio'
+      fullPath: '/assets/audio'
+      preLoaderRoute: typeof AssetsAudioImport
+      parentRoute: typeof rootRoute
+    }
+    '/assets/images': {
+      id: '/assets/images'
+      path: '/assets/images'
+      fullPath: '/assets/images'
+      preLoaderRoute: typeof AssetsImagesImport
       parentRoute: typeof rootRoute
     }
     '/assets/maps': {
@@ -95,6 +123,8 @@ declare module '@tanstack/react-router' {
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/assets/audio': typeof AssetsAudioRoute
+  '/assets/images': typeof AssetsImagesRoute
   '/assets/maps': typeof AssetsMapsRoute
   '/game-history': typeof GameHistoryIndexRoute
   '/lore': typeof LoreIndexRoute
@@ -103,6 +133,8 @@ export interface FileRoutesByFullPath {
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/assets/audio': typeof AssetsAudioRoute
+  '/assets/images': typeof AssetsImagesRoute
   '/assets/maps': typeof AssetsMapsRoute
   '/game-history': typeof GameHistoryIndexRoute
   '/lore': typeof LoreIndexRoute
@@ -112,6 +144,8 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
+  '/assets/audio': typeof AssetsAudioRoute
+  '/assets/images': typeof AssetsImagesRoute
   '/assets/maps': typeof AssetsMapsRoute
   '/game-history/': typeof GameHistoryIndexRoute
   '/lore/': typeof LoreIndexRoute
@@ -120,12 +154,28 @@ export interface FileRoutesById {
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/assets/maps' | '/game-history' | '/lore' | '/world'
+  fullPaths:
+    | '/'
+    | '/assets/audio'
+    | '/assets/images'
+    | '/assets/maps'
+    | '/game-history'
+    | '/lore'
+    | '/world'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/assets/maps' | '/game-history' | '/lore' | '/world'
+  to:
+    | '/'
+    | '/assets/audio'
+    | '/assets/images'
+    | '/assets/maps'
+    | '/game-history'
+    | '/lore'
+    | '/world'
   id:
     | '__root__'
     | '/'
+    | '/assets/audio'
+    | '/assets/images'
     | '/assets/maps'
     | '/game-history/'
     | '/lore/'
@@ -135,6 +185,8 @@ export interface FileRouteTypes {
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AssetsAudioRoute: typeof AssetsAudioRoute
+  AssetsImagesRoute: typeof AssetsImagesRoute
   AssetsMapsRoute: typeof AssetsMapsRoute
   GameHistoryIndexRoute: typeof GameHistoryIndexRoute
   LoreIndexRoute: typeof LoreIndexRoute
@@ -143,6 +195,8 @@ export interface RootRouteChildren {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AssetsAudioRoute: AssetsAudioRoute,
+  AssetsImagesRoute: AssetsImagesRoute,
   AssetsMapsRoute: AssetsMapsRoute,
   GameHistoryIndexRoute: GameHistoryIndexRoute,
   LoreIndexRoute: LoreIndexRoute,
@@ -160,6 +214,8 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/",
+        "/assets/audio",
+        "/assets/images",
         "/assets/maps",
         "/game-history/",
         "/lore/",
@@ -168,6 +224,12 @@ export const routeTree = rootRoute
     },
     "/": {
       "filePath": "index.tsx"
+    },
+    "/assets/audio": {
+      "filePath": "assets/audio.tsx"
+    },
+    "/assets/images": {
+      "filePath": "assets/images.tsx"
     },
     "/assets/maps": {
       "filePath": "assets/maps.tsx"

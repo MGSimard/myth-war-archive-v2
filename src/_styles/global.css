@@ -408,8 +408,11 @@ main section {
   padding: 0.8rem;
 }
 .header-header h1 {
-  line-height: 0.8;
+  line-height: 1;
+}
+.header-header h1:not(:last-child) {
   margin-bottom: 0.4rem;
+  line-height: 0.8;
 }
 .header-header p {
   word-spacing: -0.2em;
