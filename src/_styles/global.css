@@ -212,7 +212,6 @@ table {
   mask-composite: exclude;
   pointer-events: none;
 }
-
 #sidenav-content::before {
   content: "";
   position: absolute;
