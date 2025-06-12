@@ -850,7 +850,6 @@ dialog .rzpp-controls button {
   outline: 0.1rem solid red;
 }
 #audio {
-  height: 20rem;
 }
 #audio .section-content {
   display: grid;
