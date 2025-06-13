@@ -112,6 +112,9 @@ h6,
 .heading {
   word-spacing: -0.2em;
 }
+h4 {
+  font-size: 1.8rem;
+}
 img,
 svg {
   display: block;
@@ -153,8 +156,13 @@ a {
   color: inherit;
   text-decoration: none;
 }
-ul {
+ul,
+ol {
   list-style-position: inside;
+}
+ul > ul,
+ol > ol {
+  margin-inline-start: 1.6rem;
 }
 hr {
   height: 0.2rem;
@@ -543,7 +551,6 @@ main section {
   transform: translateX(-50%) rotate(45deg);
 }
 .timeline-item-content h4 {
-  font-size: 1.8rem;
   color: var(--clrInputLabel);
   -webkit-text-stroke: 0.05rem oklch(0 0 1);
 }
