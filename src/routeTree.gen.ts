@@ -13,6 +13,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as WorldIndexRouteImport } from './routes/world/index'
 import { Route as LoreIndexRouteImport } from './routes/lore/index'
 import { Route as GameHistoryIndexRouteImport } from './routes/game-history/index'
+import { Route as GuidesRebirthRouteImport } from './routes/guides/rebirth'
 import { Route as GuidesLevelingRouteImport } from './routes/guides/leveling'
 import { Route as AssetsMapsRouteImport } from './routes/assets/maps'
 import { Route as AssetsImagesRouteImport } from './routes/assets/images'
@@ -36,6 +37,11 @@ const LoreIndexRoute = LoreIndexRouteImport.update({
 const GameHistoryIndexRoute = GameHistoryIndexRouteImport.update({
   id: '/game-history/',
   path: '/game-history/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const GuidesRebirthRoute = GuidesRebirthRouteImport.update({
+  id: '/guides/rebirth',
+  path: '/guides/rebirth',
   getParentRoute: () => rootRouteImport,
 } as any)
 const GuidesLevelingRoute = GuidesLevelingRouteImport.update({
@@ -65,6 +71,7 @@ export interface FileRoutesByFullPath {
   '/assets/images': typeof AssetsImagesRoute
   '/assets/maps': typeof AssetsMapsRoute
   '/guides/leveling': typeof GuidesLevelingRoute
+  '/guides/rebirth': typeof GuidesRebirthRoute
   '/game-history': typeof GameHistoryIndexRoute
   '/lore': typeof LoreIndexRoute
   '/world': typeof WorldIndexRoute
@@ -75,6 +82,7 @@ export interface FileRoutesByTo {
   '/assets/images': typeof AssetsImagesRoute
   '/assets/maps': typeof AssetsMapsRoute
   '/guides/leveling': typeof GuidesLevelingRoute
+  '/guides/rebirth': typeof GuidesRebirthRoute
   '/game-history': typeof GameHistoryIndexRoute
   '/lore': typeof LoreIndexRoute
   '/world': typeof WorldIndexRoute
@@ -86,6 +94,7 @@ export interface FileRoutesById {
   '/assets/images': typeof AssetsImagesRoute
   '/assets/maps': typeof AssetsMapsRoute
   '/guides/leveling': typeof GuidesLevelingRoute
+  '/guides/rebirth': typeof GuidesRebirthRoute
   '/game-history/': typeof GameHistoryIndexRoute
   '/lore/': typeof LoreIndexRoute
   '/world/': typeof WorldIndexRoute
@@ -98,6 +107,7 @@ export interface FileRouteTypes {
     | '/assets/images'
     | '/assets/maps'
     | '/guides/leveling'
+    | '/guides/rebirth'
     | '/game-history'
     | '/lore'
     | '/world'
@@ -108,6 +118,7 @@ export interface FileRouteTypes {
     | '/assets/images'
     | '/assets/maps'
     | '/guides/leveling'
+    | '/guides/rebirth'
     | '/game-history'
     | '/lore'
     | '/world'
@@ -118,6 +129,7 @@ export interface FileRouteTypes {
     | '/assets/images'
     | '/assets/maps'
     | '/guides/leveling'
+    | '/guides/rebirth'
     | '/game-history/'
     | '/lore/'
     | '/world/'
@@ -129,6 +141,7 @@ export interface RootRouteChildren {
   AssetsImagesRoute: typeof AssetsImagesRoute
   AssetsMapsRoute: typeof AssetsMapsRoute
   GuidesLevelingRoute: typeof GuidesLevelingRoute
+  GuidesRebirthRoute: typeof GuidesRebirthRoute
   GameHistoryIndexRoute: typeof GameHistoryIndexRoute
   LoreIndexRoute: typeof LoreIndexRoute
   WorldIndexRoute: typeof WorldIndexRoute
@@ -162,6 +175,13 @@ declare module '@tanstack/react-router' {
       path: '/game-history'
       fullPath: '/game-history'
       preLoaderRoute: typeof GameHistoryIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/guides/rebirth': {
+      id: '/guides/rebirth'
+      path: '/guides/rebirth'
+      fullPath: '/guides/rebirth'
+      preLoaderRoute: typeof GuidesRebirthRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/guides/leveling': {
@@ -201,6 +221,7 @@ const rootRouteChildren: RootRouteChildren = {
   AssetsImagesRoute: AssetsImagesRoute,
   AssetsMapsRoute: AssetsMapsRoute,
   GuidesLevelingRoute: GuidesLevelingRoute,
+  GuidesRebirthRoute: GuidesRebirthRoute,
   GameHistoryIndexRoute: GameHistoryIndexRoute,
   LoreIndexRoute: LoreIndexRoute,
   WorldIndexRoute: WorldIndexRoute,

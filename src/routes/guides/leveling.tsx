@@ -6,10 +6,10 @@ import sealCoords from "@/_data/seal-windseeker.json";
 import { Fragment } from "react";
 
 export const Route = createFileRoute("/guides/leveling")({
-  component: PageLore,
+  component: PageGuidesLeveling,
 });
 
-function PageLore() {
+function PageGuidesLeveling() {
   return (
     <>
       <Header title="Leveling" subtitle="Your Guide to Power and Progression" />
