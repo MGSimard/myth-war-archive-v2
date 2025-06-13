@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { TrackTypes } from "@/_components/AudioPlayer";
+import { Pause, Play, SkipBack, SkipForward, Square, Volume, Volume1, Volume2, VolumeOff, VolumeX } from "lucide-react";
 
 const toLogarithmicVolume = (value: number) => {
   const logarithmicVolume = (Math.pow(10, value / 100) - 1) / 9;
@@ -234,86 +235,79 @@ export default function AudioControls({ currentTrack, tracks, changeTrack }: Aud
   const progressPercentage = duration > 0 ? (currentTime / duration) * 100 : 0;
 
   return (
-    <div className="audio-controls">
+    <div id="audio-controls">
       <audio ref={audioPlayerRef} src={currentTrack?.link || undefined} preload="metadata" />
 
-      <div className="time-display">
+      <div id="time-display">
         {formatTime(currentTime)} / {isLoading ? "--:--" : formatTime(duration)}
       </div>
 
-      <div className="controls-section">
-        <div
-          ref={seekerRef}
-          className="seek-wrapper"
-          aria-label="Seek"
-          onPointerDown={handleSeekStart}
-          onPointerMove={handleSeeking}
-          onPointerUp={handleSeekEnd}
-          onPointerCancel={handleSeekEnd}>
-          <div id="seek-track">
-            <div id="seek-progress" style={{ width: `${progressPercentage}%` }} />
-          </div>
+      <div
+        ref={seekerRef}
+        id="seek-wrapper"
+        aria-label="Seek"
+        onPointerDown={handleSeekStart}
+        onPointerMove={handleSeeking}
+        onPointerUp={handleSeekEnd}
+        onPointerCancel={handleSeekEnd}>
+        <div id="seek-track">
+          <div id="seek-progress" style={{ width: `${progressPercentage}%` }} />
         </div>
+      </div>
 
+      <div id="controls-bottom">
         <button type="button" onClick={handlePreviousTrack} disabled={!currentTrack} aria-label="Previous track">
-          ⏮️
+          <SkipBack fill="currentColor" aria-hidden="true" />
         </button>
         <button
           type="button"
           onClick={handlePlayPause}
           disabled={!currentTrack || isLoading}
           aria-label={isPlaying ? "Pause" : "Play"}>
-          {isPlaying ? "⏸️" : "▶️"}
+          {isPlaying ? (
+            <Pause fill="currentColor" aria-hidden="true" />
+          ) : (
+            <Play fill="currentColor" aria-hidden="true" />
+          )}
         </button>
         <button type="button" disabled={!isPlaying} onClick={handleStop} aria-label="Stop">
-          ⏹️
+          <Square fill="currentColor" aria-hidden="true" />
         </button>
         <button type="button" onClick={handleNextTrack} disabled={!currentTrack} aria-label="Next track">
-          ⏭️
+          <SkipForward fill="currentColor" aria-hidden="true" />
         </button>
-        <div id="volume-control">
-          <span>🔊</span>
+        <div id="volume-control" className={!currentTrack ? "disabled" : undefined}>
+          {volume === 0 ? (
+            <VolumeOff aria-hidden="true" />
+          ) : volume <= 35 ? (
+            <Volume fill="currentColor" aria-hidden="true" />
+          ) : volume <= 70 ? (
+            <Volume1 fill="currentColor" aria-hidden="true" />
+          ) : (
+            <Volume2 fill="currentColor" aria-hidden="true" />
+          )}
           <div
             ref={volumeRef}
-            className="volume-wrapper"
+            id="volume-wrapper"
             aria-label="Volume"
             onPointerDown={handleVolumeStart}
             onPointerMove={handleVolumeMove}
             onPointerUp={handleVolumeEnd}
-            onPointerCancel={handleVolumeEnd}
-            style={{
-              position: "relative",
-              width: "100px",
-              height: "20px",
-              cursor: "pointer",
-              display: "flex",
-              alignItems: "center",
-            }}>
-            <div
-              className="volume-track"
-              style={{
-                width: "100%",
-                height: "4px",
-                background: "#ddd",
-                borderRadius: "2px",
-                position: "relative",
-              }}>
-              <div
-                className="volume-thumb"
-                style={{
-                  left: `${volume}%`,
-                  position: "absolute",
-                  top: "50%",
-                  width: "12px",
-                  height: "12px",
-                  background: "#007bff",
-                  borderRadius: "50%",
-                  transform: "translate(-50%, -50%)",
-                }}
-              />
+            onPointerCancel={handleVolumeEnd}>
+            <div id="volume-track">
+              <div id="volume-thumb" style={{ left: `${volume}%` }} />
             </div>
           </div>
         </div>
+        {currentTrack ? (
+          <a id="audio-download" href={currentTrack.link} className="heading" target="_blank" rel="noopener noreferrer">
+            Download
+          </a>
+        ) : (
+          <div id="audio-download" className="heading disabled no-select" aria-label="Disabled">
+            Download
+          </div>
+        )}
       </div>
     </div>
   );
