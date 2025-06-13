@@ -999,6 +999,7 @@ textarea[readonly] {
 #controls-bottom {
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 1.6rem;
   flex-wrap: wrap;
 }
@@ -1019,13 +1020,13 @@ textarea[readonly] {
   }
 }
 #volume-control {
+  flex-grow: 2;
   display: flex;
   align-items: center;
   gap: 0.8rem;
   height: 3rem;
   max-width: 20rem;
   min-width: 10rem;
-  width: 100%;
   padding: 0.4rem 1.2rem 0.4rem 0.4rem;
   color: var(--clrGoldInnerLineLight);
   border: 0.2rem ridge var(--clrGoldOuterLeftFrameHighlight);
