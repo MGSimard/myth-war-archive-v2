@@ -1039,7 +1039,13 @@ textarea[readonly] {
   flex-shrink: 0;
 }
 #volume-wrapper {
+  position: relative;
   flex-grow: 1;
+  &::before {
+    content: "";
+    position: absolute;
+    inset: -1rem 0;
+  }
 }
 #volume-track {
   position: relative;
