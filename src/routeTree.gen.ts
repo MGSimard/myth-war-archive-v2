@@ -8,132 +8,56 @@
 // You should NOT make any changes in this file as it will be overwritten.
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
-// Import Routes
+import { Route as rootRouteImport } from './routes/__root'
+import { Route as IndexRouteImport } from './routes/index'
+import { Route as WorldIndexRouteImport } from './routes/world/index'
+import { Route as LoreIndexRouteImport } from './routes/lore/index'
+import { Route as GameHistoryIndexRouteImport } from './routes/game-history/index'
+import { Route as GuidesLevelingRouteImport } from './routes/guides/leveling'
+import { Route as AssetsMapsRouteImport } from './routes/assets/maps'
+import { Route as AssetsImagesRouteImport } from './routes/assets/images'
+import { Route as AssetsAudioRouteImport } from './routes/assets/audio'
 
-import { Route as rootRoute } from './routes/__root'
-import { Route as IndexImport } from './routes/index'
-import { Route as WorldIndexImport } from './routes/world/index'
-import { Route as LoreIndexImport } from './routes/lore/index'
-import { Route as GameHistoryIndexImport } from './routes/game-history/index'
-import { Route as GuidesLevelingImport } from './routes/guides/leveling'
-import { Route as AssetsMapsImport } from './routes/assets/maps'
-import { Route as AssetsImagesImport } from './routes/assets/images'
-import { Route as AssetsAudioImport } from './routes/assets/audio'
-
-// Create/Update Routes
-
-const IndexRoute = IndexImport.update({
+const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => rootRouteImport,
 } as any)
-
-const WorldIndexRoute = WorldIndexImport.update({
+const WorldIndexRoute = WorldIndexRouteImport.update({
   id: '/world/',
   path: '/world/',
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => rootRouteImport,
 } as any)
-
-const LoreIndexRoute = LoreIndexImport.update({
+const LoreIndexRoute = LoreIndexRouteImport.update({
   id: '/lore/',
   path: '/lore/',
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => rootRouteImport,
 } as any)
-
-const GameHistoryIndexRoute = GameHistoryIndexImport.update({
+const GameHistoryIndexRoute = GameHistoryIndexRouteImport.update({
   id: '/game-history/',
   path: '/game-history/',
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => rootRouteImport,
 } as any)
-
-const GuidesLevelingRoute = GuidesLevelingImport.update({
+const GuidesLevelingRoute = GuidesLevelingRouteImport.update({
   id: '/guides/leveling',
   path: '/guides/leveling',
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => rootRouteImport,
 } as any)
-
-const AssetsMapsRoute = AssetsMapsImport.update({
+const AssetsMapsRoute = AssetsMapsRouteImport.update({
   id: '/assets/maps',
   path: '/assets/maps',
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => rootRouteImport,
 } as any)
-
-const AssetsImagesRoute = AssetsImagesImport.update({
+const AssetsImagesRoute = AssetsImagesRouteImport.update({
   id: '/assets/images',
   path: '/assets/images',
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => rootRouteImport,
 } as any)
-
-const AssetsAudioRoute = AssetsAudioImport.update({
+const AssetsAudioRoute = AssetsAudioRouteImport.update({
   id: '/assets/audio',
   path: '/assets/audio',
-  getParentRoute: () => rootRoute,
+  getParentRoute: () => rootRouteImport,
 } as any)
-
-// Populate the FileRoutesByPath interface
-
-declare module '@tanstack/react-router' {
-  interface FileRoutesByPath {
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexImport
-      parentRoute: typeof rootRoute
-    }
-    '/assets/audio': {
-      id: '/assets/audio'
-      path: '/assets/audio'
-      fullPath: '/assets/audio'
-      preLoaderRoute: typeof AssetsAudioImport
-      parentRoute: typeof rootRoute
-    }
-    '/assets/images': {
-      id: '/assets/images'
-      path: '/assets/images'
-      fullPath: '/assets/images'
-      preLoaderRoute: typeof AssetsImagesImport
-      parentRoute: typeof rootRoute
-    }
-    '/assets/maps': {
-      id: '/assets/maps'
-      path: '/assets/maps'
-      fullPath: '/assets/maps'
-      preLoaderRoute: typeof AssetsMapsImport
-      parentRoute: typeof rootRoute
-    }
-    '/guides/leveling': {
-      id: '/guides/leveling'
-      path: '/guides/leveling'
-      fullPath: '/guides/leveling'
-      preLoaderRoute: typeof GuidesLevelingImport
-      parentRoute: typeof rootRoute
-    }
-    '/game-history/': {
-      id: '/game-history/'
-      path: '/game-history'
-      fullPath: '/game-history'
-      preLoaderRoute: typeof GameHistoryIndexImport
-      parentRoute: typeof rootRoute
-    }
-    '/lore/': {
-      id: '/lore/'
-      path: '/lore'
-      fullPath: '/lore'
-      preLoaderRoute: typeof LoreIndexImport
-      parentRoute: typeof rootRoute
-    }
-    '/world/': {
-      id: '/world/'
-      path: '/world'
-      fullPath: '/world'
-      preLoaderRoute: typeof WorldIndexImport
-      parentRoute: typeof rootRoute
-    }
-  }
-}
-
-// Create and export the route tree
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -145,7 +69,6 @@ export interface FileRoutesByFullPath {
   '/lore': typeof LoreIndexRoute
   '/world': typeof WorldIndexRoute
 }
-
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/assets/audio': typeof AssetsAudioRoute
@@ -156,9 +79,8 @@ export interface FileRoutesByTo {
   '/lore': typeof LoreIndexRoute
   '/world': typeof WorldIndexRoute
 }
-
 export interface FileRoutesById {
-  __root__: typeof rootRoute
+  __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/assets/audio': typeof AssetsAudioRoute
   '/assets/images': typeof AssetsImagesRoute
@@ -168,7 +90,6 @@ export interface FileRoutesById {
   '/lore/': typeof LoreIndexRoute
   '/world/': typeof WorldIndexRoute
 }
-
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
@@ -202,7 +123,6 @@ export interface FileRouteTypes {
     | '/world/'
   fileRoutesById: FileRoutesById
 }
-
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AssetsAudioRoute: typeof AssetsAudioRoute
@@ -212,6 +132,67 @@ export interface RootRouteChildren {
   GameHistoryIndexRoute: typeof GameHistoryIndexRoute
   LoreIndexRoute: typeof LoreIndexRoute
   WorldIndexRoute: typeof WorldIndexRoute
+}
+
+declare module '@tanstack/react-router' {
+  interface FileRoutesByPath {
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/world/': {
+      id: '/world/'
+      path: '/world'
+      fullPath: '/world'
+      preLoaderRoute: typeof WorldIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/lore/': {
+      id: '/lore/'
+      path: '/lore'
+      fullPath: '/lore'
+      preLoaderRoute: typeof LoreIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/game-history/': {
+      id: '/game-history/'
+      path: '/game-history'
+      fullPath: '/game-history'
+      preLoaderRoute: typeof GameHistoryIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/guides/leveling': {
+      id: '/guides/leveling'
+      path: '/guides/leveling'
+      fullPath: '/guides/leveling'
+      preLoaderRoute: typeof GuidesLevelingRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/assets/maps': {
+      id: '/assets/maps'
+      path: '/assets/maps'
+      fullPath: '/assets/maps'
+      preLoaderRoute: typeof AssetsMapsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/assets/images': {
+      id: '/assets/images'
+      path: '/assets/images'
+      fullPath: '/assets/images'
+      preLoaderRoute: typeof AssetsImagesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/assets/audio': {
+      id: '/assets/audio'
+      path: '/assets/audio'
+      fullPath: '/assets/audio'
+      preLoaderRoute: typeof AssetsAudioRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+  }
 }
 
 const rootRouteChildren: RootRouteChildren = {
@@ -224,51 +205,6 @@ const rootRouteChildren: RootRouteChildren = {
   LoreIndexRoute: LoreIndexRoute,
   WorldIndexRoute: WorldIndexRoute,
 }
-
-export const routeTree = rootRoute
+export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-/* ROUTE_MANIFEST_START
-{
-  "routes": {
-    "__root__": {
-      "filePath": "__root.tsx",
-      "children": [
-        "/",
-        "/assets/audio",
-        "/assets/images",
-        "/assets/maps",
-        "/guides/leveling",
-        "/game-history/",
-        "/lore/",
-        "/world/"
-      ]
-    },
-    "/": {
-      "filePath": "index.tsx"
-    },
-    "/assets/audio": {
-      "filePath": "assets/audio.tsx"
-    },
-    "/assets/images": {
-      "filePath": "assets/images.tsx"
-    },
-    "/assets/maps": {
-      "filePath": "assets/maps.tsx"
-    },
-    "/guides/leveling": {
-      "filePath": "guides/leveling.tsx"
-    },
-    "/game-history/": {
-      "filePath": "game-history/index.tsx"
-    },
-    "/lore/": {
-      "filePath": "lore/index.tsx"
-    },
-    "/world/": {
-      "filePath": "world/index.tsx"
-    }
-  }
-}
-ROUTE_MANIFEST_END */

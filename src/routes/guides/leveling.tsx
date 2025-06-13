@@ -183,56 +183,99 @@ function PageLore() {
               rewards and registering one scroll for each of the NPC locations at the bottom of your inventory. After
               using a scroll, you can drag an empty scroll into that slot and re-register the location for later.
             </p>
-            <div>
-              <table>
+            <div className="grid-2">
+              <table className="papyrus-table">
                 <thead>
                   <tr>
-                    <th>Table 1</th>
+                    <th>NPC</th>
+                    <th>Location</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td>t1</td>
+                    <td>Adventurer</td>
+                    <td>Revive Arena (?, ?)</td>
+                  </tr>
+                  <tr>
+                    <td>Mine Overseer</td>
+                    <td>Bone Desert (?, ?)</td>
+                  </tr>
+                  <tr>
+                    <td>Peddler</td>
+                    <td>Southern Rivage (?, ?)</td>
+                  </tr>
+                  <tr>
+                    <td>Prophet</td>
+                    <td>Desert City (128, 74)</td>
+                  </tr>
+                  <tr>
+                    <td>Teacher</td>
+                    <td>Cursed Abyss (?, ?)</td>
                   </tr>
                 </tbody>
               </table>
-              <table>
+              <table className="papyrus-table">
                 <thead>
                   <tr>
-                    <th>Table 2</th>
+                    <th>Item</th>
+                    <th>Price</th>
+                    <th>Location</th>
                   </tr>
                 </thead>
                 <tbody>
                   <tr>
-                    <td>t2</td>
+                    <td>Teleport Scroll (Blank)</td>
+                    <td>800</td>
+                    <td>Any</td>
+                  </tr>
+                  <tr>
+                    <td>Teleport Scroll (Blue)</td>
+                    <td>4000</td>
+                    <td>Desert City & Demon Square</td>
+                  </tr>
+                  <tr>
+                    <td>Teleport Scroll (Red)</td>
+                    <td>4000</td>
+                    <td>Desert City & Demon Square</td>
+                  </tr>
+                  <tr>
+                    <td>Carving Knife</td>
+                    <td>100</td>
+                    <td>Woodlingor & Demon Square</td>
                   </tr>
                 </tbody>
               </table>
-              <details>
-                <summary>Wednesday Event Questions & Answers</summary>
-                <p>
-                  <em>Credit https://mythwar2.freeforums.net/thread/27/wednesday-event-answers-originally-venky</em>
-                </p>
-                {/* TODO: Style a table setup specifically for the papyrus section */}
-                <p>TODO TABLE STYLES FOR PAPYRUS SECTIONS</p>
-                <table>
-                  <thead>
-                    <tr>
-                      <th>Question</th>
-                      <th>Answer</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {qna.map((item) => (
-                      <tr key={item.q}>
-                        <td>{item.q}</td>
-                        <td>{item.a}</td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </details>
             </div>
+            <details>
+              <summary className="no-select">Wednesday Event Questions & Answers</summary>
+              <p>
+                <em>
+                  Credit:{" "}
+                  <a
+                    href="https://mythwar2.freeforums.net/thread/27/wednesday-event-answers-originally-venky"
+                    target="_blank"
+                    rel="noopener noreferrer">
+                    https://mythwar2.freeforums.net/thread/27/wednesday-event-answers-originally-venky
+                  </a>
+                </em>
+              </p>
+              <table className="papyrus-table">
+                <thead>
+                  <tr>
+                    <th>Question</th>
+                    <th>Answer</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {qna.map((item) => (
+                    <tr key={item.q}>
+                      <td>{item.q}</td>
+                      <td>{item.a}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </details>
           </div>
         </div>
       </Section>
