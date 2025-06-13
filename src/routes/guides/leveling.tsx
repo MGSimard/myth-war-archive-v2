@@ -2,6 +2,8 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Header } from "@/_components/Header";
 import { Section } from "@/_components/Section";
 import qna from "@/_data/wednesday-event.json";
+import sealCoords from "@/_data/seal-windseeker.json";
+import { Fragment } from "react";
 
 export const Route = createFileRoute("/guides/leveling")({
   component: PageLore,
@@ -283,6 +285,16 @@ function PageLore() {
         <div className="papyrus">
           <div className="papyrus-section">
             <h3>Woodlingor Defense</h3>
+            <p>Once you are level 50 you can now run through Woodlingor Defense with a level 50+ party.</p>
+            <ol>
+              <li>Talk to Defender in Woodlingor (277, 311), take note of the three locations he gives you.</li>
+              <li>Visit the three given stores and interact with the NPCs.</li>
+              <li>Eventually one will trigger a fight - defeat them and return to Defender (277, 311).</li>
+            </ol>
+            <p>
+              Each round gives increasing XP, up to round 10. Unlike Howling Beast however, there is no way to
+              &quot;stall&quot; a round, so you&apos;ll start back at round 1 afterwards.
+            </p>
           </div>
         </div>
       </Section>
@@ -290,6 +302,21 @@ function PageLore() {
         <div className="papyrus">
           <div className="papyrus-section">
             <h3>Blython Defense</h3>
+            <p>
+              At level 60, you can move from Woodlingor to Blython Defense. It's virtually identical except with
+              increased XP rewards.
+            </p>
+            <ol>
+              <li>Talk to Defender in Blython (14, 80)</li>
+              <li>Visit the listed locations and interact with the NPCs</li>
+              <li>Eventually one will trigger a fight, defeat them and return to Defender (14, 80)</li>
+            </ol>
+            <p>
+              <b>
+                Note: when Defender says "Armory", the actual location is Weaponry. 2x Armory means both NPCs inside are
+                possible targets. Additionally, "Accessories Shop" means Stuff Shop.
+              </b>
+            </p>
           </div>
         </div>
       </Section>
@@ -304,16 +331,64 @@ function PageLore() {
         <div className="papyrus">
           <div className="papyrus-section">
             <h3>Seal</h3>
+            <p>
+              At level 70 you unlock a new repeatable, 10 round quest with increasing XP rewards. It is advise that you
+              use both the Windseeker consumable for teleportation, and Devil&apos;s Tears to avoid random monster
+              aggro.{" "}
+              <b>
+                At the bottom of this section is a Windseeker teleport coordinates cheatsheet to reach your target
+                quickly.
+              </b>
+            </p>
+            <ol>
+              <li>Buy a Sealed scroll from Endelroth in Blython Bar</li>
+              <li>Right click the scroll to receive coordinates, travel to those coordinates</li>
+              <li>Upon arrival, right click the scroll again to initiate the fight</li>
+              <li>When victorious, return to Endelroth in Blython Bar to receive a new target</li>
+            </ol>
+            <details>
+              <summary className="no-select">Windseeker Teleport Coordinates</summary>
+              <p>
+                <em>"H" stands for "Hurricane", "S" stands for "Spot".</em>
+              </p>
+              <table id="seal-table" className="papyrus-table table-rowspan">
+                <thead>
+                  <tr>
+                    <th>Zone</th>
+                    <th>Coords</th>
+                    <th>Seeker</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {sealCoords.map((entry) => (
+                    <Fragment key={entry.zone}>
+                      <tr>
+                        <th rowSpan={entry.coords.length}>{entry.zone}</th>
+                        <td>{entry.coords[0]?.coord}</td>
+                        <td>{entry.coords[0]?.seeker}</td>
+                      </tr>
+                      {entry.coords.slice(1).map((coord) => (
+                        <tr key={`${coord.coord}-${coord.seeker}`}>
+                          <td>{coord.coord}</td>
+                          <td>{coord.seeker}</td>
+                        </tr>
+                      ))}
+                    </Fragment>
+                  ))}
+                </tbody>
+              </table>
+            </details>
           </div>
         </div>
       </Section>
       <Section title="Level 90+">
         <div className="papyrus">
+          <h3>Papa Drow & Worn Messenger</h3>
           <div className="papyrus-section">
-            <h3>Papa Drow & Worn Messenger</h3>
+            <h4>Papa Drowcrusher</h4>
           </div>
           <div className="papyrus-section">
-            <h3>Papa Drow & Worn Messenger</h3>
+            <h4>Worn Messenger</h4>
           </div>
         </div>
       </Section>

@@ -1098,6 +1098,7 @@ textarea[readonly] {
 }
 /* PAPYRUS TABLE */
 .papyrus-table {
+  position: relative;
   width: 100%;
   table-layout: fixed;
   text-align: left;
@@ -1107,44 +1108,64 @@ textarea[readonly] {
 .papyrus-table th {
   font-family: var(--headingFont);
 }
-.papyrus-table th,
-.papyrus-table td {
+.papyrus-table:not(.table-rowspan) th,
+.papyrus-table:not(.table-rowspan) td {
   padding: 1rem;
+  text-align: left;
 }
-.papyrus-table thead tr {
+.papyrus-table:not(.table-rowspan) thead tr {
   backdrop-filter: brightness(0.95) saturate(1.6);
 }
-.papyrus-table tbody {
+.papyrus-table:not(.table-rowspan) tbody {
   vertical-align: top;
   word-break: break-word;
 }
-.papyrus-table tbody tr {
-  -webkit-backdrop-filter: brightness(0.95) saturate(1.4);
+.papyrus-table:not(.table-rowspan) tbody tr {
   backdrop-filter: brightness(0.95) saturate(1.4);
 }
-.papyrus-table tbody tr:nth-child(even) {
-  -webkit-backdrop-filter: brightness(0.9) saturate(1.6);
+.papyrus-table:not(.table-rowspan) tbody tr:nth-child(even) {
   backdrop-filter: brightness(0.9) saturate(1.6);
 }
-.papyrus-table tbody th,
-.papyrus-table tbody th ~ td {
+/* SPECIAL TABLE */
+.table-rowspan {
+  width: 100%;
+  table-layout: fixed;
+  text-align: left;
+  box-shadow: inset 0 0 1rem rgb(54, 39, 4);
+}
+.table-rowspan th,
+.table-rowspan td {
+  padding: 1rem;
+}
+.table-rowspan thead tr {
+  backdrop-filter: brightness(0.95) saturate(1.6);
+}
+.table-rowspan tbody {
+  vertical-align: top;
+  word-break: break-word;
+}
+.table-rowspan tbody th {
+  backdrop-filter: brightness(0.95) saturate(1.4);
+}
+.table-rowspan tbody th,
+.table-rowspan tbody th ~ td {
   border-top: 0.5rem solid rgba(81, 59, 21, 0.1);
 }
 @container papyrus-section (max-width: 458px) {
-  .papyrus-table thead {
+  .papyrus-table:not(#seal-table) thead {
     display: none;
   }
-  .papyrus-table tbody tr {
+  .papyrus-table:not(#seal-table) tbody tr {
     display: flex;
     flex-direction: column;
   }
-  .papyrus-table td:first-child {
+  .papyrus-table:not(#seal-table) td:first-child {
     font-weight: 700;
   }
-  .papyrus-table td {
+  .papyrus-table:not(#seal-table) td {
     padding: 0.4rem 1rem;
   }
-  .papyrus-table td:last-child {
+  .papyrus-table:not(#seal-table) td:last-child {
     padding-bottom: 1rem;
   }
 }
