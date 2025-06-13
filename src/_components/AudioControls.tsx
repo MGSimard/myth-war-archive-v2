@@ -251,7 +251,7 @@ export default function AudioControls({ currentTrack, tracks, changeTrack }: Aud
         <button type="button" onClick={handleNextTrack} disabled={!currentTrack} aria-label="Next track">
           <SkipForward fill="currentColor" aria-hidden="true" />
         </button>
-        <div id="volume-control" className={!currentTrack ? "disabled" : undefined}>
+        <div id="volume-control">
           {volume === 0 ? (
             <VolumeOff aria-hidden="true" />
           ) : volume <= 35 ? (
