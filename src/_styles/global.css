@@ -1000,6 +1000,7 @@ textarea[readonly] {
   display: flex;
   align-items: center;
   gap: 1.6rem;
+  flex-wrap: wrap;
 }
 #controls-bottom > button {
   flex-shrink: 0;

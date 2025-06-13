@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { TrackTypes } from "@/_components/AudioPlayer";
-import { Pause, Play, SkipBack, SkipForward, Square, Volume, Volume1, Volume2, VolumeOff, VolumeX } from "lucide-react";
+import { Pause, Play, SkipBack, SkipForward, Volume, Volume1, Volume2, VolumeOff } from "lucide-react";
 
 const toLogarithmicVolume = (value: number) => {
   const logarithmicVolume = (Math.pow(10, value / 100) - 1) / 9;
@@ -116,6 +116,16 @@ export default function AudioControls({ currentTrack, tracks, changeTrack }: Aud
 
   const handlePreviousTrack = () => {
     if (!currentTrack) return;
+
+    const audioPlayer = audioPlayerRef.current;
+    if (!audioPlayer) return;
+
+    if (currentTime > 3) {
+      audioPlayer.currentTime = 0;
+      setCurrentTime(0);
+      return;
+    }
+
     const currentIndex = tracks.findIndex((track) => track.file === currentTrack.file);
     const prevIndex = (currentIndex - 1 + tracks.length) % tracks.length;
     const prevTrack = tracks[prevIndex];
@@ -147,15 +157,6 @@ export default function AudioControls({ currentTrack, tracks, changeTrack }: Aud
     } else {
       audioPlayer.pause();
     }
-  };
-
-  const handleStop = () => {
-    const audioPlayer = audioPlayerRef.current;
-    if (!audioPlayer) return;
-
-    audioPlayer.pause();
-    audioPlayer.currentTime = 0;
-    setCurrentTime(0);
   };
 
   // Seek bar handlers
@@ -270,9 +271,7 @@ export default function AudioControls({ currentTrack, tracks, changeTrack }: Aud
             <Play fill="currentColor" aria-hidden="true" />
           )}
         </button>
-        <button type="button" disabled={!isPlaying} onClick={handleStop} aria-label="Stop">
-          <Square fill="currentColor" aria-hidden="true" />
-        </button>
+
         <button type="button" onClick={handleNextTrack} disabled={!currentTrack} aria-label="Next track">
           <SkipForward fill="currentColor" aria-hidden="true" />
         </button>
