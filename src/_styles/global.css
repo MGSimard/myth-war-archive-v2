@@ -453,7 +453,7 @@ main section {
   align-items: center;
   justify-content: center;
   text-align: center;
-  padding: var(--decorlinePad);
+  padding: 0.2rem 1.2rem;
   font-family: var(--headingFont);
   background: var(--gradientHeader);
   overflow: hidden;

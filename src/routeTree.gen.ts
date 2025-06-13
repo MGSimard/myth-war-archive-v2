@@ -15,6 +15,7 @@ import { Route as IndexImport } from './routes/index'
 import { Route as WorldIndexImport } from './routes/world/index'
 import { Route as LoreIndexImport } from './routes/lore/index'
 import { Route as GameHistoryIndexImport } from './routes/game-history/index'
+import { Route as GuidesLevelingImport } from './routes/guides/leveling'
 import { Route as AssetsMapsImport } from './routes/assets/maps'
 import { Route as AssetsImagesImport } from './routes/assets/images'
 import { Route as AssetsAudioImport } from './routes/assets/audio'
@@ -42,6 +43,12 @@ const LoreIndexRoute = LoreIndexImport.update({
 const GameHistoryIndexRoute = GameHistoryIndexImport.update({
   id: '/game-history/',
   path: '/game-history/',
+  getParentRoute: () => rootRoute,
+} as any)
+
+const GuidesLevelingRoute = GuidesLevelingImport.update({
+  id: '/guides/leveling',
+  path: '/guides/leveling',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -95,6 +102,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AssetsMapsImport
       parentRoute: typeof rootRoute
     }
+    '/guides/leveling': {
+      id: '/guides/leveling'
+      path: '/guides/leveling'
+      fullPath: '/guides/leveling'
+      preLoaderRoute: typeof GuidesLevelingImport
+      parentRoute: typeof rootRoute
+    }
     '/game-history/': {
       id: '/game-history/'
       path: '/game-history'
@@ -126,6 +140,7 @@ export interface FileRoutesByFullPath {
   '/assets/audio': typeof AssetsAudioRoute
   '/assets/images': typeof AssetsImagesRoute
   '/assets/maps': typeof AssetsMapsRoute
+  '/guides/leveling': typeof GuidesLevelingRoute
   '/game-history': typeof GameHistoryIndexRoute
   '/lore': typeof LoreIndexRoute
   '/world': typeof WorldIndexRoute
@@ -136,6 +151,7 @@ export interface FileRoutesByTo {
   '/assets/audio': typeof AssetsAudioRoute
   '/assets/images': typeof AssetsImagesRoute
   '/assets/maps': typeof AssetsMapsRoute
+  '/guides/leveling': typeof GuidesLevelingRoute
   '/game-history': typeof GameHistoryIndexRoute
   '/lore': typeof LoreIndexRoute
   '/world': typeof WorldIndexRoute
@@ -147,6 +163,7 @@ export interface FileRoutesById {
   '/assets/audio': typeof AssetsAudioRoute
   '/assets/images': typeof AssetsImagesRoute
   '/assets/maps': typeof AssetsMapsRoute
+  '/guides/leveling': typeof GuidesLevelingRoute
   '/game-history/': typeof GameHistoryIndexRoute
   '/lore/': typeof LoreIndexRoute
   '/world/': typeof WorldIndexRoute
@@ -159,6 +176,7 @@ export interface FileRouteTypes {
     | '/assets/audio'
     | '/assets/images'
     | '/assets/maps'
+    | '/guides/leveling'
     | '/game-history'
     | '/lore'
     | '/world'
@@ -168,6 +186,7 @@ export interface FileRouteTypes {
     | '/assets/audio'
     | '/assets/images'
     | '/assets/maps'
+    | '/guides/leveling'
     | '/game-history'
     | '/lore'
     | '/world'
@@ -177,6 +196,7 @@ export interface FileRouteTypes {
     | '/assets/audio'
     | '/assets/images'
     | '/assets/maps'
+    | '/guides/leveling'
     | '/game-history/'
     | '/lore/'
     | '/world/'
@@ -188,6 +208,7 @@ export interface RootRouteChildren {
   AssetsAudioRoute: typeof AssetsAudioRoute
   AssetsImagesRoute: typeof AssetsImagesRoute
   AssetsMapsRoute: typeof AssetsMapsRoute
+  GuidesLevelingRoute: typeof GuidesLevelingRoute
   GameHistoryIndexRoute: typeof GameHistoryIndexRoute
   LoreIndexRoute: typeof LoreIndexRoute
   WorldIndexRoute: typeof WorldIndexRoute
@@ -198,6 +219,7 @@ const rootRouteChildren: RootRouteChildren = {
   AssetsAudioRoute: AssetsAudioRoute,
   AssetsImagesRoute: AssetsImagesRoute,
   AssetsMapsRoute: AssetsMapsRoute,
+  GuidesLevelingRoute: GuidesLevelingRoute,
   GameHistoryIndexRoute: GameHistoryIndexRoute,
   LoreIndexRoute: LoreIndexRoute,
   WorldIndexRoute: WorldIndexRoute,
@@ -217,6 +239,7 @@ export const routeTree = rootRoute
         "/assets/audio",
         "/assets/images",
         "/assets/maps",
+        "/guides/leveling",
         "/game-history/",
         "/lore/",
         "/world/"
@@ -233,6 +256,9 @@ export const routeTree = rootRoute
     },
     "/assets/maps": {
       "filePath": "assets/maps.tsx"
+    },
+    "/guides/leveling": {
+      "filePath": "guides/leveling.tsx"
     },
     "/game-history/": {
       "filePath": "game-history/index.tsx"
