@@ -14,7 +14,10 @@ const formatTime = (seconds: number) => {
   return `${minutes}:${remainingSeconds.toString().padStart(2, "0")}`;
 };
 
-const initialVolume = 25;
+const getInitialVolume = () => {
+  const saved = localStorage.getItem("mwa-volume");
+  return saved ? Math.max(0, Math.min(100, Number(saved))) : 25;
+};
 
 interface AudioControlsProps {
   currentTrack: TrackTypes | null;
@@ -26,106 +29,88 @@ export default function AudioControls({ currentTrack, tracks, changeTrack }: Aud
   const [duration, setDuration] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
   const [wasPlayingBeforeSeek, setWasPlayingBeforeSeek] = useState(false);
   const [isSeekDragging, setIsSeekDragging] = useState(false);
   const [isVolumeDragging, setIsVolumeDragging] = useState(false);
-  const [volume, setVolume] = useState(initialVolume);
+  const [volume, setVolume] = useState(getInitialVolume);
 
   const audioPlayerRef = useRef<HTMLAudioElement>(null);
   const seekerRef = useRef<HTMLDivElement>(null);
   const volumeRef = useRef<HTMLDivElement>(null);
 
-  // Reset state when track changes
+  const isLoading = duration === 0 && !!currentTrack;
+
   useEffect(() => {
+    setIsPlaying(false);
     setDuration(0);
     setCurrentTime(0);
-    setIsLoading(true);
-    setIsPlaying(false); // Reset playing state when track changes
+    if (seekerRef.current) {
+      try {
+        seekerRef.current.releasePointerCapture(1);
+      } catch {}
+    }
+    setIsSeekDragging(false);
+    setWasPlayingBeforeSeek(false);
   }, [currentTrack]);
 
-  // Set initial volume with logarithmic scaling
   useEffect(() => {
     const audioPlayer = audioPlayerRef.current;
     if (!audioPlayer) return;
-    audioPlayer.volume = toLogarithmicVolume(initialVolume);
-  }, []);
-
-  // Set up audio event listeners with proper cleanup
-  useEffect(() => {
-    const audioPlayer = audioPlayerRef.current;
-    if (!audioPlayer) return;
-
     const controller = new AbortController();
     const signal = controller.signal;
-
     const updateDuration = () => {
       setDuration(audioPlayer.duration);
-      setIsLoading(false);
     };
-
     const updateCurrentTime = () => {
       setCurrentTime(audioPlayer.currentTime);
       if (duration === 0 && audioPlayer.duration > 0) {
         setDuration(audioPlayer.duration);
-        setIsLoading(false);
       }
     };
-
     const handleCanPlay = () => {
       if (duration === 0 && audioPlayer.duration > 0) {
         setDuration(audioPlayer.duration);
       }
-      setIsLoading(false);
     };
-
     const handlePlay = () => setIsPlaying(true);
     const handlePause = () => setIsPlaying(false);
-
     const handleError = () => {
       audioPlayer.pause();
       setIsPlaying(false);
-      setIsLoading(false);
+      setDuration(0);
+      setCurrentTime(0);
     };
-
-    // Handle ready state on mount
     if (audioPlayer.readyState >= 2 && audioPlayer.duration) {
       setDuration(audioPlayer.duration);
-      setIsLoading(false);
     }
-
     audioPlayer.addEventListener("loadedmetadata", updateDuration, { signal });
     audioPlayer.addEventListener("timeupdate", updateCurrentTime, { signal });
     audioPlayer.addEventListener("canplay", handleCanPlay, { signal });
     audioPlayer.addEventListener("play", handlePlay, { signal });
     audioPlayer.addEventListener("pause", handlePause, { signal });
     audioPlayer.addEventListener("error", handleError, { signal });
-
     return () => {
       controller.abort();
     };
-  }, [currentTrack, duration]);
+  }, [currentTrack]);
 
-  // Update volume when changed
   useEffect(() => {
     const audioPlayer = audioPlayerRef.current;
     if (audioPlayer) {
       audioPlayer.volume = toLogarithmicVolume(volume);
     }
+    localStorage.setItem("mwa-volume", volume.toString());
   }, [volume]);
 
   const handlePreviousTrack = () => {
     if (!currentTrack) return;
-
     const audioPlayer = audioPlayerRef.current;
     if (!audioPlayer) return;
-
     if (currentTime > 3) {
       audioPlayer.currentTime = 0;
       setCurrentTime(0);
       return;
     }
-
     const currentIndex = tracks.findIndex((track) => track.file === currentTrack.file);
     const prevIndex = (currentIndex - 1 + tracks.length) % tracks.length;
     const prevTrack = tracks[prevIndex];
@@ -159,11 +144,9 @@ export default function AudioControls({ currentTrack, tracks, changeTrack }: Aud
     }
   };
 
-  // Seek bar handlers
   const handleSeekStart = (e: React.PointerEvent<HTMLDivElement>) => {
     const seekBar = seekerRef.current;
     if (!seekBar) return;
-
     seekBar.setPointerCapture(e.pointerId);
     setIsSeekDragging(true);
     setWasPlayingBeforeSeek(isPlaying);
@@ -179,10 +162,8 @@ export default function AudioControls({ currentTrack, tracks, changeTrack }: Aud
   const handleSeekEnd = (e: React.PointerEvent<HTMLDivElement>) => {
     const seekBar = seekerRef.current;
     if (!seekBar || !isSeekDragging) return;
-
     seekBar.releasePointerCapture(e.pointerId);
     setIsSeekDragging(false);
-
     if (wasPlayingBeforeSeek) {
       audioPlayerRef.current?.play().catch((err) => console.error("Error resuming:", err));
     }
@@ -192,7 +173,6 @@ export default function AudioControls({ currentTrack, tracks, changeTrack }: Aud
     const seekBar = seekerRef.current;
     const audio = audioPlayerRef.current;
     if (!seekBar || !audio || duration <= 0) return;
-
     const rect = seekBar.getBoundingClientRect();
     const position = Math.max(0, Math.min((e.clientX - rect.left) / rect.width, 1));
     const newTime = position * duration;
@@ -200,11 +180,9 @@ export default function AudioControls({ currentTrack, tracks, changeTrack }: Aud
     setCurrentTime(newTime);
   };
 
-  // Volume handlers
   const handleVolumeStart = (e: React.PointerEvent<HTMLDivElement>) => {
     const volumeBar = volumeRef.current;
     if (!volumeBar) return;
-
     volumeBar.setPointerCapture(e.pointerId);
     setIsVolumeDragging(true);
     updateVolumePosition(e);
@@ -218,15 +196,13 @@ export default function AudioControls({ currentTrack, tracks, changeTrack }: Aud
   const handleVolumeEnd = (e: React.PointerEvent<HTMLDivElement>) => {
     const volumeBar = volumeRef.current;
     if (!volumeBar || !isVolumeDragging) return;
-
     volumeBar.releasePointerCapture(e.pointerId);
     setIsVolumeDragging(false);
   };
 
   const updateVolumePosition = (e: React.PointerEvent<HTMLDivElement>) => {
     const volumeBar = volumeRef.current;
-    if (!volumeBar) return; // Fixed: removed duration check for volume
-
+    if (!volumeBar) return;
     const rect = volumeBar.getBoundingClientRect();
     const position = Math.max(0, Math.min((e.clientX - rect.left) / rect.width, 1));
     const newVolume = position * 100;
