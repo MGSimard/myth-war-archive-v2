@@ -909,6 +909,8 @@ main:has(#audio) {
   &:hover,
   &:focus-visible {
     background: oklch(0.5697 0.170273 251.9613);
+  }
+  &.selected {
     color: oklch(0.87 0.2781 144.41);
   }
 }
