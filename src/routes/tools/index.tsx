@@ -13,69 +13,54 @@ function PageTools() {
     <>
       <Header title="Tools" subtitle="" />
       <Section title="Modding">
-        <table className="blue-table">
-          <thead>
-            <tr>
-              <th>Tool</th>
-              <th>Author</th>
-              <th>Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            {tools.modding.map((tool) => (
-              <tr key={tool.file}>
-                <td>
-                  <a
-                    className="btn-download"
-                    href={tool.link}
-                    {...(tool.isFile && { download: tool.isFile })}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={tool.isFile ? `Download ${tool.file}` : `Go to ${tool.file} website`}
-                    title={tool.isFile ? `Download ${tool.file}` : `Go to ${tool.file} website`}>
-                    {tool.file}
-                    <ArrowBigDownDash />
-                  </a>
-                </td>
-                <td>{tool.authors.join(", ")}</td>
-                <td>{tool.desc}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        <Table data={tools.modding} />
       </Section>
       <Section title="Reverse-Engineering">
-        <table className="blue-table">
-          <thead>
-            <tr>
-              <th>Tool</th>
-              <th>Author</th>
-              <th>Description</th>
-            </tr>
-          </thead>
-          <tbody>
-            {tools["reverse-engineering"].map((tool) => (
-              <tr key={tool.file}>
-                <td>
-                  <a
-                    className="btn-download"
-                    href={tool.link}
-                    {...(tool.isFile && { download: tool.isFile })}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    aria-label={tool.isFile ? `Download ${tool.file}` : `Go to ${tool.file} website`}
-                    title={tool.isFile ? `Download ${tool.file}` : `Go to ${tool.file} website`}>
-                    {tool.file}
-                    <ArrowBigDownDash />
-                  </a>
-                </td>
-                <td>{tool.authors.join(", ")}</td>
-                <td>{tool.desc}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+        <Table data={tools["reverse-engineering"]} />
       </Section>
     </>
+  );
+}
+
+interface TableProps {
+  file: string;
+  link: string;
+  isFile: boolean | string;
+  authors: string[];
+  desc: string;
+}
+
+function Table({ data }: { data: TableProps[] }) {
+  return (
+    <table className="blue-table separator">
+      <thead>
+        <tr>
+          <th>Tool</th>
+          <th>Author</th>
+          <th>Description</th>
+        </tr>
+      </thead>
+      <tbody>
+        {data.map((item) => (
+          <tr key={item.file}>
+            <td>
+              <a
+                className="btn-download"
+                href={item.link}
+                {...(item.isFile && { download: item.isFile })}
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label={item.isFile ? `Download ${item.file}` : `Go to ${item.file} website`}
+                title={item.isFile ? `Download ${item.file}` : `Go to ${item.file} website`}>
+                {item.file}
+                <ArrowBigDownDash />
+              </a>
+            </td>
+            <td>{item.authors.join(", ")}</td>
+            <td>{item.desc}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
   );
 }

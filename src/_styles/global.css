@@ -758,117 +758,7 @@ dialog .rzpp-controls button {
 #maps ul {
   list-style: none;
 }
-.blue-table {
-  width: 100%;
-  border: 0.2rem ridge var(--clrGoldInnerLineLight);
-  border-collapse: separate;
-  border-spacing: 0;
-  border-radius: 0.4rem;
-  background: oklch(0.21 0.0835 277.35 / 0.67);
-}
-.blue-table thead tr {
-  font-family: var(--headingFont);
-  font-weight: 400;
-  word-spacing: -0.2em;
-  color: var(--clrInputLabel);
-  -webkit-text-stroke: 0.05rem oklch(0 0 1);
-  background: oklch(0.26 0.1127 276.37);
-  border-bottom: 0.2rem ridge var(--clrGoldInnerLineLight);
-}
-.blue-table th {
-  font-size: 2.4rem;
-  font-weight: 400;
-  padding: 0.4rem 1rem;
-}
-.blue-table th:not(:last-child) {
-  text-align: left;
-}
-.blue-table tbody {
-  position: relative;
-}
-#maps tbody {
-  vertical-align: top;
-}
-.blue-table tbody::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  box-shadow: inset 0 0 0.2rem 0.2rem oklch(0 0 1 / 0.5);
-  pointer-events: none;
-  z-index: 1;
-}
-.blue-table tbody tr:nth-child(odd) {
-  background: oklch(0.21 0.0835 277.35 / 0.67);
-}
-.blue-table tbody tr:hover {
-  background: linear-gradient(to right, oklch(0.2775 0.1431 288.57), transparent);
-}
-.blue-table tbody td {
-  text-wrap: balance;
-}
-.blue-table tbody td {
-  padding: 0.8rem 1rem;
-}
-#maps tbody td:not(:last-child) {
-  padding: 0.8rem 1rem;
-}
-#maps tbody td:last-child {
-  position: relative;
-}
-#maps .map-preview {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  mask-image: linear-gradient(to right, transparent, black 20%);
-  -webkit-mask-image: linear-gradient(to right, transparent, black 20%);
-  overflow: hidden;
-}
-#maps .map-preview span {
-  display: none;
-  position: absolute;
-  top: 0.4rem;
-  left: 0.8rem;
-  text-align: left;
-}
-#maps img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-}
-#maps tbody td:last-child:hover .map-preview {
-  position: fixed;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  max-width: min(70dvw, 50rem);
-  max-height: 60dvh;
-  height: auto;
-  object-fit: contain;
-  border: 0.2rem ridge var(--clrGoldOuterLeftFrameHighlight);
-  border-radius: 0.4rem;
-  box-shadow: 0 0 1rem 0.2rem oklch(0 0 1 / 0.5);
-  mask-image: unset;
-  -webkit-mask-image: unset;
-  pointer-events: none;
-  z-index: 999;
-  &::after {
-    content: "";
-    position: absolute;
-    inset: 0;
-    box-shadow: inset 0 0 0.2rem 0.2rem oklch(0 0 1 / 0.5);
-    z-index: 1;
-  }
-}
-#maps tbody td:last-child:hover .map-preview span {
-  display: block;
-  font-size: clamp(1.4rem, 1.2vw, 2rem);
-  filter: drop-shadow(0.1rem 0.1rem black) drop-shadow(0 0 0.5rem black);
-}
+
 .btn-download {
   position: relative;
   text-decoration: underline;
@@ -1174,6 +1064,122 @@ textarea[readonly] {
     padding-bottom: 1rem;
   }
 }
+/* BLUE TABLE */
+.blue-table {
+  width: 100%;
+  border: 0.2rem ridge var(--clrGoldInnerLineLight);
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 0.4rem;
+  background: oklch(0.21 0.0835 277.35 / 0.67);
+}
+.blue-table thead th {
+  font-family: var(--headingFont);
+  font-size: 2.4rem;
+  font-weight: 400;
+  text-align: left;
+  word-spacing: -0.2em;
+  padding: 0.4rem 1rem;
+  color: var(--clrInputLabel);
+  -webkit-text-stroke: 0.05rem oklch(0 0 1);
+  background: oklch(0.26 0.1127 276.37);
+  border-bottom: 0.2rem ridge var(--clrGoldInnerLineLight);
+}
+.blue-table tbody {
+  position: relative;
+  text-wrap: balance;
+}
+.blue-table tbody::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  box-shadow: inset 0 0 0.2rem 0.2rem oklch(0 0 1 / 0.5);
+  pointer-events: none;
+  z-index: 1;
+}
+.blue-table tbody tr:nth-child(odd) {
+  background: oklch(0.21 0.0835 277.35 / 0.67);
+}
+.blue-table tbody tr:hover {
+  background: linear-gradient(to right, oklch(0.2775 0.1431 288.57), transparent);
+}
+.blue-table tbody td {
+  padding: 0.8rem 1rem;
+}
+.blue-table.separator {
+  table-layout: fixed;
+}
+.blue-table.separator th:not(:last-child),
+.blue-table.separator td:not(:last-child) {
+  width: 15rem;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+#maps th:last-child {
+  text-align: center;
+}
+#maps tbody {
+  vertical-align: top;
+}
+#maps tbody td:last-child {
+  position: relative;
+  padding: 0;
+}
+#maps .map-preview {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  mask-image: linear-gradient(to right, transparent, black 20%);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 20%);
+  overflow: hidden;
+}
+#maps .map-preview span {
+  display: none;
+  position: absolute;
+  top: 0.4rem;
+  left: 0.8rem;
+  text-align: left;
+}
+#maps img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+#maps tbody td:last-child:hover .map-preview {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: min(70dvw, 50rem);
+  max-height: 60dvh;
+  height: auto;
+  object-fit: contain;
+  border: 0.2rem ridge var(--clrGoldOuterLeftFrameHighlight);
+  border-radius: 0.4rem;
+  box-shadow: 0 0 1rem 0.2rem oklch(0 0 1 / 0.5);
+  mask-image: unset;
+  -webkit-mask-image: unset;
+  pointer-events: none;
+  z-index: 999;
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    box-shadow: inset 0 0 0.2rem 0.2rem oklch(0 0 1 / 0.5);
+    z-index: 1;
+  }
+}
+#maps tbody td:last-child:hover .map-preview span {
+  display: block;
+  font-size: clamp(1.4rem, 1.2vw, 2rem);
+  filter: drop-shadow(0.1rem 0.1rem black) drop-shadow(0 0 0.5rem black);
+}
 /* MEDIA QUERIES */
 @media only screen and (max-width: 1200px) {
   .regions-grid {
@@ -1204,5 +1210,12 @@ textarea[readonly] {
   }
   #maps tbody td:last-child {
     height: 4rem;
+  }
+  .blue-table.separator {
+    table-layout: fixed;
+  }
+  .blue-table.separator th:not(:last-child),
+  .blue-table.separator td:not(:last-child) {
+    width: auto;
   }
 }
