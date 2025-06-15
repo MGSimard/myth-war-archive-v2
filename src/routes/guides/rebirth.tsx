@@ -10,10 +10,10 @@ function PageGuidesRebirth() {
   return (
     <>
       <Header title="Rebirth" subtitle="Your Guide to Rebirth" />
-      <Section title="Rebirth">
+      <Section title="Introduction">
         <div className="papyrus">
           <div className="papyrus-section">
-            <p>Rebirth</p>
+            <p></p>
           </div>
         </div>
       </Section>

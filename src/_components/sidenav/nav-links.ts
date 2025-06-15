@@ -9,6 +9,7 @@ import {
   Infinity,
   Map,
   Scroll,
+  Users,
   type LucideIcon,
 } from "lucide-react";
 
@@ -85,12 +86,17 @@ export const navLinks: NavLinkGroup[] = [
     ],
   },
   {
-    label: "Tools",
+    label: "Other",
     items: [
       {
         title: "Tools",
         url: "/tools",
         icon: Hammer,
+      },
+      {
+        title: "Communities",
+        url: "/communities",
+        icon: Users,
       },
     ],
   },

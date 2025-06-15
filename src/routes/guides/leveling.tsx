@@ -324,6 +324,19 @@ function PageGuidesLeveling() {
         <div className="papyrus">
           <div className="papyrus-section">
             <h3>Bloodreaper</h3>
+            <p>
+              Bloodreaper is a series of fights similar to the Howlign Beast quest, offering an alternative leveling
+              method to Blython Defense at level 60. This used to be a timed event during Saturdays back on official
+              servers, but TDT has it as a repeatable quest available at all times.
+            </p>
+            <ol>
+              <li>Begin with Bloodreaper in Sunset Plains (130, 70)</li>
+              <li>Pass through Blython, defeat Firetroy in Southern Rivage (41, 46)</li>
+              <li>North East of Desert City, defeat Bonepoker in Flamingor (23, 164)</li>
+              <li>South of Desert City, defeat Eyebasher in Bone Desert (66, 157)</li>
+              <li>Teleport to Flame Ruins through Demon Square teleporter, defeat Fistscarer (156, 257)</li>
+              <li>Similarly to Howling Beast, reset before ending round 10 to retain the cumulative XP multiplier</li>
+            </ol>
           </div>
         </div>
       </Section>
@@ -332,9 +345,8 @@ function PageGuidesLeveling() {
           <div className="papyrus-section">
             <h3>Seal</h3>
             <p>
-              At level 70 you unlock a new repeatable, 10 round quest with increasing XP rewards. It is advise that you
-              use both the Windseeker consumable for teleportation, and Devil&apos;s Tears to avoid random monster
-              aggro.{" "}
+              At level 70 you unlock a new repeatable, 10 round quest with increasing XP rewards. It's advised tho use
+              both the Windseeker consumable for teleportation, and Devil&apos;s Tears to avoid random monster aggro.{" "}
               <b>
                 At the bottom of this section is a Windseeker teleport coordinates cheatsheet to reach your target
                 quickly.
