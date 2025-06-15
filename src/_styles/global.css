@@ -893,6 +893,7 @@ textarea[readonly] {
 }
 #seek-wrapper {
   margin-bottom: 1.6rem;
+  cursor: pointer;
 }
 #seek-track {
   --trackHeight: 1rem;
