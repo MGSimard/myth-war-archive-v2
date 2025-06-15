@@ -758,7 +758,7 @@ dialog .rzpp-controls button {
 #maps ul {
   list-style: none;
 }
-#maps table {
+.blue-table {
   width: 100%;
   border: 0.2rem ridge var(--clrGoldInnerLineLight);
   border-collapse: separate;
@@ -766,7 +766,7 @@ dialog .rzpp-controls button {
   border-radius: 0.4rem;
   background: oklch(0.21 0.0835 277.35 / 0.67);
 }
-#maps thead tr {
+.blue-table thead tr {
   font-family: var(--headingFont);
   font-weight: 400;
   word-spacing: -0.2em;
@@ -775,19 +775,21 @@ dialog .rzpp-controls button {
   background: oklch(0.26 0.1127 276.37);
   border-bottom: 0.2rem ridge var(--clrGoldInnerLineLight);
 }
-#maps th {
+.blue-table th {
   font-size: 2.4rem;
   font-weight: 400;
   padding: 0.4rem 1rem;
 }
-#maps th:not(:last-child) {
+.blue-table th:not(:last-child) {
   text-align: left;
 }
-#maps tbody {
+.blue-table tbody {
   position: relative;
+}
+#maps tbody {
   vertical-align: top;
 }
-#maps tbody::after {
+.blue-table tbody::after {
   content: "";
   position: absolute;
   inset: 0;
@@ -795,14 +797,17 @@ dialog .rzpp-controls button {
   pointer-events: none;
   z-index: 1;
 }
-#maps tbody tr:nth-child(odd) {
+.blue-table tbody tr:nth-child(odd) {
   background: oklch(0.21 0.0835 277.35 / 0.67);
 }
-#maps tbody tr:hover {
+.blue-table tbody tr:hover {
   background: linear-gradient(to right, oklch(0.2775 0.1431 288.57), transparent);
 }
-#maps tbody td {
+.blue-table tbody td {
   text-wrap: balance;
+}
+.blue-table tbody td {
+  padding: 0.8rem 1rem;
 }
 #maps tbody td:not(:last-child) {
   padding: 0.8rem 1rem;
@@ -869,16 +874,16 @@ dialog .rzpp-controls button {
   text-decoration: underline;
 }
 .btn-download svg {
-  display: none;
   position: absolute;
-  top: 0;
+  bottom: 0;
   left: 100%;
   width: 1em;
   height: 1em;
+  opacity: 0.4;
 }
 .btn-download:hover svg,
 .btn-download:focus-visible svg {
-  display: block;
+  opacity: 1;
 }
 /* AUDIO */
 main:has(#audio) {
@@ -1184,17 +1189,17 @@ textarea[readonly] {
   .regions-grid {
     grid-template-columns: minmax(0, 1fr);
   }
-  #maps thead {
+  .blue-table thead {
     display: none;
   }
-  #maps tbody tr {
+  .blue-table tbody tr {
     display: flex;
     flex-direction: column;
   }
-  #maps tbody tr:not(:last-child) {
+  .blue-table tbody tr:not(:last-child) {
     border-bottom: 0.2rem ridge var(--clrGoldInnerLineLight);
   }
-  #maps tbody td:first-child {
+  .blue-table tbody td:first-child {
     font-weight: 700;
   }
   #maps tbody td:last-child {

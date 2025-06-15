@@ -13,7 +13,7 @@ function PageAssetsMaps() {
     <>
       <Header title="Map Assets" />
       <Section title="Maps" id="maps">
-        <table>
+        <table className="blue-table">
           <thead>
             <tr>
               <th>File</th>

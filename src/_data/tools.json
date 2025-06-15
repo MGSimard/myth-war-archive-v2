@@ -1,0 +1,48 @@
+{
+  "modding": [
+    {
+      "file": "BugWar Patch",
+      "isFile": false,
+      "authors": ["IceStorm"],
+      "desc": "A quality of life patch that improves translations, UI clarity, adds quick spell animations, target HP display, and increases currency transfer cap.",
+      "link": "http://bugwarlabs.somee.com/"
+    }
+  ],
+  "reverse-engineering": [
+    {
+      "file": "X-Ripper",
+      "isFile": false,
+      "authors": ["Zeus Software"],
+      "desc": "A file ripper that extracts hidden files from game archives. Supports various formats including audio (WAV, OGG), graphics (BMP, JPG, PNG), and video files.",
+      "link": "https://www.zeus-software.com/downloads/xripper"
+    },
+    {
+      "file": "MDAExtractor",
+      "isFile": "MDAExtractor.rar",
+      "authors": ["Wander", "MGSimard"],
+      "desc": "Extracts assets from RAYS MEDIA FILE '*.mda' file containers.",
+      "link": "/tools/MDAExtractor.rar"
+    },
+    {
+      "file": "GetMapTiles",
+      "isFile": "GetMapTiles.rar",
+      "authors": ["MGSimard"],
+      "desc": "Extracts 800x600 JPEG map tiles from '*.map' files. This tool was developed due to X-Ripper missing some map tiles upon extraction.",
+      "link": "/tools/GetMapTiles.rar"
+    },
+    {
+      "file": "GetLinkedFiles",
+      "isFile": "GetLinkedFiles.rar",
+      "authors": ["MGSimard"],
+      "desc": "Extracts filename reference strings to view linked files - primarily used for viewing connected maps in '*.map' files.",
+      "link": "/tools/GetLinkedFiles.rar"
+    },
+    {
+      "file": "Stitcher",
+      "isFile": "Stitcher.rar",
+      "authors": ["MGSimard"],
+      "desc": "Stitches image tiles into a single output.",
+      "link": "/tools/Stitcher.rar"
+    }
+  ]
+}

@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as WorldIndexRouteImport } from './routes/world/index'
+import { Route as ToolsIndexRouteImport } from './routes/tools/index'
 import { Route as LoreIndexRouteImport } from './routes/lore/index'
 import { Route as GameHistoryIndexRouteImport } from './routes/game-history/index'
 import { Route as GuidesRebirthRouteImport } from './routes/guides/rebirth'
@@ -27,6 +28,11 @@ const IndexRoute = IndexRouteImport.update({
 const WorldIndexRoute = WorldIndexRouteImport.update({
   id: '/world/',
   path: '/world/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ToolsIndexRoute = ToolsIndexRouteImport.update({
+  id: '/tools/',
+  path: '/tools/',
   getParentRoute: () => rootRouteImport,
 } as any)
 const LoreIndexRoute = LoreIndexRouteImport.update({
@@ -74,6 +80,7 @@ export interface FileRoutesByFullPath {
   '/guides/rebirth': typeof GuidesRebirthRoute
   '/game-history': typeof GameHistoryIndexRoute
   '/lore': typeof LoreIndexRoute
+  '/tools': typeof ToolsIndexRoute
   '/world': typeof WorldIndexRoute
 }
 export interface FileRoutesByTo {
@@ -85,6 +92,7 @@ export interface FileRoutesByTo {
   '/guides/rebirth': typeof GuidesRebirthRoute
   '/game-history': typeof GameHistoryIndexRoute
   '/lore': typeof LoreIndexRoute
+  '/tools': typeof ToolsIndexRoute
   '/world': typeof WorldIndexRoute
 }
 export interface FileRoutesById {
@@ -97,6 +105,7 @@ export interface FileRoutesById {
   '/guides/rebirth': typeof GuidesRebirthRoute
   '/game-history/': typeof GameHistoryIndexRoute
   '/lore/': typeof LoreIndexRoute
+  '/tools/': typeof ToolsIndexRoute
   '/world/': typeof WorldIndexRoute
 }
 export interface FileRouteTypes {
@@ -110,6 +119,7 @@ export interface FileRouteTypes {
     | '/guides/rebirth'
     | '/game-history'
     | '/lore'
+    | '/tools'
     | '/world'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -121,6 +131,7 @@ export interface FileRouteTypes {
     | '/guides/rebirth'
     | '/game-history'
     | '/lore'
+    | '/tools'
     | '/world'
   id:
     | '__root__'
@@ -132,6 +143,7 @@ export interface FileRouteTypes {
     | '/guides/rebirth'
     | '/game-history/'
     | '/lore/'
+    | '/tools/'
     | '/world/'
   fileRoutesById: FileRoutesById
 }
@@ -144,6 +156,7 @@ export interface RootRouteChildren {
   GuidesRebirthRoute: typeof GuidesRebirthRoute
   GameHistoryIndexRoute: typeof GameHistoryIndexRoute
   LoreIndexRoute: typeof LoreIndexRoute
+  ToolsIndexRoute: typeof ToolsIndexRoute
   WorldIndexRoute: typeof WorldIndexRoute
 }
 
@@ -161,6 +174,13 @@ declare module '@tanstack/react-router' {
       path: '/world'
       fullPath: '/world'
       preLoaderRoute: typeof WorldIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/tools/': {
+      id: '/tools/'
+      path: '/tools'
+      fullPath: '/tools'
+      preLoaderRoute: typeof ToolsIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/lore/': {
@@ -224,6 +244,7 @@ const rootRouteChildren: RootRouteChildren = {
   GuidesRebirthRoute: GuidesRebirthRoute,
   GameHistoryIndexRoute: GameHistoryIndexRoute,
   LoreIndexRoute: LoreIndexRoute,
+  ToolsIndexRoute: ToolsIndexRoute,
   WorldIndexRoute: WorldIndexRoute,
 }
 export const routeTree = rootRouteImport
