@@ -173,6 +173,7 @@ hr {
 }
 table {
   border-collapse: collapse;
+  overflow: hidden;
 }
 summary {
   font-family: var(--headingFont);
