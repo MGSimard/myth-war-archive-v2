@@ -92,14 +92,14 @@ function PageGuidesRebirth() {
             <ul>
               <li>Complete the five Soulstone quests</li>
               <li>Character level 100</li>
-              <li>All spells level 50</li>
+              <li>All skills level 50</li>
               <li>200 reputation</li>
               <li>Pet level 100</li>
             </ul>
             <h3>Recommended Requirements</h3>
             <ul>
               <li>Character level 104</li>
-              <li>All spells level maxed</li>
+              <li>All skills level maxed</li>
             </ul>
             <h3>Guide</h3>
             <p>
@@ -125,12 +125,12 @@ function PageGuidesRebirth() {
       </Section>
       <Section title="Second Rebirth">
         <div className="papyrus">
-          <div className="papyrus-section">Second Rebirth</div>
+          <div className="papyrus-section"></div>
         </div>
       </Section>
       <Section title="Third Rebirth">
         <div className="papyrus">
-          <div className="papyrus-section">Third Rebirth</div>
+          <div className="papyrus-section"></div>
         </div>
       </Section>
     </>
