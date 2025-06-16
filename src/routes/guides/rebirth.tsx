@@ -117,7 +117,7 @@ function PageGuidesRebirth() {
               <li>Defeat the 5 guardian beasts to receive Deity's Blood</li>
               <li>Return to the Elder of Faith to perform rebirth</li>
               <li>Upon confirming rebirth and choosing a class, your character will be logged out</li>
-              <li>Upon reconnecting, the rebirth will be complete</li>
+              <li>Rebith will be complete upon reconnection</li>
             </ol>
           </div>
         </div>
