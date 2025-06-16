@@ -280,7 +280,7 @@ function PageGameHistory() {
           ]}
         />
         <hr />
-        <h3 className="heading">Myth War III: Legends of the Dark</h3>
+        <h3 className="label">Myth War III: Legends of the Dark</h3>
         <Timeline
           items={[
             {

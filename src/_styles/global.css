@@ -7,7 +7,7 @@
   --displayFont: "Zieruk", "Palatino Linotype", "Book Antiqua", "Georgia", serif;
   --contentFont: "system-ui", "sans-serif";
   --headingFont: "Hanyi Fanglijian", "Brush Script MT", "cursive", serif;
-  --pixelFont: "Pixel Operator", "system-ui", "sans-serif";
+  --pixelFont: "Dot Gothic", "system-ui", "sans-serif";
 
   --decorlinePad: 0.2rem 0.4rem;
 
@@ -191,7 +191,6 @@ details[open] p {
 /* HELPERS */
 .system {
   font-family: var(--pixelFont);
-  font-size: 1.6rem;
 }
 .heading {
   display: block;
@@ -430,6 +429,7 @@ details[open] p {
   align-items: center;
   gap: 0.8rem;
   padding: 1rem;
+  font-family: var(--headingFont);
 }
 #sidenav-content a svg {
   width: 1.6rem;

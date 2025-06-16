@@ -215,8 +215,8 @@ export default function AudioControls({ currentTrack, tracks, changeTrack }: Aud
     <div id="audio-controls">
       <audio ref={audioPlayerRef} src={currentTrack?.link || undefined} preload="metadata" />
 
-      <div id="time-display">
-        {formatTime(currentTime)} / {isLoading ? "--:--" : formatTime(duration)}
+      <div id="time-display" className="system">
+        {formatTime(currentTime)}/{isLoading ? "--:--" : formatTime(duration)}
       </div>
 
       <div
