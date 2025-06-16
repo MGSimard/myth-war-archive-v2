@@ -98,7 +98,7 @@ function PageGuidesRebirth() {
             <h3>Recommended Requirements</h3>
             <ul>
               <li>Character level 104</li>
-              <li>All skills level maxed</li>
+              <li>All skills level max</li>
             </ul>
             <h3>Guide</h3>
             <p>
