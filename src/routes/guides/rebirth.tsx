@@ -115,7 +115,7 @@ function PageGuidesRebirth() {
               <li>Go to Snow Ridge (107, 38) and talk to Elder of Faith</li>
               <li>Talk to the Dark Priest in Tumulus (151, 179)</li>
               <li>Fight monsters until you acquire a key, return to the Dark Priest</li>
-              <li>Defeat the 5 guardian beasts to receive the Deity's Blood</li>
+              <li>Defeat the 5 guardian beasts to receive Deity's Blood</li>
               <li>Return to the Elder of Faith to perform rebirth</li>
               <li>Upon confirming rebirth and choosing a class, your character will be logged out</li>
               <li>Upon reconnecting, the rebirth will be complete</li>
