@@ -25,7 +25,7 @@ export function AudioPlayer() {
           {Object.entries(tracks).map(([category, tracks]) => (
             <Fragment key={category}>
               <h4 className="label">{category}</h4>
-              <ul>
+              <ul className="system">
                 {tracks.map((track) => (
                   <li key={track.file}>
                     <button

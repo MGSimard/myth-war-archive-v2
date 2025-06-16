@@ -8,7 +8,7 @@ interface TimelineItem {
 
 export function Timeline({ items }: { items: TimelineItem[] }) {
   return (
-    <ol className="timeline">
+    <ol className="timeline system">
       {items.map((item) => (
         <li key={item.id}>
           <time>

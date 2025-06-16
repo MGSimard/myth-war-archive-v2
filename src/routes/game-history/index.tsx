@@ -91,7 +91,7 @@ function PageGameHistory() {
         </div>
       </Section>
       <Section title="Timeline" id="timeline-section">
-        <h3>Pre</h3>
+        <h3 className="label">Pre-Development</h3>
         <Timeline
           items={[
             {
@@ -166,7 +166,7 @@ function PageGameHistory() {
           ]}
         />
         <hr />
-        <h3>Myth War Online</h3>
+        <h3 className="label">Myth War Online</h3>
         <Timeline
           items={[
             {
@@ -221,7 +221,7 @@ function PageGameHistory() {
           ]}
         />
         <hr />
-        <h3>Myth War II</h3>
+        <h3 className="label">Myth War II</h3>
         <Timeline
           items={[
             {
@@ -280,7 +280,7 @@ function PageGameHistory() {
           ]}
         />
         <hr />
-        <h3>Myth War III: Legends of the Dark</h3>
+        <h3 className="heading">Myth War III: Legends of the Dark</h3>
         <Timeline
           items={[
             {

@@ -7,6 +7,7 @@
   --displayFont: "Zieruk", "Palatino Linotype", "Book Antiqua", "Georgia", serif;
   --contentFont: "system-ui", "sans-serif";
   --headingFont: "Hanyi Fanglijian", "Brush Script MT", "cursive", serif;
+  --pixelFont: "Pixel Operator", "system-ui", "sans-serif";
 
   --decorlinePad: 0.2rem 0.4rem;
 
@@ -188,6 +189,10 @@ details[open] p {
 }
 /**/
 /* HELPERS */
+.system {
+  font-family: var(--pixelFont);
+  font-size: 1.6rem;
+}
 .heading {
   display: block;
   font-family: var(--headingFont);
@@ -246,9 +251,6 @@ details[open] p {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-}
-#audio-download {
-  margin-left: auto;
 }
 .grid-2 {
   display: grid;
@@ -862,6 +864,7 @@ main:has(#audio) {
 #audio-info label {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   gap: 0.4rem;
 }
 #audio-info label span {
@@ -869,6 +872,7 @@ main:has(#audio) {
   flex-shrink: 0;
 }
 #audio-info label[for="audio-details"] {
+  align-items: normal;
   flex-direction: column;
   gap: 0.4rem;
 }
@@ -877,6 +881,8 @@ textarea[readonly] {
   flex-grow: 1;
   min-width: 0;
   padding: var(--decorlinePad);
+  font-family: var(--pixelFont);
+  font-size: 1.6rem;
   color: white;
   border: 0.2rem solid;
   border-top-color: var(--clrInputReadOnlyTLBorder);
@@ -1001,6 +1007,9 @@ textarea[readonly] {
   background: var(--clrGoldInnerLineLight);
   border-radius: 50%;
   transform: translate(-50%, -50%);
+}
+#audio-download {
+  margin-left: auto;
 }
 /* PAPYRUS TABLE */
 .papyrus-table {

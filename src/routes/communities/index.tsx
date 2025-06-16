@@ -38,7 +38,7 @@ interface TableProps {
 
 function Table({ data }: { data: TableProps[] }) {
   return (
-    <table className="blue-table separator">
+    <table className="blue-table separator system">
       <thead>
         <tr>
           <th>Link</th>
