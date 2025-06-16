@@ -1,3 +1,5 @@
+![]
+
 # Myth War Archive (v2)
 
 Preservation & utility project for the Myth War community. Myth War Archive is your go-to resource for everything related to Myth War Online and Myth War II. Whether you're a long-time fan or just discovering the games, this site is dedicated to preserving their legacy and supporting the communities that keep them alive.
@@ -13,6 +15,7 @@ Preservation & utility project for the Myth War community. Myth War Archive is y
 
 ## Task List
 
+- [ ] Not Found / Error Pages (Use the cross)
 - [ ] Inert rest of the app when open on mobile?
 - [ ] TOC?
 - [ ] If this is ever taken seriously, ditch Uploadthing and move assets to an R2 storage subdomain
