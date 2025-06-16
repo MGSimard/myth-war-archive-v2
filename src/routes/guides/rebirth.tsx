@@ -93,7 +93,6 @@ function PageGuidesRebirth() {
               <li>Character level 100</li>
               <li>All skills level 50</li>
               <li>200 reputation</li>
-              <li>Pet level 100</li>
             </ul>
             <h3>Recommended Requirements</h3>
             <ul>
