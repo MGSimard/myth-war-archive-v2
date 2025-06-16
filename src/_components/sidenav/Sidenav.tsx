@@ -23,14 +23,23 @@ export function Sidenav() {
             <section key={group.label}>
               <h2>{group.label}</h2>
               <ul key={group.label}>
-                {group.items.map((item) => (
-                  <li key={item.title}>
-                    <Link to={item.url} onClick={() => isMobile && setIsOpen(false)}>
-                      <item.icon />
-                      <span>{item.title}</span>
-                    </Link>
-                  </li>
-                ))}
+                {group.items.map((item) =>
+                  item.isOutside ? (
+                    <li key={item.title}>
+                      <a href={item.url} target="_blank" rel="noopener noreferrer">
+                        <item.icon />
+                        <span>{item.title}</span>
+                      </a>
+                    </li>
+                  ) : (
+                    <li key={item.title}>
+                      <Link to={item.url} onClick={() => isMobile && setIsOpen(false)}>
+                        <item.icon />
+                        <span>{item.title}</span>
+                      </Link>
+                    </li>
+                  )
+                )}
               </ul>
             </section>
           ))}

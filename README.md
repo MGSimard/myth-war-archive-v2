@@ -17,8 +17,6 @@ Preservation & utility project for the Myth War community. Myth War Archive is y
 
 ## Task List
 
-- [ ] GitHub link somewhere in layout (Probably sidenav)
-- [ ] Not Found / Error Pages (Use the cross)
 - [ ] Inert rest of the app when open on mobile?
 - [ ] TOC?
 - [ ] If this is ever taken seriously, ditch Uploadthing and move assets to an R2 storage subdomain
