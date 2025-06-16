@@ -32,6 +32,16 @@
   ],
   "forums": [
     {
+      "name": "Thunderized (Luigi311)",
+      "link": "https://thunderized.luigi311.com/",
+      "description": "Live archived version of mythwar.thunderized.org."
+    },
+    {
+      "name": "Thunderized (Defunct)",
+      "link": "https://web.archive.org/web/20160324063124/http://mythwar.thunderized.org/",
+      "description": "Web archive of the now-defunct Myth War encyclopedia from Thunderized Guild. Contains in-depth info on Myth War's major quests and system, mostly relevant to Myth War Online"
+    },
+    {
       "name": "SpritWorld",
       "link": "https://mythwar2.freeforums.net/",
       "description": "Old Myth War forum where apparently nobody knew how to spell the word \"Spirit\". Contains a few useful guides & information."

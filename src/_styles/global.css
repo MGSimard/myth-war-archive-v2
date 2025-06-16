@@ -219,6 +219,9 @@ details[open] p {
 .papyrus-section > *:not(:last-child) {
   margin-bottom: 0.8rem;
 }
+.link {
+  text-decoration: underline;
+}
 .label {
   font-family: var(--headingFont);
   font-weight: 400;
@@ -1077,7 +1080,7 @@ textarea[readonly] {
 }
 .blue-table thead th {
   font-family: var(--headingFont);
-  font-size: 2.4rem;
+  font-size: 2rem;
   font-weight: 400;
   text-align: left;
   word-spacing: -0.2em;
@@ -1089,7 +1092,6 @@ textarea[readonly] {
 }
 .blue-table tbody {
   position: relative;
-  text-wrap: balance;
 }
 .blue-table tbody::after {
   content: "";

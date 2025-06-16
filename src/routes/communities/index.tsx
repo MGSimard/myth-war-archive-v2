@@ -20,7 +20,7 @@ function PageCommunities() {
       <Section title="Subreddits">
         <Table data={communities.subreddits} />
       </Section>
-      <Section title="Forums">
+      <Section title="Forums & Information">
         <Table data={communities.forums} />
       </Section>
       <Section title="Official (Defunct)">
