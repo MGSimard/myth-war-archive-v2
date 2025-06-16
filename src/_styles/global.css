@@ -5,9 +5,9 @@
   --sidenavWidth: 32rem;
 
   --displayFont: "Zieruk", "Palatino Linotype", "Book Antiqua", "Georgia", serif;
-  --contentFont: "sans-serif";
+  --contentFont: "system-ui", "sans-serif";
   --headingFont: "Hanyi Fanglijian", "Brush Script MT", "cursive", serif;
-  --pixelFont: "sans-serif";
+  --pixelFont: "system-ui", "sans-serif";
 
   --decorlinePad: 0.2rem 0.4rem;
 
