@@ -13,6 +13,7 @@ function PageLore() {
       <Section title="Storyline">
         <div className="papyrus">
           <div className="papyrus-section">
+            <h3>The War Among the Gods</h3>
             <p>The war among the Gods had become a pivotal episode in history, leaving the living world in chaos.</p>
             <p>
               The mystical dimension created by the Great One granted the Gods infinite power. Nevertheless, the Gods
@@ -29,6 +30,8 @@ function PageLore() {
               brave warrior, and ultimately a king who bore great responsibility. The hardships of his youth nurtured
               his kindness and refined his character; his trying experiences made him all the more noble.
             </p>
+
+            <h3>The Great One and the Creation</h3>
             <p>
               In the early days of the surreal dimension, an unforgettable war of rank erupted. It ignited fury among
               the Gods, causing them to neglect the dimensional laws laid down by the Dominator. At first, the surreal
@@ -46,6 +49,8 @@ function PageLore() {
               charge of the systems and resources of the new dimension. The laws of this world limited each god&apos;s
               power to preserve balance.
             </p>
+
+            <h3>The Four Dimensions</h3>
             <p>
               The Gods created another beautiful and peaceful land for their people. It stood independently in the upper
               dimension between the World of Gods and the balanced living world. Thus the four dimensions were isolated
@@ -57,6 +62,8 @@ function PageLore() {
               from the control of any god and developed unique civilizations of their own. Deep within the innermost
               dimension lay the place of reincarnation.
             </p>
+
+            <h3>The Ranking War</h3>
             <p>
               The presence of devils, monsters, and fiendish creatures made this dimension evil and frightening. Black
               soil, burning lava, and bizarre weather shrouded the land in chaos. The God of Hell, ruling this distant
@@ -69,6 +76,8 @@ function PageLore() {
               of Hell accepted his proposal, yet soon broke their pact of mutual benefit. He and his magical beasts were
               the first to launch the Ranking War.
             </p>
+
+            <h3>The Spiritual Stones</h3>
             <p>
               The entire dimension trembled during this strange war. Living creatures sensed impending natural
               disasters—tsunamis, earthquakes, tornadoes, hurricanes. They prayed, confessed, and implored the Gods,
@@ -82,6 +91,8 @@ function PageLore() {
               from one another within five Spiritual Stones, waiting for time itself to erode their bonds. No one
               suspected that these stones, each bearing a special duty, concealed an even greater power.
             </p>
+
+            <h3>The Curse and the Fall</h3>
             <p>
               The Gods&apos; power sprang from the soul, and desire rendered the Evil God silent no longer. He coveted
               the Spiritual Stones. While attempting to unseal them before the holy altar, the Guarding Prime Gods
@@ -92,6 +103,8 @@ function PageLore() {
               proved true. As the Gods died one by one and became spirits, the Sky Passage crashed into the middle
               world.
             </p>
+
+            <h3>The Aftermath</h3>
             <p>
               The violent impact drove the civilizations of the middle world backward, pushing the balanced living world
               to the brink of destruction and distorting the dimensions. Having become disembodied spirits, the Gods

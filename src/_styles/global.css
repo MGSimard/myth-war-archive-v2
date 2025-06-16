@@ -219,6 +219,12 @@ details[open] p {
 .papyrus-section > *:not(:last-child) {
   margin-bottom: 0.8rem;
 }
+.papyrus-section h3:not(:first-child) {
+  margin-top: 2.4rem;
+}
+.papyrus-section h4:not(:first-child) {
+  margin-top: 1.6rem;
+}
 .link {
   text-decoration: underline;
 }
