@@ -1,7 +1,7 @@
 {
-  "name": "SimDraft",
-  "short_name": "SimDraft",
-  "description": "League of Legends Draft Simulator",
+  "name": "Myth War Archive",
+  "short_name": "Myth War Archive",
+  "description": "Preserving the world, art, and history of Myth War.",
   "icons": [
     {
       "src": "/metadata/favicon.ico",
