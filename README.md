@@ -1,30 +1,26 @@
 # Myth War Archive (v2)
 
-## Notes
+Preservation & utility project for the Myth War community. Myth War Archive is your go-to resource for everything related to Myth War Online and Myth War II. Whether you're a long-time fan or just discovering the games, this site is dedicated to preserving their legacy and supporting the communities that keep them alive.
 
-- Site URL: mwarchive.pages.dev
-- No way to do gradient borders for this app (Except for static elems like sidenav)
-  - Border-image disables ability to use border-radius
-  - Can't gradient BG + pad 1px + nested BG because I need transparency
-  - Can't use masking because it kills perf on mobile and causes checkerboarding on scroll
+## Features
+
+- Game History
+- World & Lore
+- Assets (Maps, Images, Audio)
+- Guides (Leveling, Rebirth)
+- Tools (Modding, Reverse-Engineering)
+- Communities
 
 ## Task List
 
-- [x] Init
-- [x] Strip bloat
-- [x] Set configs
-- [ ] ...
-- [x] Core Layout
-  - [x] Color palette
-  - [x] Layout identity
-  - [x] Sidenav
-    - [ ] Nav item font
-    - [ ] Inert rest of the app when open on mobile?
-  - [ ] ...
-- [ ] Potentially reduce region figcaptions to just the game, the cities are already in the section, still pass the city name for aria-label and alt text I guess
+- [ ] Inert rest of the app when open on mobile?
 - [ ] TOC?
-- [ ] ...
-- [ ] Metadata
-- [ ] Deploy
-
 - [ ] If this is ever taken seriously, ditch Uploadthing and move assets to an R2 storage subdomain
+
+---
+
+## Contact
+
+MGSimard  
+X: [@MGSimard](https://x.com/MGSimard)  
+GitHub: [@MGSimard](https://github.com/MGSimard)
