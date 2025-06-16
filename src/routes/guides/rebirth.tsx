@@ -78,8 +78,7 @@ function PageGuidesRebirth() {
             <p>
               <b>
                 Rebirth is a process which allows you to reset your character and start over with new stats and
-                abilities. This process is permanent and cannot be undone. Only proceed when you're ready to start over
-                with enhanced stats and capabilities.
+                abilities. This process is permanent and cannot be undone. Only proceed when you're ready.
               </b>
             </p>
           </div>
