@@ -313,6 +313,7 @@ details[open] p {
   border: 0.1rem solid var(--clrGoldInnerLineLight);
   border-radius: 0.8rem;
   pointer-events: none;
+  z-index: 1;
 }
 .header-header::before,
 .section-header::before {
@@ -1244,4 +1245,37 @@ textarea[readonly] {
   .blue-table.separator td:not(:last-child) {
     width: auto;
   }
+}
+
+/* NOTFOUND & ERROR */
+main:has(#system-notice) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+#system-notice {
+  text-align: center;
+}
+#system-notice .section-content {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  min-height: 20rem;
+  overflow: hidden;
+}
+#system-notice img {
+  position: absolute;
+  inset: 0;
+  transform: translate(-50%, -50%);
+  left: 50%;
+  top: 50%;
+  flex-shrink: 0;
+  width: auto;
+  height: 100%;
+  opacity: 0.2;
+  pointer-events: none;
+}
+#system-message {
+  z-index: 1;
 }
