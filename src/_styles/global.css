@@ -162,7 +162,9 @@ ol {
   list-style-position: inside;
 }
 ul > ul,
-ol > ol {
+ol > ol,
+ul > ol,
+ol > ul {
   margin-inline-start: 1.6rem;
 }
 hr {

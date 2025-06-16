@@ -396,11 +396,56 @@ function PageGuidesLeveling() {
       <Section title="Level 90+">
         <div className="papyrus">
           <h3>Papa Drow & Worn Messenger</h3>
+          <p>
+            At around level 90 you'll stop gaining XP from Seal, so you'll need to find a new source of XP. Two of the
+            best options are Papa Drow and Worn Messenger.
+          </p>
           <div className="papyrus-section">
-            <h4>Papa Drowcrusher</h4>
+            <h4>Papa Drow</h4>
+            <p>Drow Lord, more commonly referred to as &quot;Papa Drow&quot;, ---</p>
           </div>
           <div className="papyrus-section">
             <h4>Worn Messenger</h4>
+            <p>
+              Like a lot of other quests, Worn Messenger is a repeatable round-based quest. Experience gains after every
+              round, currently unsure if there's a cap/reset. It's more difficult than most leveling methods up until
+              this point, so it's generally a good idea to refer to guides like these:
+            </p>
+            <ul>
+              <li>
+                <a
+                  className="link"
+                  href="https://thunderized.luigi311.com/guide:worndeity"
+                  target="_blank"
+                  rel="noopener noreferrer">
+                  Worn Deity (Thunderized)
+                </a>
+              </li>
+              <li>
+                <a
+                  className="link"
+                  href="https://community.tdt.net/forum.php?mod=viewthread&tid=81"
+                  target="_blank"
+                  rel="noopener noreferrer">
+                  Worn Messenger Guide
+                </a>
+              </li>
+            </ul>
+            <ol>
+              <li>Talk to Worn Messenger in Desert City (168, 51)</li>
+              <li>
+                You'll be tasked with defeating 5 different monsters in any order, all of which can be found in Bone
+                Desert south of Desert City:
+              </li>
+              <ul>
+                <li>Worn General (127, 109)</li>
+                <li>Princess Agony (147,65)</li>
+                <li>Dark Knight (161, 78)</li>
+                <li>Prince Zenith (163, 45)</li>
+                <li>Borg Giant (187, 101)</li>
+              </ul>
+              <li>Once you've defeated all 5, return to Worn Messenger in Desert City to start a new round</li>
+            </ol>
           </div>
         </div>
       </Section>
