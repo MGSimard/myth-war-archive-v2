@@ -133,38 +133,61 @@ function PageGuidesLeveling() {
               Drowcrusher is a monster that can be fought with a party from level 30 onwards. It rewards 100k XP per
               kill. The limit used to be set to five per day, however it is currently unlimited. In order to fight
               Drowcrusher (also referred to as &quot;Drow&quot;), you will need to give him a Tier 5 equipment
-              corresponding to your class and gender. Below is a table that shows exactly which class-specific piece of
-              equipment you need to give him - those can be obtained either through forging, buying from other players
-              or using a Convenience Store item, the latter being the most efficient. You can ask for help in World Chat
-              by saying &quot;Drow Lead looking for 1hit party&quot; and inviting the respondents to your party.
+              corresponding to your race and gender. Below is a table that shows exactly which character-specific piece
+              of equipment you need to give him - those can be obtained either through forging, buying from other
+              players or using a Convenience Store item, the latter being the most efficient. You can ask for help in
+              World Chat by saying &quot;Drow Lead looking for 1hit party&quot; and inviting the respondents to your
+              party.
             </p>
-            <ul>
-              <li>
-                Borg<em>(M)</em>: +5 Weapon
-              </li>
-              <li>
-                Borg<em>(F)</em>: +5 Weapon
-              </li>
-              <li>
-                Centaur<em>(M)</em>: +5 Shoe
-              </li>
-              <li>
-                Centaur<em>(F)</em>: +5 Armor
-              </li>
-              <li>
-                Human<em>(M)</em>: +5 Armor
-              </li>
-              <li>
-                Human<em>(F)</em>: +5 Armor
-              </li>
-              <li>
-                Mage<em>(M)</em>: +5 Armor
-              </li>
-              <li>
-                Mage<em>(F)</em>: +5 Helm
-              </li>
-            </ul>
+            <table className="papyrus-table">
+              <thead>
+                <tr>
+                  <th>Race</th>
+                  <th>Equipment</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>Borg (Male)</td>
+                  <td>+5 Weapon</td>
+                </tr>
+                <tr>
+                  <td>Borg (Female)</td>
+                  <td>+5 Weapon</td>
+                </tr>
+                <tr>
+                  <td>Centaur (Male)</td>
+                  <td>+5 Shoe</td>
+                </tr>
+                <tr>
+                  <td>Centaur (Female)</td>
+                  <td>+5 Armor</td>
+                </tr>
+                <tr>
+                  <td>Human (Male)</td>
+                  <td>+5 Armor</td>
+                </tr>
+                <tr>
+                  <td>Human (Female)</td>
+                  <td>+5 Armor</td>
+                </tr>
+                <tr>
+                  <td>Mage (Male)</td>
+                  <td>+5 Armor</td>
+                </tr>
+                <tr>
+                  <td>Mage (Female)</td>
+                  <td>+5 Helm</td>
+                </tr>
+              </tbody>
+            </table>
+            <ol>
+              <li>Head to Cursed Abyss north of Demon Square</li>
+              <li>Give the corresponding equipment to Drowcrusher (181, 166)</li>
+              <li>After defeating him, simply rinse & repeat</li>
+            </ol>
           </div>
+          <hr />
           <div className="papyrus-section">
             <h4>Wednesday Event</h4>
             <p>
@@ -402,8 +425,24 @@ function PageGuidesLeveling() {
           </p>
           <div className="papyrus-section">
             <h4>Papa Drow</h4>
-            <p>Drow Lord, more commonly referred to as &quot;Papa Drow&quot;, ---</p>
+            <p>
+              Drow Lord, more commonly referred to as &quot;Papa Drow&quot;, functions pretty much identically to
+              regular Drowcrusher. The only real difference being a drastic increase in difficulty. Similarly to
+              Drowcrusher, Papa Drow can be repeated as much as you like without limits. Note that your experience gains
+              will be drastically reduced after reaching level 110.{" "}
+              <b>
+                Contrary to regular Drowcrusher, all characters require the same type of equipment to fight Papa Drow
+                (+5 weapon of their own race & gender)
+              </b>
+              .
+            </p>
+            <ol>
+              <li>Head to Cursed Abyss north of Demon Square</li>
+              <li>Give the corresponding equipment to Drow Lord (170, 137)</li>
+              <li>After defeating him, simply rinse & repeat</li>
+            </ol>
           </div>
+          <hr />
           <div className="papyrus-section">
             <h4>Worn Messenger</h4>
             <p>
