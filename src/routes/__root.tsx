@@ -7,7 +7,17 @@ import { PageError } from "@/_components/PageError";
 
 export const Route = createRootRoute({
   notFoundComponent: () => <PageNotFound />,
-  errorComponent: ({ error, reset }) => <PageError error={error} reset={reset} />,
+  errorComponent: ({ error, reset }) => (
+    <SidenavContextProvider>
+      <FixedTrigger />
+      <Sidenav />
+      <div id="sidenav-inset">
+        <main>
+          <PageError error={error} reset={reset} />
+        </main>
+      </div>
+    </SidenavContextProvider>
+  ),
   component: () => (
     <SidenavContextProvider>
       <FixedTrigger />

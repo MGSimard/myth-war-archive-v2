@@ -6,6 +6,8 @@ export const Route = createFileRoute("/")({
 });
 
 function App() {
+  throw new Error("test");
+
   return (
     <header id="hero">
       <h1>

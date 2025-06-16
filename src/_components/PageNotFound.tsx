@@ -7,7 +7,7 @@ export function PageNotFound() {
       <div className="section-content">
         <img src="/assets/404.webp" alt="" aria-hidden="true" />
         <div id="system-message">
-          <h2>The page you are looking for does not exist.</h2>
+          <h2 className="label">The page you are looking for does not exist.</h2>
         </div>
       </div>
     </section>
