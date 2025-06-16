@@ -418,6 +418,10 @@ details[open] p {
 #sidenav-content li:has(a.active) {
   background: linear-gradient(to right, oklch(0.535 0.1896 7.98), var(--clrPurpleOverlay));
 }
+#sidenav-content li:has(a:hover),
+#sidenav-content li:has(a:focus-visible) {
+  outline: 0.2rem solid var(--clrGoldOuterLeftFrameHighlight);
+}
 #sidenav-content li::before {
   content: "";
   position: absolute;

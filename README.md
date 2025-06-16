@@ -15,12 +15,6 @@ Preservation & utility project for the Myth War community. Myth War Archive is y
 - Tools (Modding, Reverse-Engineering)
 - Communities
 
-## Task List
-
-- [ ] Inert rest of the app when open on mobile?
-- [ ] TOC?
-- [ ] If this is ever taken seriously, ditch Uploadthing and move assets to an R2 storage subdomain
-
 ---
 
 ## Contact
