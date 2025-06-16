@@ -1,4 +1,4 @@
-![]
+![GitHubBanner](https://github.com/user-attachments/assets/3a8013db-d884-43b6-8587-32bdb2abf958)
 
 # Myth War Archive (v2)
 
