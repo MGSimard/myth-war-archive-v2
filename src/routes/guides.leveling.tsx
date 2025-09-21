@@ -252,7 +252,9 @@ function PageGuidesLeveling() {
             </table>
           </div>
           <details>
-            <summary className="no-select">Wednesday Event Questions & Answers</summary>
+            <summary className="no-select interactive">
+              <span>Wednesday Event Questions & Answers</span>
+            </summary>
             <p>
               <em>
                 Credit:{" "}
@@ -346,7 +348,9 @@ function PageGuidesLeveling() {
             <li>When victorious, return to Endelroth in Blython Bar to receive a new target</li>
           </ol>
           <details>
-            <summary className="no-select">Windseeker Teleport Coordinates</summary>
+            <summary className="no-select interactive">
+              <span>Windseeker Teleport Coordinates</span>
+            </summary>
             <p>
               <em>"H" stands for "Hurricane", "S" stands for "Spot".</em>
             </p>

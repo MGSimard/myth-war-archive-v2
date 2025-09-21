@@ -275,12 +275,17 @@ export default function AudioControls({ currentTrack, tracks, changeTrack }: Aud
           </div>
         </div>
         {currentTrack ? (
-          <a id="audio-download" href={currentTrack.link} className="heading" target="_blank" rel="noopener noreferrer">
-            Download
+          <a
+            id="audio-download"
+            href={currentTrack.link}
+            className="interactive"
+            target="_blank"
+            rel="noopener noreferrer">
+            <span className="heading">Download</span>
           </a>
         ) : (
-          <div id="audio-download" className="heading disabled no-select" aria-label="Disabled">
-            Download
+          <div id="audio-download" className=" disabled no-select interactive" aria-label="Disabled">
+            <span className="heading">Download</span>
           </div>
         )}
       </div>

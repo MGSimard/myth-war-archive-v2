@@ -135,11 +135,6 @@ section {
 }
 /**/
 /* NORMALIZE */
-.heading {
-  word-spacing: -0.2em;
-  font-family: var(--headingFont);
-  font-weight: 400;
-}
 h1 {
   font-size: 2em;
   font-weight: 700;
@@ -224,18 +219,70 @@ table {
   overflow: hidden;
 }
 summary {
+  display: inline-block;
+}
+summary span {
   font-family: var(--headingFont);
   font-size: 1.8rem;
   font-weight: 400;
   word-spacing: -0.2em;
   cursor: pointer;
+  color: var(--clrGoldInnerLineLight);
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 0.025rem oklch(0.3 0.192 264.2);
+  background: var(--gradientHeading);
+  background-clip: text;
+  -webkit-background-clip: text;
+  filter: drop-shadow(0.1rem 0.1rem black);
+}
+summary span::after {
+  content: "+";
+  display: inline-block;
+  margin-left: 0.5em;
 }
 details[open] summary,
 details[open] p {
   margin-bottom: 0.8rem;
 }
+details[open] summary span::after {
+  content: "-";
+}
 /**/
 /* HELPERS */
+.interactive {
+  position: relative;
+}
+.interactive .heading {
+  -webkit-text-stroke: 0.1rem oklch(0.3 0.192 264.2);
+}
+.interactive:not(.disabled)::before {
+  content: "";
+  position: absolute;
+  inset: 0 -2em;
+  background: radial-gradient(
+    ellipse closest-side at center,
+    oklch(from var(--clrSiteText) l c h / 0.4) 20%,
+    transparent
+  );
+  pointer-events: none;
+}
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 0.4;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+}
+.interactive:not(.disabled):hover::before,
+.interactive:not(.disabled):focus-visible::before,
+.interactive:not(.disabled):active::before {
+  background: radial-gradient(ellipse closest-side at center, oklch(0.51 0.2166 260.75) 20%, transparent);
+  animation: pulse 2s ease-in-out infinite;
+}
 .system {
   font-family: var(--pixelFont);
 }
@@ -268,6 +315,7 @@ details[open] p {
   background-clip: text;
   -webkit-background-clip: text;
   filter: drop-shadow(0.1rem 0.1rem black);
+  word-spacing: -0.2em;
 }
 .subheading {
   font-family: var(--headingFont);
@@ -835,8 +883,6 @@ main:has(#audio) {
   flex: 1 1 auto;
   min-height: 0;
 }
-#audio .section-content {
-}
 #audio-list,
 #audio-right {
   height: 100%;
@@ -1040,6 +1086,9 @@ textarea[readonly] {
 }
 #audio-download {
   margin-left: auto;
+}
+#audio-download span {
+  line-height: 1;
 }
 /* PAPYRUS TABLE */
 .papyrus-table {
