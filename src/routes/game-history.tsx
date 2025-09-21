@@ -118,7 +118,7 @@ function PageGameHistory() {
                 year: "2003",
                 title: "Malicious Fund Withdrawal by Core Investor",
                 description:
-                  "Cai Chengrui(蔡呈瑞) withdraws most of his funds without the knowledge of the company"s employees, which paralyzed the company"s development plan and eventually led to their collapse.",
+                  "Cai Chengrui(蔡呈瑞) withdraws most of his funds without the knowledge of the company's employees, which paralyzed the company's development plan and eventually led to their collapse.",
               },
               {
                 id: 4,
@@ -145,7 +145,7 @@ function PageGameHistory() {
                 year: "2004",
                 title: "Zhuang Jinlong Cemented as the Godfather of the Chinese Game Industry",
                 description:
-                  'Zhuang Jinlong(庄锦隆) elected as 'Top Ten Chinese IT Person of the Year' & 'Top Ten Leaders of the Year'.',
+                  "Zhuang Jinlong(庄锦隆) elected as 'Top Ten Chinese IT Person of the Year' & 'Top Ten Leaders of the Year'.",
               },
               {
                 id: 6,
