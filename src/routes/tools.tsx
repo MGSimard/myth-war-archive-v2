@@ -4,7 +4,7 @@ import { Section } from "@/_components/Section";
 import tools from "@/_data/tools.json";
 import { ArrowBigDownDash } from "lucide-react";
 
-export const Route = createFileRoute("/tools/")({
+export const Route = createFileRoute("/tools")({
   component: PageTools,
 });
 
@@ -12,12 +12,14 @@ function PageTools() {
   return (
     <>
       <Header title="Tools" subtitle="" />
-      <Section title="Modding">
-        <Table data={tools.modding} />
-      </Section>
-      <Section title="Reverse-Engineering">
-        <Table data={tools["reverse-engineering"]} />
-      </Section>
+      <div className="content-wrapper">
+        <Section title="Modding">
+          <Table data={tools.modding} />
+        </Section>
+        <Section title="Reverse-Engineering">
+          <Table data={tools["reverse-engineering"]} />
+        </Section>
+      </div>
     </>
   );
 }

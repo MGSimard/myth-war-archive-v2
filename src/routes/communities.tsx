@@ -3,7 +3,7 @@ import { Header } from "@/_components/Header";
 import { Section } from "@/_components/Section";
 import communities from "@/_data/communities.json";
 
-export const Route = createFileRoute("/communities/")({
+export const Route = createFileRoute("/communities")({
   component: PageCommunities,
 });
 
@@ -11,21 +11,23 @@ function PageCommunities() {
   return (
     <>
       <Header title="Communities" subtitle="" />
-      <Section title="Servers">
-        <Table data={communities.servers} />
-      </Section>
-      <Section title="Discord">
-        <Table data={communities.discord} />
-      </Section>
-      <Section title="Subreddits">
-        <Table data={communities.subreddits} />
-      </Section>
-      <Section title="Forums & Information">
-        <Table data={communities.forums} />
-      </Section>
-      <Section title="Official (Defunct)">
-        <Table data={communities.official} />
-      </Section>
+      <div className="content-wrapper">
+        <Section title="Servers">
+          <Table data={communities.servers} />
+        </Section>
+        <Section title="Discord">
+          <Table data={communities.discord} />
+        </Section>
+        <Section title="Subreddits">
+          <Table data={communities.subreddits} />
+        </Section>
+        <Section title="Forums & Information">
+          <Table data={communities.forums} />
+        </Section>
+        <Section title="Official (Defunct)">
+          <Table data={communities.official} />
+        </Section>
+      </div>
     </>
   );
 }

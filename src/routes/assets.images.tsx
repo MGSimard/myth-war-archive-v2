@@ -10,9 +10,11 @@ function PageAssetsImages() {
   return (
     <>
       <Header title="Image Assets" />
-      <Section title="Images" id="images">
-        <p>Images</p>
-      </Section>
+      <div className="content-wrapper">
+        <Section title="Images" id="images">
+          <p>Images</p>
+        </Section>
+      </div>
     </>
   );
 }

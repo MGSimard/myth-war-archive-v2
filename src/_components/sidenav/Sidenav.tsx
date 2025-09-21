@@ -31,7 +31,7 @@ export function Sidenav() {
   }, [isOpen, isMobile, setIsOpen]);
 
   return (
-    <nav id="sidenav" inert={!isOpen} ref={sidenavRef}>
+    <nav id="sidenav" className="no-select" inert={!isOpen} ref={sidenavRef}>
       <div id="sidenav-inner">
         <div id="sidenav-header">
           <div id="snh-left">

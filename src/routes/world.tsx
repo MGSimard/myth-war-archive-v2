@@ -3,7 +3,7 @@ import { Header } from "@/_components/Header";
 import { Section } from "@/_components/Section";
 import { Figure } from "@/_components/Figure";
 
-export const Route = createFileRoute("/world/")({
+export const Route = createFileRoute("/world")({
   component: PageWorld,
 });
 

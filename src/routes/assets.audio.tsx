@@ -11,9 +11,11 @@ function PageAssetsAudio() {
   return (
     <>
       <Header title="Audio Assets" />
-      <Section title="Audio Player" id="audio">
-        <AudioPlayer />
-      </Section>
+      <div className="content-wrapper">
+        <Section id="audio">
+          <AudioPlayer />
+        </Section>
+      </div>
     </>
   );
 }

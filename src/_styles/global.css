@@ -3,45 +3,36 @@
   --maxContentWidth: 1440px;
   --sitePadding: 1rem;
   --sidenavWidth: 32rem;
+  --decorlinePad: 0.2rem 0.4rem;
 
+  /* FONTS */
   --displayFont: "Zieruk", "Palatino Linotype", "Book Antiqua", "Georgia", serif;
   --contentFont: "system-ui", "sans-serif";
   --headingFont: "Hanyi Fanglijian", "Brush Script MT", "cursive", serif;
   --pixelFont: "system-ui", "sans-serif";
 
-  --decorlinePad: 0.2rem 0.4rem;
-
   /* MYTH WAR COLORS*/
   --clrSiteText: oklch(1 0 0);
   --clrSiteBg: oklch(0.19 0.0608 278.71);
-
   --clrGoldOuterTopFrameHighlight: oklch(0.894 0.098 95.14);
   --clrGoldOuterRightFrameHighlight: oklch(0.894 0.098 95.14);
   --clrGoldOuterBottomFrameHighlight: oklch(0.9223 0.0823 101.84);
   --clrGoldOuterLeftFrameHighlight: oklch(0.8164 0.121 91.13);
-
   --clrGoldInnerLineLight: oklch(0.7404 0.1316 85.76);
   --clrGoldInnerLineDark: oklch(0.3724 0.0947 43.1);
-
   --clrGoldHeadingInnerLineLight: oklch(0.6764 0.1011 89.29);
   --clrGoldHeadingInnerLineDark: oklch(0.4564 0.0922 68.53);
-
   --clrOverlayBg: oklch(0.1101 0.0763 264.05 / 90.59%);
   --clrPurpleOverlay: oklch(0.2209 0.0747 298.51);
   --clrTableHeadBg: oklch(0.2301 0.1123 273.17);
-
   --clrInputEditableBg: oklch(0.2325 0.0568 264.87);
   --clrInputEditableTLBorder: oklch(0.451 0.0492 248.97);
   --clrInputEditableBRBorder: oklch(0.5138 0.0378 226.17);
-
   --clrInputReadOnlyBg: oklch(0.1721 0.0953 274.32);
   --clrInputReadOnlyTLBorder: oklch(0.2966 0.1049 275.1);
   --clrInputReadOnlyBRBorder: oklch(0.3976 0.0761 271.06);
-
   --clrInputLabel: oklch(0.7262 0.1483 70.77);
-
   --clrBrown: oklch(0.2604 0.0717 35.18);
-
   --gradientHeader: linear-gradient(to bottom, oklch(0.1768 0.1103 264.2), oklch(0.3484 0.1382 259.47));
   --gradientHeading: linear-gradient(to bottom, oklch(0.9737 0.154 109.34), oklch(0.7104 0.1355 72.07));
 }
@@ -49,7 +40,6 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  /* outline: 0.1rem solid red; */
 }
 html {
   font-family: var(--contentFont);
@@ -59,6 +49,7 @@ html {
 }
 body {
   position: relative;
+  padding: var(--sitePadding);
   font-size: 1.6rem;
 }
 body::before {
@@ -85,13 +76,14 @@ body::after {
   transition: padding 0.3s ease-in-out;
 }
 main {
-  display: flex;
-  flex-direction: column;
-  gap: 3.2rem;
   max-width: var(--maxContentWidth);
   min-height: 100dvh;
   margin: 0 auto;
-  padding: var(--sitePadding);
+}
+main:not(:has(#hero)) {
+  border: 0.2rem ridge var(--clrGoldOuterLeftFrameHighlight);
+  border-radius: 0.4rem;
+  background: var(--clrOverlayBg);
 }
 /**/
 /* NORMALIZE */
@@ -146,12 +138,6 @@ button {
 button svg {
   width: 1em;
   height: 1em;
-  -webkit-touch-callout: none;
-  -webkit-user-select: none;
-  -khtml-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
 }
 a {
   color: inherit;
@@ -200,7 +186,7 @@ details[open] p {
 .heading {
   display: block;
   font-family: var(--headingFont);
-  font-size: 2rem;
+  font-size: 3.2rem;
   font-weight: 400;
   color: transparent;
   text-align: center;
@@ -267,12 +253,9 @@ details[open] p {
   }
 }
 /**/
-/* DECOR LINE HELPER*/
+/* SHARED DECOR LINE HELPERS */
 #snh-left,
 #sidenav-content,
-.header-header,
-.section-header,
-.section-content,
 .dh-left {
   position: relative;
 }
@@ -287,41 +270,6 @@ details[open] p {
     border-box;
   mask: linear-gradient(#000 0 0) padding-box, linear-gradient(#000 0 0);
   mask-composite: exclude;
-  pointer-events: none;
-}
-#sidenav-content::before {
-  content: "";
-  position: absolute;
-  inset: var(--decorlinePad);
-  border-radius: 0.8rem;
-  border: 0.1rem solid transparent;
-  background: linear-gradient(
-      to right,
-      var(--clrGoldInnerLineDark),
-      var(--clrGoldInnerLineLight),
-      var(--clrGoldInnerLineDark)
-    )
-    border-box;
-  mask: linear-gradient(#000 0 0) padding-box, linear-gradient(#000 0 0);
-  mask-composite: exclude;
-  pointer-events: none;
-}
-.section-content::before {
-  content: "";
-  position: absolute;
-  inset: var(--decorlinePad);
-  border: 0.1rem solid var(--clrGoldInnerLineLight);
-  border-radius: 0.8rem;
-  pointer-events: none;
-  z-index: 1;
-}
-.header-header::before,
-.section-header::before {
-  content: "";
-  position: absolute;
-  inset: var(--decorlinePad);
-  border-radius: 0.2rem;
-  border: 0.1rem solid var(--clrGoldHeadingInnerLineLight);
   pointer-events: none;
 }
 /* SIDENAV */
@@ -380,6 +328,9 @@ details[open] p {
   overflow: hidden;
   border-right: 0.2rem ridge var(--clrGoldOuterLeftFrameHighlight);
 }
+#snh-left .heading {
+  font-size: 2rem;
+}
 #sidenav-header button {
   flex-shrink: 0;
   width: 3rem;
@@ -396,6 +347,23 @@ details[open] p {
   overflow-y: auto;
   scrollbar-width: thin;
   scrollbar-color: var(--clrGoldInnerLineLight) transparent;
+}
+#sidenav-content::before {
+  content: "";
+  position: absolute;
+  inset: var(--decorlinePad);
+  border-radius: 0.8rem;
+  border: 0.1rem solid transparent;
+  background: linear-gradient(
+      to right,
+      var(--clrGoldInnerLineDark),
+      var(--clrGoldInnerLineLight),
+      var(--clrGoldInnerLineDark)
+    )
+    border-box;
+  mask: linear-gradient(#000 0 0) padding-box, linear-gradient(#000 0 0);
+  mask-composite: exclude;
+  pointer-events: none;
 }
 #sidenav-content h2 {
   font-size: 2rem;
@@ -448,6 +416,8 @@ details[open] p {
 /**/
 /* HOME */
 main:has(#hero) {
+  display: flex;
+  align-items: center;
   justify-content: center;
 }
 #hero {
@@ -491,52 +461,45 @@ main:has(#hero) {
   font-family: inherit;
 }
 /* CONTENT SECTION */
-main .header {
-  flex-shrink: 0;
-}
-main .header,
-main section {
-  overflow: hidden;
-  border: 0.2rem ridge var(--clrGoldOuterLeftFrameHighlight);
-  border-radius: 0.4rem;
-  background: var(--clrOverlayBg);
-}
-.header-header,
-.section-header {
+.content-header {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  text-align: center;
-  padding: 0.2rem 1.2rem;
-  font-family: var(--headingFont);
-  background: var(--gradientHeader);
-  overflow: hidden;
-}
-.header-header {
   padding: 0.8rem;
-}
-.header-header h1 {
-  line-height: 1;
-}
-.header-header h1:not(:last-child) {
-  margin-bottom: 0.4rem;
-  line-height: 0.8;
-}
-.header-header p {
-  word-spacing: -0.2em;
-}
-.header-header .heading,
-.section-header .heading {
-  font-size: 3.2rem;
-}
-.section-header {
+  font-family: var(--headingFont);
+  text-align: center;
+  background: var(--gradientHeader);
   border-bottom: 0.2rem ridge var(--clrGoldOuterLeftFrameHighlight);
 }
-.section-content {
-  padding: 1.6rem;
+.content-header::before {
+  content: "";
+  position: absolute;
+  inset: var(--decorlinePad);
+  border-radius: 0.2rem;
+  border: 0.1rem solid var(--clrGoldHeadingInnerLineLight);
+  pointer-events: none;
 }
-.section-content h3 {
+.content-header h1 {
+  line-height: 1;
+  &:not(:last-child) {
+    margin-bottom: 0.4rem;
+    line-height: 0.8;
+  }
+}
+.content-header p {
+  word-spacing: -0.2em;
+}
+.content-wrapper {
+  margin: 0.4rem;
+  border: 0.1rem solid var(--clrGoldInnerLineLight);
+  border-radius: 0.8rem;
+}
+section {
+  padding: 0.8rem;
+}
+section h3 {
   font-size: 2.4rem;
   margin-bottom: 0.8rem;
 }
@@ -681,7 +644,7 @@ figcaption::before {
 dialog {
   display: flex;
   flex-direction: column;
-  margin: auto; /* For some reason this centers both ways */
+  margin: auto;
   color: inherit;
   border: 2px ridge var(--clrGoldOuterLeftFrameHighlight);
   border-radius: 0.4rem;
@@ -780,7 +743,6 @@ dialog .rzpp-controls button {
 #maps ul {
   list-style: none;
 }
-
 .btn-download {
   position: relative;
   text-decoration: underline;
