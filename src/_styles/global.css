@@ -539,6 +539,8 @@ details[open] summary span::after {
   gap: 0.8rem;
   padding: 1rem;
   font-family: var(--headingFont);
+  line-height: 1;
+  margin-bottom: -0.1rem;
 }
 #sidenav-content a svg {
   width: 1.6rem;
