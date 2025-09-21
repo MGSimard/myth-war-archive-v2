@@ -1246,3 +1246,13 @@ main:has(#system-notice) {
 #system-message {
   z-index: 1;
 }
+#alert {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background: var(--clrOverlayBg);
+  z-index: 9999;
+  text-align: center;
+  text-wrap: balance;
+}
