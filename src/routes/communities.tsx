@@ -10,21 +10,21 @@ export const Route = createFileRoute("/communities")({
 function PageCommunities() {
   return (
     <>
-      <Header title="Communities" subtitle="" />
+      <Header heading="Communities" />
       <div className="content-wrapper">
-        <Section title="Servers">
+        <Section heading="Servers">
           <Table data={communities.servers} />
         </Section>
-        <Section title="Discord">
+        <Section heading="Discord">
           <Table data={communities.discord} />
         </Section>
-        <Section title="Subreddits">
+        <Section heading="Subreddits">
           <Table data={communities.subreddits} />
         </Section>
-        <Section title="Forums & Information">
+        <Section heading="Forums & Information">
           <Table data={communities.forums} />
         </Section>
-        <Section title="Official (Defunct)">
+        <Section heading="Official (Defunct)">
           <Table data={communities.official} />
         </Section>
       </div>

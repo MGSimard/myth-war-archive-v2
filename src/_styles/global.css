@@ -1,15 +1,18 @@
 :root {
   /* SITE CONFIG */
-  --maxContentWidth: 1440px;
+  --maxContentWidth: 968px;
   --sitePadding: 1rem;
   --sidenavWidth: 32rem;
   --decorlinePad: 0.2rem 0.4rem;
 
   /* FONTS */
   --displayFont: "Zieruk", "Palatino Linotype", "Book Antiqua", "Georgia", serif;
-  --contentFont: "system-ui", "sans-serif";
+  --contentFont: "system-ui", -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue,
+    helvetica, Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
   --headingFont: "Hanyi Fanglijian", "Brush Script MT", "cursive", serif;
-  --pixelFont: "system-ui", "sans-serif";
+  --pixelFont: "system-ui", -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica,
+    Cantarell, Ubuntu, roboto, noto, arial, sans-serif;
+  --baseLineHeight: 1.6;
 
   /* MYTH WAR COLORS*/
   --clrSiteText: oklch(1 0 0);
@@ -46,6 +49,16 @@ html {
   font-size: 62.5%;
   color: var(--clrSiteText);
   background: var(--clrSiteBg);
+  line-height: var(--baseLineHeight);
+  scroll-behavior: smooth;
+  scrollbar-gutter: stable;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
 body {
   position: relative;
@@ -85,28 +98,70 @@ main:not(:has(#hero)) {
   border-radius: 0.4rem;
   background: var(--clrOverlayBg);
 }
+section {
+  padding: 0.8rem;
+}
+.content-header {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.8rem;
+  font-family: var(--headingFont);
+  text-align: center;
+  background: var(--gradientHeader);
+  border-bottom: 0.2rem ridge var(--clrGoldOuterLeftFrameHighlight);
+}
+.content-header::before {
+  content: "";
+  position: absolute;
+  inset: var(--decorlinePad);
+  border-radius: 0.2rem;
+  border: 0.1rem solid var(--clrGoldHeadingInnerLineLight);
+  pointer-events: none;
+}
+.content-header h1 {
+  line-height: 1;
+}
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 3.2rem;
+  margin: 0.4rem;
+  padding: 0.8rem;
+  border: 0.1rem solid var(--clrGoldInnerLineLight);
+  border-radius: 0.8rem;
+}
 /**/
 /* NORMALIZE */
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
+.heading {
+  word-spacing: -0.2em;
   font-family: var(--headingFont);
   font-weight: 400;
 }
-h1,
-h2,
-h3,
-h4,
-h5,
-h6,
-.heading {
-  word-spacing: -0.2em;
+h1 {
+  font-size: 2em;
+  font-weight: 700;
+  line-height: 1.4;
+}
+h2 {
+  font-size: 1.778em;
+  line-height: 1.5;
+  font-weight: 600;
+}
+h3 {
+  font-size: 1.333em;
+  font-weight: 500;
 }
 h4 {
-  font-size: 1.8rem;
+  font-size: 1em;
+  font-weight: 500;
+}
+h5,
+h6 {
+  font-size: 1em;
+  font-weight: 500;
 }
 img,
 svg {
@@ -158,8 +213,9 @@ li::marker {
 }
 hr {
   height: 0.2rem;
-  box-shadow: inset 0 0 0.4rem #4d3807;
+  margin-block: 2.4rem;
   border: none;
+  box-shadow: inset 0 0 0.4rem #4d3807;
   -webkit-backdrop-filter: saturate(1.5);
   backdrop-filter: saturate(1.5);
 }
@@ -183,6 +239,22 @@ details[open] p {
 .system {
   font-family: var(--pixelFont);
 }
+.panel .section-content {
+  border: 0.2rem ridge var(--clrGoldInnerLineLight);
+  border-radius: 0.4rem;
+  padding: 1.6rem;
+  background: var(--clrInputReadOnlyBg);
+}
+.panel .section-content > *:not(:last-child) {
+  margin-block-end: 1em;
+}
+.panel .section-content h2:not(:last-child),
+.panel .section-content h3:not(:last-child),
+.panel .section-content h4:not(:last-child),
+.panel .section-content h5:not(:last-child),
+.panel .section-content h6:not(:last-child) {
+  margin-bottom: 0.33em;
+}
 .heading {
   display: block;
   font-family: var(--headingFont);
@@ -196,6 +268,13 @@ details[open] p {
   background-clip: text;
   -webkit-background-clip: text;
   filter: drop-shadow(0.1rem 0.1rem black);
+}
+.subheading {
+  font-family: var(--headingFont);
+  font-weight: 400;
+  word-spacing: -0.2em;
+  color: var(--clrInputLabel);
+  -webkit-text-stroke: 0.05rem oklch(0 0 1);
 }
 .papyrus {
   display: flex;
@@ -334,7 +413,7 @@ details[open] p {
 #sidenav-header button {
   flex-shrink: 0;
   width: 3rem;
-  height: 3rem;
+  height: 100%;
   border-radius: 0;
 }
 #sidenav-content {
@@ -464,61 +543,14 @@ main:has(#hero) {
 #home h2 {
   font-family: inherit;
 }
-/* CONTENT SECTION */
-.content-header {
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 0.8rem;
-  font-family: var(--headingFont);
-  text-align: center;
-  background: var(--gradientHeader);
-  border-bottom: 0.2rem ridge var(--clrGoldOuterLeftFrameHighlight);
-}
-.content-header::before {
-  content: "";
-  position: absolute;
-  inset: var(--decorlinePad);
-  border-radius: 0.2rem;
-  border: 0.1rem solid var(--clrGoldHeadingInnerLineLight);
-  pointer-events: none;
-}
-.content-header h1 {
-  line-height: 1;
-  &:not(:last-child) {
-    margin-bottom: 0.4rem;
-    line-height: 0.8;
-  }
-}
-.content-header p {
-  word-spacing: -0.2em;
-}
-.content-wrapper {
-  display: flex;
-  flex-direction: column;
-  gap: 3.2rem;
-  margin: 0.4rem;
-  border: 0.1rem solid var(--clrGoldInnerLineLight);
-  border-radius: 0.8rem;
-}
-section {
-  padding: 0.8rem;
-}
-section h2::after {
-  content: "I still don't know how I want to do these H2s";
-}
-section h3 {
-  font-size: 2.4rem;
-  margin-bottom: 0.8rem;
-}
 /* TIMELINE */
 #timeline-section h3 {
   margin-bottom: 2.4rem;
 }
-#timeline-section hr {
-  margin-block: 2.4rem;
+#timeline-section h4 {
+  font-family: var(--headingFont);
+  font-size: 1.8rem;
+  margin-top: -0.7rem;
 }
 .timeline {
   list-style: none;
@@ -584,8 +616,11 @@ section h3 {
 /* WORLD */
 #rarus-continent .section-content {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(30rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
   gap: 1.6rem;
+}
+#regions hr {
+  margin-top: 3.4rem;
 }
 figure {
   position: relative;
@@ -605,13 +640,13 @@ figcaption {
   position: absolute;
   bottom: -1rem;
   left: -1rem;
-  padding: 1rem 1.4rem 1rem 1rem;
+  padding: 1rem 1.8rem 1rem 1.4rem;
   text-wrap: balance;
   /* TODD: More side padding if I add ornament corner later */
   background: var(--clrPurpleOverlay);
   border-radius: 0 999rem 999rem 0;
   z-index: 1;
-  max-width: 70%;
+  line-height: 1;
 }
 figcaption.label {
   font-size: clamp(1.4rem, 1.2vw, 1.8rem);
@@ -641,9 +676,6 @@ figcaption::before {
   mask: linear-gradient(#000 0 0) padding-box, linear-gradient(#000 0 0);
   mask-composite: exclude;
   pointer-events: none;
-}
-#regions hr {
-  margin-block: 2.4rem;
 }
 .regions-grid {
   display: grid;
@@ -707,6 +739,7 @@ dialog::backdrop {
 }
 dialog .papyrus {
   position: relative;
+  padding: 0;
 }
 dialog .react-transform-wrapper {
   height: 100%;
@@ -1255,16 +1288,6 @@ main:has(#system-notice) {
 }
 #system-message {
   z-index: 1;
-}
-#alert {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  background: var(--clrOverlayBg);
-  z-index: 9999;
-  text-align: center;
-  text-wrap: balance;
 }
 /* MAXIMUM PRIORITY */
 .sr-only {

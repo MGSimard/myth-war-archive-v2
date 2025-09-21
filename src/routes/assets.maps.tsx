@@ -11,7 +11,7 @@ export const Route = createFileRoute("/assets/maps")({
 function PageAssetsMaps() {
   return (
     <>
-      <Header title="Map Assets" />
+      <Header heading="Map Assets" />
       <div className="content-wrapper">
         <Section id="maps">
           <table className="blue-table system">

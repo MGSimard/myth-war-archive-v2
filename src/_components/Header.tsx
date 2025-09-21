@@ -1,8 +1,11 @@
-export function Header({ title, subtitle }: { title: string; subtitle?: string }) {
+interface HeaderProps extends React.ComponentProps<"header"> {
+  heading: string;
+}
+
+export function Header({ heading, ...props }: HeaderProps) {
   return (
-    <header className="content-header">
-      <h1 className="heading">{title}</h1>
-      {subtitle && <p>{subtitle}</p>}
+    <header className="content-header" {...props}>
+      <h1 className="heading">{heading}</h1>
     </header>
   );
 }

@@ -22,3 +22,9 @@ Preservation & utility project for the Myth War community. Myth War Archive is y
 MGSimard  
 X: [@MGSimard](https://x.com/MGSimard)  
 GitHub: [@MGSimard](https://github.com/MGSimard)
+
+## TASK LIST
+
+- [ ] Fix audio player page overflow since reformat
+- [ ] Heading font elements acting as buttons should be gold with a blue outline and some gaussian blur oval behind it like in the game's UI, like the detail buttons or the download button in audio player page
+- [ ] Rowspan table should have the first cell highlighted if I'm highlighting any relevant cell (IE any seal position should highlight the first cell that shows the paired region)

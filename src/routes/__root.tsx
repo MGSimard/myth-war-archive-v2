@@ -22,7 +22,6 @@ export const Route = createRootRoute({
     <SidenavContextProvider>
       <FixedTrigger />
       <Sidenav />
-      <div id="alert">SITE REFORMATTING IN PROGRESS - WHY ADD A TESTING BRANCH LMAO EVEN</div>
       <div id="sidenav-inset">
         <main>
           <Outlet />

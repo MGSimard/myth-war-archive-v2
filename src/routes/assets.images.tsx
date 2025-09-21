@@ -9,9 +9,9 @@ export const Route = createFileRoute("/assets/images")({
 function PageAssetsImages() {
   return (
     <>
-      <Header title="Image Assets" />
+      <Header heading="Image Assets" />
       <div className="content-wrapper">
-        <Section title="Images" id="images">
+        <Section id="images">
           <p>Images</p>
         </Section>
       </div>

@@ -10,7 +10,7 @@ export const Route = createFileRoute("/assets/audio")({
 function PageAssetsAudio() {
   return (
     <>
-      <Header title="Audio Assets" />
+      <Header heading="Audio Assets" />
       <div className="content-wrapper">
         <Section id="audio">
           <AudioPlayer />

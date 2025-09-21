@@ -11,7 +11,7 @@ export const Route = createFileRoute("/tools")({
 function PageTools() {
   return (
     <>
-      <Header title="Tools" subtitle="" />
+      <Header heading="Tools" />
       <div className="content-wrapper">
         <Section title="Modding">
           <Table data={tools.modding} />

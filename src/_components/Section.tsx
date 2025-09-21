@@ -1,13 +1,12 @@
-interface SectionProps {
-  title?: string;
+interface SectionProps extends React.ComponentProps<"section"> {
   children: React.ReactNode;
-  id?: string;
+  heading?: string;
 }
 
-export function Section({ title, children, id }: SectionProps) {
+export function Section({ className, heading, children, ...props }: SectionProps) {
   return (
-    <section id={id}>
-      {title && <h2 className="heading">{title}</h2>}
+    <section className={className} {...props}>
+      {heading && <h2 className="subheading">{heading}</h2>}
       <div className="section-content">{children}</div>
     </section>
   );
