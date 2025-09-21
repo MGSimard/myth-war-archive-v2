@@ -9,7 +9,8 @@ export function SidenavTrigger({ fixed }: { fixed?: boolean }) {
 
   return (
     <button type="button" onClick={handleToggle} className={fixed ? "trigger-fixed" : undefined}>
-      <img src={isOpen ? "/assets/x.svg" : "/assets/sidebar.svg"} alt={isOpen ? "Close sidebar" : "Open sidebar"} />
+      <img src={isOpen ? "/assets/x.svg" : "/assets/sidebar.svg"} alt="" aria-hidden="true" />
+      <span className="sr-only">{isOpen ? "Close sidebar" : "Open sidebar"}</span>
     </button>
   );
 }
