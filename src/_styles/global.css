@@ -803,13 +803,29 @@ dialog .rzpp-controls button {
   opacity: 1;
 }
 /* AUDIO */
-main:has(#audio) {
+body:has(#audio) {
   height: 100dvh;
+  overflow: hidden;
+}
+#app:has(#audio) {
+  height: 100%;
+}
+#sidenav-inset:has(#audio) {
+  height: 100%;
+}
+main:has(#audio) {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 0;
 }
 #audio {
   display: flex;
   flex-direction: column;
   flex: 1 1 auto;
+  min-height: 0;
+}
+.content-wrapper:has(#audio) {
   min-height: 0;
 }
 #audio .section-content {
@@ -820,7 +836,6 @@ main:has(#audio) {
   min-height: 0;
 }
 #audio .section-content {
-  height: 100%;
 }
 #audio-list,
 #audio-right {
