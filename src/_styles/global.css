@@ -409,6 +409,7 @@ details[open] summary span::after {
   border: 0.2rem ridge var(--clrGoldOuterLeftFrameHighlight);
   border-radius: 0.4rem;
   z-index: 99;
+  box-shadow: 0 0 2rem oklch(0 0 1);
 }
 #sidenav {
   position: fixed;
