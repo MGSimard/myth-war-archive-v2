@@ -45,17 +45,17 @@ export function Sidenav() {
               <div className="navgroup-label" id={`group-${group.label}`}>
                 {group.label}
               </div>
-              <ul>
+              <ul role="menu">
                 {group.items.map((item) =>
                   item.isOutside ? (
-                    <li key={item.title}>
+                    <li key={item.title} role="menuitem">
                       <a href={item.url} target="_blank" rel="noopener noreferrer">
                         <item.icon />
                         <span>{item.title}</span>
                       </a>
                     </li>
                   ) : (
-                    <li key={item.title}>
+                    <li key={item.title} role="menuitem">
                       <Link to={item.url} onClick={() => isMobile && setIsOpen(false)}>
                         <item.icon />
                         <span>{item.title}</span>
