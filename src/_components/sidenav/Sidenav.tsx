@@ -41,8 +41,10 @@ export function Sidenav() {
         </div>
         <div id="sidenav-content">
           {navLinks.map((group) => (
-            <section key={group.label}>
-              <h2>{group.label}</h2>
+            <div role="group" aria-labelledby={`group-${group.label}`} key={group.label}>
+              <div className="navgroup-label" id={`group-${group.label}`}>
+                {group.label}
+              </div>
               <ul>
                 {group.items.map((item) =>
                   item.isOutside ? (
@@ -62,7 +64,7 @@ export function Sidenav() {
                   )
                 )}
               </ul>
-            </section>
+            </div>
           ))}
         </div>
       </div>
