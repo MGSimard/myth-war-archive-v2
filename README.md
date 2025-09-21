@@ -22,7 +22,3 @@ Preservation & utility project for the Myth War community. Myth War Archive is y
 MGSimard  
 X: [@MGSimard](https://x.com/MGSimard)  
 GitHub: [@MGSimard](https://github.com/MGSimard)
-
-## TASK LIST
-
-- [ ] Rowspan table should have the first cell highlighted if I'm highlighting any relevant cell (IE any seal position should highlight the first cell that shows the paired region)
