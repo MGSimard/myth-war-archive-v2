@@ -1,8 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { ArrowBigDownDash } from "lucide-react";
 import { Header } from "@/_components/Header";
 import { Section } from "@/_components/Section";
 import maps from "@/_data/assets-maps.json";
-import { ArrowBigDownDash } from "lucide-react";
 
 export const Route = createFileRoute("/assets/maps")({
   component: PageAssetsMaps,

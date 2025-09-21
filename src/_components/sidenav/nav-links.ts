@@ -6,12 +6,12 @@ import {
   Hammer,
   House,
   Image,
-  Infinity,
+  Infinity as InfinityIcon,
   Map,
   Scroll,
-  Users,
-  type LucideIcon,
+  Users  
 } from "lucide-react";
+import type {LucideIcon} from "lucide-react";
 import { IconGitHub } from "@/_components/Icons";
 
 export interface NavLink {
@@ -83,7 +83,7 @@ export const navLinks: NavLinkGroup[] = [
       {
         title: "Rebirth",
         url: "/guides/rebirth",
-        icon: Infinity,
+        icon: InfinityIcon,
       },
     ],
   },

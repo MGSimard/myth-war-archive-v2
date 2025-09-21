@@ -46,7 +46,7 @@ export function AudioPlayer() {
         <div id="audio-info" aria-atomic="true" aria-live="polite" aria-label="Current Track Information">
           <label htmlFor="audio-file-name">
             <span className="label">File Name:</span>
-            <input id="audio-file-name" type="text" value={currentTrack?.file || ""} readOnly />
+            <input id="audio-file-name" type="text" value={currentTrack?.file ?? ""} readOnly />
           </label>
           <label htmlFor="audio-length">
             <span className="label">File Length:</span>
@@ -59,7 +59,7 @@ export function AudioPlayer() {
           </label>
           <label htmlFor="audio-details">
             <span className="label">Details:</span>
-            <textarea id="audio-details" value={currentTrack?.description || ""} readOnly rows={5} />
+            <textarea id="audio-details" value={currentTrack?.description ?? ""} readOnly rows={5} />
           </label>
         </div>
         <AudioControls currentTrack={currentTrack} tracks={flatTracks} changeTrack={setCurrentTrack} />

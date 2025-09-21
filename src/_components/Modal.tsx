@@ -10,14 +10,13 @@ interface ModalProps {
 
 export function Modal({ title, isOpen, onClose, children }: ModalProps) {
   const dialogRef = useRef<HTMLDialogElement>(null);
-
-  if (!isOpen) return null;
-
   // Manual showModal() is required for focus trapping & ::backdrop access
   useEffect(() => {
-    if (!dialogRef.current) return;
+    if (!dialogRef.current || !isOpen) return;
     dialogRef.current.showModal();
-  }, []);
+  }, [isOpen]);
+
+  if (!isOpen) return null;
 
   return createPortal(
     <dialog ref={dialogRef} onClose={onClose}>
@@ -25,7 +24,7 @@ export function Modal({ title, isOpen, onClose, children }: ModalProps) {
         <div className="dh-left">
           <span className="heading">{title}</span>
         </div>
-        <button onClick={onClose} aria-label="Close dialog">
+        <button type="button" onClick={onClose} aria-label="Close dialog">
           <img src="/assets/x.svg" alt="" aria-hidden="true" />
         </button>
       </div>

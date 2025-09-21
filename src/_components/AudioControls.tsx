@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
-import { TrackTypes } from "@/_components/AudioPlayer";
 import { Pause, Play, SkipBack, SkipForward, Volume, Volume1, Volume2, VolumeOff } from "lucide-react";
+import type { TrackTypes } from "@/_components/AudioPlayer";
 
 const toLogarithmicVolume = (value: number) => {
   const logarithmicVolume = (Math.pow(10, value / 100) - 1) / 9;
@@ -47,7 +47,9 @@ export default function AudioControls({ currentTrack, tracks, changeTrack }: Aud
     if (seekerRef.current) {
       try {
         seekerRef.current.releasePointerCapture(1);
-      } catch {}
+      } catch {
+        // do nothing
+      }
     }
     setIsSeekDragging(false);
     setWasPlayingBeforeSeek(false);
@@ -213,7 +215,7 @@ export default function AudioControls({ currentTrack, tracks, changeTrack }: Aud
 
   return (
     <div id="audio-controls">
-      <audio ref={audioPlayerRef} src={currentTrack?.link || undefined} preload="metadata" />
+      <audio ref={audioPlayerRef} src={currentTrack?.link ?? undefined} preload="metadata" />
 
       <div id="time-display" className="system">
         {formatTime(currentTime)}/{isLoading ? "--:--" : formatTime(duration)}

@@ -1,5 +1,5 @@
-import { TransformWrapper, TransformComponent, useControls } from "react-zoom-pan-pinch";
-import { Plus, Minus, RotateCcw } from "lucide-react";
+import { TransformComponent, TransformWrapper, useControls } from "react-zoom-pan-pinch";
+import { Minus, Plus, RotateCcw } from "lucide-react";
 
 export function Rzpp({ children }: { children: React.ReactNode }) {
   return (
@@ -15,13 +15,13 @@ function RzppControls() {
 
   return (
     <div className="rzpp-controls">
-      <button onClick={() => zoomIn()} aria-label="Zoom in">
+      <button type="button" onClick={() => zoomIn()} aria-label="Zoom in">
         <Plus aria-hidden="true" strokeWidth={4} />
       </button>
-      <button onClick={() => zoomOut()} aria-label="Zoom out">
+      <button type="button" onClick={() => zoomOut()} aria-label="Zoom out">
         <Minus aria-hidden="true" strokeWidth={4} />
       </button>
-      <button onClick={() => resetTransform()} aria-label="Reset zoom">
+      <button type="button" onClick={() => resetTransform()} aria-label="Reset zoom">
         <RotateCcw aria-hidden="true" strokeWidth={4} />
       </button>
     </div>

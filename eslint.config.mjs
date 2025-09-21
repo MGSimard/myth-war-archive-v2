@@ -8,7 +8,6 @@ import globals from "globals";
 
 import eslint from "@eslint/js";
 import tseslint from "typescript-eslint";
-import tsParser from "@typescript-eslint/parser";
 import eslintConfigPrettier from "eslint-config-prettier/flat";
 
 // TanStack ecosystem
@@ -20,6 +19,10 @@ export default defineConfig([
   // Global configuration
   globalIgnores(["dist"]),
 
+  // TanStack ecosystem configurations
+  tanstackConfig,
+  pluginRouter.configs["flat/recommended"],
+
   // Base configurations
   eslint.configs.recommended,
 
@@ -27,25 +30,21 @@ export default defineConfig([
   tseslint.configs.recommendedTypeChecked,
   tseslint.configs.stylisticTypeChecked,
 
-  // TanStack ecosystem configurations
-  tanstackConfig,
-  pluginRouter.configs["flat/recommended"],
-
   // React ecosystem configurations
   reactX.configs["recommended-typescript"],
   reactDom.configs.recommended,
 
   // Main configuration with language options and custom rules
   {
-    files: ["**/*.{js,jsx,ts,tsx}"],
     plugins: {
       "react-hooks": reactHooks,
+      "@typescript-eslint": tseslint.plugin,
     },
     languageOptions: {
       globals: {
         ...globals.browser,
       },
-      parser: tsParser,
+      parser: tseslint.parser,
       ecmaVersion: "latest",
       sourceType: "module",
       parserOptions: {

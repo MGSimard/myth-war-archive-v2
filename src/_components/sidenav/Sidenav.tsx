@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 import { Link } from "@tanstack/react-router";
 import { useSidenav } from "@/_components/sidenav/SidenavProvider";
 import { navLinks } from "@/_components/sidenav/nav-links";
-import { SidenavTrigger } from "./SidenavTrigger";
+import { SidenavTrigger } from "@/_components/sidenav/SidenavTrigger";
 import { useIsMobile } from "@/_hooks/useIsMobile";
 
 export function Sidenav() {

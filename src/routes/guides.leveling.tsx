@@ -1,9 +1,9 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { Fragment } from "react";
 import { Header } from "@/_components/Header";
 import { Section } from "@/_components/Section";
 import qna from "@/_data/wednesday-event.json";
 import sealCoords from "@/_data/seal-windseeker.json";
-import { Fragment } from "react";
 
 export const Route = createFileRoute("/guides/leveling")({
   component: PageGuidesLeveling,

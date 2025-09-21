@@ -1,4 +1,5 @@
-import { createContext, useContext, useEffect, useState, type Dispatch, type SetStateAction } from "react";
+import {   createContext, use, useEffect, useState } from "react";
+import type {Dispatch, SetStateAction} from "react";
 import { useIsMobile } from "@/_hooks/useIsMobile";
 
 interface SidenavTypes {
@@ -20,7 +21,7 @@ export function SidenavContextProvider({ children }: { children: React.ReactNode
 }
 
 export function useSidenav() {
-  const context = useContext(SidenavContext);
+  const context = use(SidenavContext);
   if (!context) {
     throw new Error("SidenavContext must be utilized within the SidenavContext Provider.");
   }
