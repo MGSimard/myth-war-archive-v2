@@ -1,7 +1,8 @@
 import { ErrorComponent } from "@tanstack/react-router";
 import type { ErrorComponentProps } from "@tanstack/react-router";
 
-export function PageError({ error, reset }: ErrorComponentProps) {
+// "reset" also available
+export function PageError({ error }: ErrorComponentProps) {
   return (
     <section id="system-notice">
       <div className="section-header">

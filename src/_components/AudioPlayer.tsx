@@ -1,6 +1,6 @@
 import { Fragment, useState } from "react";
 import AudioControls from "@/_components/AudioControls";
-import tracks from "@/_data/assets-audio.json";
+import audioTracks from "@/_data/assets-audio.json";
 import { formatMmSs } from "@/_utils/helpers";
 
 export interface TrackTypes {
@@ -10,7 +10,7 @@ export interface TrackTypes {
   length: number;
 }
 
-const flatTracks = Object.values(tracks).flat();
+const flatTracks = Object.values(audioTracks).flat();
 
 export function AudioPlayer() {
   const [currentTrack, setCurrentTrack] = useState<TrackTypes | null>(null);
@@ -22,7 +22,7 @@ export function AudioPlayer() {
           <h3 className="label">Audio List</h3>
         </div>
         <div id="audio-list-content">
-          {Object.entries(tracks).map(([category, tracks]) => (
+          {Object.entries(audioTracks).map(([category, tracks]) => (
             <Fragment key={category}>
               <h4 className="label">{category}</h4>
               <ul className="system">
