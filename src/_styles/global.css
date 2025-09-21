@@ -403,13 +403,18 @@ details[open] summary span::after {
 .trigger-fixed {
   position: fixed;
   top: var(--sitePadding);
-  left: var(--sitePadding);
+  left: 0;
   height: 3rem;
-  width: 3rem;
+  width: 4rem;
   border: 0.2rem ridge var(--clrGoldOuterLeftFrameHighlight);
-  border-radius: 0.4rem;
+  border-radius: 0 0.4rem 0.4rem 0;
+  border-left: none;
   z-index: 99;
-  box-shadow: 0 0 2rem oklch(0 0 1);
+  box-shadow: 0 0 1rem oklch(0 0 1);
+}
+.trigger-fixed img {
+  height: 100%;
+  margin-left: auto;
 }
 #sidenav {
   position: fixed;
