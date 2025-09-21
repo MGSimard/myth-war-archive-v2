@@ -280,7 +280,7 @@ details[open] summary span::after {
 .interactive:not(.disabled):hover::before,
 .interactive:not(.disabled):focus-visible::before,
 .interactive:not(.disabled):active::before {
-  background: radial-gradient(ellipse closest-side at center, oklch(0.51 0.2166 260.75) 20%, transparent);
+  background: radial-gradient(ellipse closest-side at center, oklch(0.56 0.2408 260.82) 40%, transparent);
   animation: pulse 2s ease-in-out infinite;
 }
 .system {
