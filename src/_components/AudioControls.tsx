@@ -15,6 +15,7 @@ const formatTime = (seconds: number) => {
 };
 
 const getInitialVolume = () => {
+  if (typeof window === "undefined") return 25; // Default volume for SSR
   const saved = localStorage.getItem("mwa-volume");
   return saved ? Math.max(0, Math.min(100, Number(saved))) : 25;
 };
@@ -101,7 +102,9 @@ export default function AudioControls({ currentTrack, tracks, changeTrack }: Aud
     if (audioPlayer) {
       audioPlayer.volume = toLogarithmicVolume(volume);
     }
-    localStorage.setItem("mwa-volume", volume.toString());
+    if (typeof window !== "undefined") {
+      localStorage.setItem("mwa-volume", volume.toString());
+    }
   }, [volume]);
 
   const handlePreviousTrack = () => {

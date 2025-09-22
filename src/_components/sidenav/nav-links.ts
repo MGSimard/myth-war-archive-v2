@@ -9,9 +9,9 @@ import {
   Infinity as InfinityIcon,
   Map,
   Scroll,
-  Users  
+  Users,
 } from "lucide-react";
-import type {LucideIcon} from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 import { IconGitHub } from "@/_components/Icons";
 
 export interface NavLink {

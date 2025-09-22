@@ -2,9 +2,24 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Header } from "@/_components/Header";
 import { Section } from "@/_components/Section";
 import { Figure } from "@/_components/Figure";
+import { BASE_URL, SITE_TITLE } from "@/_utils/consts";
 
 export const Route = createFileRoute("/world")({
   component: PageWorld,
+  head: () => ({
+    meta: [
+      { title: `World Map - ${SITE_TITLE}` },
+      { name: "title", content: `World Map - ${SITE_TITLE}` },
+      { name: "description", content: "" },
+      { property: "og:title", content: `World Map - ${SITE_TITLE}` },
+      { property: "og:description", content: "" },
+      { property: "og:url", content: `${BASE_URL}/world` },
+      { property: "twitter:title", content: `World Map - ${SITE_TITLE}` },
+      { property: "twitter:description", content: "" },
+      { property: "twitter:url", content: `${BASE_URL}/world` },
+    ],
+    links: [{ rel: "canonical", href: `${BASE_URL}/world` }],
+  }),
 });
 
 function PageWorld() {

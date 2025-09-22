@@ -1,5 +1,5 @@
-import {   createContext, use, useEffect, useState } from "react";
-import type {Dispatch, SetStateAction} from "react";
+import { createContext, use, useEffect, useState } from "react";
+import type { Dispatch, SetStateAction } from "react";
 import { useIsMobile } from "@/_hooks/useIsMobile";
 
 interface SidenavTypes {

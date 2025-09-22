@@ -12,7 +12,8 @@
 
 @font-face {
   font-family: "Zieruk";
-  src: url("/fonts/zieruk/zieruk-trial.ttf") format("truetype"),
+  src:
+    url("/fonts/zieruk/zieruk-trial.ttf") format("truetype"),
     url("/fonts/zieruk/zieruk-trial-bold.otf") format("opentype");
   font-weight: 400;
   font-style: normal;

@@ -17,7 +17,7 @@ import { tanstackConfig } from "@tanstack/eslint-config";
 
 export default defineConfig([
   // Global configuration
-  globalIgnores(["dist"]),
+  globalIgnores(["dist", ".output", ".nitro", ".tanstack", ".tsbuildinfo"]),
 
   // TanStack ecosystem configurations
   tanstackConfig,
