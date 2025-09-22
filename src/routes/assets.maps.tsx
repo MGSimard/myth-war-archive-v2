@@ -3,9 +3,36 @@ import { ArrowBigDownDash } from "lucide-react";
 import { Header } from "@/_components/Header";
 import { Section } from "@/_components/Section";
 import maps from "@/_data/assets-maps.json";
+import { BASE_URL, SITE_TITLE } from "@/_utils/consts";
 
 export const Route = createFileRoute("/assets/maps")({
   component: PageAssetsMaps,
+  head: () => ({
+    meta: [
+      { title: `Map Assets - ${SITE_TITLE}` },
+      { name: "title", content: `Map Assets - ${SITE_TITLE}` },
+      {
+        name: "description",
+        content:
+          "A complete collection of Myth War I and II map assets. 143 individual map files including zones, dungeons, and cities.",
+      },
+      { property: "og:title", content: `Map Assets - ${SITE_TITLE}` },
+      {
+        property: "og:description",
+        content:
+          "A complete collection of Myth War I and II map assets. 143 individual map files including zones, dungeons, and cities.",
+      },
+      { property: "og:url", content: `${BASE_URL}/assets/maps` },
+      { name: "twitter:title", content: `Map Assets - ${SITE_TITLE}` },
+      {
+        name: "twitter:description",
+        content:
+          "A complete collection of Myth War I and II map assets. 143 individual map files including zones, dungeons, and cities.",
+      },
+      { name: "twitter:url", content: `${BASE_URL}/assets/maps` },
+    ],
+    links: [{ rel: "canonical", href: `${BASE_URL}/assets/maps` }],
+  }),
 });
 
 function PageAssetsMaps() {

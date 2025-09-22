@@ -2,9 +2,36 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Header } from "@/_components/Header";
 import { Section } from "@/_components/Section";
 import communities from "@/_data/communities.json";
+import { BASE_URL, SITE_TITLE } from "@/_utils/consts";
 
 export const Route = createFileRoute("/communities")({
   component: PageCommunities,
+  head: () => ({
+    meta: [
+      { title: `Communities - ${SITE_TITLE}` },
+      { name: "title", content: `Communities - ${SITE_TITLE}` },
+      {
+        name: "description",
+        content:
+          "Connect with Myth War communities. Find private servers, Discord groups, forums, and official archived websites.",
+      },
+      { property: "og:title", content: `Communities - ${SITE_TITLE}` },
+      {
+        property: "og:description",
+        content:
+          "Connect with Myth War communities. Find private servers, Discord groups, forums, and official archived websites.",
+      },
+      { property: "og:url", content: `${BASE_URL}/communities` },
+      { name: "twitter:title", content: `Communities - ${SITE_TITLE}` },
+      {
+        name: "twitter:description",
+        content:
+          "Connect with Myth War communities. Find private servers, Discord groups, forums, and official archived websites.",
+      },
+      { name: "twitter:url", content: `${BASE_URL}/communities` },
+    ],
+    links: [{ rel: "canonical", href: `${BASE_URL}/communities` }],
+  }),
 });
 
 function PageCommunities() {

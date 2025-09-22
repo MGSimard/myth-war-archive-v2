@@ -4,9 +4,36 @@ import { Header } from "@/_components/Header";
 import { Section } from "@/_components/Section";
 import qna from "@/_data/wednesday-event.json";
 import sealCoords from "@/_data/seal-windseeker.json";
+import { BASE_URL, SITE_TITLE } from "@/_utils/consts";
 
 export const Route = createFileRoute("/guides/leveling")({
   component: PageGuidesLeveling,
+  head: () => ({
+    meta: [
+      { title: `Leveling Guide - ${SITE_TITLE}` },
+      { name: "title", content: `Leveling Guide - ${SITE_TITLE}` },
+      {
+        name: "description",
+        content:
+          "Complete leveling guide for Myth War I and II. Learn efficient ways to level from 1-90+ with quests, grinding spots, and strategies.",
+      },
+      { property: "og:title", content: `Leveling Guide - ${SITE_TITLE}` },
+      {
+        property: "og:description",
+        content:
+          "Complete leveling guide for Myth War I and II. Learn efficient ways to level from 1-90+ with quests, grinding spots, and strategies.",
+      },
+      { property: "og:url", content: `${BASE_URL}/guides/leveling` },
+      { name: "twitter:title", content: `Leveling Guide - ${SITE_TITLE}` },
+      {
+        name: "twitter:description",
+        content:
+          "Complete leveling guide for Myth War I and II. Learn efficient ways to level from 1-90+ with quests, grinding spots, and strategies.",
+      },
+      { name: "twitter:url", content: `${BASE_URL}/guides/leveling` },
+    ],
+    links: [{ rel: "canonical", href: `${BASE_URL}/guides/leveling` }],
+  }),
 });
 
 function PageGuidesLeveling() {

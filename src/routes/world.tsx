@@ -8,15 +8,27 @@ export const Route = createFileRoute("/world")({
   component: PageWorld,
   head: () => ({
     meta: [
-      { title: `World Map - ${SITE_TITLE}` },
-      { name: "title", content: `World Map - ${SITE_TITLE}` },
-      { name: "description", content: "" },
-      { property: "og:title", content: `World Map - ${SITE_TITLE}` },
-      { property: "og:description", content: "" },
+      { title: `World - ${SITE_TITLE}` },
+      { name: "title", content: `World - ${SITE_TITLE}` },
+      {
+        name: "description",
+        content:
+          "Explore Myth War I and II through high-resolution world maps. View Rarus Continent and core regions: Sky Passage, Woodlingor, Blython, Desert City, and Demon Square.",
+      },
+      { property: "og:title", content: `World - ${SITE_TITLE}` },
+      {
+        property: "og:description",
+        content:
+          "Explore Myth War I and II through high-resolution world maps. View Rarus Continent and core regions: Sky Passage, Woodlingor, Blython, Desert City, and Demon Square.",
+      },
       { property: "og:url", content: `${BASE_URL}/world` },
-      { property: "twitter:title", content: `World Map - ${SITE_TITLE}` },
-      { property: "twitter:description", content: "" },
-      { property: "twitter:url", content: `${BASE_URL}/world` },
+      { name: "twitter:title", content: `World - ${SITE_TITLE}` },
+      {
+        name: "twitter:description",
+        content:
+          "Explore Myth War I and II through high-resolution world maps. View Rarus Continent and core regions: Sky Passage, Woodlingor, Blython, Desert City, and Demon Square.",
+      },
+      { name: "twitter:url", content: `${BASE_URL}/world` },
     ],
     links: [{ rel: "canonical", href: `${BASE_URL}/world` }],
   }),

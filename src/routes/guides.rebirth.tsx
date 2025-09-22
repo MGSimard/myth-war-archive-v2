@@ -1,9 +1,36 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Header } from "@/_components/Header";
 import { Section } from "@/_components/Section";
+import { BASE_URL, SITE_TITLE } from "@/_utils/consts";
 
 export const Route = createFileRoute("/guides/rebirth")({
   component: PageGuidesRebirth,
+  head: () => ({
+    meta: [
+      { title: `Rebirth Guide - ${SITE_TITLE}` },
+      { name: "title", content: `Rebirth Guide - ${SITE_TITLE}` },
+      {
+        name: "description",
+        content:
+          "Learn about the rebirth system in Myth War I and II. Reset your character with increased stats, resistances, and growth rates.",
+      },
+      { property: "og:title", content: `Rebirth Guide - ${SITE_TITLE}` },
+      {
+        property: "og:description",
+        content:
+          "Learn about the rebirth system in Myth War I and II. Reset your character with increased stats, resistances, and growth rates.",
+      },
+      { property: "og:url", content: `${BASE_URL}/guides/rebirth` },
+      { name: "twitter:title", content: `Rebirth Guide - ${SITE_TITLE}` },
+      {
+        name: "twitter:description",
+        content:
+          "Learn about the rebirth system in Myth War I and II. Reset your character with increased stats, resistances, and growth rates.",
+      },
+      { name: "twitter:url", content: `${BASE_URL}/guides/rebirth` },
+    ],
+    links: [{ rel: "canonical", href: `${BASE_URL}/guides/rebirth` }],
+  }),
 });
 
 function PageGuidesRebirth() {

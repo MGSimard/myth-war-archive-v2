@@ -1,9 +1,36 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { Header } from "@/_components/Header";
 import { Section } from "@/_components/Section";
+import { BASE_URL, SITE_TITLE } from "@/_utils/consts";
 
 export const Route = createFileRoute("/lore")({
   component: PageLore,
+  head: () => ({
+    meta: [
+      { title: `Lore - ${SITE_TITLE}` },
+      { name: "title", content: `Lore - ${SITE_TITLE}` },
+      {
+        name: "description",
+        content:
+          "Explore the rich lore and history of Myth War I and II. Learn about the War Among the Gods, races, and world mythology.",
+      },
+      { property: "og:title", content: `Lore - ${SITE_TITLE}` },
+      {
+        property: "og:description",
+        content:
+          "Explore the rich lore and history of Myth War I and II. Learn about the War Among the Gods, races, and world mythology.",
+      },
+      { property: "og:url", content: `${BASE_URL}/lore` },
+      { name: "twitter:title", content: `Lore - ${SITE_TITLE}` },
+      {
+        name: "twitter:description",
+        content:
+          "Explore the rich lore and history of Myth War I and II. Learn about the War Among the Gods, races, and world mythology.",
+      },
+      { name: "twitter:url", content: `${BASE_URL}/lore` },
+    ],
+    links: [{ rel: "canonical", href: `${BASE_URL}/lore` }],
+  }),
 });
 
 function PageLore() {

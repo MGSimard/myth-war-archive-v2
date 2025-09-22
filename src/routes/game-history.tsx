@@ -2,9 +2,36 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Header } from "@/_components/Header";
 import { Section } from "@/_components/Section";
 import { Timeline } from "@/_components/Timeline";
+import { BASE_URL, SITE_TITLE } from "@/_utils/consts";
 
 export const Route = createFileRoute("/game-history")({
   component: PageGameHistory,
+  head: () => ({
+    meta: [
+      { title: `Game History - ${SITE_TITLE}` },
+      { name: "title", content: `Game History - ${SITE_TITLE}` },
+      {
+        name: "description",
+        content:
+          "Learn about the development and history of Myth War Online and its evolution into Myth War II. Explore the development timeline, features, and legacy of Myth War.",
+      },
+      { property: "og:title", content: `Game History - ${SITE_TITLE}` },
+      {
+        property: "og:description",
+        content:
+          "Learn about the development and history of Myth War Online and its evolution into Myth War II. Explore the development timeline, features, and legacy of Myth War.",
+      },
+      { property: "og:url", content: `${BASE_URL}/game-history` },
+      { name: "twitter:title", content: `Game History - ${SITE_TITLE}` },
+      {
+        name: "twitter:description",
+        content:
+          "Learn about the development and history of Myth War Online and its evolution into Myth War II. Explore the development timeline, features, and legacy of Myth War.",
+      },
+      { name: "twitter:url", content: `${BASE_URL}/game-history` },
+    ],
+    links: [{ rel: "canonical", href: `${BASE_URL}/game-history` }],
+  }),
 });
 
 function PageGameHistory() {

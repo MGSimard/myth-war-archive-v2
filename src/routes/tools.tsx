@@ -3,9 +3,33 @@ import { ArrowBigDownDash } from "lucide-react";
 import { Header } from "@/_components/Header";
 import { Section } from "@/_components/Section";
 import tools from "@/_data/tools.json";
+import { BASE_URL, SITE_TITLE } from "@/_utils/consts";
 
 export const Route = createFileRoute("/tools")({
   component: PageTools,
+  head: () => ({
+    meta: [
+      { title: `Tools - ${SITE_TITLE}` },
+      { name: "title", content: `Tools - ${SITE_TITLE}` },
+      {
+        name: "description",
+        content: "Download modding, utility, and reverse-engineering tools for Myth War I and II.",
+      },
+      { property: "og:title", content: `Tools - ${SITE_TITLE}` },
+      {
+        property: "og:description",
+        content: "Download modding, utility, and reverse-engineering tools for Myth War I and II.",
+      },
+      { property: "og:url", content: `${BASE_URL}/tools` },
+      { name: "twitter:title", content: `Tools - ${SITE_TITLE}` },
+      {
+        name: "twitter:description",
+        content: "Download modding, utility, and reverse-engineering tools for Myth War I and II.",
+      },
+      { name: "twitter:url", content: `${BASE_URL}/tools` },
+    ],
+    links: [{ rel: "canonical", href: `${BASE_URL}/tools` }],
+  }),
 });
 
 function PageTools() {
