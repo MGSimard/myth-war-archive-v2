@@ -1,11 +1,12 @@
 /// <reference types="vite/client" />
 import { HeadContent, Outlet, Scripts, createRootRoute } from "@tanstack/react-router";
+import { TanStackDevtools } from "@tanstack/react-devtools";
+import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
 import type { ReactNode } from "react";
 import { SidenavContextProvider } from "@/_components/sidenav/SidenavProvider";
 import { FixedTrigger } from "@/_components/sidenav/SidenavTriggerFixed";
 import { Sidenav } from "@/_components/sidenav/Sidenav";
 import { PageNotFound } from "@/_components/PageNotFound";
-import { PageError } from "@/_components/PageError";
 import { BASE_URL, SITE_AUTHOR, SITE_DESCRIPTION, SITE_TITLE } from "@/_utils/consts";
 import appCss from "@/_styles/global.css?url";
 import fontCss from "@/_styles/fonts.css?url";
@@ -36,13 +37,13 @@ export const Route = createRootRoute({
       { property: "og:image:width", content: "1200" },
       { property: "og:image:height", content: "600" },
       // TWITTER
-      { property: "twitter:card", content: "summary_large_image" },
-      { property: "twitter:site", content: SITE_AUTHOR },
-      { property: "twitter:creator", content: SITE_AUTHOR },
-      { property: "twitter:url", content: BASE_URL },
-      { property: "twitter:title", content: SITE_TITLE },
-      { property: "twitter:description", content: SITE_DESCRIPTION },
-      { property: "twitter:image", content: "/metadata/twitter-image.png" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:site", content: SITE_AUTHOR },
+      { name: "twitter:creator", content: SITE_AUTHOR },
+      { name: "twitter:url", content: BASE_URL },
+      { name: "twitter:title", content: SITE_TITLE },
+      { name: "twitter:description", content: SITE_DESCRIPTION },
+      { name: "twitter:image", content: "/metadata/twitter-image.png" },
     ],
     links: [
       { rel: "manifest", href: "/metadata/manifest.webmanifest" },
@@ -110,6 +111,15 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
       <body>
         {children}
         <div id="portal"></div>
+        <TanStackDevtools
+          config={{ position: "bottom-left" }}
+          plugins={[
+            {
+              name: "Tanstack Router",
+              render: <TanStackRouterDevtoolsPanel />,
+            },
+          ]}
+        />
         <Scripts />
       </body>
     </html>
