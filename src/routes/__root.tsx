@@ -1,7 +1,5 @@
 /// <reference types="vite/client" />
-import { ClientOnly, HeadContent, Outlet, Scripts, createRootRoute } from "@tanstack/react-router";
-import { TanStackDevtools } from "@tanstack/react-devtools";
-import { TanStackRouterDevtoolsPanel } from "@tanstack/react-router-devtools";
+import { HeadContent, Outlet, Scripts, createRootRoute } from "@tanstack/react-router";
 import type { ReactNode } from "react";
 import { SidenavContextProvider } from "@/_components/sidenav/SidenavProvider";
 import { FixedTrigger } from "@/_components/sidenav/SidenavTriggerFixed";
@@ -111,8 +109,7 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
       <body>
         {children}
         <div id="portal"></div>
-        <ClientOnly>
-          <TanStackDevtools
+        {/* <TanStackDevtools
             config={{ position: "bottom-left" }}
             plugins={[
               {
@@ -120,8 +117,7 @@ function RootDocument({ children }: Readonly<{ children: ReactNode }>) {
                 render: <TanStackRouterDevtoolsPanel />,
               },
             ]}
-          />
-        </ClientOnly>
+          /> */}
         <Scripts />
       </body>
     </html>
