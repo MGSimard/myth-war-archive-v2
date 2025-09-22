@@ -23,6 +23,8 @@ export const Route = createFileRoute("/world")({
 });
 
 function PageWorld() {
+  throw new Error("test error @ /world");
+
   return (
     <>
       <Header heading="World" />

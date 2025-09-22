@@ -82,17 +82,6 @@ export const Route = createRootRoute({
     ],
   }),
   notFoundComponent: () => <PageNotFound />,
-  errorComponent: ({ error, reset }) => (
-    <SidenavContextProvider>
-      <FixedTrigger />
-      <Sidenav />
-      <div id="sidenav-inset">
-        <main>
-          <PageError error={error} reset={reset} />
-        </main>
-      </div>
-    </SidenavContextProvider>
-  ),
   component: RootComponent,
 });
 

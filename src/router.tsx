@@ -1,5 +1,6 @@
 import { createRouter as createTanStackRouter } from "@tanstack/react-router";
 import { routeTree } from "./routeTree.gen";
+import { PageError } from "@/_components/PageError";
 
 export function createRouter() {
   const router = createTanStackRouter({
@@ -8,6 +9,7 @@ export function createRouter() {
     scrollRestoration: true,
     defaultStructuralSharing: true,
     defaultPreloadStaleTime: 0,
+    defaultErrorComponent: ({ error, reset }) => <PageError error={error} reset={reset} />,
   });
 
   return router;
