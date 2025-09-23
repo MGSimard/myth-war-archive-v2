@@ -9,6 +9,8 @@
   - 2D Canvas
   - Fragment shaders & uniforms
 
+- SVG Filters are less supported than webgl/glsl shaders
+
 - Must be a modular component which can be placed anywhere in any app adhering the above constraints
 
 - In this project, it must only be used in the home page "/"
