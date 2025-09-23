@@ -17,6 +17,10 @@
 
 - The component should cover the entire screen, and the ripples affect all content except for overlay elements like the sidebar
 
+- The ripple size, lifetime, speed and other parameters should not be randomized
+
+- All ripples should be the same size, lifetime, speed and other parameters other than the position and direction in which they were spawned
+
 ## Feature
 
 - Each ripple should only be made out of one ring
@@ -29,7 +33,7 @@
 
 - Depending on the pointer movement direction, the rear of the ripple ring should be masked out in a conic shape, giving the illusion of forward momentum
 
-- Ripple rings should grow faster at the start of their lifetime, slow down and eventually widen, smoothen, settle, fade and be removed at the end of their lifetime
+- Ripple rings should ease out their growth speed, fade and be removed at the end of their lifetime
 
 - Pointer movement should spawn ripple rings at a timed interval, rather than pixel or distance-based
   - This means that ripples are spawned at the same rate regardless of the cursor movement speed or distance
