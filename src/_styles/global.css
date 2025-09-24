@@ -1348,24 +1348,6 @@ textarea[readonly] {
   }
 }
 
-/* WATER RIPPLES */
-.water-ripple-canvas {
-  /* Ensure canvas doesn't interfere with UI interactions */
-  pointer-events: none !important;
-  /* Ensure canvas background is transparent */
-  background-color: transparent !important;
-  /* Remove any default canvas styling that might add color */
-  border: none !important;
-}
-
-/* Ensure sidebar and content appear above ripples */
-#sidenav,
-#sidenav-inset,
-main {
-  position: relative;
-  z-index: 2;
-}
-
 /* NOTFOUND & ERROR */
 body:has(#system-notice) {
   display: flex;
