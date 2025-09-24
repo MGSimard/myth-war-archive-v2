@@ -17,6 +17,7 @@ export default defineConfig({
   plugins: [
     tsConfigPaths(),
     tanstackStart({
+      customViteReactPlugin: true,
       prerender: {
         enabled: true,
         crawlLinks: true,
