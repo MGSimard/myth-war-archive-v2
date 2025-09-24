@@ -1,8 +1,8 @@
 import { resolve } from "node:path";
 import { defineConfig } from "vite";
-import viteReact from "@vitejs/plugin-react";
-import { tanstackStart } from "@tanstack/react-start/plugin/vite";
 import tsConfigPaths from "vite-tsconfig-paths";
+import { tanstackStart } from "@tanstack/react-start/plugin/vite";
+import viteReact from "@vitejs/plugin-react";
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -17,7 +17,6 @@ export default defineConfig({
   plugins: [
     tsConfigPaths(),
     tanstackStart({
-      customViteReactPlugin: true,
       prerender: {
         enabled: true,
         crawlLinks: true,
