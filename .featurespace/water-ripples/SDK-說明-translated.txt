@@ -1,0 +1,1816 @@
+SDK Documentation and Sample Usage
+(1) RAYSSDK Documentation List
+(2) Module Management Mechanism
+(3) Module Design
+(4) System Control Module (System)
+(5) Timer Control Module (Timer)
+(6) Graphics Control Module (DirectDraw)
+(7) Sound Control Module (DirectSound)
+(8) Input Control Module (DirectInput)
+(9) Network Control Module (DirectPlay)
+(10) CDROM Audio Track Control Module (CD Music)
+(11) Chinese Character Display Module (Font)
+(12) MP3 Playback Module (MP3)
+(13) Windows BMP Image Format Support
+(14) PCX Image Format Support
+(15) TGA Image Format Support
+(16) JPG Image Format Support
+(17) PhotoShop PSD Format Support
+(18) FLC Animation Format Support
+(19) AVI Animation Format Support
+(1) RAYSSDK Included Files List
+Basic list as follows:
+[LIB]
+2dengine.lib
+2denginedbg.lib
+2dengine_640x480.lib
+2denginedbg_640x480.lib
+2dengine_800x600.lib
+2denginedbg_800x600.lib
+[INCLUDE]
+function.h
+jpeg.h
+menutree.h
+menuwin.h
+mp3.h // MP3 playback control module
+packfile.h
+polling.h
+rays.h // System header file
+readinfo.h
+ripple.h
+topo.h
+undo.h
+vbmp.h
+vflic.h
+vpcx.h
+vpsd.h
+vtga.h
+winfont.h // Chinese character display module
+winmain.h
+xcak.h
+xcdrom.h // CD audio track driver control module
+xdraw.h // Graphics control module
+xfont.h // Chinese character display module
+xgrafx.h
+xinput.h // Input control module
+xkiss.h
+xmedia.h
+xmem.h
+xmodule.h // Module management system
+xplay.h // Network control module
+xpoly.h
+xrle.h
+xsound.h // Sound control module
+xsystem.h // System Control Module
+xtimer.h // Clock Control Module
+xvga.h
+xwavread.h
+ybitio.h
+ylzss.h
+(II) Module Management Mechanism
+Specifications and Principles
+In RAYSSDK, all integrable functions or interfaces are designed as individual modules for convenient invocation.
+To centrally manage all modules within the system, RAYSSDK requires each module to provide three functions:
+1) Function to initialize the module
+int init_modulename(void);
+2) Function to release the module
+void free_modulename(void);
+3) Function to handle whether the module is active or inactive in response to application requests
+void active_modulename(int active);
+The system supports loading up to 64 distinct modules simultaneously. Note that the same module must not be loaded multiple times concurrently, as this will cause unpredictable errors.
+The RAYSSDK kernel incorporates a module management mechanism that performs three tasks:
+1) Automatically executes a module's initialization function upon user installation, returning a success/failure value.
+2) When the application window is launched or unlaunched, it automatically invokes the module's response function.
+3) When the application is about to exit, it automatically executes the module's release function.
+So, how does the system accomplish these tasks?
+First, the system creates an array in memory storing pointers to the release functions of all system modules.
+Simultaneously, it creates another array storing pointers to the functions that respond to whether each module is started or not.
+Of course, we do not need to create an array storing pointers to each module's initialization function,
+because as mentioned above, we have already invoked that module's initialization function when the user installs it.
+With the array of module response functions for application startup status, we can easily implement proper response handling. Upon receiving a message indicating the application is starting or not starting, the system sequentially executes the corresponding module response functions (we have already stored the relevant function pointers!). OK!
+Similarly, when the application exits, we can sequentially execute the module release functions.
+Function Interface
+EXPORT void FNBACK init_modules(void);
+Initializes module loading system data. This function is internally called by the system.
+EXPORT int FNBACK install_module(MODULE_INIT_FUNC init, MODULE_FREE_FUNC free, MODULE_ACTIVE_FUNC active);
+Installs a module. Additionally, we observe a highly convenient macro definition in xmodule.h:
+#define install(a) install_module(init_##a, free_##a, active_##a)
+This macro definition provides a straightforward implementation for this function.
+Function Parameter Types:
+typedef int (*MODULE_INIT_FUNC)(void);
+typedef void (*MODULE_FREE_FUNC)(void);
+typedef void (*MODULE_ACTIVE_FUNC)(int bActive);
+Parameter descriptions:
+MODULE_INIT_FUNC init; // Module initialization function
+MODULE_FREE_FUNC free; // Module release function
+MODULE_ACTIVE_FUNC active; // Module activation handling function
+EXPORT void FNBACK free_modules(void);
+Releases all modules from the system. This function is internally called by the system.
+EXPORT void FNBACK active_modules(int bActive);
+Enables all modules in the system to respond to changes in the application's activation status. This function is internally called by the system.
+Example Explanation
+Alright, let's summarize. To make the application interface extremely easy and simple, users only need to use one function: the module installation function. It can even be invoked with a simple macro call. Here are some code snippets for illustration:
+if( FAILED( install(system) )) FailMsg(“install system failed”);
+if( FAILED( install(draw) )) FailMsg(“install draw failed”);
+if( FAILED( install(timer) )) FailMsg(“install timer failed”);
+This snippet sequentially loads the system module, the above-mentioned module, and the clock module. If module loading fails,
+a fatal error message pops up, terminating the application's execution.
+(III) Module Design
+Design Rationale
+If we need to design a new module, the module loading system allows us to conveniently install and manage it.
+Based on the module loading system's working principle and call functions, we need to prepare three basic module interface functions. Then, build upon these to develop other corresponding functions for the module.
+Example Illustration
+For illustrative purposes, suppose we create a test module named `test`. The essential functions required are:
+int init_test(void);
+void free_test(void);
+void active_test(int active);
+Additionally, the module may include other related functions such as:
+void show_test(void);
+void log_test(void);
+void check_test(void);
+etc.
+Thus, we can load the test module by calling the macro install(test). During program execution, functions like show_test() and log_test() become available for use.
+Easy, right? You can now easily design your own modules.
+(IV) System Control Module (System)
+Provides system functions including error logging, system diagnostics, etc. Also offers data interfaces for convenient application access.
+Data Interfaces
+extern USTR print_rec[2048];
+A temporary string buffer. Applications frequently handle strings and small character arrays—this buffer serves such purposes.
+extern USTR game_path[_MAX_PATH];
+Records the game's execution path. During system module installation, the application's runtime path is detected and stored in this data area.
+During application development, we may need to know the current directory where the game is executing. This can be obtained through this data interface.
+extern USTR game_filename[_MAX_PATH+_MAX_FNAME];
+A temporary buffer for storing filenames. Applications frequently manipulate filenames—such as changing extensions or automatically generating sequential filenames—and this buffer serves that purpose.
+extern ULONG game_capture_no;
+The serial number assigned to a captured screenshot when saved as an image file. This number is typically reflected in the last few characters of the filename.
+During system module initialization, this value is set to 0. It increments by 1 with each subsequent screenshot capture.
+Within the application, this value can be directly modified to standardize the filenames of saved screenshots.
+extern ULONG game_now_time;
+Records the current system time. This data is often used in conjunction with the game start time below to determine the elapsed duration of gameplay. Additionally, this time can be leveraged for various other tasks, such as determining refresh intervals for objects or NPCs.
+Note that this data is continuously updated during gameplay. The time unit is 1 millisecond, or one-thousandth of a second.
+extern ULONG game_start_time;
+Records the system time at the game's start. This data is often used in conjunction with the current system time above.
+During system module initialization, the system time is obtained and stored in this data. This data remains unchanged during game execution.
+Function Interface
+EXPORT int FNBACK init_system(void);
+EXPORT void FNBACK active_system(int active);
+EXPORT void FNBACK free_system(void);
+The above three functions constitute the module management interface functions for the system control module.
+EXPORT void FNBACK log_error(int p, USTR *strMsg );
+Functionality: Stores messages in a disk file. Typically used to write error messages to a disk file during errors to facilitate debugging.
+Parameters: int p; // Flag for decision-making. Returns immediately if 0; otherwise, writes the message.
+USTR *strMsg; // String message to be written.
+Return Value: None
+Description:
+Example:
+char *buffer;
+buffer = (char *)malloc(1000);
+if(! buffer)
+{
+log_error(1, (USTR*)“memory alloc error”);
+}
+if(buffer) free(buffer);
+EXPORT void FNBACK log_error(int p, char *strMsg, ...);
+Functionality: Stores messages in a disk file. Typically used to write error messages to a disk file during errors
+for debugging purposes.
+Parameters: int p; // Flag for decision-making. Returns immediately if 0; otherwise, writes the message.
+char *strMsg; // Formatted definition string
+...; // Other relevant parameters
+Return Value: None
+Description: None
+EXPORT void FNBACK idle_loop(void);
+Function: Receives and processes Windows messages.
+Parameters: None
+Return Value: None
+Description: When an application runs a time-consuming loop or requires receiving Windows messages within a loop, this function must be called at the start of the loop. Otherwise, the application will occupy the Windows system time for an extended period, causing system stalls. Alternatively, the loop may fail to receive Windows messages.
+Example:
+SLONG main_pass;
+UCHR ch;
+main_pass = 0;
+Windows system time, causing system stalls. Alternatively, Windows messages may not be received within this loop.
+Example:
+SLONG main_pass;
+UCHR ch;
+main_pass = 0;
+while( 0 == main_pass)
+{
+idle_loop();
+//doing something
+ch = read_data_key();
+if(ch == S_Esc)
+main_pass = 1;
+else
+reset_data_key();
+}
+EXPORT SLONG FNBACK is_gb_windows(void);
+Function: Checks if the operating system is Simplified Chinese Windows.
+Parameters: None
+Return Value: Returns TRUE if Simplified Chinese Windows; otherwise, returns FALSE.
+Description: None
+EXPORT void FNBACK run_random_init(void);
+Function: Initializes the random number sequence.
+Parameters: None
+Return Value: None
+Description: During application execution, the random number sequence values are fixed. To obtain a different random number sequence each time, this function must be called to initialize the sequence.
+EXPORT SLONG FNBACK get_cdrom_drive(void);
+Function: Obtains the CD-ROM drive number and returns a number representing the CD-ROM drive.
+Parameters: None
+Return Value: Returns -1 if no CD-ROM drives are found; otherwise, returns a non-negative number.
+Different numbers represent different disk drives: (0=A:; 1=B:; 2=C:; 3=D:; 4=E:; etc.),
+and so on.
+Description: None
+EXPORT SLONG FNBACK check_cdrom_volume(USTR *title);
+Function: Retrieves the CDROM drive corresponding to the specified volume label.
+Parameters: USTR *title; // Volume label string
+Return Value: Returns -1 if no match is found; otherwise, returns a non-negative number.
+Different numbers represent different disk drives: (0=A:; 1=B:; 2=C:;) 3=D:; 4=E; and so on.
+Description: None
+EXPORT USTR * FNBACK get_cdrom_volume(SLONG drive);
+Function: Retrieves the volume label of the specified CDROM.
+Parameters: SLONG drive; // CDROM drive number, 0=A:, 1=B:, ...
+Return Value: USTR *string, containing the retrieved volume label. Returns NULL on failure.
+Description: None
+EXPORT void FNBACK store_game_path(USTR *path);
+Function: Stores the current game execution path.
+Parameters: USTR *path; // Pointer to store the path
+Return Value: None
+Description: Function used internally by the system.
+EXPORT void FNBACK capture_screen(void);
+Function: Captures the screen and saves it as an image file.
+Parameters: None
+Return Value: None
+Description: None
+EXPORT ULONG FNBACK get_fps(void);
+Function: Obtains the current frame rate.
+Parameters: None
+Return Value: Returns a numerical value representing FPS (Frames Per Second).
+Description: Must be called once per rendering loop to obtain accurate frame rate.
+EXPORT USTR * FNBACK get_computer_name(void);
+Function: Obtains the computer name.
+Parameters: None
+Return Value: Computer name
+Description: None
+EXPORT USTR * FNBACK get_user_name(void);
+Function: Obtains the current Windows user name.
+Parameters: None
+Return Value: Windows user name
+Description: None
+EXPORT USTR * FNBACK get_windows_directory(void);
+Function: Obtains the Windows directory.
+Parameters: None
+Return Value: Windows system directory.
+Description: None
+EXPORT SLONG FNBACK get_windows_version(void);
+Function: Obtain the Windows version.
+Parameters: None
+Return Value: As shown below
+typedef enum WINDOWS_TYPE_ENUMS
+{ WINDOWS_NT = 3,
+WINDOWS_32 = 2,
+WINDOWS_95 = 1,
+} WINDOWS_TYPE;
+Description: None
+EXPORT void FNBACK get_memory_status(ULONG *total_phys, ULONG
+*avail_phys);
+Function: Obtains the current system physical memory usage.
+Parameters: ULONG *total_phys; // Pointer to store total physical memory size
+ULONG *avail_phys; // Pointer to store currently available physical memory size
+Return Value: None
+Description: None
+EXPORT ULONG FNBACK get_disk_serial_no(void);
+Function: Obtains the serial number of the C: drive.
+Parameters: None
+Return Value: The serial number value.
+Description: None
+EXPORT ULONG FNBACK get_cpu_clock(void);
+Function: Obtains the CPU clock cycle.
+Parameters: None
+Return Value: CPU clock cycle in MHz.
+Description: None
+EXPORT char * FNBACK get_cpu_id(void);
+Function: Obtains the CPU identification ID.
+Parameters: None
+Return Value: Identification string.
+Description: None
+EXPORT void FNBACK analyst_system(void);
+Function: Analyzes the system.
+Parameters: None
+Return Value: None
+Description: Analyzes the system's CPU, memory, operating system, etc., and writes these details to the error log file.
+Usage Notes
+In RAYSSDK, the files related to the system module are xsystem.cpp and xsystem.h. When using the pre-built LIB, only the header file xsystem.h needs to be included.
+(V) Timer Control Module
+Module Functionality
+Provides a relatively precise timer to applications for timing control and similar functions. This module offers a timing unit of 1/100 second, equivalent to 10 milliseconds.
+This module provides multiple timing data points. Users can obtain or modify the values of these data points.
+Whenever 1/100th of a second elapses in system time, these timing data points increment by 1. This operation is performed automatically by the Timer Control Module.
+Data Interface
+extern ULONG timer_tick00;
+extern ULONG timer_tick01;
+extern ULONG timer_tick02;
+extern ULONG timer_tick03;
+extern ULONG timer_tick04;
+extern ULONG timer_tick05;
+extern ULONG timer_tick06;
+extern ULONG timer_tick07;
+extern ULONG timer_tick08;
+extern ULONG timer_tick09;
+The above clock data is available for user reference.
+extern ULONG cdrom_timer_tick;
+System-reserved clock specifically used to control CD-ROM music playback.
+extern ULONG cursor_timer_tick;
+System-reserved clock specifically used to control refresh timing for animated graphical cursors.
+extern ULONG system_timer_tick;
+System-reserved clock.
+Function Interface
+EXPORT int FNBACK init_timer(void);
+EXPORT void FNBACK free_timer(void);
+EXPORT void FNBACK active_timer(int bActive);
+The above three functions constitute the module management interface for the clock control module.
+When utilizing the data interfaces of this module, it must first be loaded. This is easily accomplished using the module management macro
+install(timer).
+(VI) Graphics Control Module (DirectDraw)
+Module Functionality
+The graphics control module utilizes DirectDraw as its underlying layer, providing an interface for applications to directly manipulate the display screen.
+Its fundamental operations include initializing DirectDraw, setting the collaboration level, creating screen buffers and back buffers, configuring display modes, and more. Simultaneously, it retrieves the graphics card's 16-bit color type (e.g., 555, 565) and configures a series of display functions based on this type.
+To enhance application display and bitmap operation speeds, RAYSSDK provides a set of
+graphics functions corresponding to different graphics cards. It also contains a set of function pointers. After determining the graphics card type,
+the graphics control module sets the values of these function pointers to point to the corresponding function entities.
+These function pointers are included in the engine's bitmap operation function set, documented in xgrafx.cpp and
+xgrafx.h.
+Data Interface
+extern LPDIRECTDRAW7 lpDD7; /* system DirectDraw object */
+DirectDraw object. Initialized when loading the graphics control module.
+This data is for system use; applications should not manipulate it.
+extern LPDIRECTDRAWSURFACE7 lpDDSPrimary7; /* system DirectDraw primary surface */
+Primary screen buffer, created in display memory, corresponding to the game's display window client area.
+This data is for system use; applications are advised not to manipulate it.
+extern LPDIRECTDRAWSURFACE7 lpDDSBack7; /* system directdraw back surface */
+Screen back buffer, created in display memory. During DirectDraw rendering, to achieve smooth rendering without screen tearing, the rendering control module obtains a pointer to the screen back buffer, performs operations on it, and then renders using the Flip method.
+This data is for system use only; applications are advised not to manipulate it.
+extern LPDIRECTDRAWSURFACE7 lpDDSMemory7; /* memory directdraw surface */
+A buffer created in system memory.
+The system uses this buffer for playing AVI animation files (DirectMedia).
+Applications should not manipulate it.
+extern ULONG nBackBuffers; /* system directdraw back surface count */
+Number of screen back buffers.
+During initialization of the graphics control module, an appropriate number of screen back buffers is created based on the size of the graphics card's video memory to enhance rendering speed. This data records the number of back buffers created.
+extern SLONG vga_type; /* system video card type */
+Video card 16-bit color type.
+During graphics module initialization, the machine's video card 16-bit color type (PixelFormat) is obtained and recorded in this variable.
+Possible values:
+VGA_TYPE_555 // 555 type video card
+VGA_TYPE_655 // 655 type video card
+VGA_TYPE_565 // 565 type graphics card
+VGA_TYPE_556 // 556 type graphics card
+VGA_TYPE_ANY // Other type graphics cards
+Function Interface
+EXPORT int FNBACK init_draw(void);
+EXPORT void FNBACK free_draw(void);
+EXPORT void FNBACK active_draw(int bActive);
+The above three functions constitute the module management interface functions for the control module shown in the diagram.
+When utilizing this module's data interface, the module must first be loaded. This can be easily accomplished using the module management macro
+install(draw).
+EXPORT void FNBACK set_update_area(int start, int height);
+Function: Sets the screen update area.
+Parameters: int start; // Starting row for screen update, initialized to 0.
+int height; // Number of rows to update, initialized to SCREEN_HEIGHT.
+Return Value: None
+Description:
+EXPORT void FNBACK set_update_type(int type);
+Function: Sets the screen update method.
+Parameters: int type; // Specifies the screen update method.
+Possible values:
+NORMAL_UPDATE_SCREEN // Updates the screen normally.
+PEST_UPDATE_SCREEN // Updates the screen using the PEST method that filters out the transparent color 0x0000
+Return Value: None
+Description:
+EXPORT void FNBACK get_bitmap_from_memory_surface(BMP *bmp, RECT rect,
+SLONG left_top_flag);
+Function: Retrieves a BITMAP from the system memory buffer lpDDSMemory7.
+Parameters:
+BMP *bmp; // Pointer to the BMP structure storing the retrieved engine bitmap
+RECT rect; // Rectangular area to retrieve
+SLONG left_top_flag; // Flag indicating whether to start from the top-left corner of bmp
+When this flag is 1, retrieved image data is stored starting from the top-left corner of bmp.
+When 0, retrieved image data is stored in the area specified by the RECT in bmp.
+Return Value: None
+Description: This function is used in RAYSSDK for AVI file playback control (DirectMedia).
+Generally, application use is not recommended.
+Example: For clarity, an example is provided below:
+RECT rc;
+rc.left = 50;
+rc.right = 150;
+rc.top = 50;
+rc.bottom = 150;
+//(1) Retrieve the 100x100 image data specified at (50,50)-(150,150) in lpDDSMemory7, and store this data in the area starting from the top-left corner (0,0)-(100,100) of screen_channel0.
+get_bitmap_from_memory_surface(screen_channel0, rc, 1);
+//(2) Retrieve the specified 100x100 image data from (50,50) to (150,150) in lpDDSMemory7, and store this
+data in the (50,50)-(150,150) region of screen_channel0 corresponding to RECT rc.
+get_bitmap_from_memory_surface(screen_channel0, rc, 0);
+EXPORT void FNBACK switch_screen_mode(void);
+Function: Switches the screen display mode between full-screen and windowed modes.
+Parameters: None
+Return Value: None
+Description: During application runtime, users can press F12 to instantly change the current screen display mode. This function implements that system functionality.
+This function is for system use only; users are advised not to implement it within their applications.
+EXPORT void FNBACK setup_vga_function(DWORD dwRBitMask, DWORD
+dwGBitMask, DWORD dwBBitMask);
+Function: Configures the video card's color mode and related functions.
+Parameters: DWORD dwRBitMask; // Red component mask for pixels
+DWORD dwGBitMask; // Green component mask for pixels
+DWORD dwBBitMask; // Blue component mask for pixels
+These masks' values can be referenced in xvga.h, specifically:
+R_MASK_555 // Corresponds to 555 format graphics cards
+G_MASK_555 //
+B_MASK_555 //
+R_MASK_655 // Corresponds to 655 format graphics cards
+G_MASK_655 //
+B_MASK_655 //
+R_MASK_565 // Corresponds to 565 format graphics cards
+G_MASK_565 //
+B_MASK_565 //
+R_MASK_556 // Corresponding to 556 format graphics cards
+G_MASK_556 //
+B_MASK_556 //
+Return Value: None
+Description:
+When loading the graphics control module install(draw), the system automatically calls this function to set the graphics card's color mode and related functions.
+However, we can also directly use this function. For example, when writing code requiring Windows GDI support, since Windows GDI uses the 555 format, we can configure it as follows:
+setup_vga_function( R_MASK_555, G_MASK_555, B_MASK_555 );
+Reference Note
+In RAYSSDK, the files related to the system module are xdraw.cpp and xdraw.h. When using the pre-built LIB, we only need to include the header file xdraw.h.
+(VII) Sound Control Module (DirectSound)
+Module Functionality
+The sound control module utilizes DirectSound as its underlying layer, providing users with a convenient and practical sound control interface.
+The engine can simultaneously control up to 8 audio channels. To facilitate differentiated handling of music and sound effects in games, the engine categorizes audio into two types: sound effects occupy channels 0–6, while music occupies channel 7.
+Using the Sound Control Module, we can perform mixing, adjust the volume of specific channels, apply equalization, and more.
+Data Interface
+extern SOUND_CFG sound_cfg;
+A structure that records the engine's sound configuration.
+This structure is defined as follows:
+typedef struct tagSOUND_CFG
+{
+    SLONG music_flag; // Music playback flag: 1 = Play music, 0 = Do not play music
+SLONG music_no; // Current music track number
+SLONG music_total; // Total number of music tracks
+SLONG music_volume; // Music volume level
+SLONG music_pan; // Music equalization value
+SLONG voice_flag; // Sound effect playback flag: 1 = play, 0 = do not play
+SLONG voice_volume; // Sound effect volume level
+SLONG voice_pan; // Sound effect balance value
+} SOUND_CFG;
+The valid ranges for volume and balance values are defined as follows:
+MUSIC_VOLUME_MIN // -10000, minimum music volume
+MUSIC_VOLUME_MAX // 0, maximum music volume
+MUSIC_PAN_LEFT //-10000, sound effect panned left
+MUSIC_PAN_CENTER //0, sound effect centered
+MUSIC_PAN_RIGHT //10000, sound effect panned right
+VOICE_VOLUME_MIN //-10000, minimum voice volume
+VOICE_VOLUME_MAX //0, Maximum voice volume
+VOICE_PAN_LEFT //-10000, Voice pan left
+VOICE_PAN_CENTER //0, Voice pan center
+VOICE_PAN_RIGHT //10000, Voice pan right
+Function Interface
+EXPORT int FNBACK init_sound(void);
+EXPORT void FNBACK free_sound(void);
+EXPORT void FNBACK active_sound(int active);
+The above three functions are module management interface functions for the sound control module.
+EXPORT void FNBACK init_sound_cfg(void);
+Function: Initializes the sound configuration structure `sound_cfg`.
+Parameters: None
+Return Value: None
+Description:
+EXPORT void FNBACK notify_changed_sound_cfg(SLONG changed_flags);
+Function: When the application modifies content within sound_cfg, this function must be called to notify the engine of changes so it can respond accordingly.
+Parameters: SLONG changed_flags; // Flag indicating modified data fields
+This flag can be set to any combination (|) of the following values:
+CHANGED_MUSIC_FLAG // Music flag changed
+CHANGED_MUSIC_TOTAL // Number of music tracks changed
+CHANGED_MUSIC_VOLUME // Music volume changed
+CHANGED_MUSIC_PAN // Music panning changed
+CHANGED_VOICE_FLAG // Voice flag changed
+CHANGED_VOICE_VOLUME // Changed voice volume
+CHANGED_VOICE_PAN // Changed voice balance
+Return Value: None
+Description:
+EXPORT void FNBACK play_voice(SLONG channel, SLONG loop, USTR *filename);
+Function: Plays a voice effect.
+Parameters: SLONG channel; //Specifies the audio channel for playback (0~6).
+SLONG loop; //Flag indicating loop playback: 1=loop, 0=single play
+USTR *filename; //Sound file name (*.WAV)
+Return Value: None
+Description:
+EXPORT void FNBACK stop_voice(SLONG channel);
+Function: Stops sound playback on the specified channel.
+Parameters: SLONG channel; // Specified sound channel
+Return Value: None
+Description:
+EXPORT void FNBACK set_voice_volume(SLONG channel, SLONG volume);
+Function: Sets the volume level for the specified sound channel.
+Parameters: SLONG channel; // Specified sound channel
+SLONG volume; // Volume level to set
+Return Value: None
+Description:
+EXPORT void FNBACK set_voice_pan(SLONG channel, SLONG pan);
+Function: Sets the sound balance for the specified sound channel.
+Parameters: SLONG channel; // Specified sound channel
+SLONG pan; // Balance value to set
+Return Value: None
+Description:
+EXPORT SLONG FNBACK is_voice_playing(SLONG channel);
+Functionality: Checks if sound is currently playing on the specified channel
+Parameters: SLONG channel; //Sound channel
+Return Value: Returns TRUE if playing; FALSE otherwise.
+Description:
+EXPORT void FNBACK play_music(SLONG music_no, SLONG loop);
+Functionality: Plays music
+Parameters: SLONG music_no; //Music ID
+SLONG loop; // Loop flag: 1=loop, 0=single play
+Return Value: None
+Description:
+EXPORT void FNBACK stop_music(void);
+Function: Stops music playback
+Parameters: None
+Return Value: None
+Description:
+EXPORT void FNBACK set_music_volume(SLONG volume);
+Function: Sets music volume.
+Parameters: SLONG volume; // Specify volume
+Return Value: None
+Description:
+EXPORT void FNBACK set_music_pan(SLONG pan);
+Function: Sets music balance.
+Parameters: SLONG pan; // Specify balance value
+Return Value: None
+Description:
+EXPORT SLONG FNBACK is_music_playing(void);
+Function: Checks if music is currently playing.
+Parameters: None
+Return Value: Returns TRUE if playing; FALSE otherwise.
+Description:
+EXPORT SLONG FNBACK get_wavfile_information(USTR *filename, ULONG
+*channels, ULONG *sample_rate,ULONG *bps, ULONG *size, ULONG *play_time);
+Function: Retrieves information about a specified WAV file.
+Parameters: USTR *filename; // WAV filename
+ULONG *channels; // Number of audio channels in the WAV
+ULONG *sample_rate; // Sampling rate of the WAV
+ULONG *bps; // Bit rate (BitsPerSample) of the WAV
+ULONG *size; // Stores the data size of the WAV
+ULONG *play_time; // Stores the playback duration of the WAV
+Return Value: None
+Description: Returns TTN_OK if retrieval succeeds; otherwise, returns TTN_ERROR.
+Reference Notes
+Files related to the sound control module are xsound.cpp and xsound.h. When referencing LIB, applications should directly include the header file xsound.h.
+(8) Input Control Module (DirectInput)
+Module Functionality
+This module implements input control for keyboard and mouse. Initially planned to utilize DirectInput, it currently intercepts Windows messages for implementation.
+Data Interface
+No external data interfaces are provided.
+Function Interface
+EXPORT int FNBACK init_input(void);
+EXPORT void FNBACK free_input(void);
+EXPORT void FNBACK active_input(int bActive);
+The above three functions serve as the module loading interface functions for the input control module.
+EXPORT UCHR FNBACK read_system_key(void);
+Function: Reads a system key.
+Parameters: None
+Return Value: Returns the key value if pressed; otherwise, returns 0.
+Key values are defined in rays.h as follows:
+enum KEY_CODES
+{ Backspace = 0x08,
+Tab = 0x09,
+BackTab = 0x0f,
+Lf = 0x0a,
+Enter = 0x0d,
+Esc = 0x1b,
+Blank = 0x20,
+Plus = 0x2b,
+Comma = 0x2c,
+Dot = 0x2e,
+Minus = 0x2d,
+Zero = 0x30,
+Colon = 0x3a,
+KB_F1 = 0x3b,
+KB_F2 = 0x3c,
+KB_F3 = 0x3d,
+KB_F4 = 0x3e,
+KB_F5 = 0x3f,
+KB_F6 = 0x40,
+KB_F7 = 0x41,
+KB_F8 = 0x42,
+KB_F9 = 0x43,
+KB_F10 = 0x44,
+KB_F11 = 0x85,
+KB_F12 = 0x86,
+KB_F13 = 0x8d,
+KB_F14 = 0x8e,
+KB_F15 = 0x8f,
+Home = 0x47,
+Up = 0x48,
+PgUp = 0x49,
+Left = 0x4b,
+Right = 0x4d,
+End = 0x4f,
+Dn = 0x50,
+PgDn = 0x51,
+Ins = 0x52,
+Del = 0x53,
+Shift_F1 = 0x54,
+Shift_F2 = 0x55,
+Shift_F3 = 0x56,
+Shift_F4 = 0x57,
+Shift_F5 = 0x58,
+Shift_F6 = 0x59,
+Shift_F7 = 0x5a,
+Shift_F8 = 0x5b,
+Shift_F9 = 0x5c,
+Shift_F10 = 0x5d,
+Shift_F11 = 0x87,
+Shift_F12 = 0x88,
+Shift_F13 = 0x90,
+Shift_F14 = 0x91,
+Shift_F15 = 0x92,
+Ctrl_F1 = 0x5e,
+Ctrl_F2 = 0x5f,
+Ctrl_F3 = 0x60,
+Ctrl_F4 = 0x61,
+Ctrl_F5 = 0x62,
+Ctrl_F6 = 0x63,
+Ctrl_F7 = 0x64,
+Ctrl_F8 = 0x65,
+Ctrl_F9 = 0x66,
+Ctrl_F10 = 0x67,
+Ctrl_F11 = 0x89,
+Ctrl_F12 = 0x8a,
+Ctrl_F13 = 0x93,
+Ctrl_F14 = 0x94,
+Ctrl_F15 = 0x95,
+Alt_F1 = 0x68,
+Alt_F2 = 0x69,
+Alt_F3 = 0x6a,
+Alt_F4 = 0x6b,
+Alt_F5 = 0x6c,
+Alt_F6 = 0x6d,
+Alt_F7 = 0x6e,
+Alt_F8 = 0x6f,
+Alt_F9 = 0x70,
+Alt_F10 = 0x71,
+Alt_F11 = 0x8b,
+Alt_F12 = 0x8c,
+Alt_F13 = 0x96,
+Alt_F14 = 0x97,
+Alt_F15 = 0x98,
+Ctrl_End = 0x75,
+Ctrl_PgDn = 0x76,
+Ctrl_Home = 0x77,
+Alt_1 = 0x78,
+Alt_2 = 0x79,
+Alt_3 = 0x7a,
+Alt_4 = 0x7b,
+Alt_5 = 0x7c,
+Alt_6 = 0x7d,
+Alt_7 = 0x7e,
+Alt_8 = 0x7f,
+Alt_9 = 0x80,
+Alt_0 = 0x81,
+L_Shift = 0x82,
+R_Shift = 0x83,
+Ctrl = 0x84,
+Alt = 0x85,
+Num_5 = 0x87
+};
+Note: Strongly recommend using the read_data_key() function below to read keyboard keys, as it can capture more key values.
+This function is retained solely for compatibility with original programs.
+EXPORT UCHR FNBACK read_data_key(void);
+Function: Reads the data key.
+Parameters: None
+Return Value: Returns the data value if a key is pressed; otherwise, returns 0.
+Key data values can be printable characters from the keyboard or certain system keys. These system
+key data values are defined in rays.h as follows:
+enum KEY_SPECIAL_CODES
+{ S_Backspace = 0x08,
+S_Tab = 0x89,
+S_BackTab = 0x8f,
+S_Lf = 0x8a,
+S_Enter = 0x8d,
+S_Esc = 0x9b,
+S_Blank = 0xA0,
+S_Plus = 0xAb,
+S_Comma = 0xAc,
+S_Dot = 0xAe,
+S_Minus = 0xAd,
+S_Zero = 0xB0,
+S_Colon = 0xBa,
+S_KB_F1 = 0xBb,
+S_KB_F2 = 0xBc,
+S_KB_F3 = 0xBd,
+S_KB_F4 = 0xBe,
+S_KB_F5 = 0xBf,
+S_KB_F6 = 0xC0,
+S_KB_F7 = 0xC1,
+S_KB_F8 = 0xC2,
+S_KB_F9 = 0xC3,
+S_KB_F10 = 0xC4,
+S_KB_F11 = 0xC5,
+S_KB_F12 = 0xC6,
+S_Home = 0xC7,
+S_Up = 0xC8,
+S_PgUp = 0xC9,
+S_Left = 0xCb,
+S_Right = 0xCd,
+S_End = 0xCf,
+S_Dn = 0xD0,
+S_PgDn = 0xD1,
+S_Ins = 0xD2,
+S_Del = 0xD3,
+};
+Description:
+EXPORT void FNBACK reset_key(void);
+Function: Resets all values in the keyboard buffer.
+Parameters: None
+Return Value: None
+Description: After reading a key, its value remains stored in the keyboard buffer. If we continue calling the key-reading function without pressing any keys, the key value obtained will persistently be the previous one. Therefore, it is common practice to reset the keyboard buffer after reading a key to ensure subsequent key reads are accurate. See the following example for typical usage:
+Example:
+UCHR ch; // Define a variable to store the key read return value
+ch = read_system_key(); // Read the system key
+if(ch) reset_key(); // If a key is pressed, reset the keyboard buffer to prepare for the next read
+switch(ch) // Perform different operations based on the key read
+{
+case Home:
+break;
+case End:
+break;
+default:
+break;
+}
+EXPORT void FNBACK reset_data_key(void);
+Function: Clears the values of data keys in the keyboard buffer.
+Parameters: None
+Return Value: None
+Description: Unlike reset_key(), this function only clears the key values of printable character keys in the keyboard buffer.
+Typically, when implementing text editing functionality, we often need to achieve this behavior. For example, when holding down the Shift key and entering a string of text, we expect to obtain the corresponding uppercase symbols from the keyboard. During program implementation, this function resets the keyboard after each key press.
+The implementation process can be referenced in the example below.
+Example:
+UCHR ch;
+USTR input_str[80];
+SLONG input_finish;
+memset(input_str, 0, 80);
+input_finish = 0;
+while( ! input_finish)
+{
+    ch = read_data_key();
+    // If Shift is held down while typing 12345, we get !@#$%;
+// But if we used reset_key() instead of reset_data_key() here, we'd get !2345.
+// Because after getting !, reset_key() also clears the held Shift key.
+if(ch) reset_data_key();
+switch(ch)
+{
+case S_Del:
+// TODO: Delete the character after the edit cursor
+break;
+case S_Backspace:
+//TODO: Delete the character before the edit cursor
+break;
+case S_Enter: //Input complete
+input_finish = 1;
+break;
+default:
+if(isprint(ch))
+{
+//TODO: Add character to input_str
+}
+break;
+}
+}
+EXPORT void FNBACK wait_tick(ULONG no);
+Function: Waits for the specified duration until time elapses.
+Parameters: ULONG no; // Duration to wait, in 1/100-second increments
+Return Value: None
+Description:
+EXPORT void FNBACK wait_key(SLONG key);
+Function: Waits for a specified key to be pressed.
+Parameters: SLONG key; // Key value
+This key value is defined identically to the key values returned by read_data_key(). Refer to the relevant documentation for read_data_key().
+Return Value: None
+Description:
+EXPORT UCHR FNBACK wait_any_key(void);
+Function: Waits for any key to be pressed.
+Parameters: None
+Return Value: None
+Description: Key definitions are the same as in read_data_key().
+EXPORT void FNBACK wait_key_time(SLONG key, SLONG no);
+Function: Waits for a key to be pressed within a specified time. If the key is pressed, it returns immediately. Otherwise, it returns when the time expires.
+Parameters: SLONG key; // Key value to wait for
+SLONG no; // Wait time in 1/100-second increments
+Return Value: None
+Description: The key value definition is the same as read_data_key().
+EXPORT void FNBACK clear_time_delay(void);
+Function: Clears the precise time counter.
+Parameters: None
+Return Value: None
+Description: When precise timing is required to control certain code segments, utilize the precise time control functions provided by RAYSSDK. These include three functions: clear_timer_delay(), get_time_delay(), and wait_time_delay().
+EXPORT ULONG FNBACK get_time_delay(void);
+Function: Obtains the precise time count.
+Parameters: None
+Return Value: Precise time value in milliseconds (1/1000 of a second).
+Description:
+EXPORT void FNBACK wait_time_delay(ULONG count);
+Function: Waits for the specified precise duration.
+Parameters: ULONG count; // Wait duration in milliseconds
+Return Value: None
+Description:
+EXPORT void FNBACK fnKeyBoardInterrupt(UCHR keycode);
+Function: Keyboard interrupt handling.
+Parameters:
+Return Value:
+Description: System-specific function.
+EXPORT SLONG FNBACK fnMouseInterrupt(UINT message, WPARAM wParam, LPARAM lParam);
+Function: Mouse interrupt handling.
+Parameters:
+Return Value:
+Description: System-specific function.
+EXPORT void FNBACK show_mouse(SLONG flag);
+Function: Display mouse cursor based on flag.
+Parameters: SLONG flag; // Flag for mouse display
+This flag can be one of the following values:
+SHOW_WINDOW_CURSOR // Display Windows mouse cursor
+SHOW_IMAGE_CURSOR // Display user-defined animated image cursor
+Return Value: None
+Description:
+EXPORT void FNBACK set_mouse_cursor(SLONG type);
+Function: Sets the mouse cursor type.
+Parameters: SLONG type; // Cursor type value
+This value can be user-defined. However, the system supports up to 64 distinct cursors. Therefore, defined values should range from 0 to 63.
+Users can utilize RAYSSDK's load_mouse_cursor() and load_mouse_image_cursor()
+to load Windows mouse cursors or custom animated image cursors into the specified type.
+Subsequently, this function allows convenient selection of the loaded cursors.
+Return Value: None
+Description:
+EXPORT void FNBACK set_mouse_position(SLONG xpos, SLONG ypos);
+Function: Sets the mouse position within the workspace.
+Parameters: SLONG xpos; // Mouse x-coordinate
+SLONG ypos; // Mouse y-coordinate
+Return Value: None
+Description:
+EXPORT void FNBACK get_mouse_position(SLONG *xpos, SLONG *ypos);
+Function: Retrieves the mouse position within the workspace.
+Parameters: SLONG *xpos; // Data pointer storing mouse x-coordinate
+SLONG *ypos; // Data pointer storing mouse y-coordinate
+Return Value: None
+Description:
+EXPORT UCHR FNBACK get_mouse_key(void);
+Function: Reads the mouse button state.
+Parameters: None
+Return Value: Returns the corresponding mouse button value if pressed; otherwise, returns 0.
+Return values are defined in rays.h as follows:
+enum MOUSE_KEY_CODES
+{ MS_Dummy = 0x00, // No mouse button pressed
+MS_Move = 0xF1, // Mouse is moving
+MS_LDrag = 0xF2, // Left mouse button pressed and dragging
+MS_RDrag = 0xF3, // Right mouse button pressed and dragging
+MS_LDn = 0xF4, // Left mouse button pressed
+MS_LUp = 0xF5, // Left mouse button released
+MS_LDblClk = 0xF6, // Mouse left button double-click
+MS_RDn = 0xF7, // Mouse right button pressed
+MS_RUp = 0xF8, // Mouse right button released
+MS_RDblClk = 0xF9, // Mouse right button double-click
+MS_MDn = 0xFA, // Mouse middle button pressed
+MS_MUp = 0xFB, // Middle mouse button released
+MS_MDblClk = 0xFC, // Middle mouse button double-click
+MS_Forward = 0xFD, // Mouse wheel scroll forward
+MS_Backward = 0xFE // Mouse wheel scroll backward
+};
+Description:
+EXPORT UCHR FNBACK read_mouse_key(void);
+Functionality: Identical to get_mouse_key(). Provided as a separate function name for compatibility.
+Parameters: None
+Return Value:
+Description:
+EXPORT void FNBACK wait_mouse_any_key(void);
+Functionality: Waits for any mouse key (excluding MS_Dummy).
+Parameters: None
+Return Value: None
+Description:
+EXPORT void FNBACK wait_mouse_key(UCHR key);
+Functionality: Waits for a specific mouse key.
+Parameters: UCHR key; // Mouse key to wait for
+Return Value: None
+Description:
+EXPORT SLONG FNBACK check_mouse_shift(void);
+Functionality: Checks whether the keyboard's Shift key is pressed when a mouse button is pressed.
+Parameters: None
+Return Value: Returns TRUE if Shift is currently pressed; otherwise, returns FALSE.
+Description:
+EXPORT SLONG FNBACK check_mouse_control(void);
+Functionality: Checks whether the keyboard's Ctrl key is pressed when a mouse button is pressed.
+Parameters: None
+Return Value: Returns TRUE if Ctrl is pressed; otherwise, returns FALSE.
+Description:
+EXPORT void FNBACK reset_mouse(void);
+Functionality: Resets the mouse button buffer.
+Parameters: None
+Return Value: None
+Description:
+EXPORT void FNBACK reset_mouse_key(void);
+Function: Identical to reset_mouse(). Provided as a separate function name for compatibility.
+Parameters:
+Return Value:
+Description:
+EXPORT SLONG FNBACK load_mouse_cursor(SLONG index, HCURSOR hCursor);
+Functionality: Loads a mouse cursor resource from WINDOWS and assigns it as the current mouse cursor type.
+Parameters:
+SLONG index; // Specified mouse cursor type
+HCURSOR hCursor; // HANDLE to the WINDOWS cursor resource
+Return Value: Returns 0 on success, otherwise returns an error value.
+Description:
+EXPORT void FNBACK set_mouse_spot(SLONG index, SLONG x, SLONG y);
+Function: Sets the hotspot for the user animation image mouse cursor.
+Parameters: SLONG index; // Mouse cursor type to configure
+SLONG x; // Hotspot x-coordinate
+SLONG y; // Hotspot y-coordinate
+Return Value: None
+Description: When setting an animated image file as the mouse cursor, the system defaults the top-left corner of the image's bounding rectangle as the cursor's hotspot. However, specific applications often require designating particular points—such as the image's center or any arbitrary location—as the hotspot. This function enables such customization. The hotspot coordinates are relative to the aforementioned top-left corner.
+EXPORT SLONG FNBACK init_mouse_image_cursor(void);
+Function: Initializes the mouse image cursor storage area.
+Parameters: None
+Return Value: Returns TTN_OK.
+Description: System-reserved function.
+EXPORT void FNBACK free_mouse_image_cursor(void);
+Function: Releases the mouse image cursor storage area.
+Parameters: None
+Return Value: None
+Description: System-reserved function.
+EXPORT SLONG FNBACK load_mouse_image_cursor(SLONG index, USTR *filename);
+Function: Loads an animation image from a specified file as the mouse cursor and assigns it to a specific mouse type.
+Parameters: SLONG index; // Specified mouse cursor type value
+USTR filename; // Animation image file (*.CAK)
+Return Value: Returns TTN_OK on successful load, otherwise returns TTN_NOT_OK.
+Description:
+EXPORT SLONG FNBACK make_mouse_image_cursor(SLONG index,
+CAKE_FRAME_ANI *image_cfa, SLONG frames);
+Function: Captures a segment of an animation to generate an animated mouse cursor image and assigns this cursor to a specific mouse type.
+Parameters:
+SLONG index; // Mouse type value
+CAKE_FRAME_ANI *image_cfa; // Animation image pointer. Must ensure all nodes (including the header node) contain image data.
+SLONG frames; // Number of frames for the mouse animation
+Return Value: Returns TTN_OK on success, otherwise returns TTN_NOT_OK.
+Description: This function generates an animated image cursor based on the frames following image_cfa.
+EXPORT void FNBACK redraw_mouse_image_cursor(char *pbuffer, long pitch, long width, long height);
+Function: Displays mouse animation image data to the specified buffer. This function is utilized within the core of the control module shown above.
+Parameters:
+Return Value:
+Description: System-reserved function.
+EXPORT SHINT FNBACK fnCheckCtrlKey(void);
+Function: Checks whether the Ctrl key is pressed.
+Parameters: None
+Return Value: Returns 1 if Ctrl is pressed, 0 otherwise.
+Description:
+EXPORT SHINT FNBACK fnCheckLeftCtrlKey(void);
+Function: Checks whether the left Ctrl key is pressed.
+Parameters: None
+Return Value: Returns 1 if pressed, 0 otherwise.
+Description:
+EXPORT SHINT FNBACK fnCheckRightCtrlKey(void);
+Function: Checks whether the right Ctrl key is pressed.
+Parameters: None
+Return Value: Returns 1 if pressed, 0 otherwise.
+Description:
+EXPORT SHINT FNBACK fnCheckAltKey(void);
+Functionality: Checks whether the Alt key is pressed.
+Parameters: None
+Return Value: Returns 1 if pressed, 0 otherwise.
+Description:
+EXPORT SHINT FNBACK fnCheckLeftAltKey(void);
+Functionality: Checks whether the left Alt key is pressed.
+Parameters: None
+Return Value: Returns 1 if pressed, 0 otherwise.
+Description:
+EXPORT SHINT FNBACK fnCheckRightAltKey(void);
+Function: Checks whether the right Alt key is pressed.
+Parameters: None
+Return Value: Returns 1 if pressed, 0 otherwise.
+Description:
+EXPORT SHINT FNBACK fnCheckShiftKey(void);
+Functionality: Checks whether the Shift key is pressed.
+Parameters: None
+Return Value: Returns 1 if pressed, 0 otherwise.
+Description:
+EXPORT SHINT FNBACK fnCheckLeftShiftKey(void);
+Functionality: Checks whether the left Shift key is pressed.
+Parameters: None
+Return Value: Returns 1 if pressed, 0 otherwise.
+Description:
+EXPORT SHINT FNBACK fnCheckRightShiftKey(void);
+Function: Checks whether the right Shift key is pressed.
+Parameters: None
+Return Value: Returns 1 if pressed, 0 otherwise.
+Description:
+Reference Notes
+Files related to the input control module are xinput.cpp and xinput.h.
+(9) Network Control Module (DirectPlay)
+Module Functionality
+This module utilizes DirectPlay as its underlying layer, providing interfaces for applications to select connection types, create sessions, join sessions, receive messages, etc.
+Data Interface
+No external data interfaces are currently provided.
+Function Interface
+EXPORT int FNBACK init_net(void);
+EXPORT void FNBACK free_net(void);
+EXPORT void FNBACK active_net(int active);
+The above three functions provide the module loading interface.
+EXPORT void FNBACK set_net_func( FUNCDOMSG *do_sys, FUNCDOMSG
+*do_app);
+Function: Sets the functions for handling messages.
+Parameters: FUNCDOMSG *do_sys; // Function for handling system messages
+FUNCDOMSG *do_app; // Function to handle application messages
+FUNCDOMSG is defined as follows:
+typedef void (FUNCDOMSG)(DPMSG_GENERIC* pMsg, DWORD dwMsgSize,
+DPID idFrom, DPID idTo );
+Its parameters are: a pointer to the message data, the message data size, the network ID of the sending player, and the network ID of the receiving player.
+Return Value: None
+Description: After loading the network control module, we need to set up message-handling functions to process network messages upon receipt.
+In RAYSSDK, network messages are categorized into two types: DirectPlay system messages and application-defined messages.
+Received network messages include:
+DPSYS_CHAT // Received a chat message
+DPSYS_CREATEPLAYERORGROUP // A new player or group has been created. When a new player joins the game, existing online players receive this message
+DPSYS_DESTROYPLAYERORGROUP // A player or group has been deleted. When a player leaves the game, other players receive this message
+DPSYS_HOST // The local machine has become the host
+DPSYS_SESSIONLOST // The network session has been lost
+DPSYS_ADDPLAYERTOGROUP // A new player has been added to the group
+DPSYS_DELETEPLAYERFROMGROUP // Remove a player from a group
+DPSYS_SETPLAYERORGROUPDATA // Set player or group information
+DPSYS_SETPLAYERORGROUPNAME // Set player or group name
+DPSYS_SETSESSIONDESC // Set session information
+DPSYS_SENDCOMPLETE // Data transmission complete
+etc.
+For application-specific messages, users define them themselves.
+Example: A typical usage example follows.
+Suppose we have the following two functions for handling network messages:
+void do_system_message(DPMSG_GENERIC* pMsg, DWORD dwMsgSize, DPID idFrom, DPID idTo)
+{
+switch(pMsg->dwType)
+{
+case DPSYS_CREATEPLAYERORGROUP:
+// Handle creation of a new player or group
+break;
+case DPSYS_DESTROYPLAYERORGROUP:
+// Handle deletion of a player or group
+break;
+// Other handling code
+// (omitted here)
+}
+}
+void do_application_message(DPMSG_GENERIC* pMsg, DWORD dwMsgSize, DPID
+idFrom, DPID idTo)
+{
+switch(pMsg->dwType)
+{
+// Handle user-defined network messages
+}
+}
+After loading the network control module, we can set the message-handling function pointers as follows:
+set_net_func(do_system_message, do_application_message);
+Alright, now we can focus solely on designing our message-handling functions. Everything else?
+RAYSSDK has already taken care of it for us.
+Note that our custom network messages must carry a dwType value
+to identify the message type, while also ensuring compatibility with the DirectPlay system.
+For example, our messages can be defined like this:
+typedef struct MSG_SET_EXP
+{
+DWORD dwType;
+SLONG exp;
+} MSG_SET_EXP;
+typedef struct MSG_DEL_ITEM
+{
+DWORD dwType;
+SLONG map_no;
+SLONG x;
+SLONG y;
+ULONG contain;
+} MSG_DEL_ITEM;
+typedef struct MSG_REQUEST_ADD_BASE_RESP
+{
+    DWORD dwType;
+    SLONG use_skill;
+    SLONG add_data;
+} MSG_REQUEST_ADD_BASE_RESP;
+EXPORT int FNBACK NET_get_connects(int ID, DPCNAME **lpname, int
+*count);
+Function: Retrieves the list of connection types available to the system.
+Parameters: int ID; // The additional value of the network GUID, typically set to 0.
+DPCNAME **lpname; // Stores retrieved network connection type data
+Connection type data is defined as follows:
+typedef struct DPCNAME_STRUCT DPCNAME, LPDPCNAME;
+struct DPCNAME_STRUCT
+{
+    char *name; // Connection type name
+    int type; // Connection type definition
+};
+Connection type definitions are as follows:
+NETCONNECTIPX // IPX connection
+NETCONNECTTCPIP // TCP/IP connection
+NETCONNECTMODEM // Modem connection
+NETCONNECTSERIAL // Serial connection
+NETCONNECTOTHER // Other connection types
+int *count; // Stores the total number of connection types retrieved
+Return values: Listed below.
+NET_DOK // Connection retrieval successful
+NETERR_INIT // Network control not initialized
+NETERR_DNODXX // Error creating DirectPlay or DirectPlayLobby object
+NETERR_DENUMERR // Error enumerating connection types
+Description: After obtaining the connection type list, use NET_set_connect(num) to configure
+the desired method for establishing a network connection. num is the index value in the list.
+EXPORT int FNBACK NET_set_connect(int num);
+Function: Sets the connection type
+Parameters: int num; // Index of the connection type data
+Return Value: Returns 0 if set successfully; otherwise, returns another number.
+Description:
+EXPORT int FNBACK NET_off_connect(void);
+Function: Releases the network connection.
+Parameters: None
+Return Value: Returns 0 on success; otherwise, returns another number.
+Description: Directly calls DirectPlay's Release to release the DirectPlay object.
+EXPORT void FNBACK NET_set_phone(char *phone);
+Function: Sets the phone number for MODEM connections.
+Parameters: char *phone; // Phone number string, e.g., “5186890”
+Return Value: None
+Description:
+EXPORT void FNBACK NET_set_ip_address(char *address);
+Function: Sets the IP address for TCP/IP connections.
+Parameters: char *address; // IP address, e.g., “192.168.10.146”
+Return Value: None
+Description:
+EXPORT void FNBACK NET_set_com_port(int port, int speed);
+Function: Sets the port number and serial transmission speed for serial port connections.
+Parameters: SLONG port; //Port number
+int speed; //Serial transmission rate
+Return Value:
+Description:
+EXPORT int FNBACK NET_get_sessions(char ***lpname, int *count);
+Function: Retrieves the list of currently connected sessions.
+Parameters: char ***lpname; //List of session names
+int *count; // Stores total number of sessions
+Return Value: Returns 0 on success, otherwise returns an error value.
+Description:
+EXPORT int FNBACK NET_create_session(char *sname, int max_player,
+DPID *play_id, char *names, char *namel);
+Function: Creates a new session.
+Parameters: char *sname; // Set session name
+int max_player; // Set maximum allowed players
+DPID *play_id; // Stores player's network ID
+char *names; // Set player's nickname (ShortName)
+char *namel; // Set player's name (LongName)
+Return Value: Returns 0 on success, otherwise returns another value.
+Description: When creating a new session, the system simultaneously creates a new player. The player's network ID is stored in *play_id, and the player is added to the session as the host.
+EXPORT int FNBACK NET_join_session(int num, DPID *play_id, char
+*names, char *namel);
+Functionality: Joins a specified session.
+Parameters: int num; // Session list index
+DPID *play_id; // Stores the player's network ID
+char *names; // Sets the player's nickname (ShortName)
+char *namel; // Sets the player's name (LongName)
+Return Value: Returns 0 on success, otherwise returns another value.
+Description: When joining a session, similar to creating a session with NET_create_session(), the system simultaneously creates a new player and stores that player's network ID in *play_id.
+EXPORT int FNBACK NET_session_name(char *name);
+Function: Sets the session name.
+Parameters: char *name; // New session name
+Return Value: Returns 0 on success, otherwise returns another value.
+Description: Only the session creator can set the session name.
+EXPORT int FNBACK NET_send(NETMSG *netmsg);
+Function: Sends a network message.
+Parameters: NETMSG *netmsg; // Stores the message to be sent
+NETMSG is defined as follows:
+struct NETMSG_STRUCT
+{
+DWORD dwType; // Message type
+union
+{
+WORD Flags;
+DWORD size; // Message length
+};
+PLAYERID idFrom; // Sender's player ID
+LAYERID idTo; // Recipient's player ID
+DWORD dwCurrentPlayers;
+union
+{
+LPVOID data; // Address of message data
+char * message; // Null-terminated string
+char * ShortName;
+};
+union
+{
+char * LongName;
+LPDPSESSIONDESC2 desc;
+};
+};
+Return Value: Returns 0 upon successful transmission, otherwise returns another value.
+Description: This function is retained in RAYSSDK for compatibility. It is recommended and strongly advised to use the
+NET_send_data(LPVOID lpBuffer, DWORD dwSize, DPID idFrom, DPID idTo) function when sending
+messages. Please note.
+EXPORT int FNBACK NET_send_data( LPVOID lpBuffer, DWORD dwSize,
+DPID idFrom, DPID idTo );
+Functionality: Sends a network data message.
+Parameters: LPVOID lpBuffer; // Address of message data
+DWORD dwSize; // Length of message data
+DPID idFrom; // Network ID of the player sending the message
+DPID idTo; // Network ID of the player receiving the message
+Return Value: Returns 0 upon successful transmission; otherwise, returns another value.
+Description:
+EXPORT int FNBACK NET_send_chat(NETMSG *netmsg);
+Function: Sends a chat message.
+Parameters: NETMSG *netmsg; // Message structure storing the chat message.
+Return Value: Returns 0 on success, otherwise returns another value.
+Description: This function is retained in RAYSSDK for compatibility. It is strongly recommended to use
+NET_send_chat(LPVOID lpBuffer, DWORD dwSize, DPID idFrom, DPID idTo) for sending
+chat messages.
+EXPORT int FNBACK NET_send_chat( LPVOID lpBuffer, DWORD dwSize,
+DPID idFrom, DPID idTo );
+Function: Send chat message.
+Parameters: LPVOID lpBuffer; // Storage address for chat message
+DWORD dwSize; // Size of chat message
+DPID idFrom; // Network ID of the player sending the message
+DPID idTo; // Network ID of the player receiving the message
+Return Value: Returns 0 on success, otherwise returns another value.
+Description:
+EXPORT int FNBACK NET_close(void);
+Function: Closes the network connection.
+Parameters: None
+Return Value: Returns 0 on success, otherwise returns another value.
+Description: When closing the network connection, the system deletes the player (created when establishing or joining the connection) and calls DirectPlay's Close interface to terminate DirectPlay.
+EXPORT int FNBACK NET_end_join(void);
+Function: Prevents new players from joining the session.
+Parameters: None
+Return Value: Returns 0 on success, otherwise returns an error value.
+Description: Prevents new players from joining the session by modifying session parameters. Note that only the session creator can call this function.
+EXPORT int FNBACK NET_enum_players(int num, ENUMPLAYER *p);
+Function: Enumerates all players in the specified session.
+Parameters: int num; // Index value in the session list
+ENUMPLAYER *p; // Pointer to the enumeration callback function
+The callback function is defined as:
+typedef void (ENUMPLAYER)(DPID id, char *names, char *namel);
+The corresponding parameters represent the player's network ID, nickname (ShortName), and full name (LongName).
+Return Value: Returns 0 on success, otherwise returns an error value.
+Description: Users can define their own callback functions for statistics or other purposes. For detailed implementation principles of callback functions, refer to the DirectX development manual.
+EXPORT int FNBACK NET_player_name(char *names, char *namel);
+Function: Sets the player's name.
+Parameters: char *names; // Nickname (ShortName)
+char *namel; // Full Name (LongName)
+Return Value: Returns 0 on success, otherwise returns another value.
+Description:
+EXPORT void FNBACK NET_get_player_name(DPID player_id, char
+**friendlyname, char **formalname);
+Function: Retrieves the name of a specified player.
+Parameters: DPID player_id; // Player's network ID
+char **friendlyname; // Retrieves the player's nickname
+char **formalname; // Retrieves the player's formal name
+Return Value: None
+Description:
+Reference Hints
+Related files are xplay.cpp and xplay.h.
+(10) CDROM Audio Track Control Module (CD Music)
+Module Functionality
+The CDROM audio track playback module utilizes Windows' MCI functions as its underlying layer, providing application users with a convenient interface.
+Using this module, users can easily implement functions such as playing CD music, stopping CD music playback, pausing, and resuming playback.
+Data Interface
+Currently, there are no external data interfaces.
+Function Interface
+EXPORT int FNBACK init_cdrom_music(void);
+EXPORT void FNBACK free_cdrom_music(void);
+EXPORT void FNBACK active_cdrom_music(int active);
+The above three functions are the module loading functions for the CDROM Music Track Control Module.
+EXPORT void FNBACK pause_cdrom_music(void);
+Function: Pauses CD-ROM music playback.
+Parameters: None
+Return Value: None
+Description: Calling resume_cdrom_music() resumes playback from the paused position.
+EXPORT void FNBACK resume_cdrom_music(void);
+Function: Resumes CD-ROM music playback.
+Parameters: None
+Return Value: None
+Description: Used in conjunction with pause_cdrom_music().
+EXPORT void FNBACK stop_cdrom_music(void);
+Function: Stops CD-ROM music playback.
+Parameters: None
+Return Value: None
+Description:
+EXPORT void FNBACK play_cdrom_music(SLONG track);
+Function: Plays music from the specified track.
+Parameters: SLONG track; //Track number, starting from 0.
+Return Value: None
+Description: Note that this function starts playback of the track from the beginning.
+EXPORT SLONG FNBACK status_cdrom_music(void);
+Function: Checks the playback status of CD-ROM music.
+Parameters: None
+Return Value: Returns 0 if CD-ROM music is stopped; otherwise returns another value.
+Description:
+EXPORT void FNBACK loop_cdrom_music(void);
+Function: Loop playback of CD-ROM music.
+Parameters: None
+Return Value: None
+Description:
+To achieve looping playback of CD-ROM music, continuously call this function at regular intervals within your program. This enables continuous playback of the current track. A typical approach is to check within a function like idle_loop(). However, for flexibility, the idle_loop() function provided in RAYSSDK does not call this function.
+In fact, it is recommended to use MP3 or WAV files for game music. WAV implementation is available in the Sound Control Module. For MP3 implementation, refer to the MP3 Control Module.
+EXPORT SLONG FNBACK total_cdrom_music(void);
+Function: Retrieves the number of audio tracks on the current CD-ROM.
+Parameters: None
+Return Value: Returns the number of tracks obtained.
+Description:
+Reference Notes
+Related files are xcdrom.cpp and xcdrom.h.
+(XI) Chinese Character Display Module (Font)
+Module Functionality
+Previously, Chinese character display relied directly on bitmap font files. This approach had the advantage of enabling normal and convenient Chinese character display regardless of the operating system platform version—whether Simplified Chinese, Traditional Chinese, or English—on which the application ran (module name: font).
+However, to achieve maximum compatibility and scalability with the WINDOWS system, the current approach utilizes the TrueTypeFont (TTF) text display system of the operating system (module name: winfont).
+TrueTypeFont (TTF) text display based on the operating system (module name: winfont).
+Their usage is largely identical. The winfont module is used here for illustration.
+It is recommended that application development utilize the winfont module as the implementation method for displaying Chinese characters.
+Data Interface
+This module currently does not provide any external data interfaces.
+Function Interface
+int init_winfont(void);
+void active_winfont(int active);
+void free_winfont(void);
+The above three functions constitute the module loading interface for the Chinese character display module.
+void print_640x480x16M(SLONG x, SLONG y, USTR *data, SLONG
+put_type, BMP *bit_map);
+void print_range_640x480x16M(SLONG x, SLONG y, USTR *data, SLONG
+put_type, BMP *bit_map);
+void set_word_color(UHINT color);
+void set_back_color(UHINT color);
+void set_word_color(SLONG lab, UHINT color);
+void set_back_color(SLONG lab, UHINT color);
+SLONG get_word_width(void);
+The above functions are application functions used when displaying Chinese characters.
+However, for compatibility with the xfont module and to facilitate future implementation of applications on other platforms,
+it is strongly recommended to use the macro definitions provided by this module to display Chinese characters. The following will focus on introducing
+the usage of these macro definitions.
+print16(x,y,str,type,bitmap)
+print20(x,y,str,type,bitmap)
+print24(x,y,str,type,bitmap)
+print28(x,y,str,type,bitmap)
+print32(x,y,str,type,bitmap)
+These macros implement Chinese character display at resolutions of 16x16, 20x20, 24x24, 28x28, and 32x32 pixels respectively.
+Parameter descriptions:
+(SLONG) x is the X coordinate of the starting point for string display.
+(SLONG) y is the Y coordinate of the starting point for string display.
+(USTR*) str is the Chinese character string to display.
+(SLONG) type specifies the display method for the character.
+(BMP*) bitmap is the destination bitmap.
+Several key points require emphasis:
+(1) Characters align to their top-left corner. For example, to display the 16-pixel character “希望”
+displayed at the top-left corner (0,0) of bitmap while keeping the top-left corner of the displayed character at that point, we can achieve this as follows:
+print16(0,0,“希望”,PEST_PUT,bitmap);
+(2) The displayed character string may contain control characters. These control characters enable functions such as changing the foreground color of the displayed character or modifying the display effect. Currently available control characters are:
+~C0, ~C1, ~C2, ~C3, ~C4, ~C5, ~C6, ~C7, ~C8, ~C9
+These change the foreground color of the displayed character. C stands for Color. The subsequent 0, 1, ..., 9 represent different colors as follows:
+0 SYSTEM_WHITE White
+1 SYSTEM_RED Red
+2 SYSTEM_GREEN Green
+3 SYSTEM_BLUE Blue
+4 SYSTEM_YELLOW Yellow
+5 SYSTEM_CYAN Cyan
+6 SYSTEM_PINK Pink
+7 SYSTEM_WHITE White (same as 0)
+8 SYSTEM_BLACK Black
+9 SYSTEM_DARK0 Gray
+~O0, ~O1, ~O2, ~O3, ~O4, ~O5, ~O6, ~O7, ~O8, ~O9
+will implement stroke effects for Chinese character display. Here, 0 indicates no stroke; the other values 1–9 represent different
+stroke colors, defined as above.
+(3)(SLONG)type Specifies the method for displaying Chinese characters. Its values are defined as follows:
+PEST_PUT Displays Chinese characters using the PEST method (filtering out transparent colors)
+COPY_PUT Displays Chinese characters using the direct COPY method
+Or the following macro:
+COPY_PUT_COLOR(a)
+This macro defines the background color for displaying Chinese characters. The macro parameter a represents a color value. For compatibility with different
+graphics cards, it is strongly recommended to use system colors such as SYSTEM_RED, SYSTEM_BLUE, etc.
+Refer to the engine's graphics function documentation for system color definitions.
+For example, to display the white Chinese character “希望” with a red outline on a blue background,
+we can use:
+print16(0,0, “~C0~O1 Hope~C0~O0”,COPY_PUT_COLOR(SYSTEM_BLUE),bitmap);
+If no background color is specified, use:
+print16(0,0, “~C0~O1 Hope~C0~O0”,COPY_PUT,bitmap);
+Reference Notes
+Files related to Chinese character display are xfont.cpp, xfont.h, winfont.cpp, and winfont.h.
+(12) MP3 Playback Module (MP3)
+Module Functionality
+This module dynamically decompresses and plays MP3 format music files.
+Note: Currently, this module only functions properly under Windows 2000. In the next version update, it will be modified to support Windows 98, Windows 95, etc.
+version, updates will be made to support WINDOWS98, WINDOWS95, and others.
+Data Interface
+Currently, there are no external data interfaces.
+Function Interface
+EXPORT int FNBACK init_mp3(void);
+EXPORT void FNBACK active_mp3(int active);
+EXPORT void FNBACK free_mp3(void);
+The above three functions provide the loading interface for the MP3 module.
+EXPORT void FNBACK play_mp3(SLONG loop, USTR *filename);
+Function: Plays MP3 music.
+Parameters: SLONG loop; // Loop play flag: 1=loop play, 0=single play
+USTR *filename; // MP3 file name
+Return Value: None
+Description:
+EXPORT void FNBACK stop_mp3(void);
+Function: Stops MP3 music playback.
+Parameters: None
+Return Value: None
+Description:
+EXPORT void FNBACK set_mp3_volume(SLONG volume);
+Function: Sets the volume for MP3 playback.
+Parameters: SLONG volume; // Specified volume level
+Refer to the volume definitions in the music control module (xsound.h).
+Return Value: None
+Description:
+EXPORT void FNBACK set_mp3_pan(SLONG pan);
+Function: Sets the equalization value for MP3 playback.
+Parameters: SLONG pan; // Specified equalization value
+Refer to the equalization value definitions in the music control module (xsound.h).
+Return Value: None
+Description:
+EXPORT SLONG FNBACK is_mp3_playing(void);
+Function: Checks whether an MP3 track is currently playing.
+Parameters: None
+Return Value: Returns TRUE if playing; FALSE otherwise.
+Description:
+Reference Notes
+Files related to this module include mp3.h and other associated files, which are not listed here.
+(13) Windows BMP Image Format Support
+File Format Introduction
+BMP is the bitmap format for WINDOWS.
+The file header format is as follows:
+typedef struct tagBITMAPHEADER
+{
+UHINT type; //
+ULONG size; //
+ULONG reserved; //
+ULONG off_bits; //
+ULONG head_size; //
+ULONG width; //
+ULONG height; //
+UHINT planes; //
+UHINT bit; //
+} BITMAPHEADER,*LPBITMAPHEADER;
+Data Interface
+No external data interfaces are currently provided.
+Function Interface
+EXPORT BMP* FNBACK BMP_load_file(char *filename);
+Functionality: Loads a Windows BMP bitmap file into the engine's bitmap data.
+Parameters: char *filename; // Windows BMP bitmap file name
+Return Value: Returns a pointer to the engine's bitmap data.
+For details on the engine bitmap data structure (BMP), refer to the Bitmap Operations section of the Engine Image Operations documentation.
+Description:
+EXPORT SLONG FNBACK BMP_save_file(BMP *bmp, char *filename);
+Functionality: Saves engine bitmap data as a Windows BMP format file.
+Parameters:
+BMP *bmp; // Pointer to engine bitmap data
+char *filename; // Target file name
+Return Value: Returns 0 on success, otherwise returns an error value.
+Description:
+EXPORT SLONG FNBACK BMP_save_file(UHINT *buffer, SLONG xl, SLONG yl,
+char *filename);
+Functionality: Saves data from the specified memory region as a Windows BMP format file.
+Parameters: UHINT *buffer; // Pointer to the image data buffer
+SLONG xl; // Bitmap width
+SLONG yl; // Bitmap height
+char *filename; // Target filename
+Return Value: Returns 0 on success, otherwise returns an error value.
+Description:
+Reference Documentation
+Related files are vbmp.cpp and vbmp.h.
+(14) PCX Image Format Support
+File Format Introduction
+The file header structure is as follows:
+typedef struct tagPCX_HEAD
+{
+UCHR manufacturer;
+UCHR version;
+UCHR encoding;
+UCHR bitsPerPixel;
+SHINT xMin;
+SHINT yMin;
+SHINT xMax;
+SHINT yMax;
+SHINT hResolution;
+SHINT vResolution;
+UCHR palette[48];
+UCHR videoMode;
+UCHR colorPlanes;
+SHINT bytesPerLines;
+SHINT paletteType;
+SHINT shResolution;
+SHINT svResolution;
+UCHR filler[54];
+} PCX_HEAD,*LPPCX_HEAD;
+Data Interface
+No external data interfaces are currently provided.
+Function Interface
+EXPORT BMP* FNBACK PCX_load_file(char *filename);
+Functionality: Loads a PCX image file into the engine bitmap structure.
+Parameters: char *filename; //PCX image file name
+Return Value: Returns a pointer to the engine bitmap structure data.
+For the definition of the engine bitmap data structure, refer to the bitmap operations section of engine image operations.
+Description:
+Reference Notes
+Corresponding files are vpcx.cpp and vpcx.h.
+(15) TGA Image Format Support
+File Format Introduction
+The file header structure is as follows:
+typedef struct tagTGA_HEAD
+{
+    UCHR bIdSize;
+    UCHR bColorMapType;
+    UCHR bImageType;
+    UHINT iColorMapStart;
+    UHINT iColorMapLength;
+    UCHR bColorMapBits;
+    UHINT ixStart;
+UHINT iyStart;
+UHINT iWidth;
+UHINT iHeight;
+UCHR bBitsPerPixel;
+UCHR bDescriptor;
+} TGA_HEAD,*LPTGA_HEAD;
+Data Interface
+No external data interfaces are currently provided.
+Function Interface
+EXPORT BMP* FNBACK TGA_load_file(char *filename);
+Function: Loads a TGA image into the engine's bitmap.
+Parameters: char *filename; //PCX filename
+Return Value: Returns a pointer to the engine's bitmap data structure.
+Description: When loading TGA images, this function automatically filters the TGA alpha channel and converts it to the system's transparency color (pure black).
+The filtering threshold can be set via `TGA_set_transparency_level()`. Alpha values above this threshold retain their original color, while values below are replaced with the system transparency color.
+However, when loading TGA images with an alpha channel, it is recommended to use the `TGA_load_file_with_alpha()` function to preserve the original alpha information.
+EXPORT ABMP* FNBACK TGA_load_file_with_alpha(char *filename);
+Function: Loads a TGA image into the engine's alpha bitmap.
+Parameters: char *filename; // TGA filename
+Return Value: Returns a pointer to the engine's alpha bitmap data.
+For the definition of the engine's alpha bitmap data structure, refer to the bitmap operations section of the engine image operations documentation.
+Description:
+EXPORT void FNBACK TGA_set_transparency_level(SLONG level);
+Function: Sets the transparency threshold (alpha threshold) when loading a TGA file.
+Parameters: SLONG level; // Alpha threshold, 0~255
+Return Value: None
+Description: Used in conjunction with TGA_load_file().
+Reference Notes
+(16) JPG Image Format Support
+File Format Introduction
+The JPG format is relatively complex; please refer to relevant literature.
+Data Interface
+Function Interface
+EXPORT int FNBACK LoadJPG( const char *filename, unsigned char **pic, int
+*width, int *height );
+Function: Loads a JPG image into a memory buffer.
+Parameters: const char *filename; // JPG file name
+unsigned char **pic; // Pointer to a pointer of the memory buffer
+int *width; // Stores the image width
+int *height; // Stores the image height
+Return Value: Returns 0 on success, otherwise returns another value.
+Description:
+After loading completes, the data in the corresponding memory buffer represents the restored JPG image information. Each pixel in the image corresponds to four consecutive bytes in the memory buffer, sequentially storing the pixel's r, g, b, and a values.
+We can combine these values through calculations to obtain bitmap data suitable for other engines as needed.
+Example:
+char * jpg_filename = “TEST.JPG”;
+BMP * fore_bitmap = NULL;
+unsigned char *jpg_pic = NULL;
+int jpg_width, jpg_height;
+int x,y,offset;
+unsigned char r,g,b,a;
+// Load the JPG image file
+if(0 == LoadJPG( (const char *)jpg_filename, &jpg_pic, &jpg_width, &jpg_height ) )
+{
+fore_bitmap = create_bitmap(jpg_width, jpg_height);
+if(fore_bitmap)
+{
+// Copy contents from jpg_pic to fore_bitmap
+// and convert to high color
+offset = 0;
+for(y=0; y<jpg_height; y++)
+{
+    for(x=0; x<jpg_width; x++)
+    {
+        r = jpg_pic[offset + (x << 2) + 0];
+g = jpg_pic[offset + (x << 2) + 1];
+b = jpg_pic[offset + (x << 2) + 2];
+a = jpg_pic[offset + (x << 2) + 3];
+fore_bitmap->line[y][x] = rgb2hi(r,g,b);
+}
+offset += (jpg_width << 2);
+}
+// Release memory occupied by jpg_pic when no longer needed
+if(*jpg_pic)
+{
+free(*jpg_pic);
+*jpg_pic = NULL;
+}
+// Subsequent operations on fore_bitmap
+//?(omitted here)
+}
+}
+EXPORT int FNBACK LoadImage( const char *name, byte **pic, int *width, int
+*height );
+This function is currently not recommended for use.
+EXPORT int FNBACK LoadImageBuff( byte *buffer, byte **pic, int *width, int
+*height ,int flag);
+This function is currently not recommended for use.
+Reference Notes
+Related documentation: jpeg.h.
+(XVII) PhotoShop PSD Format Support
+File Format Introduction
+For details on the PSD file format, please refer to relevant literature.
+Data Interface
+Function Interface
+EXPORT PSDFILE * FNBACK open_psd_file(USTR *filename, SLONG
+*layers, SLONG *xl, SLONG *yl);
+Functionality: Opens a PSD file.
+Parameters: USTR *filename; // PSD file name
+SLONG *layers; // Number of layers in the PSD file
+SLONG *xl; // Width of the PSD image
+SLONG *yl; // Height of the PSD image
+Return Value: If the file is opened successfully, returns a pointer to a structure of type PSDFILE. Otherwise,
+returns NULL.
+Description:
+EXPORT SLONG FNBACK read_psd_layer_info(SLONG layer, SLONG *sx, SLONG
+*sy, SLONG *xl, SLONG *yl, PSDFILE *f);
+Functionality: Reads information about the specified layer from the opened PSD file.
+Parameters:
+SLONG layer; // Specifies the PSD layer to read
+SLONG *sx; // Starting x-coordinate of the layer image
+SLONG *sy; // Starting y-coordinate of the layer image
+SLONG *xl; // Width of the layer image
+SLONG *yl; // Height of the layer image
+PSDFILE *f; // PSDFILE file pointer //PSDFILE file pointer
+Return Value: Returns 0 if successful; otherwise, returns an error value.
+Description:
+EXPORT SLONG FNBACK read_psd_layer_image(SLONG layer, UHINT
+*buffer, USTR *alpha_buffer, PSDFILE *f);
+Functionality: Reads the image from a specified layer in an open PSD file.
+Parameters: SLONG layer; // Specified layer
+UHINT *buffer; // Buffer for storing the image
+USTR *alpha_buffer; // Buffer for storing the image's alpha channel
+PSDFILE *f; // PSDFILE file pointer
+Return Value: Returns 0 upon successful read; otherwise returns another value.
+Description: When reading an image from a specific layer in a PSD file, we must first call read_psd_layer_info()
+to obtain the layer's information. Then allocate a buffer buffer for the image and a buffer alpha_buffer for the image's alpha channel,
+before calling this function
+read_psd_layer_image() to read it.
+Example: Sequentially display all layers of a PSD file
+PSDFILE *f=NULL;
+SLONG psd_xl, psd_yl, psd_layers;
+SLONG layer, layer_sx, layer_sy, layer_xl, layer_yl;
+SLONG result;
+UHINT *buffer=NULL;
+USTR *alpha_buffer=NULL;
+f = open_psd_file((USTR*)“TEST.PSD”, &psd_layers, &psd_xl, &psd_yl);
+if(NULL != f)
+{
+for(layer=0; layer<psd_layers; layer++)
+{
+result = read_psd_layer_info(layer, &layer_sx, &layer_sy, &layer_xl,
+&layer_yl);
+if(0 == result)
+{
+buffer = (UHINT*)malloc(layer_xl * layer_yl * sizeof(UHINT));
+alpha_buffer = (USTR*)malloc(layer_xl * layer_yl * sizeof(USTR));
+if(buffer && alpha_buffer)
+{
+result = read_psd_layer_image(layer, buffer, alpha_buffer, f);
+if(0 == result)
+{
+//show image here?
+}
+}
+if(buffer) {free(buffer); buffer = NULL; }
+if(alpha_buffer) {free(alpha_buffer); alpha_buffer = NULL; }
+}
+}
+}
+if(f) close_psd_file(f);
+EXPORT SLONG FNBACK read_psd_graph_image(UHINT *buffer, PSDFILE *f);
+Function: Reads the display GRAPH image from a PSD file.
+Parameters: UHINT *buffer; // Buffer for storing the display image
+PSDFILE *f; // PSDFILE file pointer
+Return Value: Returns 0 on success, otherwise returns another value.
+Description:
+EXPORT void FNBACK close_psd_file(PSDFILE *f);
+Function: Closes the opened PSD file.
+Parameters: PSDFILE *f; // PSD file pointer
+Return Value: None
+Description:
+EXPORT void FNBACK set_psd_transparency_level(SLONG level);
+Function: Sets the transparency threshold for reading PSD files.
+Parameters: SLONG level; // Threshold, 0~255
+Return Value: None
+Description:
+Reference Notes
+Related files are vpsd.cpp and vpsd.h.
+(XVIII) FLC Animation Format Support
+File Format Introduction
+FLC is an animation format from the early 256-color era, widely used in AnimatorPro. For specific file format details, refer to relevant literature.
+Data Interface
+Currently no external data interfaces exist.
+Function Interface
+EXPORT SLONG FNBACK FLIC_open_flic_file(USTR *name, SLONG mode_flag, USTR *memory_plane);
+Functionality: Opens an FLC animation file.
+Parameters: USTR *name; // FLC file name
+SLONG mode_flag; // FLC opening mode
+OPEN_FLIC_MODE_640X480: Opens in 640x480 mode
+OPEN_FLIC_MODE_320X200: Opens in 320x200 mode
+USTR *memory_plane; // Memory buffer
+Return Value: Returns the frame count of the FLC animation if successful; otherwise, returns TTN_ERROR.
+Description:
+EXPORT void FNBACK FLIC_close_flic_file(void);
+Function: Closes the FLC file.
+Parameters: None
+Return Value: None
+Description:
+EXPORT SHINT FNBACK FLIC_read_flic_data(void);
+Function: Reads FLC data.
+Parameters: None
+Return Value: Returns 0 if read successfully; otherwise, returns -1 (e.g., after reading the last frame of an FLC animation).
+Description:
+EXPORT SHINT FNBACK FLIC_play_flic_frame(void);
+Function: Decompresses read data into a specified memory buffer.
+Parameters: None
+Return Value: Returns 0.
+Description:
+Example: Read and display each frame of an FLC file.
+SLONG total_frames, i, ret;
+USTR *memory_plan = NULL;
+USTR palette[768];
+memory_plan = (USTR*)malloc(640*480);
+if(memory_plan)
+{
+total_frames = FLIC_open_flic_file((USR*)“”, OPEN_FLIC_MODE_640X480,
+memory_plan);
+for(i=0; i<total_frames; i++)
+{
+if(i == 0)
+{
+FLIC_export_palette(&palette[0]);
+}
+ret = FLIC_read_flic_data();
+if(ret == 0)
+{
+FLIC_play_flic_frame();
+//convert memory plan to screen_buffer by palette
+//and show screen_buffer to screen
+}
+else break;
+}
+FLIC_close_flic_file();
+}
+if(memory_plan) {free(memory_plan); memory_plan = NULL; }
+EXPORT void FNBACK FLIC_export_palette(USTR *palette);
+Function: Exports the color palette from an FLC file.
+Parameters: USTR *palette; // Pointer to the palette buffer
+Return Value: None
+Description:
+Reference Notes
+Related files are vflic.cpp and vflic.h.
+(19) AVI Animation Format Support
+File Format Introduction
+AVI is the animation format for WINDOWS. In RAYSSDK, DirectMedia is used to play AVI files.
+Data Interface
+extern RECT rcXMedia;
+Animation image size.
+extern STREAM_TIME stStartTime;
+Animation start time.
+extern STREAM_TIME stEndTime;
+Animation end time.
+extern STREAM_TIME stCurrentTime;
+Current playback time of the animation.
+extern STREAM_TIME stDuration;
+Total playback duration of the animation.
+Function Interface
+void set_xmedia_over_draw(PFNREDRAW my_redraw);
+Function: Sets animation playback parameters
+Parameters:
+Return Value:
+Description:
+void play_xmedia_movie(SLONG sx, SLONG sy, SLONG ex, SLONG ey, USTR
+*filename, SLONG wait_flag);
+Function:
+Parameters:
+Return Value:
+Description:
+SLONG open_xmedia_file(USTR *filename, RECT *rect);
+Function:
+Parameters:
+Return Value:
+Description:
+SLONG play_xmedia_frame(BMP *bitmap, SLONG left_top_flag);
+Function:
+Parameters:
+Return Value:
+Description:
+SLONG close_xmedia_file(void);
+Functionality:
+Parameters:
+Return Value:
+Description:
+void seek_xmedia_file(STREAM_TIME st);
+Functionality:
+Parameters:
+Return Value:
+Description:
+Reference Notes
+Related files are xmedia.cpp and xmedia.h.

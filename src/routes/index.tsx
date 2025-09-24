@@ -1,5 +1,4 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { WaterRipple } from "../_components/WaterRipple";
 
 export const Route = createFileRoute("/")({
   component: App,
