@@ -34,7 +34,6 @@ export function Sidenav() {
     <nav id="sidenav" className="no-select" inert={!isOpen} ref={sidenavRef}>
       <div id="sidenav-inner">
         <img className="topleft-decor" src="/assets/decor_top-left.png" alt="" aria-hidden="true" />
-        <img className="bottomright-decor" src="/assets/decor_bottom-right.png" alt="" aria-hidden="true" />
         <div id="sidenav-header">
           <div id="snh-left">
             <span className="heading">Myth War Archive</span>
@@ -42,33 +41,36 @@ export function Sidenav() {
           <SidenavTrigger />
         </div>
         <div id="sidenav-content">
-          {navLinks.map((group) => (
-            <div role="group" aria-labelledby={`group-${group.label}`} key={group.label}>
-              <div className="navgroup-label" id={`group-${group.label}`}>
-                {group.label}
+          <div id="sn-content-wrapper">
+            {navLinks.map((group) => (
+              <div role="group" aria-labelledby={`group-${group.label}`} key={group.label}>
+                <div className="navgroup-label" id={`group-${group.label}`}>
+                  {group.label}
+                </div>
+                <ul role="menu">
+                  {group.items.map((item) =>
+                    item.isOutside ? (
+                      <li key={item.title} role="menuitem">
+                        <a href={item.url} target="_blank" rel="noopener noreferrer">
+                          <item.icon />
+                          <span>{item.title}</span>
+                        </a>
+                      </li>
+                    ) : (
+                      <li key={item.title} role="menuitem">
+                        <Link to={item.url} onClick={() => isMobile && setIsOpen(false)}>
+                          <item.icon />
+                          <span>{item.title}</span>
+                        </Link>
+                      </li>
+                    )
+                  )}
+                </ul>
               </div>
-              <ul role="menu">
-                {group.items.map((item) =>
-                  item.isOutside ? (
-                    <li key={item.title} role="menuitem">
-                      <a href={item.url} target="_blank" rel="noopener noreferrer">
-                        <item.icon />
-                        <span>{item.title}</span>
-                      </a>
-                    </li>
-                  ) : (
-                    <li key={item.title} role="menuitem">
-                      <Link to={item.url} onClick={() => isMobile && setIsOpen(false)}>
-                        <item.icon />
-                        <span>{item.title}</span>
-                      </Link>
-                    </li>
-                  )
-                )}
-              </ul>
-            </div>
-          ))}
+            ))}
+          </div>
         </div>
+        <img className="bottomright-decor" src="/assets/decor_bottom-right.png" alt="" aria-hidden="true" />
       </div>
     </nav>
   );

@@ -523,13 +523,19 @@ details[open] summary span::after {
   position: relative;
   display: flex;
   flex-direction: column;
-  gap: 2.4rem;
-  padding: 1.6rem;
   overflow-y: auto;
   scrollbar-width: thin;
   scrollbar-color: var(--clrGoldInnerLineLight) transparent;
 }
-#sidenav-content::before {
+#sn-content-wrapper {
+  flex-grow: 1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 2.4rem;
+  padding: 1.6rem;
+}
+#sn-content-wrapper::before {
   content: "";
   position: absolute;
   inset: var(--decorlinePad);
