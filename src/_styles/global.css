@@ -382,6 +382,32 @@ details[open] summary span::after {
     grid-template-columns: 1fr;
   }
 }
+.topleft-decor {
+  position: absolute;
+  top: -0.6rem;
+  left: -0.6rem;
+  z-index: 1;
+  pointer-events: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+.bottomright-decor {
+  position: absolute;
+  bottom: -0.5rem;
+  right: -0.2rem;
+  z-index: 1;
+  pointer-events: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
 /**/
 /* SHARED DECOR LINE HELPERS */
 #snh-left,
@@ -448,13 +474,19 @@ details[open] summary span::after {
   }
 }
 #sidenav-inner {
+  position: relative;
   display: flex;
   flex-direction: column;
   height: 100%;
   background: var(--clrOverlayBg);
   border: 0.2rem ridge var(--clrGoldOuterLeftFrameHighlight);
   border-radius: 0.4rem;
-  overflow: hidden;
+}
+#sidenav-inner .topleft-decor {
+  height: 6.4rem;
+}
+#sidenav-inner .bottomright-decor {
+  height: 4.8rem;
 }
 #sidenav-header {
   flex-shrink: 0;

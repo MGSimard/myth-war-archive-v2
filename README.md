@@ -22,3 +22,11 @@ Preservation & utility project for the Myth War community. Myth War Archive is y
 MGSimard  
 X: [@MGSimard](https://x.com/MGSimard)  
 GitHub: [@MGSimard](https://github.com/MGSimard)
+
+## TASK LIST
+
+- [ ] Decorative corner PNGs
+- [ ] Add to sidenav
+- [ ] Add to mains
+- [ ] Consider drop shadows on them
+- [ ] Fix the sidenav inner border not scaling to content height when zoomed in/overflowed

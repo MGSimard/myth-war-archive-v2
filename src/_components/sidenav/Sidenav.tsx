@@ -33,6 +33,8 @@ export function Sidenav() {
   return (
     <nav id="sidenav" className="no-select" inert={!isOpen} ref={sidenavRef}>
       <div id="sidenav-inner">
+        <img className="topleft-decor" alt="" aria-hidden="true" src="/assets/decor_top-left.png" />
+        <img className="bottomright-decor" alt="" aria-hidden="true" src="/assets/decor_bottom-right.png" />
         <div id="sidenav-header">
           <div id="snh-left">
             <span className="heading">Myth War Archive</span>
