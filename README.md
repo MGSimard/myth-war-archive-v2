@@ -28,5 +28,6 @@ GitHub: [@MGSimard](https://github.com/MGSimard)
 - [ ] Decorative corner PNGs
 - [ ] Add to sidenav
 - [ ] Add to mains
+- [ ] Add to vitrine
 - [ ] Consider drop shadows on them
 - [ ] Fix the sidenav inner border not scaling to content height when zoomed in/overflowed
