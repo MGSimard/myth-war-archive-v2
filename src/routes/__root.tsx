@@ -92,7 +92,9 @@ function RootComponent() {
         <Sidenav />
         <div id="sidenav-inset">
           <main>
+            <img className="topleft-decor" src="/assets/decor_top-left.png" alt="" aria-hidden="true" />
             <Outlet />
+            <img className="bottomright-decor" src="/assets/decor_bottom-right.png" alt="" aria-hidden="true" />
           </main>
         </div>
       </SidenavContextProvider>

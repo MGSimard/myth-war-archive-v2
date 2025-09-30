@@ -25,10 +25,10 @@ GitHub: [@MGSimard](https://github.com/MGSimard)
 
 ## TASK LIST
 
-- [ ] Decorative corner PNGs
-- [ ] Add to sidenav
-- [ ] Add to mains
-- [ ] Add to vitrine
+- [x] Decorative corner PNGs
+- [x] Add to sidenav
+- [x] Add to mains
+- [x] Add to vitrine
 - [ ] Maybe add to map hover preview in map assets?
 - [ ] Consider drop shadows on them
 - [ ] Fix the sidenav inner border not scaling to content height when zoomed in/overflowed

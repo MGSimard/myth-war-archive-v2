@@ -20,15 +20,19 @@ export function Modal({ title, isOpen, onClose, children }: ModalProps) {
 
   return createPortal(
     <dialog ref={dialogRef} onClose={onClose}>
-      <div className="dialog-header">
-        <div className="dh-left">
-          <span className="heading">{title}</span>
+      <div className="dialog-inner">
+        <img className="topleft-decor" src="/assets/decor_top-left.png" alt="" aria-hidden="true" />
+        <img className="bottomright-decor" src="/assets/decor_bottom-right.png" alt="" aria-hidden="true" />
+        <div className="dialog-header">
+          <div className="dh-left">
+            <span className="heading">{title}</span>
+          </div>
+          <button type="button" onClick={onClose} aria-label="Close dialog">
+            <img src="/assets/x.svg" alt="" aria-hidden="true" />
+          </button>
         </div>
-        <button type="button" onClick={onClose} aria-label="Close dialog">
-          <img src="/assets/x.svg" alt="" aria-hidden="true" />
-        </button>
+        <div className="dialog-content">{children}</div>
       </div>
-      <div className="dialog-content">{children}</div>
     </dialog>,
     document.querySelector("#portal")!
   );

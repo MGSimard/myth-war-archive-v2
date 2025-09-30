@@ -96,6 +96,7 @@ main {
   margin: 0 auto;
 }
 main:not(:has(#hero)) {
+  position: relative;
   border: 0.2rem ridge var(--clrGoldOuterLeftFrameHighlight);
   border-radius: 0.4rem;
   background: var(--clrOverlayBg);
@@ -394,6 +395,7 @@ details[open] summary span::after {
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  filter: drop-shadow(0 0 0.1rem oklch(0 0 1 / 0.7));
 }
 .bottomright-decor {
   position: absolute;
@@ -795,15 +797,31 @@ figcaption::before {
 }
 /* DIALOG */
 dialog {
+  all: unset;
+  max-width: stretch;
+  max-height: stretch;
+  margin: auto;
+  padding: 2rem;
+  color: inherit;
+  height: 100dvh;
+  width: 100%;
+  overflow: hidden;
+}
+.dialog-inner {
+  position: relative;
   display: flex;
   flex-direction: column;
-  margin: auto;
-  color: inherit;
+  height: 100%;
+  width: 100%;
   border: 2px ridge var(--clrGoldOuterLeftFrameHighlight);
   border-radius: 0.4rem;
   background: var(--clrOverlayBg);
-  height: 100dvh;
-  width: 100%;
+}
+dialog .topleft-decor {
+  height: 7.2rem;
+}
+dialog .bottomright-decor {
+  height: 5.6rem;
 }
 .dialog-header {
   flex-shrink: 0;
@@ -1339,6 +1357,17 @@ textarea[readonly] {
   display: block;
   font-size: clamp(1.4rem, 1.2vw, 2rem);
   filter: drop-shadow(0.1rem 0.1rem black) drop-shadow(0 0 0.5rem black);
+}
+/* MORE DECOR */
+main:not(:has(#hero)) .topleft-decor {
+  height: 7.2rem;
+}
+main:not(:has(#hero)) .bottomright-decor {
+  height: 5.6rem;
+}
+body:has(#hero) .topleft-decor,
+body:has(#hero) .bottomright-decor {
+  display: none;
 }
 /* MEDIA QUERIES */
 @media only screen and (max-width: 1200px) {
