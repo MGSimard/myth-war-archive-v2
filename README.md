@@ -29,5 +29,6 @@ GitHub: [@MGSimard](https://github.com/MGSimard)
 - [ ] Add to sidenav
 - [ ] Add to mains
 - [ ] Add to vitrine
+- [ ] Maybe add to map hover preview in map assets?
 - [ ] Consider drop shadows on them
 - [ ] Fix the sidenav inner border not scaling to content height when zoomed in/overflowed
