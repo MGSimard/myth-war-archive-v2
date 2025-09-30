@@ -1,6 +1,11 @@
 {
   "servers": [
     {
+      "name": "osmw.net",
+      "link": "https://osmw.net/",
+      "description": "Open Source Myth War (OSMW) server currently running Myth War Online (MW1) in Beta. Based on development efforts by Wander, Luigi311, and now primarily maintained by Sterkr - owner of the OSMW server."
+    },
+    {
       "name": "mw2.tdt.net",
       "link": "https://mw2.tdt.net/",
       "description": "TDT - Only fully operational private server currently online, running Myth War II. Signing up requires referral from an active player, see https://mw2.tdt.net/article-262.html for instructions. Server is owned and managed by a Chinese individual named Wu Xiao Wei, also known as Snake-Quantou, uuclient, asyincio & rsyslogd. The origin of their server files is unknown."
@@ -18,9 +23,14 @@
       "description": "General community server for all things Myth War Online & Myth War II."
     },
     {
+      "name": "osMW Official",
+      "link": "https://discord.gg/jVGgXyqs",
+      "description": "Discord community for the Open Source Myth War (OSMW) server currently running Myth War Online (MW1) Beta."
+    },
+    {
       "name": "Myth War Server",
       "link": "https://discord.gg/mceUzvF9zS",
-      "description": "Discord community for an ongoing effort in developing a compatible Myth War Online server from scratch. You can currently run your own local server, or log into a testing instance accessible by following instructions in the server. Fairly barebones for the time being, but seeing good progress in early development. GitLab Repo: https://gitlab.com/wander-gr/mw-tools"
+      "description": "Discord community for an ongoing effort in developing a compatible Myth War Online server from scratch. You can currently run your own local server, or log into a testing instance accessible by following instructions in the server. Branched into what is now known as Open Source Myth War (OSMW). GitLab Repo: https://gitlab.com/wander-gr/mw-tools"
     }
   ],
   "subreddits": [
