@@ -1371,8 +1371,8 @@ main:not(:has(#hero)) .topleft-decor {
 main:not(:has(#hero)) .bottomright-decor {
   height: 5.6rem;
 }
-body:has(#hero) .topleft-decor,
-body:has(#hero) .bottomright-decor {
+body:has(#hero) main .topleft-decor,
+body:has(#hero) main .bottomright-decor {
   display: none;
 }
 /* MEDIA QUERIES */
