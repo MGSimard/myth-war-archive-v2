@@ -803,7 +803,6 @@ figcaption::before {
 }
 /* DIALOG */
 dialog {
-  all: unset;
   max-width: stretch;
   max-height: stretch;
   margin: auto;
@@ -812,6 +811,9 @@ dialog {
   height: 100dvh;
   width: 100%;
   overflow: hidden;
+  outline: none;
+  border: none;
+  background: none;
 }
 .dialog-inner {
   position: relative;
