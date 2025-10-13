@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Pause, Play, SkipBack, SkipForward, Volume, Volume1, Volume2, VolumeOff } from "lucide-react";
+import { LoaderCircle, Pause, Play, SkipBack, SkipForward, Volume, Volume1, Volume2, VolumeOff } from "lucide-react";
 import type { TrackTypes } from "@/_components/AudioPlayer";
 
 const toLogarithmicVolume = (value: number) => {
@@ -239,7 +239,7 @@ export default function AudioControls({ currentTrack, tracks, changeTrack }: Aud
 
       <div id="controls-bottom">
         <button type="button" onClick={handlePreviousTrack} disabled={!currentTrack} aria-label="Previous track">
-          <SkipBack fill="currentColor" aria-hidden="true" />
+          <SkipBack fill="currentColor" />
         </button>
         <button
           type="button"
@@ -247,24 +247,26 @@ export default function AudioControls({ currentTrack, tracks, changeTrack }: Aud
           disabled={!currentTrack || isLoading}
           aria-label={isPlaying ? "Pause" : "Play"}>
           {isPlaying ? (
-            <Pause fill="currentColor" aria-hidden="true" />
+            <Pause fill="currentColor" />
+          ) : isLoading ? (
+            <LoaderCircle strokeWidth={5} className="animate-spin" />
           ) : (
-            <Play fill="currentColor" aria-hidden="true" />
+            <Play fill="currentColor" />
           )}
         </button>
 
         <button type="button" onClick={handleNextTrack} disabled={!currentTrack} aria-label="Next track">
-          <SkipForward fill="currentColor" aria-hidden="true" />
+          <SkipForward fill="currentColor" />
         </button>
         <div id="volume-control">
           {volume === 0 ? (
-            <VolumeOff aria-hidden="true" />
+            <VolumeOff />
           ) : volume <= 35 ? (
-            <Volume fill="currentColor" aria-hidden="true" />
+            <Volume fill="currentColor" />
           ) : volume <= 70 ? (
-            <Volume1 fill="currentColor" aria-hidden="true" />
+            <Volume1 fill="currentColor" />
           ) : (
-            <Volume2 fill="currentColor" aria-hidden="true" />
+            <Volume2 fill="currentColor" />
           )}
           <div
             ref={volumeRef}
